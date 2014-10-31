@@ -34,7 +34,7 @@ catch (Exception $e) {
 //*Notes: the coordinates are lat,lon format
 //*Result of e.g. LANDSAT_ETM_SLC_OFF
 try {
-    $datasets = $client->datasets('ETM','33.69388,-79.44522','35.52052,-76.77163','1/1/2009','1/1/2010','EE',$loginKey);
+    $datasets = $client->datasets('','33.69388,-79.44522','35.52052,-76.77163','1/1/2009','1/1/2014','EE',$loginKey);
     echo $client->__getLastResponse() . "\n";
 }
 catch (Exception $e) {
