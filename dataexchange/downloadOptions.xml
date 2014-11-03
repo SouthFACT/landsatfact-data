@@ -1,3 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://earthexplorer.usgs.gov/inventory/soap" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><SOAP-ENV:Body><ns1:downloadOptionsResponse><return SOAP-ENC:arrayType="ns1:Service_Inventory_SceneDownloadOptions[1]" xsi:type="ns1:ArrayOfService_Inventory_SceneDownloadOptions"><item xsi:type="ns1:Service_Inventory_SceneDownloadOptions"><downloadOptions SOAP-ENC:arrayType="ns1:Service_Inventory_DownloadOption[4]" xsi:type="ns1:ArrayOfService_Inventory_DownloadOption"><item xsi:type="ns1:Service_Inventory_DownloadOption"><available xsi:type="xsd:boolean">true</available><downloadCode xsi:type="xsd:string">FR_REFL</downloadCode><filesize xsi:type="xsd:long">7775365</filesize><productName xsi:type="xsd:string">LandsatLook "Natural Color" Image</productName><url xsi:type="xsd:string">http://earthexplorer.usgs.gov/download/3373/LE70150362014298EDC00/FR_REFL/INVSVC/</url></item><item xsi:type="ns1:Service_Inventory_DownloadOption"><available xsi:type="xsd:boolean">true</available><downloadCode xsi:type="xsd:string">FR_THERM</downloadCode><filesize xsi:type="xsd:long">9155676</filesize><productName xsi:type="xsd:string">LandsatLook Thermal Image</productName><url xsi:type="xsd:string">http://earthexplorer.usgs.gov/download/3373/LE70150362014298EDC00/FR_THERM/INVSVC/</url></item><item xsi:type="ns1:Service_Inventory_DownloadOption"><available xsi:type="xsd:boolean">true</available><downloadCode xsi:type="xsd:string">FR_BUND</downloadCode><filesize xsi:type="xsd:long">16933653</filesize><productName xsi:type="xsd:string">LandsatLook Images with Geographic Reference</productName><url xsi:type="xsd:string">http://earthexplorer.usgs.gov/download/3373/LE70150362014298EDC00/FR_BUND/INVSVC/</url></item><item xsi:type="ns1:Service_Inventory_DownloadOption"><available xsi:type="xsd:boolean">true</available><downloadCode xsi:type="xsd:string">STANDARD</downloadCode><filesize xsi:type="xsd:long">225956769</filesize><productName xsi:type="xsd:string">Level 1 Product</productName><url xsi:type="xsd:string">http://earthexplorer.usgs.gov/download/3373/LE70150362014298EDC00/STANDARD/INVSVC/</url></item></downloadOptions><entityId xsi:type="xsd:string">LE70150362014298EDC00</entityId></item></return></ns1:downloadOptionsResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://earthexplorer.usgs.gov/inventory/soap" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+    <SOAP-ENV:Body>
+        <ns1:downloadOptionsResponse>
+            <return SOAP-ENC:arrayType="ns1:Service_Inventory_SceneDownloadOptions[1]" xsi:type="ns1:ArrayOfService_Inventory_SceneDownloadOptions">
+                <item xsi:type="ns1:Service_Inventory_SceneDownloadOptions">
+                    <downloadOptions SOAP-ENC:arrayType="ns1:Service_Inventory_DownloadOption[4]" xsi:type="ns1:ArrayOfService_Inventory_DownloadOption">
+                        <item xsi:type="ns1:Service_Inventory_DownloadOption">
+                            <available xsi:type="xsd:boolean">true</available>
+                            <downloadCode xsi:type="xsd:string">FR_REFL</downloadCode>
+                            <filesize xsi:type="xsd:long">7775365</filesize>
+                            <productName xsi:type="xsd:string">LandsatLook "Natural Color" Image</productName>
+                            <url xsi:type="xsd:string">http://earthexplorer.usgs.gov/download/3373/LE70150362014298EDC00/FR_REFL/INVSVC/</url>
+                        </item>
+                        <item xsi:type="ns1:Service_Inventory_DownloadOption">
+                            <available xsi:type="xsd:boolean">true</available>
+                            <downloadCode xsi:type="xsd:string">FR_THERM</downloadCode>
+                            <filesize xsi:type="xsd:long">9155676</filesize>
+                            <productName xsi:type="xsd:string">LandsatLook Thermal Image</productName>
+                            <url xsi:type="xsd:string">http://earthexplorer.usgs.gov/download/3373/LE70150362014298EDC00/FR_THERM/INVSVC/</url>
+                        </item>
+                        <item xsi:type="ns1:Service_Inventory_DownloadOption">
+                            <available xsi:type="xsd:boolean">true</available>
+                            <downloadCode xsi:type="xsd:string">FR_BUND</downloadCode>
+                            <filesize xsi:type="xsd:long">16933653</filesize>
+                            <productName xsi:type="xsd:string">LandsatLook Images with Geographic Reference</productName>
+                            <url xsi:type="xsd:string">http://earthexplorer.usgs.gov/download/3373/LE70150362014298EDC00/FR_BUND/INVSVC/</url>
+                        </item>
+                        <item xsi:type="ns1:Service_Inventory_DownloadOption">
+                            <available xsi:type="xsd:boolean">true</available>
+                            <downloadCode xsi:type="xsd:string">STANDARD</downloadCode>
+                            <filesize xsi:type="xsd:long">225956769</filesize>
+                            <productName xsi:type="xsd:string">Level 1 Product</productName>
+                            <url xsi:type="xsd:string">http://earthexplorer.usgs.gov/download/3373/LE70150362014298EDC00/STANDARD/INVSVC/</url>
+                        </item>
+                    </downloadOptions>
+                    <entityId xsi:type="xsd:string">LE70150362014298EDC00</entityId>
+                </item>
+            </return>
+        </ns1:downloadOptionsResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
 
