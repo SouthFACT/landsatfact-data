@@ -120,14 +120,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">AVHRR_COMPOSITE</datasetName>
                     <datasetFullName xsi:type="xsd:string">Advanced Very High Resolution Radiometer Composites</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-21T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-28T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">1989-01-04T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">501</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">3827</totalScenes>
+                    <totalScenes xsi:type="xsd:int">3829</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -145,7 +145,7 @@
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">100</orderLimit>
-                    <totalScenes xsi:type="xsd:int">4183367</totalScenes>
+                    <totalScenes xsi:type="xsd:int">4183338</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -336,14 +336,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CRSSP_VIEWABLE_W2</datasetName>
                     <datasetFullName xsi:type="xsd:string">COMMERCIAL IMAGERY   WORLDVIEW-2  (Federally Viewable)</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-29T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-31T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2009-12-05T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">false</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">0</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">140915</totalScenes>
+                    <totalScenes xsi:type="xsd:int">141566</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -361,7 +361,7 @@
                     <bulkDownloadOrderLimit xsi:type="xsd:int">0</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">63552</totalScenes>
+                    <totalScenes xsi:type="xsd:int">63561</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -415,7 +415,7 @@
                     <bulkDownloadOrderLimit xsi:type="xsd:int">0</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">36150</totalScenes>
+                    <totalScenes xsi:type="xsd:int">36166</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -426,14 +426,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_PIS_ALGERIA_3</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Algeria 3</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-01T10:00:36Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-26T09:54:40Z</endDate>
                     <startDate xsi:type="xsd:string">1972-08-11T09:31:37Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">699</totalScenes>
+                    <totalScenes xsi:type="xsd:int">703</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -444,14 +444,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_PIS_ALGERIA_5</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Algeria 5</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-27T10:25:15Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-29T10:25:35Z</endDate>
                     <startDate xsi:type="xsd:string">1972-08-15T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1084</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1092</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -462,14 +462,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_IS_DOME_C_ANT</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Dome C, Antarctic</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-20T23:59:36Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-31T23:53:52Z</endDate>
                     <startDate xsi:type="xsd:string">1972-12-06T22:57:49Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">537</totalScenes>
+                    <totalScenes xsi:type="xsd:int">539</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -480,14 +480,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_IS_DUNHUANG_CHINA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Dunhuang, China</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-22T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-01T04:18:12Z</endDate>
                     <startDate xsi:type="xsd:string">1975-04-15T03:44:57Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1445</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1462</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -498,14 +498,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_IS_FRENCHMAN_FLAT</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Frenchman Flat, USA</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-22T18:19:29Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T18:19:51Z</endDate>
                     <startDate xsi:type="xsd:string">1972-08-27T17:54:30Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">2528</totalScenes>
+                    <totalScenes xsi:type="xsd:int">2532</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -516,14 +516,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_IS_IVANPAH_PLAYA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Ivanpah Playa,USA</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-01T18:13:50Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-25T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">1972-08-26T17:49:10Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">2583</totalScenes>
+                    <totalScenes xsi:type="xsd:int">2588</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -534,14 +534,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_IS_LACRAU_FRANCE</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - La Crau, France</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-27T10:21:40Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-29T10:22:00Z</endDate>
                     <startDate xsi:type="xsd:string">1972-08-16T09:56:37Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">322</totalScenes>
+                    <totalScenes xsi:type="xsd:int">324</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -552,14 +552,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_PIS_LIBYA_1</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Libya 1</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-25T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-30T09:31:34Z</endDate>
                     <startDate xsi:type="xsd:string">1973-02-02T09:05:25Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">474</totalScenes>
+                    <totalScenes xsi:type="xsd:int">485</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -570,14 +570,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_PIS_LIBYA_4</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Libya 4</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-24T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-26T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">1972-11-16T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1522</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1539</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -588,14 +588,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_PIS_MAURITANIA_1</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Mauritania 1</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-30T10:59:24Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-01T10:59:43Z</endDate>
                     <startDate xsi:type="xsd:string">1972-09-26T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">946</totalScenes>
+                    <totalScenes xsi:type="xsd:int">953</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -606,14 +606,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_PIS_MAURITANIA_2</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Mauritania 2</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-30T10:59:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-01T10:59:19Z</endDate>
                     <startDate xsi:type="xsd:string">1972-09-26T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">972</totalScenes>
+                    <totalScenes xsi:type="xsd:int">982</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -624,14 +624,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_IS_NEGEV_ISRAEL</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Negev, Southern Israel</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-17T08:09:11Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-19T08:09:32Z</endDate>
                     <startDate xsi:type="xsd:string">1972-09-15T07:42:42Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">524</totalScenes>
+                    <totalScenes xsi:type="xsd:int">527</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -642,14 +642,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_IS_RAILROAD_VALLEY</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Railroad Valley Playa, USA</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-26T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T18:19:03Z</endDate>
                     <startDate xsi:type="xsd:string">1972-08-27T17:54:05Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1799</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1813</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -660,14 +660,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">CALVAL_IS_TUZGOLU_TURKEY</datasetName>
                     <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Tuz Golu, Turkey</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-23T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T08:25:44Z</endDate>
                     <startDate xsi:type="xsd:string">1972-10-06T07:57:31Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">861</totalScenes>
+                    <totalScenes xsi:type="xsd:int">862</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -714,14 +714,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">EO1_ALI_PUB</datasetName>
                     <datasetFullName xsi:type="xsd:string">Earth Observing One - Advanced Land Imager (2001 - present)</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-28T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-04T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2001-05-01T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">73363</totalScenes>
+                    <totalScenes xsi:type="xsd:int">73490</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -732,14 +732,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">EO1_HYP_PUB</datasetName>
                     <datasetFullName xsi:type="xsd:string">Earth Observing One - Hyperion (2001 - present)</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-28T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-04T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2001-05-01T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">50</orderLimit>
-                    <totalScenes xsi:type="xsd:int">72302</totalScenes>
+                    <totalScenes xsi:type="xsd:int">72429</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -750,14 +750,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_BANGLADESH</datasetName>
                     <datasetFullName xsi:type="xsd:string">GFOI - Bangladesh</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-26T04:13:27Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-03T04:11:27Z</endDate>
                     <startDate xsi:type="xsd:string">1972-11-03T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">3503</totalScenes>
+                    <totalScenes xsi:type="xsd:int">3517</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -768,14 +768,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_GABON</datasetName>
                     <datasetFullName xsi:type="xsd:string">GFOI - Gabon</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-26T09:16:29Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-03T09:14:29Z</endDate>
                     <startDate xsi:type="xsd:string">1972-12-08T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">3354</totalScenes>
+                    <totalScenes xsi:type="xsd:int">3374</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -786,14 +786,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_REP_CONGO</datasetName>
                     <datasetFullName xsi:type="xsd:string">GFOI - Republic of Congo</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-28T09:04:30Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T09:02:32Z</endDate>
                     <startDate xsi:type="xsd:string">1973-02-14T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">3551</totalScenes>
+                    <totalScenes xsi:type="xsd:int">3575</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -822,14 +822,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_BOLIVIA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Bolivia</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T14:39:47Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T14:03:35Z</endDate>
                     <startDate xsi:type="xsd:string">1972-07-28T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">19764</totalScenes>
+                    <totalScenes xsi:type="xsd:int">19813</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -840,14 +840,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_BORNEO</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Borneo Island</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-31T02:58:39Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-06T02:22:25Z</endDate>
                     <startDate xsi:type="xsd:string">1972-09-05T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">10305</totalScenes>
+                    <totalScenes xsi:type="xsd:int">10358</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -858,14 +858,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_BRAZIL</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Brazil</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-25T13:32:40Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-02T13:30:39Z</endDate>
                     <startDate xsi:type="xsd:string">1972-07-28T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">6744</totalScenes>
+                    <totalScenes xsi:type="xsd:int">6753</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -876,14 +876,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_BURMA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Burma</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T03:50:17Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T04:00:18Z</endDate>
                     <startDate xsi:type="xsd:string">1973-01-10T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">8377</totalScenes>
+                    <totalScenes xsi:type="xsd:int">8419</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -894,14 +894,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_CAMBODIA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Cambodia</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-29T03:07:49Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T03:14:27Z</endDate>
                     <startDate xsi:type="xsd:string">1972-12-15T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">2565</totalScenes>
+                    <totalScenes xsi:type="xsd:int">2579</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -912,14 +912,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_CAMEROON</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Cameroon</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-27T09:07:01Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-04T09:09:07Z</endDate>
                     <startDate xsi:type="xsd:string">1972-10-31T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">5975</totalScenes>
+                    <totalScenes xsi:type="xsd:int">6017</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -930,14 +930,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_COLOMBIA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Colombia</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T15:26:27Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T14:50:38Z</endDate>
                     <startDate xsi:type="xsd:string">1979-01-09T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">16048</totalScenes>
+                    <totalScenes xsi:type="xsd:int">16101</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -948,14 +948,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_COSTA_RICA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Costa Rica</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-26T15:48:49Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-03T15:46:49Z</endDate>
                     <startDate xsi:type="xsd:string">1974-03-17T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">935</totalScenes>
+                    <totalScenes xsi:type="xsd:int">942</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -966,14 +966,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_DEM_REP_CONGO</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Dem Rep Congo</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T08:52:07Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T09:02:56Z</endDate>
                     <startDate xsi:type="xsd:string">1972-07-27T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">21238</totalScenes>
+                    <totalScenes xsi:type="xsd:int">21346</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -984,14 +984,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_ECUADOR</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Ecuador</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T15:27:39Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-01T15:14:55Z</endDate>
                     <startDate xsi:type="xsd:string">1986-02-19T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">3558</totalScenes>
+                    <totalScenes xsi:type="xsd:int">3565</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1002,14 +1002,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_FIJI</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Fiji</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T22:07:11Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-01T21:55:39Z</endDate>
                     <startDate xsi:type="xsd:string">1999-07-02T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1248</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1252</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1020,14 +1020,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_GUATEMALA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Guatemala</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-29T16:18:29Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T16:24:20Z</endDate>
                     <startDate xsi:type="xsd:string">1973-02-18T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1962</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1969</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1038,14 +1038,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_GUYANA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Guyana</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-28T13:59:33Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T13:57:36Z</endDate>
                     <startDate xsi:type="xsd:string">1986-09-13T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">6108</totalScenes>
+                    <totalScenes xsi:type="xsd:int">6129</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1056,14 +1056,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_HONDURAS</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Honduras</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T16:10:18Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-02T15:53:25Z</endDate>
                     <startDate xsi:type="xsd:string">1973-12-19T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1799</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1805</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1074,14 +1074,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_LAOS</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Laos</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-28T03:11:09Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T03:13:15Z</endDate>
                     <startDate xsi:type="xsd:string">1972-11-11T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">4152</totalScenes>
+                    <totalScenes xsi:type="xsd:int">4180</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1092,14 +1092,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_MALAWI</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Malawi</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-26T07:41:35Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-03T07:39:35Z</endDate>
                     <startDate xsi:type="xsd:string">1972-09-08T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">2802</totalScenes>
+                    <totalScenes xsi:type="xsd:int">2816</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1110,14 +1110,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_MEXICO</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Mexico</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T17:45:12Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T18:00:02Z</endDate>
                     <startDate xsi:type="xsd:string">1972-08-15T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">40332</totalScenes>
+                    <totalScenes xsi:type="xsd:int">40435</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1128,14 +1128,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_NEPAL</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Nepal</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T04:34:07Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T04:48:57Z</endDate>
                     <startDate xsi:type="xsd:string">1975-02-25T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">3412</totalScenes>
+                    <totalScenes xsi:type="xsd:int">3420</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1146,14 +1146,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_NICARAGUA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Nicaragua</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T16:10:18Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-02T15:54:36Z</endDate>
                     <startDate xsi:type="xsd:string">1973-12-19T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1618</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1628</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1164,14 +1164,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_PANAMA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Panama</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T15:24:28Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T15:34:53Z</endDate>
                     <startDate xsi:type="xsd:string">1973-03-19T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1604</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1610</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1182,14 +1182,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_PERU</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Peru</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T15:28:27Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T14:54:13Z</endDate>
                     <startDate xsi:type="xsd:string">1972-10-31T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">26529</totalScenes>
+                    <totalScenes xsi:type="xsd:int">26597</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1200,14 +1200,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_PHILIPPINES</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Philippines</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T02:14:11Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-06T02:20:02Z</endDate>
                     <startDate xsi:type="xsd:string">1972-10-12T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">6913</totalScenes>
+                    <totalScenes xsi:type="xsd:int">6946</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1218,14 +1218,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_SUMATRA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Sumatra</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T03:53:04Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T03:18:26Z</endDate>
                     <startDate xsi:type="xsd:string">1974-03-16T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">6369</totalScenes>
+                    <totalScenes xsi:type="xsd:int">6397</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1236,14 +1236,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_TANZANIA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Tanzania</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-29T08:09:39Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-04T07:33:49Z</endDate>
                     <startDate xsi:type="xsd:string">1972-09-10T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">11325</totalScenes>
+                    <totalScenes xsi:type="xsd:int">11375</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1254,14 +1254,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_TASMANIA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Tasmania Island</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T23:52:51Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-31T23:44:40Z</endDate>
                     <startDate xsi:type="xsd:string">1972-08-25T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">8006</totalScenes>
+                    <totalScenes xsi:type="xsd:int">8009</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1272,14 +1272,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_THAILAND</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Thailand</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T03:50:17Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-04T03:17:25Z</endDate>
                     <startDate xsi:type="xsd:string">1972-11-11T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">7150</totalScenes>
+                    <totalScenes xsi:type="xsd:int">7189</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1290,14 +1290,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_VIETNAM</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Vietnam</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T03:00:01Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-06T03:06:41Z</endDate>
                     <startDate xsi:type="xsd:string">1972-11-11T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">6222</totalScenes>
+                    <totalScenes xsi:type="xsd:int">6260</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1308,14 +1308,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_ZAMBIA</datasetName>
                     <datasetFullName xsi:type="xsd:string">Global Forest Observations Initiative - Zambia</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-29T08:12:51Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T08:18:41Z</endDate>
                     <startDate xsi:type="xsd:string">1972-09-09T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">7771</totalScenes>
+                    <totalScenes xsi:type="xsd:int">7811</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1387,7 +1387,7 @@
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">3158139</totalScenes>
+                    <totalScenes xsi:type="xsd:int">3167433</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1470,14 +1470,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">LANDSAT_8</datasetName>
                     <datasetFullName xsi:type="xsd:string">L8 OLI/TIRS</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-31T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-06T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2013-04-11T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">1000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">1000</orderLimit>
-                    <totalScenes xsi:type="xsd:int">334665</totalScenes>
+                    <totalScenes xsi:type="xsd:int">339136</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1531,7 +1531,7 @@
                     <bulkDownloadOrderLimit xsi:type="xsd:int">1000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">1000</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1950243</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1956218</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1549,7 +1549,7 @@
                     <bulkDownloadOrderLimit xsi:type="xsd:int">0</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">100</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1928336</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1934311</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1578,14 +1578,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">LSR_LANDSAT_ETM_COMBINED</datasetName>
                     <datasetFullName xsi:type="xsd:string">Landsat 7 Enhanced Thematic Mapper Plus (1999 - present) - Land Surface Reflectance</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-28T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-03T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">1999-05-28T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">false</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">0</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">100</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1800899</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1804314</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1596,14 +1596,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">LANDSAT_ETM_SLC_OFF</datasetName>
                     <datasetFullName xsi:type="xsd:string">Landsat ETM Scan Line Corrector Off (SLC-off) (2003-present)</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-31T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-06T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2003-05-31T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">1000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">true</supportOrder>
                     <orderLimit xsi:type="xsd:int">1000</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1388317</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1390751</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1621,7 +1621,7 @@
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">621274</totalScenes>
+                    <totalScenes xsi:type="xsd:int">620841</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1650,14 +1650,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MYD09A1</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD09A1 Surface Reflectance 8-Day L3 Global 500m</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-17T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">165287</totalScenes>
+                    <totalScenes xsi:type="xsd:int">165583</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1686,14 +1686,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MYD09GA</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD09GA Surface Reflectance Daily L2G Global 1km and 500m</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-28T23:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-01T22:35:00Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:45:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1435270</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1436552</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1704,14 +1704,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MYD09GQ</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD09GQ Surface Reflectance Daily L2G Global 250m</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-28T23:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-01T22:35:00Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:45:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1306731</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1307873</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1722,14 +1722,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MYD09Q1</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD09Q1 Surface Reflectance 8-Day L3 Global 250m</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-17T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">165286</totalScenes>
+                    <totalScenes xsi:type="xsd:int">165582</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1740,14 +1740,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MYD11A1</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD11A1 MODIS/Aqua Land Surface Temperature and Emissivity Daily L3 Global 1 km Grid SIN</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-29T12:10:19Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-01T11:49:45Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:00:05Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">2839953</totalScenes>
+                    <totalScenes xsi:type="xsd:int">2842292</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1758,14 +1758,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MYD11A2</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD11A2 Land Surface Temperature &amp; Emissivity 8-Day L3 Global 1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">239301</totalScenes>
+                    <totalScenes xsi:type="xsd:int">239618</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1776,14 +1776,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MYD11B1</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD11B1 MODIS/Aqua Land Surface Temperature and Emissivity Daily L3 Global 5 km Grid SIN</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-29T11:21:02Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-01T11:49:45Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:00:05Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">2839451</totalScenes>
+                    <totalScenes xsi:type="xsd:int">2841784</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1848,14 +1848,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MYD11_L2</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD11_l2 MODIS/Aqua Land Surface Temperature and Emissivity 5-Minute L2 Swath 1 km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-29T23:55:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-03T23:55:00Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">2541725</totalScenes>
+                    <totalScenes xsi:type="xsd:int">2544290</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1974,14 +1974,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MYD14</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD14 Thermal Anomalies &amp; Fire 5-Min L2 Swath 1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T09:20:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-04T09:45:00Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1289056</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1290491</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -1992,14 +1992,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MYD14A1</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD14A1 Thermal Anomalies &amp; Fire Daily L3 Global 1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">161875</totalScenes>
+                    <totalScenes xsi:type="xsd:int">162161</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2010,14 +2010,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MYD14A2</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD14A2 Thermal Anomalies &amp; Fire 8-Day L3 Global 1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">161875</totalScenes>
+                    <totalScenes xsi:type="xsd:int">162160</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2028,14 +2028,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MYD15A2</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD15A2 Leaf Area Index - Fraction of Photosynthetically Active Radiation 8-Day L4 Global 1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">161143</totalScenes>
+                    <totalScenes xsi:type="xsd:int">161429</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2046,14 +2046,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MYD17A2</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD17A2 Gross Primary Productivity 8-Day L4 Global 1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">161300</totalScenes>
+                    <totalScenes xsi:type="xsd:int">161586</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2118,14 +2118,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MCD15A2</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/COMBINED MCD15A2  Leaf Area Index - Fraction of Photosynthetically Active Radiation 8-Day L4 Global  1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">161156</totalScenes>
+                    <totalScenes xsi:type="xsd:int">161186</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2136,14 +2136,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MCD15A3</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/COMBINED MCD15A3  Leaf Area Index - Fraction of Photosynthetically Active Radiation 4-Day L4 Global1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-20T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">321580</totalScenes>
+                    <totalScenes xsi:type="xsd:int">321866</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2251,7 +2251,7 @@
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">214900</totalScenes>
+                    <totalScenes xsi:type="xsd:int">214901</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2370,14 +2370,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD11A1</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/COMBINED MOD11A1 Land Surface Temperature and Emissivity Daily L3 Global 1 km Grid SIN</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-28T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-04T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-24T00:00:06Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">3355047</totalScenes>
+                    <totalScenes xsi:type="xsd:int">3359380</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2406,14 +2406,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD09A1</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD09A1 Surface Reflectance 8-Day L3 Global 500m</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-17T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-24T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">196281</totalScenes>
+                    <totalScenes xsi:type="xsd:int">196577</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2442,14 +2442,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD09GA</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD09GA Surface Reflectance Daily L2G Global 1km and 500m</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-28T23:15:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-02T23:35:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-24T00:05:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1693256</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1694833</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2460,14 +2460,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD09GQ</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD09GQ  Surface Reflectance Daily L2G Global 250m</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-28T23:15:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-02T23:35:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-24T00:05:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1538613</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1540011</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2478,14 +2478,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD09Q1</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD09Q1 Surface Reflectance 8-Day L3 Global 250m</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-17T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-24T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">196279</totalScenes>
+                    <totalScenes xsi:type="xsd:int">196575</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2496,14 +2496,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD11A2</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD11A2 Land Surface Temperature &amp; Emissivity 8-Day L3 Global 1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-26T00:00:05Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">306975</totalScenes>
+                    <totalScenes xsi:type="xsd:int">307292</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2514,14 +2514,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD11B1</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD11B1 MODIS/Terra Land Surface Temperature and Emissivity Daily L3 Global 5 km Grid SIN</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-28T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-04T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-24T00:00:06Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">3354519</totalScenes>
+                    <totalScenes xsi:type="xsd:int">3358853</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2568,14 +2568,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD11_L2</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD11_l2 Land Surface Temperature and Emissivity 5-Minute L2 Swath 1 km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-28T23:55:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-04T23:55:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-24T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">3001110</totalScenes>
+                    <totalScenes xsi:type="xsd:int">3005066</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2586,14 +2586,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD13A1</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD13A1 Vegetation Indices 16-Day L3 Global 500m</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-30T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-18T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">96055</totalScenes>
+                    <totalScenes xsi:type="xsd:int">96057</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2604,14 +2604,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD13A2</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD13A2 Vegetation Indices 16-Day L3 Global 1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-30T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-18T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">96064</totalScenes>
+                    <totalScenes xsi:type="xsd:int">96066</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2676,14 +2676,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD13Q1</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD13Q1 Vegetation Indices 16-Day L3 Global 250m</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-09-30T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-18T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">98424</totalScenes>
+                    <totalScenes xsi:type="xsd:int">98426</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2694,14 +2694,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD14</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD14 Thermal Anomalies &amp; Fire 5-Min L2 Swath 1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T14:40:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T09:45:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-24T00:05:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">1517635</totalScenes>
+                    <totalScenes xsi:type="xsd:int">1519516</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2712,14 +2712,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD14A1</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD14A1 Thermal Anomalies &amp; Fire Daily L3 Global 1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-26T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">192382</totalScenes>
+                    <totalScenes xsi:type="xsd:int">192669</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2730,14 +2730,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD14A2</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD14A2 Thermal Anomalies &amp; Fire 8-Day L3 Global 1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-26T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">192396</totalScenes>
+                    <totalScenes xsi:type="xsd:int">192683</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -2748,14 +2748,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">MODIS_MOD15A2</datasetName>
                     <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD15A2 Leaf Area Index - Fraction of Photosynthetically Active Radiation 8-Day L4 Global 1km</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2000-02-18T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">190990</totalScenes>
+                    <totalScenes xsi:type="xsd:int">191276</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -3144,14 +3144,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_ALGERIA</datasetName>
                     <datasetFullName xsi:type="xsd:string">USGS Group on Earth Observations (GEO) Global Agricultural Monitoring (GLAM) - Algeria</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T10:23:50Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T10:33:51Z</endDate>
                     <startDate xsi:type="xsd:string">1972-08-14T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">22713</totalScenes>
+                    <totalScenes xsi:type="xsd:int">22810</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -3162,14 +3162,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_ARGENTINA</datasetName>
                     <datasetFullName xsi:type="xsd:string">USGS Group on Earth Observations (GEO) Global Agricultural Monitoring (GLAM) - Argentina</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T13:58:45Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T14:08:22Z</endDate>
                     <startDate xsi:type="xsd:string">1972-08-31T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">28206</totalScenes>
+                    <totalScenes xsi:type="xsd:int">28266</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -3180,14 +3180,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_AUSTRALIA</datasetName>
                     <datasetFullName xsi:type="xsd:string">USGS Group on Earth Observations (GEO) Global Agricultural Monitoring (GLAM) - Australia</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T23:51:15Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-06T00:52:19Z</endDate>
                     <startDate xsi:type="xsd:string">1972-08-12T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">37315</totalScenes>
+                    <totalScenes xsi:type="xsd:int">37401</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -3198,14 +3198,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_ETHIOPIA</datasetName>
                     <datasetFullName xsi:type="xsd:string">USGS Group on Earth Observations (GEO) Global Agricultural Monitoring (GLAM) - Ethiopia</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T07:10:26Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-04T07:29:26Z</endDate>
                     <startDate xsi:type="xsd:string">1972-09-03T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">10928</totalScenes>
+                    <totalScenes xsi:type="xsd:int">10973</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -3216,14 +3216,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_PAKISTAN</datasetName>
                     <datasetFullName xsi:type="xsd:string">USGS Group on Earth Observations (GEO) Global Agricultural Monitoring (GLAM) - Pakistan</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T05:23:35Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T06:27:03Z</endDate>
                     <startDate xsi:type="xsd:string">1972-09-06T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">16456</totalScenes>
+                    <totalScenes xsi:type="xsd:int">16482</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -3234,14 +3234,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_RUSSIA</datasetName>
                     <datasetFullName xsi:type="xsd:string">USGS Group on Earth Observations (GEO) Global Agricultural Monitoring (GLAM) - Russia</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T08:36:35Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-06T02:08:29Z</endDate>
                     <startDate xsi:type="xsd:string">1973-01-06T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">86312</totalScenes>
+                    <totalScenes xsi:type="xsd:int">86698</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -3252,14 +3252,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_UGANDA</datasetName>
                     <datasetFullName xsi:type="xsd:string">USGS Group on Earth Observations (GEO) Global Agricultural Monitoring (GLAM) - Uganda</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-29T08:08:04Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T08:14:18Z</endDate>
                     <startDate xsi:type="xsd:string">1973-02-01T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">3948</totalScenes>
+                    <totalScenes xsi:type="xsd:int">3964</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -3270,14 +3270,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">FCT_TS_UKRAINE</datasetName>
                     <datasetFullName xsi:type="xsd:string">USGS Group on Earth Observations (GEO) Global Agricultural Monitoring (GLAM) - Ukraine</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-30T08:38:10Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-11-05T08:48:59Z</endDate>
                     <startDate xsi:type="xsd:string">1975-04-30T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">11728</totalScenes>
+                    <totalScenes xsi:type="xsd:int">11781</totalScenes>
                 </item>
                 <item xsi:type="ns1:Service_Inventory_Dataset">
                     <bounds xsi:type="ns1:Service_Inventory_Bounds">
@@ -3288,14 +3288,14 @@
                     </bounds>
                     <datasetName xsi:type="xsd:string">VEGDRI</datasetName>
                     <datasetFullName xsi:type="xsd:string">Vegetation Drought Response Index</datasetFullName>
-                    <endDate xsi:type="xsd:string">2014-10-20T00:00:00Z</endDate>
+                    <endDate xsi:type="xsd:string">2014-10-27T00:00:00Z</endDate>
                     <startDate xsi:type="xsd:string">2009-04-22T00:00:00Z</startDate>
                     <supportDownload xsi:type="xsd:boolean">true</supportDownload>
                     <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
                     <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
                     <supportOrder xsi:type="xsd:boolean">false</supportOrder>
                     <orderLimit xsi:type="xsd:int">0</orderLimit>
-                    <totalScenes xsi:type="xsd:int">281</totalScenes>
+                    <totalScenes xsi:type="xsd:int">282</totalScenes>
                 </item>
             </return>
         </ns1:datasetsResponse>
