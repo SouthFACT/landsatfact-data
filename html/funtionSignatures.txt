@@ -1,0 +1,44 @@
+array(21) {
+  [0]=>
+  string(78) "void clearBulkDownloadOrder(string $apiKey, string $node, string $datasetName)"
+  [1]=>
+  string(66) "void clearOrder(string $apiKey, string $node, string $datasetName)"
+  [2]=>
+  string(203) "ArrayOfService_Inventory_Dataset datasets(string $datasetName, Service_Class_Coordinate $lowerLeft, Service_Class_Coordinate $upperRight, string $startDate, string $endDate, string $node, string $apiKey)"
+  [3]=>
+  string(103) "ArrayOfService_Inventory_CriteriaField datasetFields(string $datasetName, string $node, string $apiKey)"
+  [4]=>
+  string(124) "ArrayOfString download(string $datasetName, string $apiKey, string $node, ArrayOfString $entityIds, ArrayOfString $products)"
+  [5]=>
+  string(156) "ArrayOfService_Inventory_SceneDownloadOptions downloadOptions(string $datasetName, string $apiKey, string $node, string $entityId, ArrayOfString $entityIds)"
+  [6]=>
+  string(161) "ArrayOfService_Inventory_BulkDownloadScene getBulkDownloadProducts(string $apiKey, string $datasetName, string $node, string $entityId, ArrayOfString $entityIds)"
+  [7]=>
+  string(147) "ArrayOfService_Inventory_OrderScene getOrderProducts(string $apiKey, string $datasetName, string $node, string $entityId, ArrayOfString $entityIds)"
+  [8]=>
+  string(199) "int hits(string $datasetName, Service_Class_Coordinate $lowerLeft, Service_Class_Coordinate $upperRight, string $startDate, string $endDate, UNKNOWN $additionalCriteria, string $node, string $apiKey)"
+  [9]=>
+  string(55) "Service_Inventory_ItemBasket itemBasket(string $apiKey)"
+  [10]=>
+  string(48) "string login(string $username, string $password)"
+  [11]=>
+  string(30) "boolean logout(string $apiKey)"
+  [12]=>
+  string(143) "ArrayOfService_Inventory_InventoryScene metadata(string $datasetName, string $node, string $entityId, ArrayOfString $entityIds, string $apiKey)"
+  [13]=>
+  string(123) "void removeBulkDownloadScene(string $apiKey, string $datasetName, string $node, string $entityId, ArrayOfString $entityIds)"
+  [14]=>
+  string(116) "void removeOrderScene(string $apiKey, string $datasetName, string $node, string $entityId, ArrayOfString $entityIds)"
+  [15]=>
+  string(287) "Service_Inventory_SearchResponse search(string $datasetName, Service_Class_Coordinate $lowerLeft, Service_Class_Coordinate $upperRight, string $startDate, string $endDate, UNKNOWN $additionalCriteria, int $maxResults, int $startingNumber, string $sortOrder, string $node, string $apiKey)"
+  [16]=>
+  string(36) "void setRequestAPI(anyType $apiType)"
+  [17]=>
+  string(60) "string submitBulkDownloadOrder(string $apiKey, string $node)"
+  [18]=>
+  string(48) "string submitOrder(string $apiKey, string $node)"
+  [19]=>
+  string(129) "void updateBulkDownloadScene(string $apiKey, string $node, string $datasetName, string $orderingId, ArrayOfString $downloadCodes)"
+  [20]=>
+  string(150) "void updateOrderScene(string $apiKey, string $node, string $datasetName, string $orderingId, string $productCode, string $option, string $outputMedia)"
+}
