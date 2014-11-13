@@ -26,15 +26,15 @@ $loginKey = loginLandsatFACT($client, $ini_array);
 
 //* 3. Search function should be next to get a list of entityIDs
 //* Potential datasets: LANDSAT_8
-$datasetName = 'LANDSAT_8';
-$datasetsForDownload = getDatasetsForDownload($datasetName, $client, $loginKey);    
+// $datasetName = 'LANDSAT_8';
+// $datasetsForDownload = getDatasetsForDownload($datasetName, $client, $loginKey);    
 // echo $datasetsForDownload
 
 //* 4. Download the data by entityIDs
 //* Potential datasets: LANDSAT_ETM_SLC_OFF & LANDSAT_8
-// $datasetName = 'LANDSAT_8';
-// $downloadDatasets = downloadDatasets($datasetName, $client, $loginKey);    
-// echo $downloadDatasets
+$datasetName = 'LANDSAT_8';
+$downloadUrls = getDownloadUrls($datasetName, $client, $loginKey);    
+echo $downloadUrls
 
 
 ?>

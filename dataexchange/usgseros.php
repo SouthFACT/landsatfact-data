@@ -54,11 +54,24 @@ function getAvailableDatasetNames($datasetName, $client, $loginKey) {
 //*Notes: result of E.G. STANDARD, which is the Level 1 Product
 //*       Sort order must be ASC or DESC.
 // 36.508381, -76.553009
-function getDatasetsForDownload($datasetName, $client, $loginKey) {
+function getDatasetsForDownload($datasetName, $client, $apiKey) {
     try {
-        $datasets = $client->search($datasetName, array('latitude' => '33.93','longitude' => '-79.40'), array('latitude' => '35.27101','longitude' => '-76.88'), '2013-08-05', '2013-09-05', '', '', '', 'ASC', 'EE', $loginKey);
-        echo $client->__getLastRequest() . "\n";
-        // return $client->__getLastResponse() . "\n";
+    
+        //Search for datasets
+        $lowerLeft = (object) array('latitude' => 33.93, 'longitude' => -79.40);
+        $upperRight = (object) array('latitude' => 35.27101, 'longitude' => -76.88);
+        $startDate = '2013-08-05T00:00:00Z'; //Time is ignored, but just in case it gets implemented in the future...
+        $endDate = '2013-09-05T23:59:59Z'; //Time is ignored, but just in case it gets implemented in the future...
+        $node = 'EE';    
+        $additionalCritiera = null;
+        $maxResults = 2;
+        $sortOrder = 'ASC';
+        $startingNumber = 1;
+		echo "Searching...\n\n";
+		$searchResults = $client->search($datasetName, $lowerLeft, $upperRight, $startDate, $endDate, 
+												$additionalCritiera, $maxResults, $startingNumber, $sortOrder, $node, $apiKey);
+        // echo $client->__getLastRequest() . "\n";
+        return $client->__getLastResponse() . "\n";
     }
     catch (Exception $e) {
         $error_xml =  $client->__getLastRequest() . "\n";
@@ -73,9 +86,10 @@ function getDatasetsForDownload($datasetName, $client, $loginKey) {
 //*                            ArrayOfString $entityIds, 
 //*                            ArrayOfString $products)
 //*Notes: 
-function downloadDatasets($datasetName, $client, $loginKey) {
+function getDownloadUrls($datasetName, $client, $apiKey) {
     try {
-        $downloadURLs = $client->download($datasetName,$loginKey,'EE', array('LC80150362013239LGN00'),array('STANDARD'));
+        $downloadUrls = $client->download($datasetName, $apiKey, 'EE', array($sceneLevel->entityId), $products);
+        // $downloadUrls = $client->download($datasetName,$loginKey,'EE', array('LC80150352013223LGN00'),array('STANDARD'));
         return $client->__getLastResponse() . "\n";
     }
     catch (Exception $e) {
