@@ -54,23 +54,43 @@ function getAvailableDatasetNames($datasetName, $client, $loginKey) {
 //*Notes: result of E.G. STANDARD, which is the Level 1 Product
 //*       Sort order must be ASC or DESC.
 // 36.508381, -76.553009
-function getDatasetsForDownload($datasetName, $client, $apiKey) {
+function getDatasetsForDownload($datasetName, $client, $apiKey, $lowerLeft, $upperRight, $startDate, $endDate) {
     try {
     
         //Search for datasets
-        $lowerLeft = (object) array('latitude' => 33.93, 'longitude' => -79.40);
-        $upperRight = (object) array('latitude' => 35.27101, 'longitude' => -76.88);
-        $startDate = '2013-08-05T00:00:00Z'; //Time is ignored, but just in case it gets implemented in the future...
-        $endDate = '2013-09-05T23:59:59Z'; //Time is ignored, but just in case it gets implemented in the future...
+        // $lowerLeft = (object) array('latitude' => 33.93, 'longitude' => -79.40);
+        // $upperRight = (object) array('latitude' => 35.27101, 'longitude' => -76.88);
+        // $startDate = '2013-08-05T00:00:00Z'; //Time is ignored, but just in case it gets implemented in the future...
+        // $endDate = '2013-09-05T23:59:59Z'; //Time is ignored, but just in case it gets implemented in the future...
         $node = 'EE';    
         $additionalCritiera = null;
-        $maxResults = 2;
+        $maxResults = 100;
         $sortOrder = 'ASC';
         $startingNumber = 1;
-		echo "Searching...\n\n";
 		$searchResults = $client->search($datasetName, $lowerLeft, $upperRight, $startDate, $endDate, 
 												$additionalCritiera, $maxResults, $startingNumber, $sortOrder, $node, $apiKey);
         // echo $client->__getLastRequest() . "\n";
+        // return $client->__getLastResponse() . "\n";
+        return $searchResults;
+    }
+    catch (Exception $e) {
+        $error_xml =  $client->__getLastRequest() . "\n";
+        echo $error_xml;
+        echo "\n\n".$e->getMessage();
+    }
+}
+
+
+/*
+ArrayOfService_Inventory_InventoryScene metadata(string $datasetName, 
+                                            string $node, 
+                                            string $entityId, 
+                                            ArrayOfString $entityIds, 
+                                            string $apiKey)
+*/
+function getDatasetMetadata($client, $datasetName, $node, $entityId, $apiKey) {
+    try {
+        $datasetMetadata = $client->metadata($datasetName, $node, $entityId, $apiKey);
         return $client->__getLastResponse() . "\n";
     }
     catch (Exception $e) {
@@ -80,6 +100,8 @@ function getDatasetsForDownload($datasetName, $client, $apiKey) {
     }
 }
 
+
+
 //* ArrayOfString download(string $datasetName, 
 //*                            string $apiKey, 
 //*                            string $node, 
@@ -88,8 +110,8 @@ function getDatasetsForDownload($datasetName, $client, $apiKey) {
 //*Notes: 
 function getDownloadUrls($datasetName, $client, $apiKey) {
     try {
-        $downloadUrls = $client->download($datasetName, $apiKey, 'EE', array($sceneLevel->entityId), $products);
-        // $downloadUrls = $client->download($datasetName,$loginKey,'EE', array('LC80150352013223LGN00'),array('STANDARD'));
+        // $downloadUrls = $client->download($datasetName, $apiKey, 'EE', array($sceneLevel->entityId), $products);
+        $downloadUrls = $client->download($datasetName,$loginKey,'EE', array('LC80150362013223LGN00'),array('STANDARD'));
         return $client->__getLastResponse() . "\n";
     }
     catch (Exception $e) {

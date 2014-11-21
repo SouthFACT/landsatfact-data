@@ -1,3 +1,767 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://earthexplorer.usgs.gov/inventory/soap" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><SOAP-ENV:Body><ns1:datasetsResponse><return SOAP-ENC:arrayType="ns1:Service_Inventory_Dataset[1]" xsi:type="ns1:ArrayOfService_Inventory_Dataset"><item xsi:type="ns1:Service_Inventory_Dataset"><bounds xsi:type="ns1:Service_Inventory_Bounds"><north xsi:type="xsd:double">84.0636</north><east xsi:type="xsd:double">176.7604</east><south xsi:type="xsd:double">-84.4693</south><west xsi:type="xsd:double">-179.103</west></bounds><datasetName xsi:type="xsd:string">LANDSAT_8</datasetName><datasetFullName xsi:type="xsd:string">L8 OLI/TIRS</datasetFullName><endDate xsi:type="xsd:string">2014-11-07T00:00:00Z</endDate><startDate xsi:type="xsd:string">2013-04-11T00:00:00Z</startDate><supportDownload xsi:type="xsd:boolean">true</supportDownload><supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload><bulkDownloadOrderLimit xsi:type="xsd:int">1000</bulkDownloadOrderLimit><supportOrder xsi:type="xsd:boolean">true</supportOrder><orderLimit xsi:type="xsd:int">1000</orderLimit><totalScenes xsi:type="xsd:int">339836</totalScenes></item></return></ns1:datasetsResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://earthexplorer.usgs.gov/inventory/soap" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+    <SOAP-ENV:Body>
+        <ns1:datasetsResponse>
+            <return SOAP-ENC:arrayType="ns1:Service_Inventory_Dataset[42]" xsi:type="ns1:ArrayOfService_Inventory_Dataset">
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">70.0441</north>
+                        <east xsi:type="xsd:double">-65.3947</east>
+                        <south xsi:type="xsd:double">22.4794</south>
+                        <west xsi:type="xsd:double">-179.8644</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">AVHRR_COMPOSITE</datasetName>
+                    <datasetFullName xsi:type="xsd:string">Advanced Very High Resolution Radiometer Composites</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-04T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">1989-01-04T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">501</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">3831</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">84.4495</north>
+                        <east xsi:type="xsd:double">178.4186</east>
+                        <south xsi:type="xsd:double">-85</south>
+                        <west xsi:type="xsd:double">-178.261</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">CRSSP_VIEWABLE_W2</datasetName>
+                    <datasetFullName xsi:type="xsd:string">COMMERCIAL IMAGERY   WORLDVIEW-2  (Federally Viewable)</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-13T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2009-12-05T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">false</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">0</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">142198</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">82.6221</north>
+                        <east xsi:type="xsd:double">179.0112</east>
+                        <south xsi:type="xsd:double">-85</south>
+                        <west xsi:type="xsd:double">-179.0752</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">CRSSP_VIEWABLE_WV</datasetName>
+                    <datasetFullName xsi:type="xsd:string">COMMERCIAL IMAGERY  WORLDVIEW-1 (Federally Viewable)</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-15T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2007-11-02T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">false</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">0</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">63780</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">71.3238</north>
+                        <east xsi:type="xsd:double">178.6488</east>
+                        <south xsi:type="xsd:double">-65.0301</south>
+                        <west xsi:type="xsd:double">-178.2271</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">CRSSP_VIEWABLE_GE</datasetName>
+                    <datasetFullName xsi:type="xsd:string">COMMERCIAL IMAGERY GEOEYE-1 (Federally Viewable)</datasetFullName>
+                    <endDate xsi:type="xsd:string">2013-11-29T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2009-02-17T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">false</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">0</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">12744</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">72.5064</north>
+                        <east xsi:type="xsd:double">178.4843</east>
+                        <south xsi:type="xsd:double">-85</south>
+                        <west xsi:type="xsd:double">-175.6806</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">CRSSP_VIEWABLE_IK</datasetName>
+                    <datasetFullName xsi:type="xsd:string">COMMERCIAL IMAGERY IKONOS-2  (Federally Viewable))</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-09-01T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2000-01-01T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">false</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">0</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">12075</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">80.2188</north>
+                        <east xsi:type="xsd:double">177.9588</east>
+                        <south xsi:type="xsd:double">-85</south>
+                        <west xsi:type="xsd:double">-177.5133</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">CRSSP_VIEWABLE_QB</datasetName>
+                    <datasetFullName xsi:type="xsd:string">COMMERCIAL IMAGERY QUICKBIRD-2  (Federally Viewable))</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-06T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2002-02-25T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">false</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">0</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">36170</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">38.5763</north>
+                        <east xsi:type="xsd:double">0</east>
+                        <south xsi:type="xsd:double">0</south>
+                        <west xsi:type="xsd:double">-117.8481</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">CALVAL_IS_FRENCHMAN_FLAT</datasetName>
+                    <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Frenchman Flat, USA</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-10-24T18:19:51Z</endDate>
+                    <startDate xsi:type="xsd:string">1972-08-27T17:54:30Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">true</supportOrder>
+                    <orderLimit xsi:type="xsd:int">50</orderLimit>
+                    <totalScenes xsi:type="xsd:int">2532</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">37.1419</north>
+                        <east xsi:type="xsd:double">0</east>
+                        <south xsi:type="xsd:double">0</south>
+                        <west xsi:type="xsd:double">-116.6832</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">CALVAL_IS_IVANPAH_PLAYA</datasetName>
+                    <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Ivanpah Playa,USA</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-10-25T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">1972-08-26T17:49:10Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">true</supportOrder>
+                    <orderLimit xsi:type="xsd:int">50</orderLimit>
+                    <totalScenes xsi:type="xsd:int">2588</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">39.9952</north>
+                        <east xsi:type="xsd:double">0</east>
+                        <south xsi:type="xsd:double">0</south>
+                        <west xsi:type="xsd:double">-117.2672</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">CALVAL_IS_RAILROAD_VALLEY</datasetName>
+                    <datasetFullName xsi:type="xsd:string">Calibration Validation Reference Sites - Railroad Valley Playa, USA</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-10-24T18:19:03Z</endDate>
+                    <startDate xsi:type="xsd:string">1972-08-27T17:54:05Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">true</supportOrder>
+                    <orderLimit xsi:type="xsd:int">50</orderLimit>
+                    <totalScenes xsi:type="xsd:int">1813</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">80</north>
+                        <east xsi:type="xsd:double">180</east>
+                        <south xsi:type="xsd:double">-60</south>
+                        <west xsi:type="xsd:double">-180</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">EMODIS_GLOBAL_LST</datasetName>
+                    <datasetFullName xsi:type="xsd:string">EROS MODIS Land Surface Temperature</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-03-01T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2002-07-11T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">420</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">72</north>
+                        <east xsi:type="xsd:double">136.0004</east>
+                        <south xsi:type="xsd:double">-38.9992</south>
+                        <west xsi:type="xsd:double">-176</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">EMODIS</datasetName>
+                    <datasetFullName xsi:type="xsd:string">EROS MODIS Normalized Difference Vegetation Index</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-05T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2000-02-18T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">5617</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">83.1099</north>
+                        <east xsi:type="xsd:double">178.8333</east>
+                        <south xsi:type="xsd:double">-83.8569</south>
+                        <west xsi:type="xsd:double">-170.5001</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">EO1_ALI_PUB</datasetName>
+                    <datasetFullName xsi:type="xsd:string">Earth Observing One - Advanced Land Imager (2001 - present)</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-16T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2001-05-01T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">true</supportOrder>
+                    <orderLimit xsi:type="xsd:int">50</orderLimit>
+                    <totalScenes xsi:type="xsd:int">73661</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">83.159</north>
+                        <east xsi:type="xsd:double">178.8661</east>
+                        <south xsi:type="xsd:double">-83.5719</south>
+                        <west xsi:type="xsd:double">-170.6378</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">EO1_HYP_PUB</datasetName>
+                    <datasetFullName xsi:type="xsd:string">Earth Observing One - Hyperion (2001 - present)</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-16T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2001-05-01T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">true</supportOrder>
+                    <orderLimit xsi:type="xsd:int">50</orderLimit>
+                    <totalScenes xsi:type="xsd:int">72599</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">74.8525</north>
+                        <east xsi:type="xsd:double">179.8485</east>
+                        <south xsi:type="xsd:double">-15.142</south>
+                        <west xsi:type="xsd:double">-179.2943</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">HIGH_RES_ORTHO</datasetName>
+                    <datasetFullName xsi:type="xsd:string">High Resolution Orthoimagery</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-04-24T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2000-03-01T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">3171085</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">84.0636</north>
+                        <east xsi:type="xsd:double">176.7604</east>
+                        <south xsi:type="xsd:double">-84.4693</south>
+                        <west xsi:type="xsd:double">-179.103</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">LANDSAT_8</datasetName>
+                    <datasetFullName xsi:type="xsd:string">L8 OLI/TIRS</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-19T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2013-04-11T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">1000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">true</supportOrder>
+                    <orderLimit xsi:type="xsd:int">1000</orderLimit>
+                    <totalScenes xsi:type="xsd:int">348658</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">82.43</north>
+                        <east xsi:type="xsd:double">179.9903</east>
+                        <south xsi:type="xsd:double">-82.4481</south>
+                        <west xsi:type="xsd:double">-152.3319</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">L7_IGS</datasetName>
+                    <datasetFullName xsi:type="xsd:string">Landsat 7 ETM+ International Ground Stations - (Search Only)</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-02-15T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">1999-07-02T05:06:34Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">false</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">0</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">726531</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">82.7433</north>
+                        <east xsi:type="xsd:double">179.4041</east>
+                        <south xsi:type="xsd:double">-82.7125</south>
+                        <west xsi:type="xsd:double">-177.2424</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">LSR_LANDSAT_ETM_COMBINED</datasetName>
+                    <datasetFullName xsi:type="xsd:string">Landsat 7 Enhanced Thematic Mapper Plus (1999 - present) - Land Surface Reflectance</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-16T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">1999-05-28T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">false</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">0</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">true</supportOrder>
+                    <orderLimit xsi:type="xsd:int">100</orderLimit>
+                    <totalScenes xsi:type="xsd:int">1810174</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">82.7433</north>
+                        <east xsi:type="xsd:double">146.0981</east>
+                        <south xsi:type="xsd:double">-82.7092</south>
+                        <west xsi:type="xsd:double">-82.0381</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">LANDSAT_ETM_SLC_OFF</datasetName>
+                    <datasetFullName xsi:type="xsd:string">Landsat ETM Scan Line Corrector Off (SLC-off) (2003-present)</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-19T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2003-05-31T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">1000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">true</supportOrder>
+                    <orderLimit xsi:type="xsd:int">1000</orderLimit>
+                    <totalScenes xsi:type="xsd:int">1396415</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">69.7019</north>
+                        <east xsi:type="xsd:double">-66.9384</east>
+                        <south xsi:type="xsd:double">24.5375</south>
+                        <west xsi:type="xsd:double">-151.8724</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">LIDAR</datasetName>
+                    <datasetFullName xsi:type="xsd:string">Light Detection And Ranging</datasetFullName>
+                    <endDate xsi:type="xsd:string">2013-10-08T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2000-12-01T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">620841</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">85</north>
+                        <east xsi:type="xsd:double">169.8916</east>
+                        <south xsi:type="xsd:double">-85</south>
+                        <west xsi:type="xsd:double">-159.6267</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MYD09GA</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD09GA Surface Reflectance Daily L2G Global 1km and 500m</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-15T22:50:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2002-07-04T00:45:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">1440430</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">85</north>
+                        <east xsi:type="xsd:double">106.4307</east>
+                        <south xsi:type="xsd:double">-63.1805</south>
+                        <west xsi:type="xsd:double">-162.4683</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MYD09GQ</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD09GQ Surface Reflectance Daily L2G Global 250m</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-15T22:50:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2002-07-04T00:45:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">1311332</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">85</north>
+                        <east xsi:type="xsd:double">179.989</east>
+                        <south xsi:type="xsd:double">-85</south>
+                        <west xsi:type="xsd:double">-180</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MYD11A1</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD11A1 MODIS/Aqua Land Surface Temperature and Emissivity Daily L3 Global 1 km Grid SIN</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-11T11:39:23Z</endDate>
+                    <startDate xsi:type="xsd:string">2002-07-04T00:00:05Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">2848646</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">85</north>
+                        <east xsi:type="xsd:double">179.989</east>
+                        <south xsi:type="xsd:double">-85</south>
+                        <west xsi:type="xsd:double">-180</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MYD11A2</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD11A2 Land Surface Temperature &amp; Emissivity 8-Day L3 Global 1km</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-01T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">239935</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">85</north>
+                        <east xsi:type="xsd:double">179.989</east>
+                        <south xsi:type="xsd:double">-85</south>
+                        <west xsi:type="xsd:double">-180</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MYD11B1</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD11B1 MODIS/Aqua Land Surface Temperature and Emissivity Daily L3 Global 5 km Grid SIN</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-11T11:39:23Z</endDate>
+                    <startDate xsi:type="xsd:string">2002-07-04T00:00:05Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">2848122</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">85</north>
+                        <east xsi:type="xsd:double">166.9885</east>
+                        <south xsi:type="xsd:double">-85</south>
+                        <west xsi:type="xsd:double">-145.762</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MYD11_L2</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD11_l2 MODIS/Aqua Land Surface Temperature and Emissivity 5-Minute L2 Swath 1 km</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-13T23:55:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">2550127</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">84.5665</north>
+                        <east xsi:type="xsd:double">148.9849</east>
+                        <south xsi:type="xsd:double">-63.1805</south>
+                        <west xsi:type="xsd:double">-157.4848</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MYD13A1</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD13A1 Vegetation Indices 16-Day L3 Global 500m</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">80902</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">85</north>
+                        <east xsi:type="xsd:double">148.9849</east>
+                        <south xsi:type="xsd:double">-63.1805</south>
+                        <west xsi:type="xsd:double">-89.302</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MYD13Q1</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD13Q1 Vegetation Indices 16-Day L3 Global 250m</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-10-24T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">83048</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">84.5665</north>
+                        <east xsi:type="xsd:double">165.4522</east>
+                        <south xsi:type="xsd:double">-63.1805</south>
+                        <west xsi:type="xsd:double">-115.4701</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MYD17A2</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/AQUA MYD17A2 Gross Primary Productivity 8-Day L4 Global 1km</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-01T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">161872</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">84.5665</north>
+                        <east xsi:type="xsd:double">170.2684</east>
+                        <south xsi:type="xsd:double">-63.1805</south>
+                        <west xsi:type="xsd:double">-140.7952</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MCD15A3</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/COMBINED MCD15A3  Leaf Area Index - Fraction of Photosynthetically Active Radiation 4-Day L4 Global1km</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-05T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2002-07-04T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">322724</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">85</north>
+                        <east xsi:type="xsd:double">179.989</east>
+                        <south xsi:type="xsd:double">-85</south>
+                        <west xsi:type="xsd:double">-180</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MOD11A1</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/COMBINED MOD11A1 Land Surface Temperature and Emissivity Daily L3 Global 1 km Grid SIN</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-12T11:51:37Z</endDate>
+                    <startDate xsi:type="xsd:string">2000-02-24T00:00:06Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">3364385</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">75.5554</north>
+                        <east xsi:type="xsd:double">162.4788</east>
+                        <south xsi:type="xsd:double">-53.2212</south>
+                        <west xsi:type="xsd:double">-162.4683</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MCD45A1</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/TERRA MCD45A1 Burned Area Monthly L3 Global 500m</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-02-01T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2000-04-01T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">43426</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">85</north>
+                        <east xsi:type="xsd:double">179.989</east>
+                        <south xsi:type="xsd:double">-85</south>
+                        <west xsi:type="xsd:double">-180</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MOD11A2</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD11A2 Land Surface Temperature &amp; Emissivity 8-Day L3 Global 1km</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-01T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2000-02-26T00:00:05Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">307609</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">85</north>
+                        <east xsi:type="xsd:double">179.989</east>
+                        <south xsi:type="xsd:double">-85</south>
+                        <west xsi:type="xsd:double">-180</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MOD11B1</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD11B1 MODIS/Terra Land Surface Temperature and Emissivity Daily L3 Global 5 km Grid SIN</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-12T11:51:37Z</endDate>
+                    <startDate xsi:type="xsd:string">2000-02-24T00:00:06Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">3363850</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">85</north>
+                        <east xsi:type="xsd:double">126.5747</east>
+                        <south xsi:type="xsd:double">-85</south>
+                        <west xsi:type="xsd:double">-176.6331</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MOD11_L2</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD11_l2 Land Surface Temperature and Emissivity 5-Minute L2 Swath 1 km</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-14T23:55:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2000-02-24T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">3010107</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">84.5665</north>
+                        <east xsi:type="xsd:double">165.4522</east>
+                        <south xsi:type="xsd:double">-63.1805</south>
+                        <west xsi:type="xsd:double">-150.1111</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MOD13A1</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD13A1 Vegetation Indices 16-Day L3 Global 500m</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2000-02-18T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">96341</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">84.5665</north>
+                        <east xsi:type="xsd:double">165.4522</east>
+                        <south xsi:type="xsd:double">-63.1805</south>
+                        <west xsi:type="xsd:double">-157.4848</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MOD13A2</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD13A2 Vegetation Indices 16-Day L3 Global 1km</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-10-16T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2000-02-18T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">96350</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">84.5665</north>
+                        <east xsi:type="xsd:double">169.8555</east>
+                        <south xsi:type="xsd:double">-63.1805</south>
+                        <west xsi:type="xsd:double">-91.3785</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MOD13A3</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD13A3 Vegetation Indices Monthly L3 Global 1km</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-10-01T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2000-02-01T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">50555</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">84.5665</north>
+                        <east xsi:type="xsd:double">138.3431</east>
+                        <south xsi:type="xsd:double">-63.1805</south>
+                        <west xsi:type="xsd:double">-157.4848</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">MODIS_MOD17A2</datasetName>
+                    <datasetFullName xsi:type="xsd:string">MODIS/TERRA MOD17A2 Gross Primary Productivity 8-Day L4 Global</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-01T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2000-01-01T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">2000</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">361224</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">49.4442</north>
+                        <east xsi:type="xsd:double">-66.9313</east>
+                        <south xsi:type="xsd:double">24.4967</south>
+                        <west xsi:type="xsd:double">-124.819</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">NAIP_COMPRESSED</datasetName>
+                    <datasetFullName xsi:type="xsd:string">National Agriculture Imagery Program 10:1 Compressed</datasetFullName>
+                    <endDate xsi:type="xsd:string">2013-12-18T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2003-06-01T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">790208</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">72</north>
+                        <east xsi:type="xsd:double">-66</east>
+                        <south xsi:type="xsd:double">10</south>
+                        <west xsi:type="xsd:double">-160</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">NATIONALATLAS</datasetName>
+                    <datasetFullName xsi:type="xsd:string">National Atlas of the United States</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-06-01T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">1998-01-01T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">617</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">80.8</north>
+                        <east xsi:type="xsd:double">175.1124</east>
+                        <south xsi:type="xsd:double">-80.022</south>
+                        <west xsi:type="xsd:double">-173.5006</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">PAO_EE</datasetName>
+                    <datasetFullName xsi:type="xsd:string">Public Affairs Office (PAO) Image Gallery</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-10-02T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">1972-04-15T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">569</totalScenes>
+                </item>
+                <item xsi:type="ns1:Service_Inventory_Dataset">
+                    <bounds xsi:type="ns1:Service_Inventory_Bounds">
+                        <north xsi:type="xsd:double">48.4031</north>
+                        <east xsi:type="xsd:double">-65.3946</east>
+                        <south xsi:type="xsd:double">22.4794</south>
+                        <west xsi:type="xsd:double">-128.5301</west>
+                    </bounds>
+                    <datasetName xsi:type="xsd:string">VEGDRI</datasetName>
+                    <datasetFullName xsi:type="xsd:string">Vegetation Drought Response Index</datasetFullName>
+                    <endDate xsi:type="xsd:string">2014-11-10T00:00:00Z</endDate>
+                    <startDate xsi:type="xsd:string">2009-04-22T00:00:00Z</startDate>
+                    <supportDownload xsi:type="xsd:boolean">true</supportDownload>
+                    <supportBulkDownload xsi:type="xsd:boolean">true</supportBulkDownload>
+                    <bulkDownloadOrderLimit xsi:type="xsd:int">500</bulkDownloadOrderLimit>
+                    <supportOrder xsi:type="xsd:boolean">false</supportOrder>
+                    <orderLimit xsi:type="xsd:int">0</orderLimit>
+                    <totalScenes xsi:type="xsd:int">284</totalScenes>
+                </item>
+            </return>
+        </ns1:datasetsResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
 

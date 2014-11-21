@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://earthexplorer.usgs.gov/inventory/soap" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+    <SOAP-ENV:Body>
+        <ns1:metadataResponse>
+            <return SOAP-ENC:arrayType="ns1:Service_Inventory_InventoryScene[1]" xsi:type="ns1:ArrayOfService_Inventory_InventoryScene">
+                <item xsi:type="ns1:Service_Inventory_InventoryScene">
+                    <acquisitionDate xsi:type="xsd:string">2013-08-11T15:49:39Z</acquisitionDate>
+                    <startTime xsi:type="xsd:string">2013-08-11T15:49:23Z</startTime>
+                    <endTime xsi:type="xsd:string">2013-08-11T15:49:55Z</endTime>
+                    <lowerLeftCoordinate xsi:type="ns1:Service_Class_Coordinate">
+                        <latitude xsi:type="xsd:double">33.9356</latitude>
+                        <longitude xsi:type="xsd:double">-79.38622</longitude>
+                    </lowerLeftCoordinate>
+                    <upperLeftCoordinate xsi:type="ns1:Service_Class_Coordinate">
+                        <latitude xsi:type="xsd:double">35.66275</latitude>
+                        <longitude xsi:type="xsd:double">-78.91994</longitude>
+                    </upperLeftCoordinate>
+                    <upperRightCoordinate xsi:type="ns1:Service_Class_Coordinate">
+                        <latitude xsi:type="xsd:double">35.27103</latitude>
+                        <longitude xsi:type="xsd:double">-76.87237</longitude>
+                    </upperRightCoordinate>
+                    <lowerRightCoordinate xsi:type="ns1:Service_Class_Coordinate">
+                        <latitude xsi:type="xsd:double">33.54442</latitude>
+                        <longitude xsi:type="xsd:double">-77.38078</longitude>
+                    </lowerRightCoordinate>
+                    <sceneBounds xsi:type="xsd:string">-79.38622,33.54442,-76.87237,35.66275</sceneBounds>
+                    <browseUrl xsi:type="xsd:string">http://earthexplorer.usgs.gov/browse/landsat_8/2013/015/036/LC80150362013223LGN00.jpg</browseUrl>
+                    <dataAccessUrl xsi:type="xsd:string">http://earthexplorer.usgs.gov/order/process?dataset_name=LANDSAT_8&amp;ordered=LC80150362013223LGN00&amp;node=INVSVC</dataAccessUrl>
+                    <downloadUrl xsi:type="xsd:string">http://earthexplorer.usgs.gov/download/external/options/LANDSAT_8/LC80150362013223LGN00/INVSVC/</downloadUrl>
+                    <entityId xsi:type="xsd:string">LC80150362013223LGN00</entityId>
+                    <metadataUrl xsi:type="xsd:string">http://earthexplorer.usgs.gov/metadata/xml/4923/LC80150362013223LGN00/</metadataUrl>
+                    <modifiedDate xsi:type="xsd:string">2014-11-01T15:27:39Z</modifiedDate>
+                    <orderUrl xsi:type="xsd:string">http://earthexplorer.usgs.gov/order/process?dataset_name=LANDSAT_8&amp;ordered=LC80150362013223LGN00&amp;node=INVSVC</orderUrl>
+                    <bulkOrdered xsi:type="xsd:boolean">false</bulkOrdered>
+                    <ordered xsi:type="xsd:boolean">false</ordered>
+                    <summary xsi:type="xsd:string">Entity ID: LC80150362013223LGN00, Acquisition Date: 11-AUG-13, Path: 15, Row: 36</summary>
+                </item>
+            </return>
+        </ns1:metadataResponse>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
