@@ -1,20 +1,20 @@
 <?php
-include '../dataexchange/usgseros.php';
+// include '../dataexchange/usgseros.php';
 
-//* Get user account info from ini file stored locally
-$ini_array = parse_ini_file("../dataexchange/config.ini", true);
-$soapURL = "https://earthexplorer.usgs.gov/inventory/soap?wsdl" ;
-$options = array(
-    "trace" => true,
-    "encoding" => "utf-8",
-);             
-$client = new SoapClient($soapURL, $options);
+// //* Get user account info from ini file stored locally
+// $ini_array = parse_ini_file("../dataexchange/config.ini", true);
+// $soapURL = "https://earthexplorer.usgs.gov/inventory/soap?wsdl" ;
+// $options = array(
+    // "trace" => true,
+    // "encoding" => "utf-8",
+// );             
+// $client = new SoapClient($soapURL, $options);
 
-//* The following show the method signature(s):
-// var_dump($client->__getFunctions())
+// //* The following show the method signature(s):
+// // var_dump($client->__getFunctions())
 
-//* 1. Need to know the datasets
-$apiKey = loginLandsatFACT($client, $ini_array); 
+// //* 1. Need to know the datasets
+// $apiKey = loginLandsatFACT($client, $ini_array); 
 
 //* 2. Need to know the datasets
 //* Note that this is the datasetFullName
