@@ -1,0 +1,14 @@
+#! /usr/bin/python
+
+import sys
+sys.path.append("../msconfig")
+import CGIUtils
+
+MAPFILE = '../msconfig/vlayers.map'
+
+if CGIUtils.this_computer_is_running_centos():
+    MAPSERV = '../cgi-bin/mapserv-pre-6.2-70d2510636.exe'
+else:
+    MAPSERV = '../cgi-bin/mapserv-pre-6.2-70d2510636.exe'
+
+CGIUtils.mapserv_inject_mapfile(MAPFILE, MAPSERV)

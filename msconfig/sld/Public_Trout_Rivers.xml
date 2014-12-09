@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:gml='http://www.opengis.net/gml' xmlns:ogc='http://www.opengis.net/ogc' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version='1.0.0' xsi:schemaLocation='http://www.opengis.net/sld StyledLayerDescriptor.xsd' xmlns='http://www.opengis.net/sld' >
+	<NamedLayer>
+		<Name><![CDATA[public_trout_rivers]]></Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<Name><![CDATA[Catch_and_Release_Or_Artificial_Lures_Only_Trout_Waters]]></Name>
+					<Title><![CDATA[Catch and Release/Artificial Lures Only Trout Waters]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>wrc_class</ogc:PropertyName>
+							<ogc:Literal><![CDATA[Catch and Release/Artificial Lures Only Trout Waters]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke" >#e60000</CssParameter>
+							<CssParameter name="stroke-width" >1</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[Delayed_Harvest_Trout_Waters]]></Name>
+					<Title><![CDATA[Delayed Harvest Trout Waters]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>wrc_class</ogc:PropertyName>
+							<ogc:Literal><![CDATA[Delayed Harvest Trout Waters]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke" >#00c5ff</CssParameter>
+							<CssParameter name="stroke-width" >1</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[Hatchery_Supported_Trout_Waters]]></Name>
+					<Title><![CDATA[Hatchery Supported Trout Waters]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>wrc_class</ogc:PropertyName>
+							<ogc:Literal><![CDATA[Hatchery Supported Trout Waters]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke" >#4ce600</CssParameter>
+							<CssParameter name="stroke-width" >1</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[Wild_Trout_Waters]]></Name>
+					<Title><![CDATA[Wild Trout Waters]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>wrc_class</ogc:PropertyName>
+							<ogc:Literal><![CDATA[Wild Trout Waters]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke" >#a900e6</CssParameter>
+							<CssParameter name="stroke-width" >1</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[Wild_Trout_Or_Natural_Bait_Waters]]></Name>
+					<Title><![CDATA[Wild Trout/Natural Bait Waters]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>wrc_class</ogc:PropertyName>
+							<ogc:Literal><![CDATA[Wild Trout/Natural Bait Waters]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke" >#e69800</CssParameter>
+							<CssParameter name="stroke-width" >1</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+</StyledLayerDescriptor>

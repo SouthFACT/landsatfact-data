@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:gml='http://www.opengis.net/gml' xmlns:ogc='http://www.opengis.net/ogc' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version='1.0.0' xsi:schemaLocation='http://www.opengis.net/sld StyledLayerDescriptor.xsd' xmlns='http://www.opengis.net/sld' >
+	<NamedLayer>
+		<Name><![CDATA[Wetlands]]></Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<Name><![CDATA[Wetlands]]></Name>
+					<Title><![CDATA[Wetlands]]></Title>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#97dbf2</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#6dbb43</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+							<GraphicFill>
+								<Graphic>
+									<Mark>
+										<WellKnownName>shape://slash</WellKnownName>
+										<Stroke>
+											<CssParameter name="stroke" >#6dbb43</CssParameter>
+										</Stroke>
+									</Mark>
+								</Graphic>
+							</GraphicFill>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#000000</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#ffffff</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+							<GraphicFill>
+								<Graphic>
+									<Mark>
+										<WellKnownName>shape://slash</WellKnownName>
+										<Stroke>
+											<CssParameter name="stroke" >#ffffff</CssParameter>
+										</Stroke>
+									</Mark>
+								</Graphic>
+							</GraphicFill>
+						</Fill>
+					</PolygonSymbolizer>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke" >#4065eb</CssParameter>
+							<CssParameter name="stroke-width" >0.4</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+</StyledLayerDescriptor>

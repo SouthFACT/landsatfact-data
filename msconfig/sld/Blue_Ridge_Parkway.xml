@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:gml='http://www.opengis.net/gml' xmlns:ogc='http://www.opengis.net/ogc' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version='1.0.0' xsi:schemaLocation='http://www.opengis.net/sld StyledLayerDescriptor.xsd' xmlns='http://www.opengis.net/sld' >
+	<NamedLayer>
+		<Name><![CDATA[Blue_Ridge_Parkway]]></Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<Name><![CDATA[Blue_Ridge_Parkway]]></Name>
+					<Title><![CDATA[Blue Ridge Parkway]]></Title>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke" >#8f1500</CssParameter>
+							<CssParameter name="stroke-width" >1.5</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+</StyledLayerDescriptor>

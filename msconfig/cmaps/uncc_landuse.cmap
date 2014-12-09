@@ -1,0 +1,12 @@
+CLASS
+    EXPRESSION ([pixel] = 2) 
+    COLOR 38 115 0
+END 
+CLASS
+    EXPRESSION ([pixel]  = 2)
+    COLOR 255 235 175
+END 
+CLASS
+    EXPRESSION ([pixel] = 50) 
+    COLOR 0 112 255
+END 

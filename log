@@ -1,0 +1,23 @@
+#! /usr/bin/perl
+
+chomp($cwd = `pwd`);
+chomp($date = `date`);
+
+$nlines = 25;
+
+$cwd =~ s|^/var/||;
+$cwd =~ s|/cgi-bin$||;
+
+print "Content-type: text/plain\n\n";
+
+$accesslogfilepath = sprintf("/var/log/httpd/%s-access_log", $cwd);
+$accesslogtail     = `tail -1000 $accesslogfilepath | grep -v 'cgi-bin/log' | tail -$nlines`;
+printf("last %1d  lines of %s as of %s:\n\n", $nlines, $accesslogfilepath, $date);
+print $accesslogtail;
+
+print "\n\n";
+
+$errorlogfilepath = sprintf("/var/log/httpd/%s-error_log", $cwd);
+$errorlogtail     = `tail -1000 $errorlogfilepath | grep -v 'cgi-bin/log' | tail -$nlines`;
+printf("last %1d  lines of %s as of %s:\n\n", $nlines, $errorlogfilepath, $date);
+print $errorlogtail;

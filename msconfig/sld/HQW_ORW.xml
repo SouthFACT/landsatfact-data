@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:gml='http://www.opengis.net/gml' xmlns:ogc='http://www.opengis.net/ogc' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version='1.0.0' xsi:schemaLocation='http://www.opengis.net/sld StyledLayerDescriptor.xsd' xmlns='http://www.opengis.net/sld' >
+	<NamedLayer>
+		<Name><![CDATA[HQW_ORW]]></Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<Name><![CDATA[HQW]]></Name>
+					<Title><![CDATA[HQW]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>class</ogc:PropertyName>
+							<ogc:Literal><![CDATA[HQW]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#d6d6ff</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0.4</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[HQW_Water_Supply_Watershed]]></Name>
+					<Title><![CDATA[HQW Water Supply Watershed]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>class</ogc:PropertyName>
+							<ogc:Literal><![CDATA[HQW/WSW]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#9ea4e8</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0.4</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[ORW]]></Name>
+					<Title><![CDATA[ORW]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>class</ogc:PropertyName>
+							<ogc:Literal><![CDATA[ORW]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#6c7dd4</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0.4</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[ORW_Special_Management_Strategy_Area]]></Name>
+					<Title><![CDATA[ORW Special Management Strategy Area]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>class</ogc:PropertyName>
+							<ogc:Literal><![CDATA[ORW Special Management Strategy Area]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#405dbd</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0.4</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[ORW_Water_Supply_Watershed]]></Name>
+					<Title><![CDATA[ORW Water Supply Watershed]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>class</ogc:PropertyName>
+							<ogc:Literal><![CDATA[ORW/WSW]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#1d49a8</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0.4</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[Water_Supply_Watershed]]></Name>
+					<Title><![CDATA[Water Supply Watershed]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>class</ogc:PropertyName>
+							<ogc:Literal><![CDATA[WSW]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#003994</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0.4</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+</StyledLayerDescriptor>

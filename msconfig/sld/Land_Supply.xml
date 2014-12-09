@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:gml='http://www.opengis.net/gml' xmlns:ogc='http://www.opengis.net/ogc' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version='1.0.0' xsi:schemaLocation='http://www.opengis.net/sld StyledLayerDescriptor.xsd' xmlns='http://www.opengis.net/sld' >
+	<NamedLayer>
+		<Name><![CDATA[Land_Supply]]></Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<Name><![CDATA[Available]]></Name>
+					<Title><![CDATA[Available]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>LandSupply</ogc:PropertyName>
+							<ogc:Literal><![CDATA[Available]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#d3ffbe</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[Underutilized]]></Name>
+					<Title><![CDATA[Underutilized]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>LandSupply</ogc:PropertyName>
+							<ogc:Literal><![CDATA[Underutilized]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#ffff73</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[Protected]]></Name>
+					<Title><![CDATA[Protected]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>LandSupply</ogc:PropertyName>
+							<ogc:Literal><![CDATA[Protected]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#5c8944</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[Utilized]]></Name>
+					<Title><![CDATA[Utilized]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>LandSupply</ogc:PropertyName>
+							<ogc:Literal><![CDATA[Utilized]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#b2b2b2</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[Utilized]]></Name>
+					<Title><![CDATA[Utilized]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>LandSupply</ogc:PropertyName>
+							<ogc:Literal><![CDATA[Non-Buildable]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#b2b2b2</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+</StyledLayerDescriptor>

@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:gml='http://www.opengis.net/gml' xmlns:ogc='http://www.opengis.net/ogc' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version='1.0.0' xsi:schemaLocation='http://www.opengis.net/sld StyledLayerDescriptor.xsd' xmlns='http://www.opengis.net/sld' >
+	<NamedLayer>
+		<Name>Existing_Land_Use</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<Name><![CDATA[FARM]]></Name>
+					<Title><![CDATA[Farm]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[FARM]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#d1ff73</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[HS]]></Name>
+					<Title><![CDATA[Homestead]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[HS]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#e9ffbe</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[RR]]></Name>
+					<Title><![CDATA[Rural Residential]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[RR]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#ffffbe</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[VL]]></Name>
+					<Title><![CDATA[Very Low]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[VL]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#ffff73</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[L]]></Name>
+					<Title><![CDATA[Low]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[L]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#ffff00</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[ML]]></Name>
+					<Title><![CDATA[Medium Low]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[ML]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#e6e600</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[M]]></Name>
+					<Title><![CDATA[Medium]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[M]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#ffd37f</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[MH]]></Name>
+					<Title><![CDATA[Medium High]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[MH]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#ffaa00</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[H]]></Name>
+					<Title><![CDATA[High]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[H]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#e69800</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[VH]]></Name>
+					<Title><![CDATA[Very High]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[VH]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#c4803b</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[MU]]></Name>
+					<Title><![CDATA[Mixed Use]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[MU]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#734c00</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[COM]]></Name>
+					<Title><![CDATA[Commercial]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[COM]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#ff5500</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[IND]]></Name>
+					<Title><![CDATA[Industrial]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[IND]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#c500ff</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[INST]]></Name>
+					<Title><![CDATA[Civic, Campus, and Special]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[INST]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#0070ff</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[ROW]]></Name>
+					<Title><![CDATA[Road/Right of Way/Utility]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[ROW]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#cccccc</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[WATER]]></Name>
+					<Title><![CDATA[Water]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[WATER]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#97dbf2</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[PARK]]></Name>
+					<Title><![CDATA[Park]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[PARK]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#66a842</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+				<Rule>
+					<Name><![CDATA[VACANT]]></Name>
+					<Title><![CDATA[Vacant]]></Title>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>GroWNCLU</ogc:PropertyName>
+							<ogc:Literal><![CDATA[VACANT]]></ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#ffffff</CssParameter>
+							<CssParameter name="fill-opacity" >1</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke" >#6e6e6e</CssParameter>
+							<CssParameter name="stroke-width" >0</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+</StyledLayerDescriptor>

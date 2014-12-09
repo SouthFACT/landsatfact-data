@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:gml='http://www.opengis.net/gml' xmlns:ogc='http://www.opengis.net/ogc' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version='1.0.0' xsi:schemaLocation='http://www.opengis.net/sld StyledLayerDescriptor.xsd' xmlns='http://www.opengis.net/sld' >
+	<NamedLayer>
+    <se:Name>County_Boundaries</se:Name>
+    <UserStyle>
+      <se:Name>County_Boundaries</se:Name>
+      <se:FeatureTypeStyle>
+        <se:Rule>
+          <se:Name>County Boundaries</se:Name>
+          <se:PolygonSymbolizer>
+            <se:Stroke>
+              <se:SvgParameter name="stroke">#000000</se:SvgParameter>
+              <se:SvgParameter name="stroke-width">1</se:SvgParameter>
+            </se:Stroke>
+          </se:PolygonSymbolizer>
+	      <se:TextSymbolizer>
+			<se:Label>
+				<se:PropertyName>co_name</ogc:PropertyName>
+			</se:Label>
+            <se:Fill>
+              <se:CssParameter name="fill">#000000</CssParameter>
+            </se:Fill>			
+		  </se:TextSymbolizer>		  
+        </se:Rule>
+      </se:FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>

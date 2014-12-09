@@ -1,0 +1,24 @@
+CLASS
+	EXPRESSION ([pixel] >= 0 AND [pixel] <= 10) 
+	COLOR 	    255 255 212
+END
+CLASS
+	EXPRESSION ([pixel] >= 11 AND [pixel] <= 20) 
+	COLOR 	    255 228 145
+END
+CLASS
+	EXPRESSION ([pixel] >= 21 AND [pixel] <= 30) 
+	COLOR 	    255 196 79
+END
+CLASS
+	EXPRESSION ([pixel] >= 31 AND [pixel] <= 40) 
+	COLOR 	    255 155 41
+END
+CLASS
+	EXPRESSION ([pixel] >= 41 AND [pixel] <= 50) 
+	COLOR 	   217 95 13
+END
+CLASS
+	EXPRESSION ([pixel] > 50 ) 
+	COLOR 	   153 52 5
+END

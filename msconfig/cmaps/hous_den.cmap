@@ -1,0 +1,40 @@
+CLASS
+    EXPRESSION ([pixel] = 0)
+    COLOR 255 255 128
+END
+CLASS
+    EXPRESSION ([pixel] = 1)
+    COLOR 252 233 109
+END
+CLASS
+    EXPRESSION ([pixel] = 2)
+    COLOR 252 215 91
+END
+CLASS
+    EXPRESSION ([pixel] = 3)
+    COLOR 247 195 72
+END
+CLASS
+    EXPRESSION ([pixel] = 4)
+    COLOR 245 175 54
+END
+CLASS
+    EXPRESSION ([pixel] = 5)
+    COLOR 227 149 41
+END
+CLASS
+    EXPRESSION ([pixel] = 6)
+    COLOR 196 109 27
+END
+CLASS
+    EXPRESSION ([pixel] = 7)
+    COLOR 166 76 17
+END
+CLASS
+    EXPRESSION ([pixel] = 8)
+    COLOR 135 42 8
+END
+CLASS
+    EXPRESSION ([pixel] = 9)
+    COLOR 107 0 0
+END

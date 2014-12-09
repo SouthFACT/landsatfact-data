@@ -1,0 +1,15 @@
+#! /usr/bin/python
+
+import sys
+sys.path.append("../msconfig")
+import CGIUtils
+
+MAPFILE = '../msconfig/rlayers.map'
+
+if CGIUtils.this_computer_is_running_centos():
+    #MAPSERV = '../cgi-bin/mapserv-pg-6.0.1'
+    MAPSERV = '../cgi-bin/mapserv-pre-6.2-70d2510636.exe'
+else:
+    MAPSERV = '../cgi-bin/mapserv-5.6.5.exe'
+
+CGIUtils.mapserv_inject_mapfile(MAPFILE, MAPSERV)

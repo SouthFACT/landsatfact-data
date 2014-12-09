@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:gml='http://www.opengis.net/gml' xmlns:ogc='http://www.opengis.net/ogc' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version='1.0.0' xsi:schemaLocation='http://www.opengis.net/sld StyledLayerDescriptor.xsd' xmlns='http://www.opengis.net/sld' >
+	<NamedLayer>
+		<Name><![CDATA[counties]]></Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<Name><![CDATA[County_Boundaries]]></Name>
+					<Title><![CDATA[County_Boundaries]]></Title>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill" >#ffffff</CssParameter>
+							<CssParameter name="fill-opacity" >.9</CssParameter>
+						</Fill>
+					</PolygonSymbolizer>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke" >#aaaaaa</CssParameter>
+							<CssParameter name="stroke-width" >3</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+							<CssParameter name="stroke-linejoin" >round</CssParameter>
+							<CssParameter name="stroke-linecap" >butt</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke" >#000000</CssParameter>
+							<CssParameter name="stroke-width" >0.4</CssParameter>
+							<CssParameter name="stroke-opacity" >1</CssParameter>
+							<CssParameter name="stroke-linejoin" >round</CssParameter>
+							<CssParameter name="stroke-linecap" >butt</CssParameter>
+							<CssParameter name="stroke-dasharray" >6 1 3 1</CssParameter>
+							<CssParameter name="stroke-dashoffset" >0</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+</StyledLayerDescriptor>
