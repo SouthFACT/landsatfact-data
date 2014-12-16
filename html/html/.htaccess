@@ -1,0 +1,9 @@
+Header set Access-Control-Allow-Origin "*"
+<Files "vlayers">
+    Allow from all
+    SetHandler cgi-script
+</Files>
+<Files "rlayers">
+    Allow from all
+    SetHandler cgi-script
+</Files>

@@ -42,7 +42,7 @@ def mapserv_inject_mapfile(mapfile, mapserv):
         else:
             QUERY_STRING = "map=%s&%s" % (mapfile,os.environ["QUERY_STRING"])
         os.putenv("QUERY_STRING", QUERY_STRING)
-        os.execv(mapserv, [])
+        os.execv(mapserv, [mapserv])
     elif os.environ["REQUEST_METHOD"] == "POST":
         ### 
         ### If we have a POST request, the data of the request is
@@ -61,7 +61,7 @@ def mapserv_inject_mapfile(mapfile, mapserv):
             QUERY_STRING = "map=%s&%s" % (mapfile,QUERY_STRING)
         os.putenv("QUERY_STRING", QUERY_STRING)
         os.putenv("REQUEST_METHOD", "GET")
-        os.execv(mapserv, [])
+        os.execv(mapserv, [mapserv])
     else:
         print "Content-type: text/plain\n"
         print "Error: I only understand GET or POST requests"
