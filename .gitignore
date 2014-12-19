@@ -1,2 +1,4 @@
 *.ini
+html/msconfig/rlayers/*.map
 html/msconfig/data
+*.map
