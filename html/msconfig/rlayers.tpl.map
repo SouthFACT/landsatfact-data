@@ -103,7 +103,7 @@ MAP
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer_query_body.html
-		DATA "data/mergeout.TIF"
+		DATA "data/b7diffmerged.TIF"
 		
 		PROJECTION
 			"proj=aea"
@@ -149,7 +149,7 @@ MAP
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer_query_body.html
-		DATA "data/mergeout.TIF"
+		DATA "data/b7diffmerged.TIF"
 		
 		PROJECTION
 			"proj=aea"
