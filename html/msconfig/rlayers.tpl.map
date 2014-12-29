@@ -91,6 +91,24 @@ MAP
 			"units=m"
 			"no_defs"
         END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] < 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 -1
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 0 to 255"
+			EXPRESSION ([pixel] >= 0 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END        
         METADATA
                 "wms_title"             "B7DIFF"
                 "wms_abstract"          "B7DIFF"
@@ -104,7 +122,6 @@ MAP
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer_query_body.html
 		DATA "data/b7diffmerged.TIF"
-		
 		PROJECTION
 			"proj=aea"
 			"lat_1=29.5"
@@ -117,7 +134,6 @@ MAP
 			"units=m"
 			"no_defs"
         END
-		
 		CLASS
 			#NAME "Values -119 to 0"
 			EXPRESSION ([pixel] >= -119 AND [pixel] < 0)
