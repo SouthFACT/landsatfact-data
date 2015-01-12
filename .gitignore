@@ -1,4 +1,5 @@
 *.ini
-html/msconfig/rlayers/*.map
-html/msconfig/data
-*.map
+msconfig/vlayers.map
+msconfig/data
+var/Config.py
+dataexchange/*.csv
