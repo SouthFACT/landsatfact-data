@@ -2,4 +2,5 @@
 msconfig/vlayers.map
 msconfig/data
 var/Config.py
+var/Config.pyc
 dataexchange/*.csv

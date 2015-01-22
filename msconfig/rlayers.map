@@ -155,10 +155,100 @@ MAP
 		#OFFSITE 255 255 255
         METADATA
             "wms_title"             "B7DIFFMERGE"
-            "wms_abstract"          "B7DIFFMERGE"
+            "wms_abstract"          ""
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
+	LAYER
+		NAME "SEB7DIFFM"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer_query_body.html
+		DATA "/fsdata1/lsfdata/b7DiffAEA/b7DiffAEA.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] < 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 -1
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 0 to 255"
+			EXPRESSION ([pixel] >= 0 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END        
+		OFFSITE 255 255 255
+        METADATA
+            "wms_title"             "SEB7DIFFM"
+            "wms_abstract"          "SEB7DIFFM"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER   
+	LAYER
+		NAME "b7DiffAEA3857"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer_query_body.html
+		DATA "/fsdata1/lsfdata/b7DiffAEA/b7DiffAEA3857.tif"
+		PROJECTION
+            "proj=merc" 
+            "a=6378137" 
+            "b=6378137" 
+            "lat_ts=0.0" 
+            "lon_0=0.0" 
+            "x_0=0.0" 
+            "y_0=0" 
+            "k=1.0" 
+            "units=m" 
+            "nadgrids=@null" 
+            "wktext"  
+            "no_defs"			
+        END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] < 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 -1
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 0 to 255"
+			EXPRESSION ([pixel] >= 0 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END        
+		OFFSITE 255 255 255
+        METADATA
+            "wms_title"             "SEB7DIFFM"
+            "wms_abstract"          "SEB7DIFFM"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER       
 	LAYER
 		NAME "B7DIFFM_MASK"
 		STATUS ON
@@ -166,7 +256,6 @@ MAP
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer_query_body.html
 		DATA "data/b7diffmerged.TIF"
-		
 		PROJECTION
 			"proj=aea"
 			"lat_1=29.5"
@@ -245,6 +334,47 @@ MAP
             "gml_include_items"     "value_0"
         END  # end METADATA
 	END # end LAYER	
+	LAYER
+		NAME "SEB7DIFFVRT"
+		STATUS ON
+		TYPE RASTER
+		DATA "/fsdata1/lsfdata/b7DiffAEA/b7DiffAEA.vrt"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"		
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] < 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 -1
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 0 to 255"
+			EXPRESSION ([pixel] > 0 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END        
+		METADATA
+            "wms_title"             "B7DIFF"
+            "wms_abstract"          "B7DIFF"
+            "gml_include_items"     "value_0"
+        END  # end METADATA
+	END # end LAYER	    
 	LAYER
 		NAME "cloud-gap-mask"
 		STATUS ON
