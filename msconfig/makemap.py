@@ -50,8 +50,8 @@ os.system("chmod g-w ../html/*");
 template = Template("vlayers.tpl.map")
 f_new = openMapfileForWriting("vlayers.map")
 f_new.write( template.render( {
-            'POSTGIS_CONNECTION_STRING' : POSTGIS_CONNECTION_STRING,
-            'SERVICE_URL'  : "%s/%s" % (SERVER_URL, "vlayers")
+    'POSTGIS_CONNECTION_STRING' : POSTGIS_CONNECTION_STRING,
+    'SERVICE_URL'  : "%s/%s" % (SERVER_URL, "vlayers")
             } ) )
 f_new.close()
 
@@ -61,6 +61,7 @@ f_new.close()
 template = Template("rlayers.tpl.map")
 f_new = openMapfileForWriting("rlayers.map")
 f_new.write( template.render( {
-            'SERVICE_URL'  : "%s/%s" % (SERVER_URL, "rlayers")
+    'SERVICE_URL'  : "%s/%s" % (SERVER_URL, "rlayers"),
+    'RASTER_DATA_DIR' : RASTER_DATA_DIR
             } ) )
 f_new.close()

@@ -1,0 +1,108 @@
+[Tue Feb  3 15:43:58 2015].743042 msSaveImage(stdout) total time: 0.003s
+[Tue Feb  3 15:43:58 2015].743087 mapserv request processing time (msLoadMap not incl.): 0.003s
+[Tue Feb  3 15:43:58 2015].743094 msFreeMap(): freeing map at 0x1c60570.
+[Tue Feb  3 15:43:59 2015].574780 msDrawMap(): rendering using outputformat named PNG (GDAL/PNG).
+[Tue Feb  3 15:43:59 2015].575042 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Tue Feb  3 15:43:59 2015].602338 msPostGISLayerWhichShapes(): Query error. Error executing query: ERROR:  find_srid() - couldnt find the corresponding SRID - is the geometry registered in the GEOMETRY_COLUMNS table?  Is there an uppercase/lowercase missmatch?
+ 
+[Tue Feb  3 15:43:59 2015].602456 msDrawMap(): Image handling error. Failed to draw layer named 'southern_states'.
+[Tue Feb  3 15:43:59 2015].602641 mapserv request processing time (msLoadMap not incl.): 0.037s
+[Tue Feb  3 15:43:59 2015].602684 msFreeMap(): freeing map at 0x19ae050.
+[Tue Feb  3 15:44:00 2015].384589 msDrawMap(): rendering using outputformat named PNG (GDAL/PNG).
+[Tue Feb  3 15:44:00 2015].384864 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Tue Feb  3 15:44:00 2015].409680 msPostGISLayerWhichShapes(): Query error. Error executing query: ERROR:  find_srid() - couldnt find the corresponding SRID - is the geometry registered in the GEOMETRY_COLUMNS table?  Is there an uppercase/lowercase missmatch?
+ 
+[Tue Feb  3 15:44:00 2015].409805 msDrawMap(): Image handling error. Failed to draw layer named 'southern_states'.
+[Tue Feb  3 15:44:00 2015].409998 mapserv request processing time (msLoadMap not incl.): 0.035s
+[Tue Feb  3 15:44:00 2015].410012 msFreeMap(): freeing map at 0x100e050.
+[Tue Feb  3 15:44:01 2015].454628 msDrawMap(): rendering using outputformat named PNG (GDAL/PNG).
+[Tue Feb  3 15:44:01 2015].454892 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Tue Feb  3 15:44:01 2015].497291 msPostGISLayerWhichShapes(): Query error. Error executing query: ERROR:  find_srid() - couldnt find the corresponding SRID - is the geometry registered in the GEOMETRY_COLUMNS table?  Is there an uppercase/lowercase missmatch?
+ 
+[Tue Feb  3 15:44:01 2015].497409 msDrawMap(): Image handling error. Failed to draw layer named 'southern_states'.
+[Tue Feb  3 15:44:01 2015].497612 mapserv request processing time (msLoadMap not incl.): 0.052s
+[Tue Feb  3 15:44:01 2015].497625 msFreeMap(): freeing map at 0x1ce5050.
+[Tue Feb  3 15:44:03 2015].480204 msDrawMap(): rendering using outputformat named PNG (GDAL/PNG).
+[Tue Feb  3 15:44:03 2015].480466 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Tue Feb  3 15:44:03 2015].505119 msPostGISLayerWhichShapes(): Query error. Error executing query: ERROR:  find_srid() - couldnt find the corresponding SRID - is the geometry registered in the GEOMETRY_COLUMNS table?  Is there an uppercase/lowercase missmatch?
+ 
+[Tue Feb  3 15:44:03 2015].505235 msDrawMap(): Image handling error. Failed to draw layer named 'southern_states'.
+[Tue Feb  3 15:44:03 2015].505403 mapserv request processing time (msLoadMap not incl.): 0.034s
+[Tue Feb  3 15:44:03 2015].505416 msFreeMap(): freeing map at 0xcb2050.
+[Tue Feb  3 15:51:01 2015].894717 msSaveImage(stdout) total time: 0.003s
+[Tue Feb  3 15:51:01 2015].894765 mapserv request processing time (msLoadMap not incl.): 0.004s
+[Tue Feb  3 15:51:01 2015].894773 msFreeMap(): freeing map at 0x21c9570.
+[Tue Feb  3 15:51:03 2015].279689 msDrawMap(): rendering using outputformat named PNG (GDAL/PNG).
+[Tue Feb  3 15:51:03 2015].279956 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Tue Feb  3 15:51:03 2015].327813 msPostGISLayerWhichShapes(): Query error. Error executing query: ERROR:  find_srid() - couldnt find the corresponding SRID - is the geometry registered in the GEOMETRY_COLUMNS table?  Is there an uppercase/lowercase missmatch?
+ 
+[Tue Feb  3 15:51:03 2015].327960 msDrawMap(): Image handling error. Failed to draw layer named 'southern_states'.
+[Tue Feb  3 15:51:03 2015].328173 mapserv request processing time (msLoadMap not incl.): 0.058s
+[Tue Feb  3 15:51:03 2015].328189 msFreeMap(): freeing map at 0x1227050.
+[Tue Feb  3 15:51:04 2015].638892 msDrawMap(): rendering using outputformat named PNG (GDAL/PNG).
+[Tue Feb  3 15:51:04 2015].639155 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Tue Feb  3 15:51:04 2015].668256 msPostGISLayerWhichShapes(): Query error. Error executing query: ERROR:  find_srid() - couldnt find the corresponding SRID - is the geometry registered in the GEOMETRY_COLUMNS table?  Is there an uppercase/lowercase missmatch?
+ 
+[Tue Feb  3 15:51:04 2015].668378 msDrawMap(): Image handling error. Failed to draw layer named 'southern_states'.
+[Tue Feb  3 15:51:04 2015].668629 mapserv request processing time (msLoadMap not incl.): 0.039s
+[Tue Feb  3 15:51:04 2015].668647 msFreeMap(): freeing map at 0x1b33050.
+[Tue Feb  3 15:51:05 2015].540369 msDrawMap(): rendering using outputformat named PNG (GDAL/PNG).
+[Tue Feb  3 15:51:05 2015].540627 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Tue Feb  3 15:51:05 2015].567007 msPostGISLayerWhichShapes(): Query error. Error executing query: ERROR:  find_srid() - couldnt find the corresponding SRID - is the geometry registered in the GEOMETRY_COLUMNS table?  Is there an uppercase/lowercase missmatch?
+ 
+[Tue Feb  3 15:51:05 2015].567142 msDrawMap(): Image handling error. Failed to draw layer named 'southern_states'.
+[Tue Feb  3 15:51:05 2015].567388 mapserv request processing time (msLoadMap not incl.): 0.036s
+[Tue Feb  3 15:51:05 2015].567402 msFreeMap(): freeing map at 0x1d86050.
+[Tue Feb  3 15:51:07 2015].98407 msDrawMap(): rendering using outputformat named PNG (GDAL/PNG).
+[Tue Feb  3 15:51:07 2015].98684 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Tue Feb  3 15:51:07 2015].127398 msPostGISLayerWhichShapes(): Query error. Error executing query: ERROR:  find_srid() - couldnt find the corresponding SRID - is the geometry registered in the GEOMETRY_COLUMNS table?  Is there an uppercase/lowercase missmatch?
+ 
+[Tue Feb  3 15:51:07 2015].127515 msDrawMap(): Image handling error. Failed to draw layer named 'southern_states'.
+[Tue Feb  3 15:51:07 2015].127841 mapserv request processing time (msLoadMap not incl.): 0.039s
+[Tue Feb  3 15:51:07 2015].127855 msFreeMap(): freeing map at 0xbd9050.
+[Tue Feb  3 15:56:10 2015].884531 msSaveImage(stdout) total time: 0.003s
+[Tue Feb  3 15:56:10 2015].884577 mapserv request processing time (msLoadMap not incl.): 0.003s
+[Tue Feb  3 15:56:10 2015].884599 msFreeMap(): freeing map at 0x186d570.
+[Tue Feb  3 15:56:12 2015].746051 msDrawMap(): rendering using outputformat named PNG (GDAL/PNG).
+[Tue Feb  3 15:56:12 2015].746318 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Tue Feb  3 15:56:12 2015].789214 msDrawMap(): Layer 0 (southern_states), 0.043s
+[Tue Feb  3 15:56:12 2015].789252 msDrawMap(): Drawing Label Cache, 0.000s
+[Tue Feb  3 15:56:12 2015].789260 msDrawMap() total time: 0.047s
+[Tue Feb  3 15:56:12 2015].871749 msSaveImage(stdout) total time: 0.082s
+[Tue Feb  3 15:56:12 2015].871979 mapserv request processing time (msLoadMap not incl.): 0.135s
+[Tue Feb  3 15:56:12 2015].871991 msFreeMap(): freeing map at 0xedb050.
+[Tue Feb  3 15:59:31 2015].883287 msSaveImage(stdout) total time: 0.003s
+[Tue Feb  3 15:59:31 2015].883334 mapserv request processing time (msLoadMap not incl.): 0.003s
+[Tue Feb  3 15:59:31 2015].883342 msFreeMap(): freeing map at 0xc157e0.
+[Tue Feb  3 15:59:32 2015].936284 msDrawMap(): rendering using outputformat named PNG (GDAL/PNG).
+[Tue Feb  3 15:59:32 2015].936547 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Tue Feb  3 15:59:32 2015].979950 msDrawMap(): Layer 0 (southern_states), 0.043s
+[Tue Feb  3 15:59:32 2015].979975 msDrawMap(): Drawing Label Cache, 0.000s
+[Tue Feb  3 15:59:32 2015].979986 msDrawMap() total time: 0.047s
+[Tue Feb  3 15:59:33 2015].55950 msSaveImage(stdout) total time: 0.076s
+[Tue Feb  3 15:59:33 2015].56175 mapserv request processing time (msLoadMap not incl.): 0.129s
+[Tue Feb  3 15:59:33 2015].56187 msFreeMap(): freeing map at 0x1cf02c0.
+[Tue Feb  3 15:59:38 2015].18883 msDrawMap(): rendering using outputformat named PNG (GDAL/PNG).
+[Tue Feb  3 15:59:38 2015].19162 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Tue Feb  3 15:59:38 2015].62296 msDrawMap(): Layer 0 (southern_states), 0.043s
+[Tue Feb  3 15:59:38 2015].62329 msDrawMap(): Drawing Label Cache, 0.000s
+[Tue Feb  3 15:59:38 2015].62337 msDrawMap() total time: 0.049s
+[Tue Feb  3 15:59:38 2015].182704 msSaveImage(stdout) total time: 0.120s
+[Tue Feb  3 15:59:38 2015].183121 mapserv request processing time (msLoadMap not incl.): 0.175s
+[Tue Feb  3 15:59:38 2015].183133 msFreeMap(): freeing map at 0x22082c0.
+[Tue Feb  3 15:59:54 2015].486622 msDrawMap(): rendering using outputformat named PNG (GDAL/PNG).
+[Tue Feb  3 15:59:54 2015].486965 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Tue Feb  3 15:59:54 2015].528789 msDrawMap(): Layer 0 (southern_states), 0.042s
+[Tue Feb  3 15:59:54 2015].528821 msDrawMap(): Drawing Label Cache, 0.000s
+[Tue Feb  3 15:59:54 2015].528830 msDrawMap() total time: 0.048s
+[Tue Feb  3 15:59:54 2015].636306 msSaveImage(stdout) total time: 0.107s
+[Tue Feb  3 15:59:54 2015].636516 mapserv request processing time (msLoadMap not incl.): 0.166s
+[Tue Feb  3 15:59:54 2015].636528 msFreeMap(): freeing map at 0x15522a0.
+[Tue Feb  3 16:00:01 2015].194264 msDrawMap(): rendering using outputformat named PNG (GDAL/PNG).
+[Tue Feb  3 16:00:01 2015].194683 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Tue Feb  3 16:00:01 2015].234183 msDrawMap(): Layer 0 (southern_states), 0.039s
+[Tue Feb  3 16:00:01 2015].234219 msDrawMap(): Drawing Label Cache, 0.000s
+[Tue Feb  3 16:00:01 2015].234228 msDrawMap() total time: 0.046s
+[Tue Feb  3 16:00:01 2015].357913 msSaveImage(stdout) total time: 0.124s
+[Tue Feb  3 16:00:01 2015].358115 mapserv request processing time (msLoadMap not incl.): 0.180s
+[Tue Feb  3 16:00:01 2015].358127 msFreeMap(): freeing map at 0x1e0d2a0.

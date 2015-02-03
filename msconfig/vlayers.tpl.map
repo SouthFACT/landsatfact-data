@@ -2,7 +2,7 @@ MAP
     # the following two lines tell MapServer to write debugging output to a log file.  Remove the '#' from the beginning
     # of the two lines below to enable this logging:
     #CONFIG "MS_ERRORFILE" "../var/log/vlayers.log"
-    #DEBUG 5
+    DEBUG 5
 
     # all temp files get prefixed with this string
     NAME ms_vlayers
@@ -74,46 +74,57 @@ MAP
 
 	#Built Section------------------------------------------------------------
 	LAYER # 
-        NAME county_boundaries
+        NAME southern_states
         PROJECTION
             "init=epsg:4326"
         END
         CONNECTIONTYPE   postgis
         CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
-        DATA             "geom from county_boundaries"
+        DATA             "geom from southern_states"
         EXTENT           -124.733174 24.543940 -66.950005 49.384359 # US
         STATUS           OFF
         TYPE             POLYGON
         DUMP             TRUE
         HEADER           ./templates/layer_query_header.html
         TEMPLATE         ./templates/layer_query_body.html
-		LABELITEM    	 "co_name"
         CLASS
-            NAME "county_boundaries"
             STYLE
                 #COLOR        232 232 232
                 OUTLINECOLOR 0 0 0 
             END
-		    LABEL
-				TYPE TRUETYPE
-				FONT arial-bold
-				SIZE 12
-				ANTIALIAS TRUE
-				POSITION CL
-				PARTIALS FALSE
-				MINDISTANCE 300
-				BUFFER 4
-				STYLE    # since to version 6
-				  GEOMTRANSFORM 'labelpoly'
-				  #COLOR 218 218 218
-				  OFFSET 2 2
-				END # STYLE
-		    END # end of label		
+
         END
         METADATA
-            "wms_title"            "county_boundaries"
-            "wms_abstract"         "county_boundaries"
-            "gml_include_items"    "co_name,acres,pop2000"
+            "wms_title"            "southern_states"
+            "wms_abstract"         "southern_states"
+            "gml_include_items"    "all"
         END  # end METADATA
     END # end Layer	
+	LAYER # 
+        NAME region_quads
+        PROJECTION
+            "init=epsg:4326"
+        END
+        CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from region_quads"
+        EXTENT           -124.733174 24.543940 -66.950005 49.384359 # US
+        STATUS           OFF
+        TYPE             POLYGON
+        DUMP             TRUE
+        HEADER           ./templates/layer_query_header.html
+        TEMPLATE         ./templates/layer_query_body.html
+        CLASS
+            STYLE
+                #COLOR        232 232 232
+                OUTLINECOLOR 0 0 0 
+            END
+
+        END
+        METADATA
+            "wms_title"            "region_quads"
+            "wms_abstract"         "region_quads"
+            "gml_include_items"    "all"
+        END  # end METADATA
+    END # end Layer		
 END

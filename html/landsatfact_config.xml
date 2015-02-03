@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <application title="LandsatFACT GIS Viewer">
+    </application>
+    <extent wkid="102100" xmax="-6838768.4235937" xmaxZoom="-6838768.4235937" xmin="-13413575.847656" xminZoom="-13413575.847656" ymax="5104566.0975391" ymaxZoom="5104566.0975391" ymin="1885649.9628419" yminZoom="1885649.9628419" /> 
+    <server map_path="http://arcgisserver7.nemac.org/ArcGIS/">
+    </server>
+    <images>
+        <image label="Streets" name="Streets" url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer" />
+        <image label="Basic" name="Basic" url="http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer" />
+        <image label="Relief" name="Relief" url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer" />
+        <image label="Terrain" name="Terrain" url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer" />
+        <image label="Imagery" name="Imagery" url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer" />
+        <image label="Topo Map" name="Topo_Map" url="http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer" />
+        <image label="USA Topo" name="USA_Topo" url="http://server.arcgisonline.com/ArcGIS/rest/services/USA_Topo_Maps/MapServer" />
+        <image label="None" name="None" url="http://arcgisserver7.nemac.org/ArcGIS/rest/services/US/US_Jurisdictions_filled2/MapServer/" />
+        <image label="Google Streets" selected="true" name="Google Streets"/>
+    </images>
+    <mapviews>
+        <view label="Alabama" name="AL" zoom="yes" xmin="-10416632.843068" ymin="3437627.384928" xmax="-8772930.9870528" ymax="4242356.4186024">
+            <viewGroup name="Base Layers" />
+            <viewGroup name="LandsatFACT" />
+        </view>
+        <view label="North Carolina" name="NC" zoom="yes" xmin="-9707908.7169062" ymin="3739299.9089095" xmax="-8064206.8608906" ymax="4544028.9425839">
+            <viewGroup name="Base Layers" />
+            <viewGroup name="LandsatFACT" />
+        </view>        
+    </mapviews>
+    <wmsLayers>
+        <wmsGroup gid="G01" label="Base Layers" name="Base Layers">
+            <wmsSubgroup label="Base Layers">
+                <wmsLayer
+                     selected="true"
+                     lid="SS"
+                     visible="true"
+                     url="http://landsatfact-data-dev.nemac.org/vlayers?TRANSPARENT=true"
+                     srs="EPSG:3785"
+                     layers="southern_states"
+                     styles="default"
+                     identify="false"
+                     name="southern_states"
+                     legend="http://landsatfact-data-dev.nemac.org/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southern_states&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
+                <wmsLayer
+                     selected="false"
+                     lid="RQ"
+                     visible="true"
+                     url="http://landsatfact-data-dev.nemac.org/vlayers?TRANSPARENT=true"
+                     srs="EPSG:3785"
+                     layers="region_quads"
+                     styles="default"
+                     identify="false"
+                     name="region_quads"
+                     legend="http://landsatfact-data-dev.nemac.org/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=region_quads&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>					 
+            </wmsSubgroup>
+        </wmsGroup>
+        <wmsGroup gid="G02" label="LandsatFACT" name="LandsatFACT">
+            <wmsSubgroup label="NC B7DiffTest">
+                <wmsLayer identify="true" layers="B7DIFF" legend="http://landsatfact-data-dev.nemac.org/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=B7DIFF&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="B7DIFF" name="Tile Index" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/rlayers?TRANSPARENT=true" visible="false" />
+                <wmsLayer identify="true" layers="B7DIFFM" legend="http://landsatfact-data-dev.nemac.org/html/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=B7DIFFM&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="B7DIFFM" name="Mosaic" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/rlayers?TRANSPARENT=true" visible="false" />
+                <wmsLayer identify="true" layers="B7DIFFM_MASK" legend="http://landsatfact-data-dev.nemac.org/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=B7DIFFM&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="B7DIFFM_MASK" name="Mosaic with Mask" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/html/rlayers?TRANSPARENT=true" visible="false" />
+                <wmsLayer identify="true" layers="B7DIFF_VRT" legend="http://landsatfact-data-dev.nemac.org/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=B7DIFF_VRT&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="B7DIFF_VRT" name="VRT" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/rlayers?TRANSPARENT=true" visible="false" />
+            </wmsSubgroup>
+            <wmsSubgroup label="SE B7DiffTest 16bit">
+                <wmsLayer identify="true" layers="SEB7DIFFM" legend="http://landsatfact-data-dev.nemac.org/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SEB7DIFFM&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SEB7DIFFM" name="Mosaic Overview" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/rlayers?TRANSPARENT=true" visible="false" />
+                <wmsLayer identify="true" layers="SEB7DIFF_TINDEX" legend="http://landsatfact-data-dev.nemac.org/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SEB7DIFF_TINDEX&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SEB7DIFF_TINDEX" name="Tile Index" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/rlayers?TRANSPARENT=true" visible="false" />
+                <wmsLayer identify="true" layers="SEB7DIFFVRT" legend="http://landsatfact-data-dev.nemac.org/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SEB7DIFFVRT&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SEB7DIFFVRT" name="VRT" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/rlayers?TRANSPARENT=true" visible="false" />
+				<wmsLayer identify="true" layers="SCALEGROUP" legend="http://landsatfact-data-dev.nemac.org/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SCALEGROUP&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SCALEGROUP" name="SCALEGROUP (Ovr and Tindex)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/rlayers?TRANSPARENT=true" visible="false" />
+				<wmsLayer identify="true" layers="SCALEGROUP2" legend="http://landsatfact-data-dev.nemac.org/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SCALEGROUP2&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SCALEGROUP2" name="SCALEGROUP (Ovr and VRT)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/rlayers?TRANSPARENT=true" visible="false" />
+            </wmsSubgroup>
+			<wmsSubgroup label="SE B7DiffTest 8bit">
+                <wmsLayer identify="true" layers="SEB7DIFFM8" legend="http://landsatfact-data-dev.nemac.org/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SEB7DIFFM8&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SEB7DIFFM8" name="Mosaic Overview" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/rlayers?TRANSPARENT=true" visible="false" />
+            </wmsSubgroup>
+        </wmsGroup>
+    </wmsLayers>
+    <tools>
+        <tool label="Print Map" name="Print" />
+        <tool label="Export Map to JPG" name="Export" />
+        <tool label="Identify Features" linkFields="" name="Identify" />
+        <tool helpText="Click the map to see NDVI for the point. Or, enter coordinates and click Make Graph." label="Graph NDVI" name="Phenograph" />
+        <tool helpText="Copy the URL below to share this map with someone else." label="Share this Map" name="ShareMap" />
+    </tools>
+</config>
