@@ -74,13 +74,13 @@ MAP
 
 	#Built Section------------------------------------------------------------
 	LAYER # 
-        NAME southern_states
+        NAME states
         PROJECTION
             "init=epsg:4326"
         END
         CONNECTIONTYPE   postgis
         CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
-        DATA             "geom from southern_states"
+        DATA             "geom from states"
         EXTENT           -124.733174 24.543940 -66.950005 49.384359 # US
         STATUS           OFF
         TYPE             POLYGON
@@ -95,19 +95,19 @@ MAP
 
         END
         METADATA
-            "wms_title"            "southern_states"
-            "wms_abstract"         "southern_states"
+            "wms_title"            "states"
+            "wms_abstract"         "states"
             "gml_include_items"    "all"
         END  # end METADATA
     END # end Layer	
 	LAYER # 
-        NAME region_quads
+        NAME landsat_quads
         PROJECTION
             "init=epsg:4326"
         END
         CONNECTIONTYPE   postgis
         CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
-        DATA             "geom from region_quads"
+        DATA             "geom from landsat_quads"
         EXTENT           -124.733174 24.543940 -66.950005 49.384359 # US
         STATUS           OFF
         TYPE             POLYGON
@@ -122,8 +122,8 @@ MAP
 
         END
         METADATA
-            "wms_title"            "region_quads"
-            "wms_abstract"         "region_quads"
+            "wms_title"            "landsat_quads"
+            "wms_abstract"         "landsat_quads"
             "gml_include_items"    "all"
         END  # end METADATA
     END # end Layer		

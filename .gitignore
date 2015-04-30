@@ -4,3 +4,16 @@ msconfig/data
 var/Config.py
 var/Config.pyc
 dataexchange/*.csv
+#ShapeFileExtensions
+*.tar.gz
+*.dbf
+*.prj
+*.shp.xml
+*.sbx
+*.sbn
+*.shp
+*.wkt
+*.shx
+*.qpj
+geoprocessing/fmaskLinux/MCRInstaller
+*.zip

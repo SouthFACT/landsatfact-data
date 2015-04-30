@@ -35,22 +35,22 @@
                      visible="true"
                      url="%(SERVER_URL)s/vlayers?TRANSPARENT=true"
                      srs="EPSG:3785"
-                     layers="southern_states"
+                     layers="states"
                      styles="default"
                      identify="false"
-                     name="southern_states"
-                     legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southern_states&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
+                     name="states"
+                     legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=states&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
                 <wmsLayer
                      selected="false"
                      lid="RQ"
                      visible="true"
                      url="%(SERVER_URL)s/vlayers?TRANSPARENT=true"
                      srs="EPSG:3785"
-                     layers="region_quads"
+                     layers="landsat_quads"
                      styles="default"
                      identify="false"
-                     name="region_quads"
-                     legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=region_quads&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>					 
+                     name="landsat_quads"
+                     legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=landsat_quads&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>					 
             </wmsSubgroup>
         </wmsGroup>
         <wmsGroup gid="G02" label="LandsatFACT" name="LandsatFACT">
@@ -69,6 +69,10 @@
             </wmsSubgroup>
 			<wmsSubgroup label="SE B7DiffTest 8bit">
                 <wmsLayer identify="true" layers="SEB7DIFFM8" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SEB7DIFFM8&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SEB7DIFFM8" name="Mosaic Overview" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
+				<wmsLayer identify="true" layers="SEB7DIFF_TINDEX8bit" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SEB7DIFF_TINDEX&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SEB7DIFF_TINDEX" name="Tile Index" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
+                <wmsLayer identify="true" layers="SEB7DIFFVRT8bit" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SEB7DIFFVRT&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SEB7DIFFVRT" name="VRT" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
+				<wmsLayer identify="true" layers="SCALEGROUP8bit" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SCALEGROUP&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SCALEGROUP" name="SCALEGROUP (Ovr and Tindex)" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
+				<wmsLayer identify="true" layers="SCALEGROUP28bit" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SCALEGROUP2&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SCALEGROUP2" name="SCALEGROUP (Ovr and VRT)" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
             </wmsSubgroup>
         </wmsGroup>
     </wmsLayers>

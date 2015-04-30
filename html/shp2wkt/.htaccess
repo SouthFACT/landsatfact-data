@@ -1,0 +1,5 @@
+Header set Access-Control-Allow-Origin "*"
+<Files "shp2wkt">
+    Allow from all
+    SetHandler cgi-script
+</Files>
