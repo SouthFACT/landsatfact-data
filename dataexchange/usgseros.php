@@ -14,31 +14,6 @@ function loginLandsatFACT($client, $ini_array) {
     }
 }
 
-
-
-//* Get the available datasets:
-//* datasets(string $datasetName, 
-//*            Service_Class_Coordinate $lowerLeft, 
-//*            Service_Class_Coordinate $upperRight, 
-//*            string $startDate, 
-//*            string $endDate, 
-//*            string $node, 
-//*            string $apiKey)
-//*Notes: the coordinates are lat,lon format
-//*Result of ...
-function getAvailableDatasetNames($datasetName, $client, $loginKey) {
-    try {
-        $datasets = $client->datasets($datasetName, array('latitude' => '34.36','longitude' => '-79.31'), array('latitude' => '34.36','longitude' => '-79.31'),'2013-08-05','2013-09-05','EE',$loginKey);
-        // echo $client->__getLastRequest() . "\n";
-        return $client->__getLastResponse() . "\n";
-    }
-    catch (Exception $e) {
-        $error_xml =  $client->__getLastRequest() . "\n";
-        echo $error_xml;
-        echo "\n\n".$e->getMessage();
-    }
-}
-
 //* Get scenes for download by dataSet
 //*search(string $datasetName, 
 //*                  Service_Class_Coordinate $lowerLeft, 
@@ -80,39 +55,18 @@ function getDatasetsForDownload($datasetName, $client, $apiKey, $lowerLeft, $upp
     }
 }
 
-
-/*
-ArrayOfService_Inventory_InventoryScene metadata(string $datasetName, 
-                                            string $node, 
-                                            string $entityId, 
-                                            ArrayOfString $entityIds, 
-                                            string $apiKey)
-*/
-function getDatasetMetadata($client, $datasetName, $node, $entityId, $apiKey) {
-    try {
-        $datasetMetadata = $client->metadata($datasetName, $node, $entityId, $apiKey);
-        return $client->__getLastResponse() . "\n";
-    }
-    catch (Exception $e) {
-        $error_xml =  $client->__getLastRequest() . "\n";
-        echo $error_xml;
-        echo "\n\n".$e->getMessage();
-    }
-}
-
-
-
 //* ArrayOfString download(string $datasetName, 
 //*                            string $apiKey, 
 //*                            string $node, 
 //*                            ArrayOfString $entityIds, 
 //*                            ArrayOfString $products)
 //*Notes: 
-function getDownloadUrls($datasetName, $client, $apiKey) {
+function getDownloadUrl($datasetName, $client, $apiKey, $sceneID) {
     try {
         // $downloadUrls = $client->download($datasetName, $apiKey, 'EE', array($sceneLevel->entityId), $products);
-        $downloadUrls = $client->download($datasetName,$loginKey,'EE', array('LC80150362013223LGN00'),array('STANDARD'));
-        return $client->__getLastResponse() . "\n";
+        $downloadUrl = $client->download($datasetName,$apiKey,'EE', array($sceneID),array('STANDARD'));
+		return $downloadUrl;
+        // return $client->__getLastResponse() . "\n";
     }
     catch (Exception $e) {
         $error_xml =  $client->__getLastRequest() . "\n";
@@ -120,6 +74,49 @@ function getDownloadUrls($datasetName, $client, $apiKey) {
         echo "\n\n".$e->getMessage();
     }
 }
+
+
+// //* Get the available datasets:
+// //* datasets(string $datasetName, 
+// //*            Service_Class_Coordinate $lowerLeft, 
+// //*            Service_Class_Coordinate $upperRight, 
+// //*            string $startDate, 
+// //*            string $endDate, 
+// //*            string $node, 
+// //*            string $apiKey)
+// //*Notes: the coordinates are lat,lon format
+// //*Result of ...
+// function getAvailableDatasetNames($datasetName, $client, $loginKey) {
+    // try {
+        // $datasets = $client->datasets($datasetName, array('latitude' => '34.36','longitude' => '-79.31'), array('latitude' => '34.36','longitude' => '-79.31'),'2013-08-05','2013-09-05','EE',$loginKey);
+        // // echo $client->__getLastRequest() . "\n";
+        // return $client->__getLastResponse() . "\n";
+    // }
+    // catch (Exception $e) {
+        // $error_xml =  $client->__getLastRequest() . "\n";
+        // echo $error_xml;
+        // echo "\n\n".$e->getMessage();
+    // }
+// }
+
+// /*
+// ArrayOfService_Inventory_InventoryScene metadata(string $datasetName, 
+                                            // string $node, 
+                                            // string $entityId, 
+                                            // ArrayOfString $entityIds, 
+                                            // string $apiKey)
+// */
+// function getDatasetMetadata($client, $datasetName, $node, $entityId, $apiKey) {
+    // try {
+        // $datasetMetadata = $client->metadata($datasetName, $node, $entityId, $apiKey);
+        // return $client->__getLastResponse() . "\n";
+    // }
+    // catch (Exception $e) {
+        // $error_xml =  $client->__getLastRequest() . "\n";
+        // echo $error_xml;
+        // echo "\n\n".$e->getMessage();
+    // }
+// }
 
 
 //* Get download options
