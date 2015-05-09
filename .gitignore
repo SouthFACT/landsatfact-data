@@ -3,7 +3,8 @@ msconfig/vlayers.map
 msconfig/data
 var/Config.py
 var/Config.pyc
-dataexchange/*.csv
+dataexchange/LANDSAT_8.csv
+dataexchange/LANDSAT_ETM.csv
 #ShapeFileExtensions
 *.tar.gz
 *.dbf
