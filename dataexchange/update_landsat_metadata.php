@@ -16,15 +16,9 @@ function search($array, $key, $value)
 }
 
 try{
-	// (object) array('latitude' => 33.93, 'longitude' => -79.40);
-	// $criteriaArray = (object)array(
-							// 'filterType' => 'between',
-							// 'fieldId' => 10036,
-							// 'firstValue' => '13',
-							// 'secondValue' => '33'
-						// );	
-	// L8 path/row fieldId: 10036/10038
-	// L7 path/row fieldId: 3947/3948
+	// From datasetFields() on SOAP API
+	// L8 path/row/cc fieldId's: 10036/10038/10037
+	// L7 path/row/cc fieldId's: 3947/3948/3968
 	$L8criteriaArray = (object)array(
 							'filterType' => 'and',
 							'childFilters' => array
@@ -42,7 +36,13 @@ try{
 											'filterType' => 'between',
 											'firstValue' => '33',
 											'secondValue' => '43'
-										)
+										),
+									(object)array
+										(
+											'fieldId' => 10037,
+											'filterType' => 'value',
+											'value' => '8'
+										)										
 								)
 						);	
 	$L7criteriaArray = (object)array(
@@ -62,7 +62,13 @@ try{
 											'filterType' => 'between',
 											'firstValue' => '33',
 											'secondValue' => '43'
-										)
+										),
+									(object)array
+										(
+											'fieldId' => 3968,
+											'filterType' => 'value',
+											'value' => '8'
+										)											
 								)
 						);							
 	$ini_array = parse_ini_file("config.ini", true);
@@ -135,7 +141,7 @@ try{
 		// print_r(" checking for wrs2_code " . substr($sceneIds[$i], 4, 5));
 		// print_r( count(search($csv, 'wrs2_code', substr($sceneIds[$i], 4, 5))) );
 		if (count(search($csv, 'wrs2_code', substr($sceneIds[$i], 4, 5)))>0) {
-			print_r(" in there ");
+			print_r(" getting metadata... ");
 		}
 		print_r("\n");
     }
@@ -163,7 +169,7 @@ try{
     for ($i = 0; $i < count($sceneIds); ++$i) {
 		print_r("scene ID " . $sceneIds[$i]);
 		if (count(search($csv, 'wrs2_code', substr($sceneIds[$i], 4, 5)))>0) {
-			print_r(" in there ");
+			print_r(" getting metadata... ");
 		}		
 		print_r("\n");
     }	
