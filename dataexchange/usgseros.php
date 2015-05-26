@@ -29,7 +29,7 @@ function loginLandsatFACT($client, $ini_array) {
 //*Notes: result of E.G. STANDARD, which is the Level 1 Product
 //*       Sort order must be ASC or DESC.
 // 36.508381, -76.553009
-function getDatasetsForDownload($datasetName, $client, $apiKey, $lowerLeft, $upperRight, $startDate, $endDate) {
+function getDatasetsForDownload($datasetName, $client, $apiKey, $lowerLeft, $upperRight, $startDate, $endDate, $criteriaArray) {
     try {
     
         //Search for datasets
@@ -38,15 +38,36 @@ function getDatasetsForDownload($datasetName, $client, $apiKey, $lowerLeft, $upp
         // $startDate = '2013-08-05T00:00:00Z'; //Time is ignored, but just in case it gets implemented in the future...
         // $endDate = '2013-09-05T23:59:59Z'; //Time is ignored, but just in case it gets implemented in the future...
         $node = 'EE';    
-        $additionalCritiera = null;
+        // $additionalCritiera = null;
+		$additionalCritiera = $criteriaArray; 
         $maxResults = 100;
         $sortOrder = 'ASC';
+		// $sortOrder = 'DESC';
         $startingNumber = 1;
 		$searchResults = $client->search($datasetName, $lowerLeft, $upperRight, $startDate, $endDate, 
 												$additionalCritiera, $maxResults, $startingNumber, $sortOrder, $node, $apiKey);
         // echo $client->__getLastRequest() . "\n";
         // return $client->__getLastResponse() . "\n";
         return $searchResults;
+    }
+    catch (Exception $e) {
+        $error_xml =  $client->__getLastRequest() . "\n";
+        echo $error_xml;
+        echo "\n\n".$e->getMessage();
+    }
+}
+
+// /*
+// ArrayOfService_Inventory_InventoryScene metadata(string $datasetName, 
+                                            // string $node, 
+                                            // string $entityId, 
+                                            // ArrayOfString $entityIds, 
+                                            // string $apiKey)
+// */
+function getDatasetMetadata($client, $datasetName, $node, $entityId, $apiKey) {
+    try {
+        $datasetMetadata = $client->metadata($datasetName, $node, $entityId, $apiKey);
+        return $client->__getLastResponse() . "\n";
     }
     catch (Exception $e) {
         $error_xml =  $client->__getLastRequest() . "\n";
@@ -98,26 +119,6 @@ function getDownloadUrl($datasetName, $client, $apiKey, $sceneID) {
         // echo "\n\n".$e->getMessage();
     // }
 // }
-
-// /*
-// ArrayOfService_Inventory_InventoryScene metadata(string $datasetName, 
-                                            // string $node, 
-                                            // string $entityId, 
-                                            // ArrayOfString $entityIds, 
-                                            // string $apiKey)
-// */
-// function getDatasetMetadata($client, $datasetName, $node, $entityId, $apiKey) {
-    // try {
-        // $datasetMetadata = $client->metadata($datasetName, $node, $entityId, $apiKey);
-        // return $client->__getLastResponse() . "\n";
-    // }
-    // catch (Exception $e) {
-        // $error_xml =  $client->__getLastRequest() . "\n";
-        // echo $error_xml;
-        // echo "\n\n".$e->getMessage();
-    // }
-// }
-
 
 //* Get download options
 //*downloadOptions(string $datasetName, 

@@ -1,23 +1,71 @@
 <?php
 include 'usgseros.php';
 
-function custom_put_contents($source_url='',$local_path=''){
-	// This is a custom function to get around a file size download 
-	// limit inherent within the PHP configuration.
-	// see http://stackoverflow.com/questions/12264253/allowed-memory-size-of-134217728-bytes-exhausted/29236639#29236639
-    $time_limit = ini_get('max_execution_time');
-    $memory_limit = ini_get('memory_limit');
-    set_time_limit(0);
-    ini_set('memory_limit', '-1');      
-    $remote_contents=file_get_contents($source_url);
-    $response=file_put_contents($local_path, $remote_contents);
-    set_time_limit($time_limit);
-    ini_set('memory_limit', $memory_limit); 
-    return $response;
+function search($array, $key, $value)
+{
+    $results = array();
+    if (is_array($array)) {
+        if (isset($array[$key]) && $array[$key] == $value) {
+            $results[] = $array;
+        }
+        foreach ($array as $subarray) {
+            $results = array_merge($results, search($subarray, $key, $value));
+        }
+    }
+    return $results;
 }
 
 try{
-    $ini_array = parse_ini_file("config.ini", true);
+	// (object) array('latitude' => 33.93, 'longitude' => -79.40);
+	// $criteriaArray = (object)array(
+							// 'filterType' => 'between',
+							// 'fieldId' => 10036,
+							// 'firstValue' => '13',
+							// 'secondValue' => '33'
+						// );	
+	// L8 path/row fieldId: 10036/10038
+	// L7 path/row fieldId: 3947/3948
+	$L8criteriaArray = (object)array(
+							'filterType' => 'and',
+							'childFilters' => array
+								(
+									(object)array
+										(
+											'fieldId' => 10036,
+											'filterType' => 'between',
+											'firstValue' => '13',
+											'secondValue' => '33'
+										),
+									(object)array
+										(
+											'fieldId' => 10038,
+											'filterType' => 'between',
+											'firstValue' => '33',
+											'secondValue' => '43'
+										)
+								)
+						);	
+	$L7criteriaArray = (object)array(
+							'filterType' => 'and',
+							'childFilters' => array
+								(
+									(object)array
+										(
+											'fieldId' => 3947,
+											'filterType' => 'between',
+											'firstValue' => '13',
+											'secondValue' => '33'
+										),
+									(object)array
+										(
+											'fieldId' => 3948,
+											'filterType' => 'between',
+											'firstValue' => '33',
+											'secondValue' => '43'
+										)
+								)
+						);							
+	$ini_array = parse_ini_file("config.ini", true);
     $soapURL = "https://earthexplorer.usgs.gov/inventory/soap?wsdl" ;
     $options = array(
         "trace" => true,
@@ -27,12 +75,9 @@ try{
 
     //* Login
     $apiKey = loginLandsatFACT($client, $ini_array); 
-    $node = 'EE';
+    // print_r("apikey: ".$apiKey."\n");
+	$node = 'EE';
 
-	//Delete any of the old downloaded tars
-	print("Delete old tars...\n");
-	array_map('unlink', glob("/fsdata1/lsfdata/tarFiles/*.gz"));
-	
 	// Get current date and previous date
 	date_default_timezone_set('US/Eastern');
 	$currDate = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
@@ -43,21 +88,39 @@ try{
 	print('Previous Date: ' . $prevDate ."\n");
 
 	//* Search function should be next to get a list of entityIDs
-    //* Potential datasets: LANDSAT_8
-    $datasetName = "LANDSAT_8";
-    $lowerLeft = (object) array('latitude' => '23.118', 'longitude' => '-109.817');
-    $upperRight = (object) array('latitude' => '39.840', 'longitude' => '-72.420');
-    // $startDate = "2015-05-05T00:00:00Z";  
-    // $endDate = "2015-05-06T00:00:00Z";  
+    // We may want to only utilize the path/rows to identify the scenes of interest, 
+	// instead of the lat/lon bbox // We may want to only utilize the path/rows to identify the scenes of interest, 
+	// instead of the lat/lon bbox
+	// $lowerLeft = (object) array('latitude' => '23.118', 'longitude' => '-109.817');
+    // $upperRight = (object) array('latitude' => '39.840', 'longitude' => '-72.420');
+    $lowerLeft = null;
+    $upperRight = null;	
     $startDate = (string)$prevDate."T00:00:00Z"; 
 	print_r("startDate: ".$startDate."\n");	
     $endDate = (string)$currDate."T00:00:00Z";  
 	print_r("endDate: ".$endDate."\n");	
-    $searchResults = getDatasetsForDownload($datasetName, $client, $apiKey, $lowerLeft, $upperRight, $startDate, $endDate);  
+
+
+	// Get the list of LSF-relevant pathrows into array--------------------------------------
+	$csv = array_map('str_getcsv', file('landsat_quads.csv'));	
+	$keys = array_shift($csv);
+	foreach ($csv as $i=>$row) {
+		$csv[$i] = array_combine($keys, $row);
+	}
+	// End Get the list of LSF-relevant pathrows---------------------------------------------
+	
+    //* Potential datasets: 
+		// LANDSAT_8 - L8 OLI/TIRS
+		// LANDSAT_ETM - Landsat 7 Enhanced Thematic Mapper Scan Line Corrector On
+		// LANDSAT_ETM_SLC_OFF - Landsat 7 Enhanced Thematic Mapper Scan Line Corrector Off 
+    // First lets do L8:-----------------------------------------------
+	$datasetName = "LANDSAT_8";
+	print_r("Doing LANDSAT_8....\n");	
+    $searchResults = getDatasetsForDownload($datasetName, $client, $apiKey, $lowerLeft, $upperRight, $startDate, $endDate, $L8criteriaArray);  
+	$sceneIds=array();
 	// var_dump($searchResults);
     //Loop through and populate arrays for scene's that are found
     if ($searchResults->numberReturned > 0) {
-        $sceneIds=array();
         foreach ($searchResults->results as $result) {
             $sceneIds[] = $result->entityId;
             // $downloadUrls[] = $result->dataAccessUrl;
@@ -65,19 +128,47 @@ try{
         // print_r($sceneIds);
         // print_r($downloadUrls);		
     }
-
     //Print out sceneIds and url's while populating the $downloadUrls array()
-    for ($i = 0; $i < count($sceneIds); ++$i) {
-        // echo "<a href='{$downloadUrls[$i]}'>{$sceneIds[$i]}</a>";
-        // echo "</br>";
-		print_r("Downloading " . $sceneIds[$i]);
-		$downloadUrl = getDownloadUrl($datasetName, $client, $apiKey, $sceneIds[$i]);
-		custom_put_contents($downloadUrl->item,'/fsdata1/lsfdata/tarFiles/'.$sceneIds[$i].'.tar.gz');
-		// $tarDownload = file_get_contents($downloadUrl->item);
-		// file_put_contents($sceneIds[$i].'.tar.gz', $tarDownload);			
+    // e.g. LC80190382015145LGN00
+	for ($i = 0; $i < count($sceneIds); ++$i) {
+		print_r("scene ID " . $sceneIds[$i]);
+		// print_r(" checking for wrs2_code " . substr($sceneIds[$i], 4, 5));
+		// print_r( count(search($csv, 'wrs2_code', substr($sceneIds[$i], 4, 5))) );
+		if (count(search($csv, 'wrs2_code', substr($sceneIds[$i], 4, 5)))>0) {
+			print_r(" in there ");
+		}
 		print_r("\n");
     }
-
+	
+	
+	// End L8 ---------------------------------------------------------
+	
+	
+	// Now do L7: :-----------------------------------------------
+	$datasetName = "LANDSAT_ETM_SLC_OFF";
+	print_r("Doing LANDSAT_ETM_SLC_OFF....\n");	
+    $searchResults = getDatasetsForDownload($datasetName, $client, $apiKey, $lowerLeft, $upperRight, $startDate, $endDate, $L7criteriaArray);  
+	$sceneIds=array();
+	// var_dump($searchResults);
+    //Loop through and populate arrays for scene's that are found
+    if ($searchResults->numberReturned > 0) {
+        foreach ($searchResults->results as $result) {
+            $sceneIds[] = $result->entityId;
+            // $downloadUrls[] = $result->dataAccessUrl;
+        }
+        // print_r($sceneIds);
+        // print_r($downloadUrls);		
+    }
+    //Print out sceneIds and url's while populating the $downloadUrls array()
+    for ($i = 0; $i < count($sceneIds); ++$i) {
+		print_r("scene ID " . $sceneIds[$i]);
+		if (count(search($csv, 'wrs2_code', substr($sceneIds[$i], 4, 5)))>0) {
+			print_r(" in there ");
+		}		
+		print_r("\n");
+    }	
+	// End L7 ---------------------------------------------------------
+	
 	
 	//Logout so the API Key cannot be used anymore
 	if ($client->logout($apiKey)) {
