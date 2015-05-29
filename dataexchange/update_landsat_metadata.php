@@ -1,6 +1,9 @@
 <?php
 include 'usgseros.php';
 
+// Global DB connection variables:
+$lsf_database = "";
+
 function search($array, $key, $value)
 {
     $results = array();
@@ -15,10 +18,24 @@ function search($array, $key, $value)
     return $results;
 }
 
+//This function is run when any page is initialized
+function lsf_db_init() {
+	global $database, $lsf_database;
+	$config_info = parse_ini_file("config.ini",true);
+	$username = $config_info["pgsql_connection"]["username"];
+	$password = $config_info["pgsql_connection"]["password"];
+	$host = $config_info["pgsql_connection"]["host"];
+	$port = $config_info["pgsql_connection"]["port"];
+	$driver = $config_info["pgsql_connection"]["driver"];
+	$database = $config_info["pgsql_connection"]["database"];
+	$lsf_database = "host=".$host." port=".$port." dbname=".$database." user=".$username." password=".$password."";
+}
+
 try{
 	// From datasetFields() on SOAP API
 	// L8 path/row/cc fieldId's: 10036/10038/10037
 	// L7 path/row/cc fieldId's: 3947/3948/3968
+	// Where cc is cloud cover and 0 is Less than 10%
 	$L8criteriaArray = (object)array(
 							'filterType' => 'and',
 							'childFilters' => array
@@ -41,7 +58,7 @@ try{
 										(
 											'fieldId' => 10037,
 											'filterType' => 'value',
-											'value' => '8'
+											'value' => '0'
 										)										
 								)
 						);	
@@ -67,10 +84,13 @@ try{
 										(
 											'fieldId' => 3968,
 											'filterType' => 'value',
-											'value' => '8'
+											'value' => '0'
 										)											
 								)
 						);							
+	//Initialize the database connection
+	lsf_db_init();
+	
 	$ini_array = parse_ini_file("config.ini", true);
     $soapURL = "https://earthexplorer.usgs.gov/inventory/soap?wsdl" ;
     $options = array(
@@ -141,12 +161,52 @@ try{
 		// print_r(" checking for wrs2_code " . substr($sceneIds[$i], 4, 5));
 		// print_r( count(search($csv, 'wrs2_code', substr($sceneIds[$i], 4, 5))) );
 		if (count(search($csv, 'wrs2_code', substr($sceneIds[$i], 4, 5)))>0) {
-			print_r(" getting metadata... ");
+			print_r(" getting metadata... \n");
+			//Update landsat_metadata table accordingly
+			$metadataResult = getDatasetMetadata($client, $datasetName, "EE", $sceneIds[$i], $apiKey);
+			
+			$lsf_conn = pg_connect($lsf_database);
+			if (!$lsf_conn) {
+			  echo "An error occurred on lsf_conn.\n";
+			}
+			$select_result=pg_query($lsf_conn, "SELECT * FROM landsat_metadata WHERE scene_id='".$sceneIds[$i]."';");
+			if  (!$select_result) {
+				print_r("query did not execute\n");
+			}
+			if (pg_num_rows($select_result) > 0) {
+				print_r("Matching records found : ".pg_num_rows($select_result)."\n");
+			}
+			else {
+				print_r("inserting record...\n");
+				$insert_result = pg_query($lsf_conn, "INSERT INTO landsat_metadata(scene_id) 
+                  VALUES('".$sceneIds[$i]."');");
+			}			
+			pg_close($lsf_conn);			
+
+			foreach ($metadataResult as $response) {
+				// E.g. LE70180342015146EDC00
+				print_r("\n");
+				print_r($response->entityId);
+				print_r("\n");
+				// sensor not available on metadata result
+				// "OLI_TIRS"
+				$acquireDate = date("Y-m-d", strtotime($response->acquisitionDate));
+				print_r($acquireDate);
+				print_r("\n");
+				print_r($response->browseUrl);
+				print_r("\n");
+				// path
+				$path = substr($response->entityId, 3, 3);
+				print_r($path);
+				print_r("\n");
+				// row
+				$row = substr($response->entityId, 6, 3);
+				print_r($row);
+				//type not available on metadata result
+			}			
 		}
 		print_r("\n");
     }
-	
-	
 	// End L8 ---------------------------------------------------------
 	
 	
@@ -169,8 +229,32 @@ try{
     for ($i = 0; $i < count($sceneIds); ++$i) {
 		print_r("scene ID " . $sceneIds[$i]);
 		if (count(search($csv, 'wrs2_code', substr($sceneIds[$i], 4, 5)))>0) {
-			print_r(" getting metadata... ");
-		}		
+			//Get Metadata and update table accordingly
+			print_r(" getting metadata... \n");
+			//Update landsat_metadata table accordingly
+			$metadataResult = getDatasetMetadata($client, $datasetName, "EE", $sceneIds[$i], $apiKey);
+			foreach ($metadataResult as $response) {
+				// E.g. LE70180342015146EDC00
+				print_r("\n");
+				print_r($response->entityId);
+				print_r("\n");
+				// sensor not available on metadata result
+				// "OLI_TIRS"
+				$acquireDate = date("Y-m-d", strtotime($response->acquisitionDate));
+				print_r($acquireDate);
+				print_r("\n");
+				print_r($response->browseUrl);
+				print_r("\n");
+				// path
+				$path = substr($response->entityId, 3, 3);
+				print_r($path);
+				print_r("\n");
+				// row
+				$row = substr($response->entityId, 6, 3);
+				print_r($row);
+				//type not available on metadata result
+			}				
+		}
 		print_r("\n");
     }	
 	// End L7 ---------------------------------------------------------
