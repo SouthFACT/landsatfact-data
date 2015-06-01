@@ -18,7 +18,7 @@ function search($array, $key, $value)
     return $results;
 }
 
-//This function is run when any page is initialized
+//PGSQL DB 
 function lsf_db_init() {
 	global $database, $lsf_database;
 	$config_info = parse_ini_file("config.ini",true);
@@ -164,25 +164,6 @@ try{
 			print_r(" getting metadata... \n");
 			//Update landsat_metadata table accordingly
 			$metadataResult = getDatasetMetadata($client, $datasetName, "EE", $sceneIds[$i], $apiKey);
-			
-			$lsf_conn = pg_connect($lsf_database);
-			if (!$lsf_conn) {
-			  echo "An error occurred on lsf_conn.\n";
-			}
-			$select_result=pg_query($lsf_conn, "SELECT * FROM landsat_metadata WHERE scene_id='".$sceneIds[$i]."';");
-			if  (!$select_result) {
-				print_r("query did not execute\n");
-			}
-			if (pg_num_rows($select_result) > 0) {
-				print_r("Matching records found : ".pg_num_rows($select_result)."\n");
-			}
-			else {
-				print_r("inserting record...\n");
-				$insert_result = pg_query($lsf_conn, "INSERT INTO landsat_metadata(scene_id) 
-                  VALUES('".$sceneIds[$i]."');");
-			}			
-			pg_close($lsf_conn);			
-
 			foreach ($metadataResult as $response) {
 				// E.g. LE70180342015146EDC00
 				print_r("\n");
@@ -201,8 +182,28 @@ try{
 				print_r("\n");
 				// row
 				$row = substr($response->entityId, 6, 3);
-				print_r($row);
+				print_r($row."\n");
 				//type not available on metadata result
+
+				//Update landsat_metadata:
+				$lsf_conn = pg_connect($lsf_database);
+				if (!$lsf_conn) {
+				  echo "An error occurred on lsf_conn.\n";
+				}
+				$select_result=pg_query($lsf_conn, "SELECT * FROM landsat_metadata WHERE scene_id='".$sceneIds[$i]."';");
+				if  (!$select_result) {
+					print_r("query did not execute\n");
+				}
+				if (pg_num_rows($select_result) > 0) {
+					print_r("Matching records found : ".pg_num_rows($select_result)."\n");
+				}
+				else {
+					print_r("inserting record...\n");
+					$insert_result = pg_query($lsf_conn, "INSERT INTO landsat_metadata(scene_id,acquire_date,browse_url,path,row) 
+					  VALUES('".$sceneIds[$i]."','".$acquireDate."','".$response->browseUrl."','".$path."','".$row."');");
+				}			
+				pg_close($lsf_conn);
+				//End of update landsat_metadata
 			}			
 		}
 		print_r("\n");
@@ -253,6 +254,26 @@ try{
 				$row = substr($response->entityId, 6, 3);
 				print_r($row);
 				//type not available on metadata result
+				
+				//Update landsat_metadata:
+				$lsf_conn = pg_connect($lsf_database);
+				if (!$lsf_conn) {
+				  echo "An error occurred on lsf_conn.\n";
+				}
+				$select_result=pg_query($lsf_conn, "SELECT * FROM landsat_metadata WHERE scene_id='".$sceneIds[$i]."';");
+				if  (!$select_result) {
+					print_r("query did not execute\n");
+				}
+				if (pg_num_rows($select_result) > 0) {
+					print_r("Matching records found : ".pg_num_rows($select_result)."\n");
+				}
+				else {
+					print_r("inserting record...\n");
+					$insert_result = pg_query($lsf_conn, "INSERT INTO landsat_metadata(scene_id,acquire_date,browse_url,path,row) 
+					  VALUES('".$sceneIds[$i]."','".$acquireDate."','".$response->browseUrl."','".$path."','".$row."');");
+				}			
+				pg_close($lsf_conn);
+				//End of update landsat_metadata								
 			}				
 		}
 		print_r("\n");

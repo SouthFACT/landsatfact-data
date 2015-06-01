@@ -67,7 +67,8 @@ function getDatasetsForDownload($datasetName, $client, $apiKey, $lowerLeft, $upp
 function getDatasetMetadata($client, $datasetName, $node, $entityId, $apiKey) {
     try {
         $datasetMetadata = $client->metadata($datasetName, $node, $entityId, $apiKey);
-        return $client->__getLastResponse() . "\n";
+        // return $client->__getLastResponse() . "\n";
+		return $datasetMetadata;
     }
     catch (Exception $e) {
         $error_xml =  $client->__getLastRequest() . "\n";
