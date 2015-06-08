@@ -18,6 +18,12 @@ function search($array, $key, $value)
     return $results;
 }
 
+function xml_attribute($object, $attribute)
+{
+    if(isset($object[$attribute]))
+        return (string) $object[$attribute];
+}
+
 //PGSQL DB 
 function lsf_db_init() {
 	global $database, $lsf_database;
@@ -165,14 +171,29 @@ try{
 			//Update landsat_metadata table accordingly
 			$metadataResult = getDatasetMetadata($client, $datasetName, "EE", $sceneIds[$i], $apiKey);
 			foreach ($metadataResult as $response) {
+				// metadataUrl
+				print_r("\n");
+				print_r($response->metadataUrl);
+				print_r("\n");
+				$fullMetadata = file_get_contents($response->metadataUrl);
+				$xmlparser = xml_parser_create();
+				xml_parse_into_struct($xmlparser,$fullMetadata,$values);
+				xml_parser_free($xmlparser);
+				// var_dump($values);
+				#Clouds
+				$cc_full = $values[66]['value'];
+				print_r("cloud cover : ". $cc_full ."\n");				
+				//Data Type Level 1 or data_type_l1 in PGSQL
+				$data_type_l1 = $values[48]['value'];
+				print_r("data_type_l1 : ". $data_type_l1."\n");				
 				// E.g. LE70180342015146EDC00
 				print_r("\n");
 				print_r($response->entityId);
 				print_r("\n");
-				// sensor not available on metadata result
-				// "OLI_TIRS"
-				$acquireDate = date("Y-m-d", strtotime($response->acquisitionDate));
-				print_r($acquireDate);
+				// sensor always the same as "OLI_TIRS"
+				$sensor = "OLI_TIRS";
+				$acquisitionDate = date("Y-m-d", strtotime($response->acquisitionDate));
+				print_r($acquisitionDate);
 				print_r("\n");
 				print_r($response->browseUrl);
 				print_r("\n");
@@ -199,8 +220,8 @@ try{
 				}
 				else {
 					print_r("inserting record...\n");
-					$insert_result = pg_query($lsf_conn, "INSERT INTO landsat_metadata(scene_id,acquire_date,browse_url,path,row) 
-					  VALUES('".$sceneIds[$i]."','".$acquireDate."','".$response->browseUrl."','".$path."','".$row."');");
+					$insert_result = pg_query($lsf_conn, "INSERT INTO landsat_metadata(scene_id,sensor,acquisition_date,browse_url,path,row,cc_full,data_type_l1) 
+					  VALUES('".$sceneIds[$i]."','".$sensor."','".$acquisitionDate."','".$response->browseUrl."','".$path."','".$row."','".$cc_full."','".$data_type_l1."');");
 				}			
 				pg_close($lsf_conn);
 				//End of update landsat_metadata
@@ -235,14 +256,64 @@ try{
 			//Update landsat_metadata table accordingly
 			$metadataResult = getDatasetMetadata($client, $datasetName, "EE", $sceneIds[$i], $apiKey);
 			foreach ($metadataResult as $response) {
+				// metadataUrl
+				print_r("\n");
+				print_r($response->metadataUrl);
+				print_r("\n");
+				$fullMetadata = file_get_contents($response->metadataUrl);
+				$xmlparser = xml_parser_create();
+				xml_parse_into_struct($xmlparser,$fullMetadata,$values);
+				xml_parser_free($xmlparser);
+				// var_dump($values);
+				
+				#Clouds
+				#Sometime the quad data comes in as PROCESSING REQUIRED
+				#For these we will set to 0 for now
+				$cc_full = $values[42]['value'];
+				print_r("cloud cover : ". $cc_full."\n");					
+				// ul is 45
+				if ($values[45]['value'] != 'PROCESSING REQUIRED') {
+					$cc_quad_ul = $values[45]['value'];
+				}
+				else {
+					$cc_quad_ul = '0.0';
+				}
+				print_r("ul cloud cover : ". $cc_quad_ul."\n");		
+				// ur is 48
+				if ($values[48]['value'] != 'PROCESSING REQUIRED') {
+					$cc_quad_ur = $values[48]['value'];
+				}
+				else {
+					$cc_quad_ur = '0.0';
+				}				
+				print_r("ur cloud cover : ". $cc_quad_ur."\n");		
+				// ll is 51
+				if ($values[51]['value'] != 'PROCESSING REQUIRED') {
+					$cc_quad_ll = $values[51]['value'];
+				}
+				else {
+					$cc_quad_ll = '0.0';
+				}				
+				print_r("ll cloud cover : ". $cc_quad_ll."\n");		
+				// lr is 54
+				if ($values[54]['value'] != 'PROCESSING REQUIRED') {
+					$cc_quad_lr = $values[54]['value'];
+				}
+				else {
+					$cc_quad_lr = '0.0';
+				}					
+				print_r("lr cloud cover : ". $cc_quad_lr."\n");		
+				//Data Type Level 1 or data_type_l1 in PGSQL
+				$data_type_l1 = preg_split('/\s+/', $values[60]['value'])[1];
+				print_r("data_type_l1 : ". $data_type_l1."\n");
 				// E.g. LE70180342015146EDC00
 				print_r("\n");
 				print_r($response->entityId);
 				print_r("\n");
-				// sensor not available on metadata result
-				// "OLI_TIRS"
-				$acquireDate = date("Y-m-d", strtotime($response->acquisitionDate));
-				print_r($acquireDate);
+				// sensor always the same as "LANDSAT_ETM_SLC_OFF"
+				$sensor = "LANDSAT_ETM_SLC_OFF";
+				$acquisitionDate = date("Y-m-d", strtotime($response->acquisitionDate));
+				print_r($acquisitionDate);
 				print_r("\n");
 				print_r($response->browseUrl);
 				print_r("\n");
@@ -269,8 +340,8 @@ try{
 				}
 				else {
 					print_r("inserting record...\n");
-					$insert_result = pg_query($lsf_conn, "INSERT INTO landsat_metadata(scene_id,acquire_date,browse_url,path,row) 
-					  VALUES('".$sceneIds[$i]."','".$acquireDate."','".$response->browseUrl."','".$path."','".$row."');");
+					$insert_result = pg_query($lsf_conn, "INSERT INTO landsat_metadata(scene_id,sensor,acquisition_date,browse_url,path,row,cc_full,cc_quad_ul,cc_quad_ur,cc_quad_ll,cc_quad_lr,data_type_l1) 
+					  VALUES('".$sceneIds[$i]."','".$sensor."','".$acquisitionDate."','".$response->browseUrl."','".$path."','".$row."','".$cc_full."','".$cc_quad_ul."','".$cc_quad_ur."','".$cc_quad_ll."','".$cc_quad_lr."','".$data_type_l1."');");
 				}			
 				pg_close($lsf_conn);
 				//End of update landsat_metadata								
