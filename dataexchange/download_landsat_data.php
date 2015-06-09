@@ -49,7 +49,6 @@ try{
 	
 	//Initialize the database connection
 	lsf_db_init();
-	$datasetName = "LANDSAT_8";
 	$lsf_conn = pg_connect($lsf_database);
 	if (!$lsf_conn) {
 	  echo "An error occurred on lsf_conn.\n";
@@ -61,12 +60,19 @@ try{
 	if (pg_num_rows($select_result) > 0) {
 		print_r("Matching records found : ".pg_num_rows($select_result)."\n");
 		while ($row = pg_fetch_array($select_result)) {
+			$datasetName = "LANDSAT_8";
 			if (substr($row[0], 0, 3)=="LE7") {
 			  $datasetName = "LANDSAT_ETM_SLC_OFF";
 			}
 			print_r("Downloading " . $row[0]);
-			$downloadUrl = getDownloadUrl($datasetName, $client, $apiKey, $row[0]);
-			custom_put_contents($downloadUrl->item,'/fsdata1/lsfdata/tarFiles/'.$row[0].'.tar.gz');
+			print_r(" with dataset " . $datasetName);
+			if (file_exists('/fsdata1/lsfdata/tarFiles/'.$row[0].'.tar.gz')) {
+				echo "\n The file already exists";
+			} else {
+				$downloadUrl = getDownloadUrl($datasetName, $client, $apiKey, $row[0]);
+				print_r("\n downloadUrl->item :".$downloadUrl->item);
+				custom_put_contents($downloadUrl->item,'/fsdata1/lsfdata/tarFiles/'.$row[0].'.tar.gz');
+			}						
 			print_r("\n");		  
 		}		
 	}

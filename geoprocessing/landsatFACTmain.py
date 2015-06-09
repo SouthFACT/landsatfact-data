@@ -16,7 +16,7 @@ def main():
 if __name__ == '__main__':
     main()
 
-import os, sys
+import os, sys, glob
 import landsatFactTools_GDAL
 import rasterAnalysis_GDAL
 import numpy as np
@@ -27,9 +27,11 @@ reload(landsatFactTools_GDAL)
 reload(rasterAnalysis_GDAL)
 
 # =========================================================================
-# runList=['LC80160362014297LGN00.tar.gz']#BM's original
-# runList=['LC80140352014139LGN00.tar.gz'] #jdm pass1
-runList=['LC80140352014299LGN00.tar.gz']#jdm pass2 given that pass1 alread filled in the cc values
+runList = []
+os.chdir("/fsdata1/lsfdata/tarFiles")
+for file in glob.glob("*.tar.gz"):
+    runList.append(file)
+
 for tar in runList:
 	# set tar file to analyze
 	if not tar[-7:] == '.tar.gz':
@@ -52,20 +54,21 @@ for tar in runList:
 	# root folder for the output storage
 	# if this path does not exist the script will create it
 	# productStorage = r'S:\Geospatial\LandsatFACT\data\20150414' #BM's original
-	productStorage = r'/fsdata1/lsfdata/lsfproducts'
+	productStorage = r'/fsdata1/lsfdata/products'
 	# set output folder locations per product
 	# if this path does not exist the script will create it
-	outNDVIfolder = os.path.join(productStorage,'ndvi_SR')
+	outNDVIfolder = os.path.join(productStorage,'ndvi')
 	outNDMIfolder = os.path.join(productStorage,'ndmi')
-	outb7folder = os.path.join(productStorage,'b7Diff_SR')
-	outGAPfolder = os.path.join(productStorage,'gapMask')
+	outb7folder = os.path.join(productStorage,'b7diff')
+	outGAPfolder = os.path.join(productStorage,'gap_mask')
 	# set cloud cover threshold level, quad scene's with a higher percentage of
 	# cloud cover will not be processed.
-	cloudCoverThreshold = .50
+	cloudCoverThreshold = 50
 	# =========================================================================
 	# sets full path for the tarfile to be analyzed
 	inNewSceneTar = os.path.join(tarStorage, tar)
 	# check to see if the tar file has been extracted, if not extract the files
+	print "Checking for: "+tar
 	extractedPath = landsatFactTools_GDAL.checkExisting(inNewSceneTar, tiffsStorage)
 	# run Fmask
 	# jdm 4/22/15: after spending a couple of days trying to get FMASK installed on cloud4
@@ -89,7 +92,23 @@ for tar in runList:
 	# for each quad this finds the closest scene that passes the cloud cover threshold for processing
 	quadTiffList2Process = landsatFactTools_GDAL.getNextBestQuad(quadCCDict,cloudCoverThreshold)
 	# =========================================================================
-	#print "quadTiffList2Process: ", quadTiffList2Process
+	#jdm: Need to make sure the next best quads we are going to be comparing to are actually extracted
+	#and pre-processed to a level appropriate for differencing.
+	print "quadTiffList2Process: ", quadTiffList2Process
+	#TO-DO: create/call a function in landsatFactTools_GDAL called extractProductForCompare()
+	#loop through quadTiffList2Process and get unique list of data to download 
+	for quad_pair in quadTiffList2Process:
+		base_quad = quad_pair[1]
+		diff_quad = quad_pair[0]
+		# The first quad that is determined to be missing from disk sets off a call
+		# to extractProductForCompare.  extractProductForCompare then download the tar ball for that
+		# scene and presumably the next time through a quad from that given seen will be 
+		# accounted for.
+		if os.path.exists(tiffsStorage+'/'+diff_quad) == False:
+			landsatFactTools_GDAL.extractProductForCompare(diff_quad[:-2],tarStorage,tiffsStorage,fmaskShellCall,quadsFolder)
+		else:
+			print diff_quad+" already exist in the tiffsStorage"
+	# =========================================================================
 	# checks the list of quads, if 0 then there were no quads under the cloud cover threshold
 	# so there is nothing to process for that scene
 	if len(quadTiffList2Process) > 0:

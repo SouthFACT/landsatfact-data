@@ -10,7 +10,8 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 
-import os, sys, tarfile, shutil, traceback, gzip
+import os, sys, tarfile, shutil, traceback, gzip, subprocess
+from subprocess import PIPE
 import psycopg2
 from operator import itemgetter
 import rasterAnalysis_GDAL
@@ -27,6 +28,35 @@ except:
 
 
 reload(rasterAnalysis_GDAL)
+
+def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,quadsFolder):
+	print "call to extractProductForCompare with: "+ diff_tar
+	# call download_landsat_data_by_sceneid.php
+	in_dir = os.getcwd()
+	os.chdir('/var/vsites/landsatfact-data-dev.nemac.org/project/dataexchange')
+	print os.getcwd()
+	# download the scene data
+	subprocess.call(["php", "download_landsat_data_by_sceneid.php", diff_tar])
+	# now extract the downloaded file accordingly
+	inNewSceneTar = os.path.join(tarStorage, diff_tar+".tar.gz")
+	extractedPath = checkExisting(inNewSceneTar, tiffsStorage)
+	#do the other pre-processing stuff
+	os.chdir(in_dir)
+	rasterAnalysis_GDAL.runFmask(extractedPath,fmaskShellCall)
+	# get DN min number from each band in the scene and write to database
+	dnminExists = checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
+	if dnminExists == False:
+		dnMinDict = rasterAnalysis_GDAL.getDNmin(extractedPath)
+		writeDNminToDB(dnMinDict,extractedPath)
+	# create quads from the input scene
+	quadPaths = rasterAnalysis_GDAL.cropToQuad(extractedPath,quadsFolder)
+	writeQuadToDB(quadPaths)
+	# get cloud cover percentage for each quad
+	quadCCDict = getQuadCCpercent(quadPaths)
+	# =========================================================================
+	# write input scene quads cloud cover percentage to the landsat_metadata table in the database
+	writeQuadsCCtoDB(quadCCDict,extractedPath)	
+	print os.getcwd()
 
 def checkExisting(inTarPath, extractFolder):
     """# Check to see if the entered Tar files have already been extracted. If any

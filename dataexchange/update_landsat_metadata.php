@@ -180,7 +180,9 @@ try{
 				xml_parse_into_struct($xmlparser,$fullMetadata,$values);
 				xml_parser_free($xmlparser);
 				// var_dump($values);
-				#Clouds
+				// Clouds
+				// Cloud coverage (percent) of a WRS scene
+				// 0.00 - 100.00
 				$cc_full = $values[66]['value'];
 				print_r("cloud cover : ". $cc_full ."\n");				
 				//Data Type Level 1 or data_type_l1 in PGSQL
@@ -266,9 +268,11 @@ try{
 				xml_parser_free($xmlparser);
 				// var_dump($values);
 				
-				#Clouds
-				#Sometime the quad data comes in as PROCESSING REQUIRED
-				#For these we will set to 0 for now
+				// Clouds
+				// Cloud coverage (percent) of a WRS scene
+				// 0.00 - 100.00
+				// Sometimes the quad data comes in as PROCESSING REQUIRED
+				// For these we will set to 0 for now
 				$cc_full = $values[42]['value'];
 				print_r("cloud cover : ". $cc_full."\n");					
 				// ul is 45
@@ -324,6 +328,7 @@ try{
 				// row
 				$row = substr($response->entityId, 6, 3);
 				print_r($row);
+				print_r("\n");
 				//type not available on metadata result
 				
 				//Update landsat_metadata:
