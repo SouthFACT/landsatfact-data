@@ -18,3 +18,4 @@ dataexchange/LANDSAT_ETM.csv
 *.qpj
 geoprocessing/fmaskLinux/MCRInstaller
 *.zip
+*.pyc
