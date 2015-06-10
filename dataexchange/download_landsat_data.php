@@ -30,6 +30,9 @@ function lsf_db_init() {
 }
 
 try{
+	// Set umask so that whoever is running the script 
+	// downloads the files with the correct permissions
+	$oldUMASK = umask(0002);
 	
     $ini_array = parse_ini_file("config.ini", true);
     $soapURL = "https://earthexplorer.usgs.gov/inventory/soap?wsdl" ;
@@ -77,7 +80,8 @@ try{
 		}		
 	}
 	pg_close($lsf_conn);
-
+	// add back original umask
+	umask($oldUMASK);
 } catch (Exception $e) {
 	die("Error: {$e->getMessage()}\n\n");
 }

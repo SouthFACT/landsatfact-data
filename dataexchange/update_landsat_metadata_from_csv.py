@@ -28,9 +28,9 @@ print type(lsf_quads['wrs2_code'][5])
 
 # Loop through CSV inserting into PGSQL
 # LANDSAT_8 
-#filename = 'LANDSAT_8.csv'
+filename = 'LANDSAT_8.csv'
 # LANDSAT_7 
-filename = 'LANDSAT_ETM.csv'
+# filename = 'LANDSAT_ETM_SLC_OFF.csv'
 
 #print lsf_quads['wrs2_code']
 
@@ -71,6 +71,7 @@ with open(filename, 'rb') as f:
 			print "Inserting..." + sceneID
 			print str(sceneID)
 			cur = conn.cursor()
+                        #print (sceneID,sensor,acquisitionDate,browseURL,path,rowNum,ccFull,ccFullUL,ccFullUR,ccFullLL,ccFullLR,dataTypeL1)
 			cur.execute("INSERT INTO landsat_metadata VALUES \
 				(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", \
 				(sceneID,sensor,acquisitionDate,browseURL,path,rowNum,ccFull,ccFullUL,ccFullUR,ccFullLL,ccFullLR,dataTypeL1)) # correct
