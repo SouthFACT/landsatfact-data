@@ -144,6 +144,7 @@ for tar in runList:
 			print "date1.sceneID:" , date1.sceneID
 			print "date2.sceneID:" , date2.sceneID
 		# =========================================================================
+			# NDVI
 			ndvi1 = date1.ndvi("SR")
 			ndvi2 = date2.ndvi("SR")
 			ndviChange = ndvi2 - ndvi1
@@ -153,6 +154,7 @@ for tar in runList:
 			ndviPercentChange = np.multiply(100,ndviPercentChange)
 			rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,ndviPercentChange,os.path.join(outNDVIfolder,outBasename+'_percent'),'ndvi16')
 			ndviPercentChange = None
+			# NDMI
 			ndmi1 = date1.ndmi("SR")
 			ndmi2 = date2.ndmi("SR")
 			ndmiChange = ndmi2 - ndmi1
@@ -162,6 +164,7 @@ for tar in runList:
 			ndmiPercentChange = np.multiply(100,ndmiPercentChange)
 			rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,ndmiPercentChange,os.path.join(outNDMIfolder,outBasename+'_percent'),'ndmi16')
 			ndmiPercentChange = None
+			# B7DIFF
 			swir1 = date1.SurfaceReflectance(date1.swir2,"swir2")
 			swir2 = date2.SurfaceReflectance(date2.swir2,"swir2")
 			b7Differencing = np.subtract(swir2,swir1)

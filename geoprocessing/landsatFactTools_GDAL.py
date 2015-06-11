@@ -114,9 +114,13 @@ def unzipTIFgap(inTar, sensorType, extractPath):
     for item in tar:
         for band in sensorType:
             if band == str(item.name)[21:-4] or ('gap_mask' in str(item.name) and band in str(item.name)):
-                #print ("Extracting " + item.name)
+                print ("Extracting " + item.name)
                 #extractPath=extracted
                 tar.extract(item, path=extractPath)
+                #jdm 6/11/15 make sure the file you just extract is group and owner 
+                file_of_interest = extractPath+'/'+item.name
+                print "file_of_interest on which to set file perms: "+file_of_interest
+                os.chmod(file_of_interest, 0664)
     gapMaskPath=os.path.join(extractPath,"gap_mask")
     if os.path.exists(gapMaskPath) == True:
         gapFiles = os.listdir(gapMaskPath)

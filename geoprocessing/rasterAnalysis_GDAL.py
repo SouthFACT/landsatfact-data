@@ -388,6 +388,7 @@ def runFmask(tiffFolder,fmaskShellCall):
 	try:
 		if os.path.exists(os.path.join(tiffFolder,os.path.basename(tiffFolder) + "_MTLFmask.TIF")) == False:
 			print "Running Fmask"
+			print "tiffFolder: "+tiffFolder
 			landsatFactTools_GDAL.cleanDir(tiffFolder)
 			# Fmaskexe = r'S:\Geospatial\LandsatFACT\Fmask.exe' #BM's original
 			# print tiffFolder
