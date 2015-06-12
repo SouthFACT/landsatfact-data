@@ -152,7 +152,9 @@ for tar in runList:
 			ndvi1 = None
 			ndvi2 = None
 			ndviPercentChange = np.multiply(100,ndviPercentChange)
-			rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,ndviPercentChange,os.path.join(outNDVIfolder,outBasename+'_percent'),'ndvi16')
+			outputTiffName = rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,ndviPercentChange,os.path.join(outNDVIfolder,outBasename+'_percent'),'ndvi16')
+			print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDVI'+" ,"+date2.sceneID[9:16]
+			landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDVI',date2.sceneID[9:16])
 			ndviPercentChange = None
 			# NDMI
 			ndmi1 = date1.ndmi("SR")
@@ -162,7 +164,9 @@ for tar in runList:
 			ndmi1 = None
 			ndmi2 = None
 			ndmiPercentChange = np.multiply(100,ndmiPercentChange)
-			rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,ndmiPercentChange,os.path.join(outNDMIfolder,outBasename+'_percent'),'ndmi16')
+			outputTiffName = rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,ndmiPercentChange,os.path.join(outNDMIfolder,outBasename+'_percent'),'ndmi16')
+			print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDMI'+" ,"+date2.sceneID[9:16]
+			landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDMI',date2.sceneID[9:16])			
 			ndmiPercentChange = None
 			# B7DIFF
 			swir1 = date1.SurfaceReflectance(date1.swir2,"swir2")
@@ -173,7 +177,9 @@ for tar in runList:
 			swir1 = None
 			swir2 = None
 			b7DifferencingPercentChange = np.multiply(100,b7DifferencingPercentChange)
-			rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,b7DifferencingPercentChange,os.path.join(outb7folder,outBasename+'_percent'),'b7diff')
+			outputTiffName = rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,b7DifferencingPercentChange,os.path.join(outb7folder,outBasename+'_percent'),'b7diff')
+			print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'B7DIFF'+" ,"+date2.sceneID[9:16]
+			landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'B7DIFF',date2.sceneID[9:16])						
 			b7DifferencingPercentChange = None
 	# =========================================================================
 print '\nLandsatFACT Complete'

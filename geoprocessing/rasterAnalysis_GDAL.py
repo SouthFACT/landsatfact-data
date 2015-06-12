@@ -337,8 +337,7 @@ def createOutTiff(dsList,array,of,outType):
     outBand.FlushCache()
     outputDataset.SetGeoTransform(dsList[2])
     outputDataset.SetProjection(dsList[3])
-    outputDataset = None
-
+    return outputTiffName
 
 def cropToQuad(inRastFolder, quadsFolder):
     """ """

@@ -10,7 +10,7 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 
-import os, sys, tarfile, shutil, traceback, gzip, subprocess
+import os, sys, tarfile, shutil, traceback, gzip, subprocess, stat, datetime
 from subprocess import PIPE
 import psycopg2
 from operator import itemgetter
@@ -95,8 +95,7 @@ def checkExisting(inTarPath, extractFolder):
         neededBands = sensorType + fmaskFiles
         unzipTIFgap(inTarPath, neededBands, extractedRoot)
         return extractedRoot
-
-
+		
 def unzipTIFgap(inTar, sensorType, extractPath):
     """Extracts the tar files based on which bands checkExisting tells it to."""
     tar = tarfile.open(inTar)
@@ -132,7 +131,18 @@ def unzipTIFgap(inTar, sensorType, extractPath):
                         outGZfile.write(inGZfile.read())
                         inGZfile.close()
                         outGZfile.close()
-
+	# jdm 6/11/2015: Put the below as a double-check that all unzipped files
+	# are indeed accessible to everyone as necessary
+	# see http://stackoverflow.com/questions/2853723/whats-the-python-way-for-recursively-setting-file-permissions
+	for dirpath, dirnames, filenames in os.walk(gapMaskPath):
+		for filename in filenames:
+			path = os.path.join(dirpath, filename)
+			os.chmod(path, 0o777)
+	for dirpath, dirnames, filenames in os.walk(extractPath):
+		for filename in filenames:
+			path = os.path.join(dirpath, filename)
+			os.chmod(path, 0o777)			
+			
 def gaper(val1, val2, outGAPfolder, baseName):
     # input val are rasterAnalysis_GDAL sensorBand Class objects
     # Creates a gap mask for the scene if it came from Landsat 7 after
@@ -180,7 +190,16 @@ def writeQuadToDB(pathList):
         print statement
         postgresCommand(statement)
 
-
+def writeProductToDB(product_id,input1,input2,product_type,product_date):
+    # writes newly created products to products table in database
+	# product_id: LE70270402015145EDC01UR_LE70270402015161EDC00UR_percent_NDVI16.tif
+	tableName = 'products'
+	normaldate = datetime.datetime(int(product_date[0:4]), 1, 1) + datetime.timedelta(int(product_date[4:7]) - 1)
+	normaldate_truncated = datetime.date(normaldate.year, normaldate.month, normaldate.day)
+	statement = "INSERT INTO {0}(product_id, input1, input2, product_type, product_date) VALUES ('{1}', '{2}', '{3}', '{4}', '{5}');".format(tableName,product_id,input1,input2,product_type,str(normaldate_truncated))
+	print statement
+	postgresCommand(statement)
+		
 def writeDNminToDB(dataDict,path):
     # writes DN min values to minimum_dn table in database
     sceneID = os.path.basename(path)
