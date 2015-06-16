@@ -413,7 +413,7 @@ def cloudCover(FmaskData):
     snow = float(np.sum(FmaskData == 3))
     cloud = float(np.sum(FmaskData == 4))
     noData = float(np.sum(FmaskData == 255))
-    ccPercent = round((cloud + snow + cloudShadow)/(clearLand + clearWater + cloudShadow + cloud + snow),2)
+    ccPercent = round((cloud + snow + cloudShadow)/(clearLand + clearWater + cloudShadow + cloud + snow)*100,2)
     return ccPercent
 
 
