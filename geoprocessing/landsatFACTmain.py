@@ -75,112 +75,114 @@ for tar in runList:
 	# I have not been able to get it to work.  Therefore, for now I am commenting this out
 	# rasterAnalysis_GDAL.runFmask(extractedPath,Fmaskexe) #BM's original
 	print extractedPath
-	rasterAnalysis_GDAL.runFmask(extractedPath,fmaskShellCall)
-	# get DN min number from each band in the scene and write to database
-	dnminExists = landsatFactTools_GDAL.checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
-	if dnminExists == False:
-		dnMinDict = rasterAnalysis_GDAL.getDNmin(extractedPath)
-		landsatFactTools_GDAL.writeDNminToDB(dnMinDict,extractedPath)
-	# create quads from the input scene
-	quadPaths = rasterAnalysis_GDAL.cropToQuad(extractedPath,quadsFolder)
-	landsatFactTools_GDAL.writeQuadToDB(quadPaths)
-	# get cloud cover percentage for each quad
-	quadCCDict = landsatFactTools_GDAL.getQuadCCpercent(quadPaths)
-	# =========================================================================
-	# write input scene quads cloud cover percentage to the landsat_metadata table in the database
-	landsatFactTools_GDAL.writeQuadsCCtoDB(quadCCDict,extractedPath)
-	# for each quad this finds the closest scene that passes the cloud cover threshold for processing
-	quadTiffList2Process = landsatFactTools_GDAL.getNextBestQuad(quadCCDict,cloudCoverThreshold)
-	# =========================================================================
-	#jdm: Need to make sure the next best quads we are going to be comparing to are actually extracted
-	#and pre-processed to a level appropriate for differencing.
-	print "quadTiffList2Process: ", quadTiffList2Process
-	#TO-DO: create/call a function in landsatFactTools_GDAL called extractProductForCompare()
-	#loop through quadTiffList2Process and get unique list of data to download 
-	for quad_pair in quadTiffList2Process:
-		base_quad = quad_pair[1]
-		diff_quad = quad_pair[0]
-		# The first quad that is determined to be missing from disk sets off a call
-		# to extractProductForCompare.  extractProductForCompare then download the tar ball for that
-		# scene and presumably the next time through a quad from that given seen will be 
-		# accounted for.
-		if os.path.exists(tiffsStorage+'/'+diff_quad) == False:
-			landsatFactTools_GDAL.extractProductForCompare(diff_quad[:-2],tarStorage,tiffsStorage,fmaskShellCall,quadsFolder)
-		else:
-			print diff_quad+" already exist in the tiffsStorage"
-	# =========================================================================
-	# checks the list of quads, if 0 then there were no quads under the cloud cover threshold
-	# so there is nothing to process for that scene
-	if len(quadTiffList2Process) > 0:
-		#print "quadTiffList2Process: ", quadTiffList2Process
-		# for each quad pair perform the change analysis
-		for compareList in quadTiffList2Process:
-			pathList = [os.path.join(tiffsStorage,compareList[0]), os.path.join(tiffsStorage,compareList[1])]
+	if (rasterAnalysis_GDAL.runFmask(extractedPath,fmaskShellCall)== True):
+		# get DN min number from each band in the scene and write to database
+		dnminExists = landsatFactTools_GDAL.checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
+		if dnminExists == False:
+			dnMinDict = rasterAnalysis_GDAL.getDNmin(extractedPath)
+			landsatFactTools_GDAL.writeDNminToDB(dnMinDict,extractedPath)
+		# create quads from the input scene
+		quadPaths = rasterAnalysis_GDAL.cropToQuad(extractedPath,quadsFolder)
+		landsatFactTools_GDAL.writeQuadToDB(quadPaths)
+		# get cloud cover percentage for each quad
+		quadCCDict = landsatFactTools_GDAL.getQuadCCpercent(quadPaths)
 		# =========================================================================
-			# sets the scenes in order
-			tifPathList = pathList
-			#print "tifPathList: ", tifPathList
-			if int(os.path.basename(tifPathList[0])[9:13]) > int(os.path.basename(tifPathList[1])[9:13]):
-				date1=rasterAnalysis_GDAL.sensorBand(tifPathList[1])
-				date2=rasterAnalysis_GDAL.sensorBand(tifPathList[0])
-			elif int(os.path.basename(tifPathList[0])[9:13]) < int(os.path.basename(tifPathList[1])[9:13]):
-				date1=rasterAnalysis_GDAL.sensorBand(tifPathList[0])
-				date2=rasterAnalysis_GDAL.sensorBand(tifPathList[1])
+		# write input scene quads cloud cover percentage to the landsat_metadata table in the database
+		landsatFactTools_GDAL.writeQuadsCCtoDB(quadCCDict,extractedPath)
+		# for each quad this finds the closest scene that passes the cloud cover threshold for processing
+		quadTiffList2Process = landsatFactTools_GDAL.getNextBestQuad(quadCCDict,cloudCoverThreshold)
+		# =========================================================================
+		#jdm: Need to make sure the next best quads we are going to be comparing to are actually extracted
+		#and pre-processed to a level appropriate for differencing.
+		print "quadTiffList2Process: ", quadTiffList2Process
+		#TO-DO: create/call a function in landsatFactTools_GDAL called extractProductForCompare()
+		#loop through quadTiffList2Process and get unique list of data to download 
+		for quad_pair in quadTiffList2Process:
+			base_quad = quad_pair[1]
+			diff_quad = quad_pair[0]
+			# The first quad that is determined to be missing from disk sets off a call
+			# to extractProductForCompare.  extractProductForCompare then download the tar ball for that
+			# scene and presumably the next time through a quad from that given seen will be 
+			# accounted for.
+			if os.path.exists(tiffsStorage+'/'+diff_quad) == False:
+				landsatFactTools_GDAL.extractProductForCompare(diff_quad[:-2],tarStorage,tiffsStorage,fmaskShellCall,quadsFolder)
 			else:
-				if int(os.path.basename(tifPathList[0])[13:16]) > int(os.path.basename(tifPathList[1])[13:16]):
+				print diff_quad+" already exist in the tiffsStorage"
+		# =========================================================================
+		# checks the list of quads, if 0 then there were no quads under the cloud cover threshold
+		# so there is nothing to process for that scene
+		if len(quadTiffList2Process) > 0:
+			#print "quadTiffList2Process: ", quadTiffList2Process
+			# for each quad pair perform the change analysis
+			for compareList in quadTiffList2Process:
+				pathList = [os.path.join(tiffsStorage,compareList[0]), os.path.join(tiffsStorage,compareList[1])]
+			# =========================================================================
+				# sets the scenes in order
+				tifPathList = pathList
+				#print "tifPathList: ", tifPathList
+				if int(os.path.basename(tifPathList[0])[9:13]) > int(os.path.basename(tifPathList[1])[9:13]):
 					date1=rasterAnalysis_GDAL.sensorBand(tifPathList[1])
 					date2=rasterAnalysis_GDAL.sensorBand(tifPathList[0])
-				else:
+				elif int(os.path.basename(tifPathList[0])[9:13]) < int(os.path.basename(tifPathList[1])[9:13]):
 					date1=rasterAnalysis_GDAL.sensorBand(tifPathList[0])
 					date2=rasterAnalysis_GDAL.sensorBand(tifPathList[1])
-		# =========================================================================
-			# create product name
-			outBasename = date1.sceneID + "_" + date2.sceneID
-		# =========================================================================
-			# creates a gap mask for the scene if it came from Landsat 7 after
-			# the ordinal date of 2003151 (5/31/2003) when the SLC went offline
-			landsatFactTools_GDAL.gaper(date1,date2,outGAPfolder,outBasename)
-			print "here after gapmasker"
-			print "date1.sceneID:" , date1.sceneID
-			print "date2.sceneID:" , date2.sceneID
-		# =========================================================================
-			# NDVI
-			ndvi1 = date1.ndvi("SR")
-			ndvi2 = date2.ndvi("SR")
-			ndviChange = ndvi2 - ndvi1
-			ndviPercentChange = ndviChange / np.absolute(ndvi1)
-			ndvi1 = None
-			ndvi2 = None
-			ndviPercentChange = np.multiply(100,ndviPercentChange)
-			outputTiffName = rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,ndviPercentChange,os.path.join(outNDVIfolder,outBasename+'_percent'),'ndvi16')
-			print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDVI'+" ,"+date2.sceneID[9:16]
-			landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDVI',date2.sceneID[9:16])
-			ndviPercentChange = None
-			# NDMI
-			ndmi1 = date1.ndmi("SR")
-			ndmi2 = date2.ndmi("SR")
-			ndmiChange = ndmi2 - ndmi1
-			ndmiPercentChange = ndmiChange / np.absolute(ndmi1)
-			ndmi1 = None
-			ndmi2 = None
-			ndmiPercentChange = np.multiply(100,ndmiPercentChange)
-			outputTiffName = rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,ndmiPercentChange,os.path.join(outNDMIfolder,outBasename+'_percent'),'ndmi16')
-			print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDMI'+" ,"+date2.sceneID[9:16]
-			landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDMI',date2.sceneID[9:16])			
-			ndmiPercentChange = None
-			# B7DIFF
-			swir1 = date1.SurfaceReflectance(date1.swir2,"swir2")
-			swir2 = date2.SurfaceReflectance(date2.swir2,"swir2")
-			b7Differencing = np.subtract(swir2,swir1)
-			b7DifferencingPercentChange = b7Differencing / np.absolute(swir1)
-			b7Differencing = None
-			swir1 = None
-			swir2 = None
-			b7DifferencingPercentChange = np.multiply(100,b7DifferencingPercentChange)
-			outputTiffName = rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,b7DifferencingPercentChange,os.path.join(outb7folder,outBasename+'_percent'),'b7diff')
-			print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'B7DIFF'+" ,"+date2.sceneID[9:16]
-			landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'B7DIFF',date2.sceneID[9:16])						
-			b7DifferencingPercentChange = None
+				else:
+					if int(os.path.basename(tifPathList[0])[13:16]) > int(os.path.basename(tifPathList[1])[13:16]):
+						date1=rasterAnalysis_GDAL.sensorBand(tifPathList[1])
+						date2=rasterAnalysis_GDAL.sensorBand(tifPathList[0])
+					else:
+						date1=rasterAnalysis_GDAL.sensorBand(tifPathList[0])
+						date2=rasterAnalysis_GDAL.sensorBand(tifPathList[1])
+			# =========================================================================
+				# create product name
+				outBasename = date1.sceneID + "_" + date2.sceneID
+			# =========================================================================
+				# creates a gap mask for the scene if it came from Landsat 7 after
+				# the ordinal date of 2003151 (5/31/2003) when the SLC went offline
+				landsatFactTools_GDAL.gaper(date1,date2,outGAPfolder,outBasename)
+				print "here after gapmasker"
+				print "date1.sceneID:" , date1.sceneID
+				print "date2.sceneID:" , date2.sceneID
+			# =========================================================================
+				# NDVI
+				ndvi1 = date1.ndvi("SR")
+				ndvi2 = date2.ndvi("SR")
+				ndviChange = ndvi2 - ndvi1
+				ndviPercentChange = ndviChange / np.absolute(ndvi1)
+				ndvi1 = None
+				ndvi2 = None
+				ndviPercentChange = np.multiply(100,ndviPercentChange)
+				outputTiffName = rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,ndviPercentChange,os.path.join(outNDVIfolder,outBasename+'_percent'),'ndvi16')
+				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDVI'+" ,"+date2.sceneID[9:16]
+				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDVI',date2.sceneID[9:16])
+				ndviPercentChange = None
+				# NDMI
+				ndmi1 = date1.ndmi("SR")
+				ndmi2 = date2.ndmi("SR")
+				ndmiChange = ndmi2 - ndmi1
+				ndmiPercentChange = ndmiChange / np.absolute(ndmi1)
+				ndmi1 = None
+				ndmi2 = None
+				ndmiPercentChange = np.multiply(100,ndmiPercentChange)
+				outputTiffName = rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,ndmiPercentChange,os.path.join(outNDMIfolder,outBasename+'_percent'),'ndmi16')
+				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDMI'+" ,"+date2.sceneID[9:16]
+				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDMI',date2.sceneID[9:16])			
+				ndmiPercentChange = None
+				# B7DIFF
+				swir1 = date1.SurfaceReflectance(date1.swir2,"swir2")
+				swir2 = date2.SurfaceReflectance(date2.swir2,"swir2")
+				b7Differencing = np.subtract(swir2,swir1)
+				b7DifferencingPercentChange = b7Differencing / np.absolute(swir1)
+				b7Differencing = None
+				swir1 = None
+				swir2 = None
+				b7DifferencingPercentChange = np.multiply(100,b7DifferencingPercentChange)
+				outputTiffName = rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,b7DifferencingPercentChange,os.path.join(outb7folder,outBasename+'_percent'),'b7diff')
+				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'B7DIFF'+" ,"+date2.sceneID[9:16]
+				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'B7DIFF',date2.sceneID[9:16])						
+				b7DifferencingPercentChange = None
+	else:
+		print "There was an issue with FMASK on: "+extractedPath
 	# =========================================================================
 print '\nLandsatFACT Complete'
 sys.exit()

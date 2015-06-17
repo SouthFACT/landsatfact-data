@@ -335,6 +335,8 @@ def createOutTiff(dsList,array,of,outType):
     outBand = outputDataset.GetRasterBand(1)
     outBand.WriteArray(array)
     outBand.FlushCache()
+    print "dsList[2] tuple %s" % (dsList[2],)
+    print "dsList[3] tuple  %s" % (dsList[3],)
     outputDataset.SetGeoTransform(dsList[2])
     outputDataset.SetProjection(dsList[3])
     return outputTiffName
@@ -385,25 +387,24 @@ def cropToQuad(inRastFolder, quadsFolder):
 def runFmask(tiffFolder,fmaskShellCall):
 	""" """
 	try:
+		return_value = True;
 		if os.path.exists(os.path.join(tiffFolder,os.path.basename(tiffFolder) + "_MTLFmask.TIF")) == False:
 			print "Running Fmask"
 			print "tiffFolder: "+tiffFolder
 			landsatFactTools_GDAL.cleanDir(tiffFolder)
-			# Fmaskexe = r'S:\Geospatial\LandsatFACT\Fmask.exe' #BM's original
-			# print tiffFolder
-			# os.chdir(tiffFolder) # Change current working directory
-			# print("fmaskShellCall:" + fmaskShellCall + "\n")
 			print("working dir:" + os.getcwd() + "\n")
-			# os.system(fmaskShellCall)
 			process = subprocess.Popen([fmaskShellCall],cwd=tiffFolder,stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
 			out,err = process.communicate()
-			errcode = process.returncode
+			errcode = process.returncode 
 			os.rename(os.path.join(tiffFolder,os.path.basename(tiffFolder)+"_MTLFmask"), os.path.join(tiffFolder,os.path.basename(tiffFolder)+"_MTLFmask.TIF"))
+		else:
+			print "Mask already created for: "+tiffFolder
+		return return_value
 	except:
-		print "Fmask Fail: ", "\n",out, "\n",err, "\n",errcode
-		print "\n\n Script Terminated"
-		sys.exit()
-
+		print("Fmask Execution failed:"+str(out)+"/n"+str(err)+"/n"+str(errcode))
+		return_value = False;
+		return return_value
+		
 def cloudCover(FmaskData):
     """ """
     #print "Computing Cloud Cover"
