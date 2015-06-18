@@ -1,4 +1,12 @@
 <?php
+/* Name: jdmorgan
+   Purpose: To download and update latest Landsat scene data by scene ID.
+   Create : 04/01/2015
+   License: This code was developed in the public domain. This code is provided "as is", without warranty of any kind,
+	express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement.
+	In no event shall the authors be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise,
+	arising from, out of or in connection with the software or the use or other dealings in the software. 
+*/
 include 'usgseros.php';
 
 function custom_put_contents($source_url='',$local_path=''){
