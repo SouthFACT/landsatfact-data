@@ -151,23 +151,27 @@ def unzipTIFgap(inTar, sensorType, extractPath):
 			path = os.path.join(dirpath, filename)
 			os.chmod(path, 0o777)			
 			
-def gaper(val1, val2, outGAPfolder, baseName):
+def gaper(date1, date2, outGAPfolder, baseName):
     # input val are rasterAnalysis_GDAL sensorBand Class objects
     # Creates a gap mask for the scene if it came from Landsat 7 after
     # the ordinal date of 2003151 (5/31/2003) when the SLC went offline
     gapMaskList=[]
-    if val1.platformType == "LE7" and val1.ordinalData > 2003151:
-        gapMask1=val1.gapMasker()
+    if date1.platformType == "LE7" and date1.ordinalData > 2003151:
+        gapMask1=date1.gapMasker()
         gapMaskList.append(gapMask1)
-    if val2.platformType == "LE7" and val2.ordinalData > 2003151:
-        gapMask2=val2.gapMasker()
+    if date2.platformType == "LE7" and date2.ordinalData > 2003151:
+        gapMask2=date2.gapMasker()
         gapMaskList.append(gapMask2)
     if len(gapMaskList) == 2:
         gapMask = gapMask1[0] * gapMask2[0]
-        rasterAnalysis_GDAL.createOutTiff(gapMask1[1],gapMask,os.path.join(outGAPfolder,baseName),'gm')
+        outputTiffName = rasterAnalysis_GDAL.createOutTiff(gapMask1[1],gapMask,os.path.join(outGAPfolder,baseName),'gm')
+	print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]
+	writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16])		
     elif len(gapMaskList) == 1:
         gapMask = gapMaskList[0]
-        rasterAnalysis_GDAL.createOutTiff(gapMask[1],gapMask[0],os.path.join(outGAPfolder,baseName),'gm')
+        outputTiffName = rasterAnalysis_GDAL.createOutTiff(gapMask[1],gapMask[0],os.path.join(outGAPfolder,baseName),'gm')
+	print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]
+	writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16])			
 
 
 def getQuadCCpercent(quadPaths):
