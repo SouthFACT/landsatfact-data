@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
 # Name:		landsatFactTools_GDAL.py
 # Purpose:	LandsatFACT application script that defines primary
-#		geoprocessing functions. 
+#		TAR file handling and geoprocessing functions. 
 #
 # Author:	LandsatFACT Project Team
 #		support@landsatfact.com
