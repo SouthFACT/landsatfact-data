@@ -1,12 +1,10 @@
 #-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
+# Name:		rasterAnalysis_GDAL.py
+# Purpose:	LandsatFACT application script that defines primary
+#		raster processing functions. 
 #
-# Author:      mclebr
-#
-# Created:     03/10/2014
-# Copyright:   (c) mclebr 2014
-# Licence:     
+# Author:	LandsatFACT Project Team
+#		support@landsatfact.com
 """ This code was developed in the public domain.
 This code is provided "as is", without warranty of any kind,
 express or implied, including but not limited to the warranties of

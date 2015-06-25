@@ -1,14 +1,12 @@
-#! /usr/bin/python
 #-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
+# Name:		landsatFactTools_GDAL.py
+# Purpose:	LandsatFACT application script that defines primary
+#		TAR file handling and geoprocessing functions. 
 #
-# Author:      Brian McLean
-# 
-# Created:     03/25/2015
-# Copyright:   (c) mclebr 2014
-# Licence:     
+# Author:	LandsatFACT Project Team
+#		support@landsatfact.com
 """ This code was developed in the public domain.
+
 This code is provided "as is", without warranty of any kind,
 express or implied, including but not limited to the warranties of
 merchantability, fitness for a particular purpose and noninfringement.

@@ -1,14 +1,12 @@
-#! /usr/bin/python
 #-------------------------------------------------------------------------------
-# Name:        landsatFACTmain.py
-# Purpose:
+# Name:		landsatFACTmain.py
+# Purpose:	LandsatFACT application script that calls needed functions to
+#		process TAR compressed files into Vegetation Index products. 
 #
-# Author:      Brian McLean
-#
-# Last Updated:     02/25/2015
-#
-# Licence:
+# Author:	LandsatFACT Project Team
+#		support@landsatfact.com
 """ This code was developed in the public domain.
+
 This code is provided "as is", without warranty of any kind,
 express or implied, including but not limited to the warranties of
 merchantability, fitness for a particular purpose and noninfringement.
@@ -17,6 +15,7 @@ other liability, whether in an action of contract, tort or otherwise,
 arising from, out of or in connection with the software or the use or
 other dealings in the software."""
 #-------------------------------------------------------------------------------
+
 
 def main():
     pass
