@@ -69,6 +69,7 @@ for tar in runList:
 	outNDMIfolder = os.path.join(productStorage,'ndmi')
 	outb7folder = os.path.join(productStorage,'b7diff')
 	outGAPfolder = os.path.join(productStorage,'gap_mask')
+	outFMASKfolder = os.path.join(productStorage,'cloud_mask')
 	# set cloud cover threshold level, quad scene's with a higher percentage of
 	# cloud cover will not be processed.
 	cloudCoverThreshold = 50
@@ -83,7 +84,8 @@ for tar in runList:
 	# I have not been able to get it to work.  Therefore, for now I am commenting this out
 	# rasterAnalysis_GDAL.runFmask(extractedPath,Fmaskexe) #BM's original
 	print extractedPath
-	if (rasterAnalysis_GDAL.runFmask(extractedPath,fmaskShellCall)== True):
+	runFmaskBool = rasterAnalysis_GDAL.runFmask(extractedPath,fmaskShellCall)
+	if (runFmaskBool== True):
 		# get DN min number from each band in the scene and write to database
 		dnminExists = landsatFactTools_GDAL.checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
 		if dnminExists == False:
@@ -145,12 +147,46 @@ for tar in runList:
 				# create product name
 				outBasename = date1.sceneID + "_" + date2.sceneID
 			# =========================================================================
+				# Gap mask
 				# creates a gap mask for the scene if it came from Landsat 7 after
 				# the ordinal date of 2003151 (5/31/2003) when the SLC went offline
 				landsatFactTools_GDAL.gaper(date1,date2,outGAPfolder,outBasename)
 				print "here after gapmasker"
 				print "date1.sceneID:" , date1.sceneID
 				print "date2.sceneID:" , date2.sceneID
+			# =========================================================================
+				# Cloud mask
+				print "Cloud mask folder and date1 location: "+date1.folder+"/"+date1.sceneID+"_MTLFmask.TIF"
+				print "Cloud mask folder and date2 location: "+date2.folder+"/"+date2.sceneID+"_MTLFmask.TIF"
+				if not os.path.exists(date1.folder+"/"+date1.sceneID+"_MTLFmask.TIF"):
+                                    rasterAnalysis_GDAL.runFmask(date1.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''),fmaskShellCall)
+                                    # create quads from the input scene
+                                    quadPaths = rasterAnalysis_GDAL.cropToQuad(date1.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''),quadsFolder)
+                                    landsatFactTools_GDAL.writeQuadToDB(quadPaths)
+                                    # get cloud cover percentage for each quad
+                                    quadCCDict = landsatFactTools_GDAL.getQuadCCpercent(quadPaths)
+                                    # =========================================================================
+                                    # write input scene quads cloud cover percentage to the landsat_metadata table in the database
+                                    landsatFactTools_GDAL.writeQuadsCCtoDB(quadCCDict,date1.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''))                                    
+				if not os.path.exists(date2.folder+"/"+date2.sceneID+"_MTLFmask.TIF"):
+				    rasterAnalysis_GDAL.runFmask(date2.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''),fmaskShellCall)
+                                    # create quads from the input scene
+                                    quadPaths = rasterAnalysis_GDAL.cropToQuad(date1.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''),quadsFolder)
+                                    landsatFactTools_GDAL.writeQuadToDB(quadPaths)
+                                    # get cloud cover percentage for each quad
+                                    quadCCDict = landsatFactTools_GDAL.getQuadCCpercent(quadPaths)
+                                    # =========================================================================
+                                    # write input scene quads cloud cover percentage to the landsat_metadata table in the database
+                                    landsatFactTools_GDAL.writeQuadsCCtoDB(quadCCDict,date1.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''))                                   
+                                if os.path.exists(date1.folder+"/"+date1.sceneID+"_MTLFmask.TIF") and os.path.exists(date2.folder+"/"+date2.sceneID+"_MTLFmask.TIF"):
+                                    FmaskReclassedArray1 = date1.reclassFmask()
+                                    FmaskReclassedArray2 = date2.reclassFmask()
+                                    FmaskReclassedArray = FmaskReclassedArray1 * FmaskReclassedArray2
+                                    outputTiffName = rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,FmaskReclassedArray,os.path.join(outFMASKfolder,outBasename),'Fmask')
+                                    print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'CLOUD'+" ,"+date2.sceneID[9:16]
+                                    landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'CLOUD',date2.sceneID[9:16])
+                                else:
+                                    print "Apparently the fmask file doesn't exist"
 			# =========================================================================
 				# NDVI
 				ndvi1 = date1.ndvi("SR")

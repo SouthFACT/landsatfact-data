@@ -116,6 +116,16 @@ class sensorBand:
             r = array
         return r
 
+    
+    def reclassFmask(self):
+	    """ """
+	    FmaskQuad = os.path.join(self.folder,self.sceneID+"_MTLFmask.TIF")
+	    FmaskArray = rast2array(FmaskQuad)[0]
+	    FmaskArray[FmaskArray == 0] = 10
+	    FmaskArray[(FmaskArray == 1) | (FmaskArray == 2) | (FmaskArray == 3) | (FmaskArray == 4) |(FmaskArray == 255)] = 0
+	    FmaskArray[FmaskArray == 10] = 1
+	    return FmaskArray	
+	
     def TOAradiance(self, array, band, Ml="Grescale", Al="Brescale"):
         """ """
         # Same formula for Landsat 5, 7 & 8
@@ -328,7 +338,7 @@ def rast2array(inBand):
 def createOutTiff(dsList,array,of,outType):
     """attList, array, outFolder, outType--'ndvi','ndmi','gm','cloud',b7diff' """
     outTypeDict={"ndvi":["_NDVI.tif",gdal.GDT_Float32],"swir":["_swir.tif",gdal.GDT_Float32],"sr":["_sr.tif",gdal.GDT_Float32],"ndmi":["_NDMI.tif",gdal.GDT_Float32],"ndvi16":["_NDVI16.tif",gdal.GDT_Int16], "ndmi16":["_NDMI16.tif",gdal.GDT_Int16],\
-    "gm":["_GapMask.tif",gdal.GDT_Byte],"cloud":["_CloudMask.tif",gdal.GDT_Byte],"b7diff":["_b7diff.tif",gdal.GDT_Int16],"ndviPer":["_NDVIper8bit.tif",gdal.GDT_Byte]}
+    "gm":["_GapMask.tif",gdal.GDT_Byte],"cloud":["_CloudMask.tif",gdal.GDT_Byte],"b7diff":["_b7diff.tif",gdal.GDT_Int16],"ndviPer":["_NDVIper8bit.tif",gdal.GDT_Byte],"Fmask":["_Fmask.tif",gdal.GDT_Byte]}
     #print "dsList: ", dsList
     driver = gdal.GetDriverByName("GTiff")
     outputTiffName = of + outTypeDict[outType][0]
@@ -343,8 +353,8 @@ def createOutTiff(dsList,array,of,outType):
     outBand = outputDataset.GetRasterBand(1)
     outBand.WriteArray(array)
     outBand.FlushCache()
-    print "dsList[2] tuple %s" % (dsList[2],)
-    print "dsList[3] tuple  %s" % (dsList[3],)
+    #print "dsList[2] tuple %s" % (dsList[2],)
+    #print "dsList[3] tuple  %s" % (dsList[3],)
     outputDataset.SetGeoTransform(dsList[2])
     outputDataset.SetProjection(dsList[3])
     return outputTiffName
@@ -396,7 +406,9 @@ def runFmask(tiffFolder,fmaskShellCall):
 	""" """
 	try:
 		return_value = True;
-		if os.path.exists(os.path.join(tiffFolder,os.path.basename(tiffFolder) + "_MTLFmask.TIF")) == False:
+		print "In runFmask checking for: "+os.path.join(tiffFolder,os.path.basename(tiffFolder) + "_MTLFmask.TIF")
+		print "fmaskShellCall: "+fmaskShellCall
+                if os.path.exists(os.path.join(tiffFolder,os.path.basename(tiffFolder) + "_MTLFmask.TIF")) == False:
 			print "Running Fmask"
 			print "tiffFolder: "+tiffFolder
 			landsatFactTools_GDAL.cleanDir(tiffFolder)
@@ -409,7 +421,8 @@ def runFmask(tiffFolder,fmaskShellCall):
 			print "Mask already created for: "+tiffFolder
 		return return_value
 	except:
-		print("Fmask Execution failed:"+str(out)+"/n"+str(err)+"/n"+str(errcode))
+		if out in vars() or out in globals():
+			print("Fmask Execution failed:"+str(out)+"/n"+str(err)+"/n"+str(errcode))
 		return_value = False;
 		return return_value
 		

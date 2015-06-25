@@ -182,7 +182,8 @@ def getQuadCCpercent(quadPaths):
             if tiff[-12:] == "MTLFmask.TIF":
                 FmaskQuadData = rasterAnalysis_GDAL.rast2array(os.path.join(quadPath,tiff))
                 ccPer = rasterAnalysis_GDAL.cloudCover(FmaskQuadData[0])
-                quadCCDict.update({tiff[0:23]:ccPer})
+		quadCCDict.update({tiff[0:23]:ccPer})
+		FmaskQuadData = None
     return quadCCDict
 
 
