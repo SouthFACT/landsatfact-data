@@ -334,9 +334,9 @@ def rast2array(inBand):
     return [dsArray, attList]
 
 def createOutTiff(dsList,array,of,outType):
-    """attList, array, outFolder, outType--'ndvi','ndmi','gm','cloud',b7diff' """
+    """attList, array, outFolder, outType--'ndvi','ndmi','gm','cloud',swir' """
     outTypeDict={"ndvi":["_NDVI.tif",gdal.GDT_Float32],"swir":["_swir.tif",gdal.GDT_Float32],"sr":["_sr.tif",gdal.GDT_Float32],"ndmi":["_NDMI.tif",gdal.GDT_Float32],"ndvi16":["_NDVI16.tif",gdal.GDT_Int16], "ndmi16":["_NDMI16.tif",gdal.GDT_Int16],\
-    "gm":["_GapMask.tif",gdal.GDT_Byte],"cloud":["_CloudMask.tif",gdal.GDT_Byte],"b7diff":["_b7diff.tif",gdal.GDT_Int16],"ndviPer":["_NDVIper8bit.tif",gdal.GDT_Byte],"Fmask":["_Fmask.tif",gdal.GDT_Byte]}
+    "gm":["_GapMask.tif",gdal.GDT_Byte],"cloud":["_CloudMask.tif",gdal.GDT_Byte],"swir":["_swir.tif",gdal.GDT_Int16],"ndviPer":["_NDVIper8bit.tif",gdal.GDT_Byte],"Fmask":["_Fmask.tif",gdal.GDT_Byte]}
     #print "dsList: ", dsList
     driver = gdal.GetDriverByName("GTiff")
     outputTiffName = of + outTypeDict[outType][0]

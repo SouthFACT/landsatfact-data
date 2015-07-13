@@ -32,7 +32,7 @@ reload(rasterAnalysis_GDAL)
 
 # =========================================================================
 runList = []
-os.chdir("/fsdata1/lsfdata/tarFiles")
+os.chdir("/lsfdata1/eros_data")
 for file in glob.glob("*.tar.gz"):
     runList.append(file)
 
@@ -51,20 +51,22 @@ for tar in runList:
 	# set folder locations
 	# folder where the tar.gz's are stored
 	# tarStorage = r'S:\Geospatial\LandsatFACT\data\tarFiles' #BM's original
-	tarStorage = r'/fsdata1/lsfdata/tarFiles'
+	tarStorage = r'/lsfdata1/eros_data'
 	# folder where you want the extracted tiff's to be stored, they will automatically be
 	# put inside of a subfolder labeled with the scene name
 	# tiffsStorage = r'S:\Geospatial\LandsatFACT\data\extractedTars' #BM's original
-	tiffsStorage = r'/fsdata1/lsfdata/tarFiles/extractedTars'
+	tiffsStorage = r'/lsfdata1/eros_data/extractedTars'
 	# root folder for the output storage
 	# if this path does not exist the script will create it
 	# productStorage = r'S:\Geospatial\LandsatFACT\data\20150414' #BM's original
-	productStorage = r'/fsdata1/lsfdata/products'
+	productStorage = r'/lsfdata1/products'
+        # root folder for raw quad scene data storage
+        quadSceneData = r'/lsfdata1/project_data'
 	# set output folder locations per product
 	# if this path does not exist the script will create it
 	outNDVIfolder = os.path.join(productStorage,'ndvi')
 	outNDMIfolder = os.path.join(productStorage,'ndmi')
-	outb7folder = os.path.join(productStorage,'b7diff')
+	outb7folder = os.path.join(productStorage,'swir')
 	outGAPfolder = os.path.join(productStorage,'gap_mask')
 	outFMASKfolder = os.path.join(productStorage,'cloud_mask')
 	# set cloud cover threshold level, quad scene's with a higher percentage of
@@ -108,8 +110,8 @@ for tar in runList:
 			base_quad = quad_pair[1]
 			diff_quad = quad_pair[0]
 			# The first quad that is determined to be missing from disk sets off a call
-			# to extractProductForCompare.  extractProductForCompare then download the tar ball for that
-			# scene and presumably the next time through a quad from that given seen will be 
+			# to extractProductForCompare.  extractProductForCompare then downloads the tar ball for that
+			# scene and presumably the next time through a quad from that given scene will be 
 			# accounted for.
 			if os.path.exists(tiffsStorage+'/'+diff_quad) == False:
 				landsatFactTools_GDAL.extractProductForCompare(diff_quad[:-2],tarStorage,tiffsStorage,fmaskShellCall,quadsFolder)
@@ -209,7 +211,7 @@ for tar in runList:
 				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDMI'+" ,"+date2.sceneID[9:16]
 				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDMI',date2.sceneID[9:16])			
 				ndmiPercentChange = None
-				# B7DIFF
+				# SWIR
 				swir1 = date1.SurfaceReflectance(date1.swir2,"swir2")
 				swir2 = date2.SurfaceReflectance(date2.swir2,"swir2")
 				b7Differencing = np.subtract(swir2,swir1)
@@ -218,9 +220,9 @@ for tar in runList:
 				swir1 = None
 				swir2 = None
 				b7DifferencingPercentChange = np.multiply(100,b7DifferencingPercentChange)
-				outputTiffName = rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,b7DifferencingPercentChange,os.path.join(outb7folder,outBasename+'_percent'),'b7diff')
-				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'B7DIFF'+" ,"+date2.sceneID[9:16]
-				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'B7DIFF',date2.sceneID[9:16])						
+				outputTiffName = rasterAnalysis_GDAL.createOutTiff(date1.geoTiffAtts,b7DifferencingPercentChange,os.path.join(outb7folder,outBasename+'_percent'),'swir')
+				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'SWIR'+" ,"+date2.sceneID[9:16]
+				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'SWIR',date2.sceneID[9:16])						
 				b7DifferencingPercentChange = None
 	else:
 		print "There was an issue with FMASK on: "+extractedPath

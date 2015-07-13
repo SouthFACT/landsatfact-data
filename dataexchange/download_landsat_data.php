@@ -56,7 +56,7 @@ try{
 
 	//Delete any of the old downloaded tars
 	print("Delete old tars...\n");
-	array_map('unlink', glob("/fsdata1/lsfdata/tarFiles/*.gz"));
+	array_map('unlink', glob("/lsfdata1/eros_data/*.gz"));
 	
 	//Initialize the database connection
 	lsf_db_init();
@@ -77,12 +77,12 @@ try{
 			}
 			print_r("Downloading " . $row[0]);
 			print_r(" with dataset " . $datasetName);
-			if (file_exists('/fsdata1/lsfdata/tarFiles/'.$row[0].'.tar.gz')) {
+			if (file_exists('/lsfdata1/eros_data/'.$row[0].'.tar.gz')) {
 				echo "\n The file already exists";
 			} else {
 				$downloadUrl = getDownloadUrl($datasetName, $client, $apiKey, $row[0]);
 				print_r("\n downloadUrl->item :".$downloadUrl->item);
-				custom_put_contents($downloadUrl->item,'/fsdata1/lsfdata/tarFiles/'.$row[0].'.tar.gz');
+				custom_put_contents($downloadUrl->item,'/lsfdata1/eros_data/'.$row[0].'.tar.gz');
 			}						
 			print_r("\n");		  
 		}		
