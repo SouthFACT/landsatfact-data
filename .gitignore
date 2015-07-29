@@ -19,3 +19,4 @@ dataexchange/LANDSAT_ETM.csv
 geoprocessing/fmaskLinux/MCRInstaller
 *.zip
 *.pyc
+geoprocessing/daveo/*
