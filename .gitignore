@@ -1,5 +1,7 @@
 *.ini
 msconfig/vlayers.map
+msconfig/rlayers.map
+msconfig/lsflayers.map
 msconfig/data
 var/Config.py
 var/Config.pyc
@@ -20,3 +22,6 @@ geoprocessing/fmaskLinux/MCRInstaller
 *.zip
 *.pyc
 geoprocessing/daveo/*
+geoprocessing/fmaskLinux/Fmask32/*
+dataexchange/LANDSAT_ETM_SLC_OFF.csv
+html/landsatfact_config.xml
