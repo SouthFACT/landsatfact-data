@@ -17,17 +17,33 @@
         <image label="Google Streets" selected="true" name="Google Streets"/>
     </images>
     <mapviews>
-        <view label="Alabama" name="AL" zoom="yes" xmin="-10416632.843068" ymin="3437627.384928" xmax="-8772930.9870528" ymax="4242356.4186024">
-            <viewGroup name="Base Layers" />
+        <view label="Southeast Region" name="SE" zoom="yes" xmin="-13413575.847656" ymin="1885649.9628419" xmax="-6838768.4235937" ymax="5104566.0975391" selected="true">
+            <viewGroup name="Base_Layers" />
             <viewGroup name="LandsatFACT" />
+			<viewGroup name="LandsatFACT_B7_Threshold_Archive" />
+			<viewGroup name="LandsatFACT_B7_AllChange_Archive" />
+			<viewGroup name="LandsatFACT_NDVI_Archive" />
+			<viewGroup name="LandsatFACT_NDMI_Archive" />
+        </view>
+		<view label="Alabama" name="AL" zoom="yes" xmin="-10416632.843068" ymin="3437627.384928" xmax="-8772930.9870528" ymax="4242356.4186024">
+            <viewGroup name="Base_Layers" />
+            <viewGroup name="LandsatFACT" />
+			<viewGroup name="LandsatFACT_B7_Threshold_Archive" />
+			<viewGroup name="LandsatFACT_B7_AllChange_Archive" />
+			<viewGroup name="LandsatFACT_NDVI_Archive" />
+			<viewGroup name="LandsatFACT_NDMI_Archive" />
         </view>
         <view label="North Carolina" name="NC" zoom="yes" xmin="-9707908.7169062" ymin="3739299.9089095" xmax="-8064206.8608906" ymax="4544028.9425839">
-            <viewGroup name="Base Layers" />
+            <viewGroup name="Base_Layers" />
             <viewGroup name="LandsatFACT" />
+			<viewGroup name="LandsatFACT_B7_Threshold_Archive" />
+			<viewGroup name="LandsatFACT_B7_AllChange_Archive" />
+			<viewGroup name="LandsatFACT_NDVI_Archive" />
+			<viewGroup name="LandsatFACT_NDMI_Archive" />
         </view>        
     </mapviews>
     <wmsLayers>
-        <wmsGroup gid="G01" label="Base Layers" name="Base Layers">
+        <wmsGroup gid="G01" label="Base Layers" name="Base_Layers">
             <wmsSubgroup label="Base Layers">
                 <wmsLayer
                      selected="true"
@@ -38,7 +54,7 @@
                      layers="states"
                      styles="default"
                      identify="false"
-                     name="states"
+                     name="States"
                      legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=states&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
                 <wmsLayer
                      selected="false"
@@ -49,31 +65,37 @@
                      layers="landsat_quads"
                      styles="default"
                      identify="false"
-                     name="landsat_quads"
-                     legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=landsat_quads&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>					 
+                     name="Landsat Quads"
+                     legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=landsat_quads&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
             </wmsSubgroup>
         </wmsGroup>
-        <wmsGroup gid="G02" label="LandsatFACT" name="LandsatFACT">
-            <wmsSubgroup label="NC B7DiffTest">
-                <wmsLayer identify="true" layers="B7DIFF" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=B7DIFF&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="B7DIFF" name="Tile Index" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
-                <wmsLayer identify="true" layers="B7DIFFM" legend="%(SERVER_URL)s/html/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=B7DIFFM&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="B7DIFFM" name="Mosaic" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
-                <wmsLayer identify="true" layers="B7DIFFM_MASK" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=B7DIFFM&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="B7DIFFM_MASK" name="Mosaic with Mask" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/html/rlayers?TRANSPARENT=true" visible="false" />
-                <wmsLayer identify="true" layers="B7DIFF_VRT" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=B7DIFF_VRT&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="B7DIFF_VRT" name="VRT" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
+        <wmsGroup gid="G02" label="LandsatFACT" name="LandsatFACT" selected="true">
+			<wmsSubgroup label="Latest Change Products">
+                <wmsLayer selected="true" identify="true" layers="southeast-b7diff-current-threshold" legend="%(SERVER_URL)s/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-b7diff-current-threshold&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCA" name="B7 Differencing (Threshold)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
+				<wmsLayer identify="true" layers="southeast-b7diff-current-allchange" legend="%(SERVER_URL)s/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-b7diff-current-allchange&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCB" name="B7 Differencing (All Change)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
+				<wmsLayer identify="true" layers="southeast-ndvi-current" legend="%(SERVER_URL)s/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndvi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCC" name="NDVI" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
+				<wmsLayer identify="true" layers="southeast-ndmi-current" legend="%(SERVER_URL)s/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndmi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCD" name="NDMI" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
             </wmsSubgroup>
-            <wmsSubgroup label="SE B7DiffTest 16bit">
-                <wmsLayer identify="true" layers="SEB7DIFFM" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SEB7DIFFM&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SEB7DIFFM" name="Mosaic Overview" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
-                <wmsLayer identify="true" layers="SEB7DIFF_TINDEX" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SEB7DIFF_TINDEX&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SEB7DIFF_TINDEX" name="Tile Index" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
-                <wmsLayer identify="true" layers="SEB7DIFFVRT" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SEB7DIFFVRT&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SEB7DIFFVRT" name="VRT" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
-				<wmsLayer identify="true" layers="SCALEGROUP" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SCALEGROUP&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SCALEGROUP" name="SCALEGROUP (Ovr and Tindex)" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
-				<wmsLayer identify="true" layers="SCALEGROUP2" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SCALEGROUP2&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SCALEGROUP2" name="SCALEGROUP (Ovr and VRT)" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
+        </wmsGroup>
+		<wmsGroup gid="G03" label="LandsatFACT B7 Threshold Archive" name="LandsatFACT_B7_Threshold_Archive">
+            <wmsSubgroup label="B7 Archive (Threshold)">
+				%(LSF_LAYERS_SWIR_THRESH)s
             </wmsSubgroup>
-			<wmsSubgroup label="SE B7DiffTest 8bit">
-                <wmsLayer identify="true" layers="SEB7DIFFM8" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SEB7DIFFM8&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SEB7DIFFM8" name="Mosaic Overview" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
-				<wmsLayer identify="true" layers="SEB7DIFF_TINDEX8bit" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SEB7DIFF_TINDEX&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SEB7DIFF_TINDEX" name="Tile Index" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
-                <wmsLayer identify="true" layers="SEB7DIFFVRT8bit" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SEB7DIFFVRT&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SEB7DIFFVRT" name="VRT" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
-				<wmsLayer identify="true" layers="SCALEGROUP8bit" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SCALEGROUP&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SCALEGROUP" name="SCALEGROUP (Ovr and Tindex)" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
-				<wmsLayer identify="true" layers="SCALEGROUP28bit" legend="%(SERVER_URL)s/rlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=SCALEGROUP2&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="SCALEGROUP2" name="SCALEGROUP (Ovr and VRT)" srs="EPSG:3785" styles="default" url="%(SERVER_URL)s/rlayers?TRANSPARENT=true" visible="false" />
+		</wmsGroup>
+		<wmsGroup gid="G04" label="LandsatFACT B7 All Change Archive" name="LandsatFACT_B7_AllChange_Archive">
+            <wmsSubgroup label="B7 Archive (All Change)">
+				%(LSF_LAYERS_SWIR_ALLCHANGE)s
             </wmsSubgroup>
+		</wmsGroup>
+		<wmsGroup gid="G05" label="LandsatFACT NDVI Archive" name="LandsatFACT_NDVI_Archive">
+			<wmsSubgroup label="NDVI Archive">
+				%(LSF_LAYERS_NDVI)s
+            </wmsSubgroup>
+		</wmsGroup>              
+		<wmsGroup gid="G06" label="LandsatFACT NDMI Archive" name="LandsatFACT_NDMI_Archive">
+			<wmsSubgroup label="NDMI Archive">
+                %(LSF_LAYERS_NDMI)s
+			</wmsSubgroup>
         </wmsGroup>
     </wmsLayers>
     <tools>

@@ -1,6 +1,10 @@
 #! /usr/bin/python
 
-import sys, re, os
+import sys, re, os, getopt, psycopg2
+from subprocess import Popen
+import time
+ 
+print "Connected!\n"
 
 sys.path.append("../var")
 try:
@@ -13,6 +17,16 @@ except:
     print "as a starting point --- make a copy of that file called 'Config.py', and edit appropriately."
     exit(-1)
 
+conn = psycopg2.connect(POSTGIS_CONNECTION_STRING)    
+
+print "Connecting to database\n   ->%s" % (POSTGIS_CONNECTION_STRING)
+    
+# from LegendConfig import *
+opts, args = getopt.getopt(sys.argv[1:],"al")
+
+# conn.cursor will return a cursor object, you can use this cursor to perform queries
+
+    
 
 class Template:
     def __init__(self, file=None, **args):
@@ -27,10 +41,137 @@ class Template:
     def render(self, dict):
         return self.contents % dict
 
+#change product template    
+lsfWMSLayerTemplate = Template(string="""
+        <wmsLayer
+          lid="%(LAYER_LID)s"
+          visible="false"
+          url="%(LSF_URL)s" 
+          srs="EPSG:900913"
+          layers="%(LAYER_NAME)s"
+          name="%(LAYER_TITLE)s"
+          styles="default" 
+          identify="false"
+          legend="%(SERVER_URL)s/cmapicons/change.png"
+          mask="true"/>""")  
+          
+
+
+def getLSFLayers():
+    #automating the latest change layers
+    lsfDict = {
+       'NDVI' : [],
+       'NDMI' : []
+    }
+    date_and_type_cur = conn.cursor()
+    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_archive_product_dates;")
+         
+    for date, type in date_and_type_cur:
+        if type in lsfDict.keys():
+            date_string = date.isoformat()
+            date_no_hyphens = date.strftime('%Y%m%d')
+            #date = date.join(data)
+            print 'The date is ' + date_string + type
+            lid = type+date_no_hyphens
+            lsfURL = "http://landsatfact-data-dev.nemac.org/lsflayers?TIME="+date_string+"&amp;TRANSPARENT=true"
+            lsfDict[type].append({'LAYER_LID' : lid,
+                            'LAYER_NAME'      : type+"-raster",
+                            'LAYER_TITLE'     : type+date_no_hyphens,
+                            'SERVER_URL'      : SERVER_URL,
+                            'LSF_URL'         : lsfURL
+            })
+
+    layers = { 
+        'NDVI' : [],
+        'NDMI' : []
+    }
+        
+    for type in lsfDict.keys():
+        for thing in lsfDict[type]:
+            layers[type].append(lsfWMSLayerTemplate.render(thing))   
+    return layers
+	
+def getB7ThresholdLayers():
+    #automating the latest change layers
+    lsfDict = {
+       'SWIR' : []
+    }
+    date_and_type_cur = conn.cursor()
+    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_archive_product_dates;")
+         
+    for date, type in date_and_type_cur:
+        if type in lsfDict.keys():
+            date_string = date.isoformat()
+            date_no_hyphens = date.strftime('%Y%m%d')
+            #date = date.join(data)
+            print 'The date is ' + date_string + type
+            lid = type+date_no_hyphens
+            lsfURL = "http://landsatfact-data-dev.nemac.org/lsflayers?TIME="+date_string+"&amp;TRANSPARENT=true"
+            lsfDict[type].append({'LAYER_LID' : lid,
+                            'LAYER_NAME'      : type+"-raster-threshold",
+                            'LAYER_TITLE'     : type+date_no_hyphens,
+                            'SERVER_URL'      : SERVER_URL,
+                            'LSF_URL'         : lsfURL
+            })
+
+    layers = { 
+        'SWIR' : []
+    }
+        
+    for type in lsfDict.keys():
+        for thing in lsfDict[type]:
+            layers[type].append(lsfWMSLayerTemplate.render(thing))   
+    return layers
+	
+def getB7AllChangeLayers():
+    #automating the latest change layers
+    lsfDict = {
+       'SWIR' : []
+    }
+    date_and_type_cur = conn.cursor()
+    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_archive_product_dates;")
+         
+    for date, type in date_and_type_cur:
+        if type in lsfDict.keys():
+            date_string = date.isoformat()
+            date_no_hyphens = date.strftime('%Y%m%d')
+            #date = date.join(data)
+            print 'The date is ' + date_string + type
+            lid = type+date_no_hyphens
+            lsfURL = "http://landsatfact-data-dev.nemac.org/lsflayers?TIME="+date_string+"&amp;TRANSPARENT=true"
+            lsfDict[type].append({'LAYER_LID' : lid,
+                            'LAYER_NAME'      : type+"-raster-allchange",
+                            'LAYER_TITLE'     : type+date_no_hyphens,
+                            'SERVER_URL'      : SERVER_URL,
+                            'LSF_URL'         : lsfURL
+            })
+
+    layers = { 
+        'SWIR' : []
+    }
+        
+    for type in lsfDict.keys():
+        for thing in lsfDict[type]:
+            layers[type].append(lsfWMSLayerTemplate.render(thing))   
+    return layers
+
 template = Template("landsatfact_config.tpl.xml")
 
-f = open("../html/landsatfact_config.xml", "w+")
+if not os.path.exists("../html"):
+    os.makedirs("../html")
+
+lsfLayers = getLSFLayers()
+thresholdLayers = getB7ThresholdLayers()
+allChangeLayers = getB7AllChangeLayers()
+#End NRT 8 day & drought monitor automation-------------------------------------------------
+
+f = open("../html/landsatfact_config.xml", "w")
 f.write(template.render( {
-            'SERVER_URL'                            : SERVER_URL
-            }))
+           'SERVER_URL'                         : SERVER_URL,
+           #'VIEWER_DEPLOY_DIR_URL'             : VIEWER_DEPLOY_DIR_URL,
+           'LSF_LAYERS_SWIR_THRESH'           : '\n'.join(thresholdLayers['SWIR']),
+		   'LSF_LAYERS_SWIR_ALLCHANGE'        : '\n'.join(allChangeLayers['SWIR']),
+           'LSF_LAYERS_NDVI'                    : '\n'.join(lsfLayers['NDVI']),
+           'LSF_LAYERS_NDMI'                    : '\n'.join(lsfLayers['NDMI'])
+           }))
 f.close()

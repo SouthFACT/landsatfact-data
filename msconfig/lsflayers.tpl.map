@@ -1,0 +1,1930 @@
+MAP
+    # the following two lines tell MapServer to write debugging output to a log file.  Remove the '#' from the beginning
+    # of the two lines below to enable this logging:
+    #CONFIG "MS_ERRORFILE" "../var/log/vlayers.log"
+    DEBUG 5
+
+    # all temp files get prefixed with this string
+    NAME ms_vlayers
+
+    #jdm:added to accomodate map layers
+    #see http://trac.osgeo.org/mapserver/ticket/3055
+    MAXSIZE 3072 
+    
+    # background color of image if transparency
+    # is not requested
+    IMAGECOLOR 255 255 255
+
+    # default output image dimensions
+    SIZE 600 400
+
+    # always returns a map
+    STATUS ON
+
+    # set top level projection
+    PROJECTION
+        "init=epsg:3785"
+    END
+
+    # image format options
+    OUTPUTFORMAT
+        NAME "PNG"
+        DRIVER "GDAL/PNG"
+        MIMETYPE "image/png"
+        IMAGEMODE "RGB"
+        EXTENSION "png"
+    END
+
+    # minx miny maxx maxy
+    EXTENT    -124.733174 24.543940 -66.950005 49.384359 # US
+
+    # add def pointers for symbols
+    SYMBOLSET "./symbols/symbols35.sym"
+    FONTSET   "./fonts/fonts.list"
+
+    # Start of web interface definition
+    WEB
+
+        # this is the real filepath to the temp dir for intermediate file creation
+        IMAGEPATH "./tmp"
+
+        # this is the web-accessible path to IMAGEPATH
+        IMAGEURL "/tmp/"
+
+        HEADER "./templates/query_header.html"
+        FOOTER "./templates/query_footer.html"
+
+        METADATA
+            "ows_enable_request"     "*"
+            "wms_title"              "NEMAC LandsatFACT Product Layers WMS"
+            "wms_abstract"           "NEMAC LandsatFACT Product Layers WMS"
+            "wms_onlineresource"     "%(SERVICE_URL)s"
+            "wms_srs"                "EPSG:3785 EPSG:4326 EPSG:900913"
+        END
+    END
+
+    QUERYMAP
+        STATUS OFF
+    END
+
+    # set defaults for GetLegendGraphic requests 
+    LEGEND
+        KEYSIZE 30 20
+    END
+
+	#Begin the southeast mosaic products
+	
+	
+	LAYER
+		NAME "southeast-b7diff-current-threshold"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+        METADATA
+            "wms_title"             "southeast-b7diff-current-threshold"
+            "wms_abstract"          "southeast-b7diff-current-threshold"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-b7diff-current-thresholdMaskForDeciduousForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-b7diff-current-thresholdMaskForDeciduousForest"
+            "wms_abstract"          "southeast-b7diff-current-thresholdMaskForDeciduousForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-b7diff-current-thresholdMaskForConiferForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-b7diff-current-thresholdMaskForConiferForest"
+            "wms_abstract"          "southeast-b7diff-current-thresholdMaskForConiferForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-b7diff-current-thresholdMaskForForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-b7diff-current-thresholdMaskForForest"
+            "wms_abstract"          "southeast-b7diff-current-thresholdMaskForForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-b7diff-current-allchange"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+        METADATA
+            "wms_title"             "southeast-b7diff-current-allchange"
+            "wms_abstract"          "southeast-b7diff-current-allchange"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-b7diff-current-allchangeMaskForDeciduousForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-b7diff-current-allchangeMaskForDeciduousForest"
+            "wms_abstract"          "southeast-b7diff-current-allchangeMaskForDeciduousForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-b7diff-current-allchangeMaskForConiferForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-b7diff-current-allchangeMaskForConiferForest"
+            "wms_abstract"          "southeast-b7diff-current-allchangeMaskForConiferForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-b7diff-current-allchangeMaskForForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-b7diff-current-allchangeMaskForForest"
+            "wms_abstract"          "southeast-b7diff-current-allchangeMaskForForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-current"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDVI.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+        METADATA
+            "wms_title"             "southeast-ndvi-current"
+            "wms_abstract"          "southeast-ndvi-current"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForDeciduousForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDVI.tif.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForDeciduousForest"
+            "wms_abstract"          "southeast-ndvi-currentMaskForDeciduousForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForConiferForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDVI.tif.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForConiferForest"
+            "wms_abstract"          "southeast-ndvi-currentMaskForConiferForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDVI.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForForest"
+            "wms_abstract"          "southeast-ndvi-currentMaskForForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndmi-current"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDMI.tif.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+        METADATA
+            "wms_title"             "southeast-ndmi-current"
+            "wms_abstract"          "southeast-ndmi-current"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndmi-currentMaskForDeciduousForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDMI.tif.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-ndmi-currentMaskForDeciduousForest"
+            "wms_abstract"          "southeast-ndmi-currentMaskForDeciduousForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndmi-currentMaskForConiferForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDMI.tif.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-ndmi-currentMaskForConiferForest"
+            "wms_abstract"          "southeast-ndmi-currentMaskForConiferForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndmi-currentMaskForForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDMI.tif.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-ndmi-currentMaskForForest"
+            "wms_abstract"          "southeast-ndmi-currentMaskForForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	
+	#Begin the tile index products
+	
+	LAYER
+		NAME "b7diff-tdx"
+		STATUS ON
+		TYPE POLYGON
+		CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from vw_tile_index_b7diff"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            "init=epsg:4326"
+        END
+		#OPACITY 0
+		CLASS	
+			STYLE	
+				COLOR 200 200 200
+				OUTLINECOLOR 0 0 0
+			END
+		END
+        METADATA
+                "wms_title"             "b7diff-tdx"
+                "wms_abstract"          "b7diff-tdx"
+                "gml_include_items"     "location"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-05-13"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "B7DIFF-raster-threshold"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "b7diff-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END        
+        METADATA
+                "wms_title"             "B7DIFF-raster-threshold"
+                "wms_abstract"          "B7DIFF-raster-threshold"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "B7DIFF-raster-thresholdMaskForDeciduousForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "b7diff-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END     
+		MASK gap-raster
+        METADATA
+                "wms_title"             "B7DIFF-raster-thresholdMaskForDeciduousForest"
+                "wms_abstract"          "B7DIFF-raster-thresholdMaskForDeciduousForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "B7DIFF-raster-thresholdMaskForConiferForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "b7diff-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END   
+		MASK cloud-raster
+        METADATA
+                "wms_title"             "B7DIFF-raster-thresholdMaskForConiferForest"
+                "wms_abstract"          "B7DIFF-raster-thresholdMaskForConiferForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "B7DIFF-raster-thresholdMaskForForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "b7diff-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END  
+		MASK cloudGap-raster
+        METADATA
+                "wms_title"             "B7DIFF-raster-thresholdMaskForForest"
+                "wms_abstract"          "B7DIFF-raster-thresholdMaskForForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "B7DIFF-raster-allchange"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "b7diff-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END        
+        METADATA
+                "wms_title"             "B7DIFF-raster-allchange"
+                "wms_abstract"          "B7DIFF-raster-allchange"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "B7DIFF-raster-allchangeMaskForDeciduousForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "b7diff-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END     
+		MASK gap-raster
+        METADATA
+                "wms_title"             "B7DIFF-raster-allchangeMaskForDeciduousForest"
+                "wms_abstract"          "B7DIFF-raster-allchangeMaskForDeciduousForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "B7DIFF-raster-allchangeMaskForConiferForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "b7diff-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END   
+		MASK cloud-raster
+        METADATA
+                "wms_title"             "B7DIFF-raster-allchangeMaskForConiferForest"
+                "wms_abstract"          "B7DIFF-raster-allchangeMaskForConiferForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "B7DIFF-raster-allchangeMaskForForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "b7diff-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END  
+		MASK cloudGap-raster
+        METADATA
+                "wms_title"             "B7DIFF-raster-allchangeMaskForForest"
+                "wms_abstract"          "B7DIFF-raster-allchangeMaskForForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-tdx"
+		STATUS ON
+		TYPE POLYGON
+		CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from vw_tile_index_ndvi"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            "init=epsg:4326"
+        END
+		#OPACITY 0
+		CLASS	
+			STYLE	
+				COLOR 200 200 200
+				OUTLINECOLOR 0 0 0
+			END
+		END
+        METADATA
+                "wms_title"             "ndvi-tdx"
+                "wms_abstract"          "ndvi-tdx"
+                "gml_include_items"     "location"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-05-13"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDVI-raster"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END        
+        METADATA
+                "wms_title"             "NDVI-raster"
+                "wms_abstract"          "NDVI-raster"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDVI-rasterMaskForDeciduousForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END     
+		MASK gap-raster
+        METADATA
+                "wms_title"             "NDVI-rasterMaskForDeciduousForest"
+                "wms_abstract"          "NDVI-rasterMaskForDeciduousForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDVI-rasterMaskForConiferForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END   
+		MASK cloud-raster
+        METADATA
+                "wms_title"             "NDVI-rasterMaskForConiferForest"
+                "wms_abstract"          "NDVI-rasterMaskForConiferForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDVI-rasterMaskForForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END  
+		MASK cloudGap-raster
+        METADATA
+                "wms_title"             "NDVI-rasterMaskForForest"
+                "wms_abstract"          "NDVI-rasterMaskForForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndmi-tdx"
+		STATUS ON
+		TYPE POLYGON
+		CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from vw_tile_index_ndmi"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            "init=epsg:4326"
+        END
+		#OPACITY 0
+		CLASS	
+			STYLE	
+				COLOR 200 200 200
+				OUTLINECOLOR 0 0 0
+			END
+		END
+        METADATA
+                "wms_title"             "ndmi-tdx"
+                "wms_abstract"          "ndmi-tdx"
+                "gml_include_items"     "location"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-05-13"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDMI-raster"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndmi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END        
+        METADATA
+                "wms_title"             "NDMI-raster"
+                "wms_abstract"          "NDMI-raster"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDMI-rasterMaskForDeciduousForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndmi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END     
+		MASK gap-raster
+        METADATA
+                "wms_title"             "NDMI-rasterMaskForDeciduousForest"
+                "wms_abstract"          "NDMI-rasterMaskForDeciduousForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDMI-rasterMaskForConiferForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndmi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END   
+		MASK cloud-raster
+        METADATA
+                "wms_title"             "NDMI-rasterMaskForConiferForest"
+                "wms_abstract"          "NDMI-rasterMaskForConiferForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDMI-rasterMaskForForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndmi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 1 254
+				RANGEITEM "pixel"
+			END
+		END  
+		MASK cloudGap-raster
+        METADATA
+                "wms_title"             "NDMI-rasterMaskForForest"
+                "wms_abstract"          "NDMI-rasterMaskForForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	
+	#Begin the tile index masks
+	
+	LAYER
+		NAME "gap-tdx"
+		STATUS ON
+		TYPE POLYGON
+		CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from vw_tile_index_gap"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            "init=epsg:4326"
+        END
+		#OPACITY 0
+		CLASS	
+			STYLE	
+				COLOR 200 200 200
+				OUTLINECOLOR 0 0 0
+			END
+		END
+        METADATA
+                "wms_title"             "gap-tdx"
+                "wms_abstract"          "gap-tdx"
+                "gml_include_items"     "location"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-05-13"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "gap-raster"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "gap-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		FILTER ([date] = "2015-03-09")
+		OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to -1"
+			EXPRESSION ([pixel] >= -119 AND [pixel] < 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 -1
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 0"
+			EXPRESSION ([pixel] = 0)
+			STYLE
+				COLOR 0 0 0
+				#DATARANGE -119 -1
+				#RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END        
+        METADATA
+                "wms_title"             "gap-raster"
+                "wms_abstract"          "gap-raster"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "cloud-tdx"
+		STATUS ON
+		TYPE POLYGON
+		CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from vw_tile_index_cloud"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            "init=epsg:4326"
+        END
+		#OPACITY 0
+		CLASS	
+			STYLE	
+				COLOR 200 200 200
+				OUTLINECOLOR 0 0 0
+			END
+		END
+        METADATA
+                "wms_title"             "cloud-tdx"
+                "wms_abstract"          "cloud-tdx"
+                "gml_include_items"     "location"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-05-13"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "cloud-raster"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "cloud-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		FILTER ([date] = "2015-03-09")
+		OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to -1"
+			EXPRESSION ([pixel] >= -119 AND [pixel] < 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 -1
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 0"
+			EXPRESSION ([pixel] = 0)
+			STYLE
+				COLOR 0 0 0
+				#DATARANGE -119 -1
+				#RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END        
+        METADATA
+                "wms_title"             "cloud-raster"
+                "wms_abstract"          "cloud-raster"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "cloudGap-raster"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "cloud-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		FILTER ([date] = "2015-03-09")
+		OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to -1"
+			EXPRESSION ([pixel] >= -119 AND [pixel] < 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 -1
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 0"
+			EXPRESSION ([pixel] = 0)
+			STYLE
+				COLOR 0 0 0
+				#DATARANGE -119 -1
+				#RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END        
+		MASK gap-raster
+        METADATA
+                "wms_title"             "cloudGap-raster"
+                "wms_abstract"          "cloudGap-raster"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	
+	#Begin the southeast mosaic masks
+	
+	LAYER
+		NAME "southeast-gap-current"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicGAP.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+        METADATA
+            "wms_title"             "southeast-gap-current"
+            "wms_abstract"          "southeast-gap-current"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-cloud-current"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicCLOUD.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+        METADATA
+            "wms_title"             "southeast-cloud-current"
+            "wms_abstract"          "southeast-cloud-current"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-cloudGap-current"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicCLOUD.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+        END
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
+			STYLE
+				COLORRANGE 179 0 0 254 240 217
+				DATARANGE -119 0
+				RANGEITEM "pixel"
+			END
+		END
+		CLASS
+			#NAME "Values 1 to 255"
+			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
+			STYLE
+				COLORRANGE 161 218 180 37 52 148
+				DATARANGE 0 254
+				RANGEITEM "pixel"
+			END
+		END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-cloudGAP-current"
+            "wms_abstract"          "southeast-cloudGAP-current"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+END

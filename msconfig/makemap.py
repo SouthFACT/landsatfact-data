@@ -58,10 +58,22 @@ f_new.close()
 ###
 ### Create the rlayers.map file:
 ###
-template = Template("rlayers.tpl.map")
-f_new = openMapfileForWriting("rlayers.map")
+# template = Template("rlayers.tpl.map")
+# f_new = openMapfileForWriting("rlayers.map")
+# f_new.write( template.render( {
+    # 'SERVICE_URL'  : "%s/%s" % (SERVER_URL, "rlayers"),
+    # 'RASTER_DATA_DIR' : RASTER_DATA_DIR
+            # } ) )
+# f_new.close()
+
+###
+### Create the lsflayers.map file:
+###
+template = Template("lsflayers.tpl.map")
+f_new = openMapfileForWriting("lsflayers.map")
 f_new.write( template.render( {
-    'SERVICE_URL'  : "%s/%s" % (SERVER_URL, "rlayers"),
-    'RASTER_DATA_DIR' : RASTER_DATA_DIR
+    'SERVICE_URL'  : "%s/%s" % (SERVER_URL, "lsflayers"),
+	'POSTGIS_CONNECTION_STRING' : POSTGIS_CONNECTION_STRING,
+    'DATA_DIR' : DATA_DIR
             } ) )
 f_new.close()
