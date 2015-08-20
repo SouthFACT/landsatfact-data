@@ -7,3 +7,7 @@ Header set Access-Control-Allow-Origin "*"
     Allow from all
     SetHandler cgi-script
 </Files>
+<Files "lsflayers">
+    Allow from all
+    SetHandler cgi-script
+</Files>

@@ -126,5 +126,88 @@ MAP
             "wms_abstract"         "landsat_quads"
             "gml_include_items"    "all"
         END  # end METADATA
-    END # end Layer		
+    END # end Layer	
+	LAYER # 
+        NAME landsat_quads_labels
+		GROUP quad_scenes
+        PROJECTION
+            "init=epsg:4326"
+        END
+        CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from landsat_quads"
+        EXTENT           -124.733174 24.543940 -66.950005 49.384359 # US
+        STATUS           OFF
+        TYPE             POLYGON
+        DUMP             TRUE
+        HEADER           ./templates/layer_query_header.html
+        TEMPLATE         ./templates/layer_query_body.html
+        LABELITEM quad_id
+		CLASS
+            STYLE
+                #COLOR        232 232 232
+                OUTLINECOLOR 230 230 230 
+            END
+			LABEL
+			  MAXSCALEDENOM 500000
+			  #MINSCALEDENOM
+			  POSITION cc
+			  COLOR  0 0 0
+			  OUTLINECOLOR 255 255 255
+			  FONT "arial"
+			  TYPE truetype
+			  SIZE 6
+			  #ANGLE [MYANGLE]
+			  POSITION AUTO
+			  PARTIALS FALSE
+			END
+        END
+        METADATA
+            "wms_title"            "landsat_quads_labels"
+            "wms_abstract"         "landsat_quads_labels"
+            "gml_include_items"    "all"
+        END  # end METADATA
+    END # end Layer	
+	LAYER # 
+        NAME scene_boundaries
+		GROUP quad_scenes
+        PROJECTION
+            "init=epsg:4326"
+        END
+        CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from scene_boundaries"
+        EXTENT           -124.733174 24.543940 -66.950005 49.384359 # US
+        STATUS           OFF
+        TYPE             POLYGON
+        DUMP             TRUE
+        HEADER           ./templates/layer_query_header.html
+        TEMPLATE         ./templates/layer_query_body.html
+        LABELITEM scene
+		CLASS
+            STYLE
+                #COLOR        232 232 232
+                OUTLINECOLOR 0 0 0 
+				OUTLINEWIDTH 4
+            END
+			LABEL
+			  #MAXSCALEDENOM
+			  MINSCALEDENOM 500000
+			  POSITION cc
+			  COLOR  0 0 0
+			  OUTLINECOLOR 255 255 255
+			  FONT "arial"
+			  TYPE truetype
+			  SIZE 6
+			  #ANGLE [MYANGLE]
+			  POSITION AUTO
+			  PARTIALS FALSE
+			END
+        END
+        METADATA
+            "wms_title"            "scene_boundaries"
+            "wms_abstract"         "scene_boundaries"
+            "gml_include_items"    "all"
+        END  # end METADATA
+    END # end Layer	
 END

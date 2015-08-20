@@ -25,3 +25,4 @@ geoprocessing/daveo/*
 geoprocessing/fmaskLinux/Fmask32/*
 dataexchange/LANDSAT_ETM_SLC_OFF.csv
 html/landsatfact_config.xml
+geoprocessing/old/*

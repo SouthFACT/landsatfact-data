@@ -1,0 +1,11 @@
+#! /usr/bin/python
+
+import sys
+sys.path.append("../msconfig")
+import CGIUtils
+sys.path.append("../var")
+from Config import MAPSERVER_EXE
+
+MAPFILE = '../msconfig/lsflayers.map'
+
+CGIUtils.mapserv_inject_mapfile(MAPFILE, MAPSERVER_EXE)

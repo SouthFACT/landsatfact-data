@@ -20,24 +20,24 @@
         <view label="Southeast Region" name="SE" zoom="yes" xmin="-13413575.847656" ymin="1885649.9628419" xmax="-6838768.4235937" ymax="5104566.0975391" selected="true">
             <viewGroup name="Base_Layers" />
             <viewGroup name="LandsatFACT" />
-			<viewGroup name="LandsatFACT_B7_Threshold_Archive" />
-			<viewGroup name="LandsatFACT_B7_AllChange_Archive" />
+			<viewGroup name="LandsatFACT_SWIR_Threshold_Archive" />
+			<viewGroup name="LandsatFACT_SWIR_AllChange_Archive" />
 			<viewGroup name="LandsatFACT_NDVI_Archive" />
 			<viewGroup name="LandsatFACT_NDMI_Archive" />
         </view>
 		<view label="Alabama" name="AL" zoom="yes" xmin="-10416632.843068" ymin="3437627.384928" xmax="-8772930.9870528" ymax="4242356.4186024">
             <viewGroup name="Base_Layers" />
             <viewGroup name="LandsatFACT" />
-			<viewGroup name="LandsatFACT_B7_Threshold_Archive" />
-			<viewGroup name="LandsatFACT_B7_AllChange_Archive" />
+			<viewGroup name="LandsatFACT_SWIR_Threshold_Archive" />
+			<viewGroup name="LandsatFACT_SWIR_AllChange_Archive" />
 			<viewGroup name="LandsatFACT_NDVI_Archive" />
 			<viewGroup name="LandsatFACT_NDMI_Archive" />
         </view>
         <view label="North Carolina" name="NC" zoom="yes" xmin="-9707908.7169062" ymin="3739299.9089095" xmax="-8064206.8608906" ymax="4544028.9425839">
             <viewGroup name="Base_Layers" />
             <viewGroup name="LandsatFACT" />
-			<viewGroup name="LandsatFACT_B7_Threshold_Archive" />
-			<viewGroup name="LandsatFACT_B7_AllChange_Archive" />
+			<viewGroup name="LandsatFACT_SWIR_Threshold_Archive" />
+			<viewGroup name="LandsatFACT_SWIR_AllChange_Archive" />
 			<viewGroup name="LandsatFACT_NDVI_Archive" />
 			<viewGroup name="LandsatFACT_NDMI_Archive" />
         </view>        
@@ -62,7 +62,7 @@
                      visible="true"
                      url="%(SERVER_URL)s/vlayers?TRANSPARENT=true"
                      srs="EPSG:3785"
-                     layers="landsat_quads"
+                     layers="quad_scenes"
                      styles="default"
                      identify="false"
                      name="Landsat Quads"
@@ -71,19 +71,19 @@
         </wmsGroup>
         <wmsGroup gid="G02" label="LandsatFACT" name="LandsatFACT" selected="true">
 			<wmsSubgroup label="Latest Change Products">
-                <wmsLayer selected="true" identify="true" layers="southeast-b7diff-current-threshold" legend="%(SERVER_URL)s/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-b7diff-current-threshold&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCA" name="B7 Differencing (Threshold)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
-				<wmsLayer identify="true" layers="southeast-b7diff-current-allchange" legend="%(SERVER_URL)s/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-b7diff-current-allchange&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCB" name="B7 Differencing (All Change)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
+                <wmsLayer selected="true" identify="true" layers="southeast-swir-current-threshold" legend="%(SERVER_URL)s/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-swir-current-threshold&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCA" name="SWIR Differencing (Threshold)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
+				<wmsLayer identify="true" layers="southeast-swir-current-allchange" legend="%(SERVER_URL)s/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-swir-current-allchange&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCB" name="SWIR Differencing (All Change)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
 				<wmsLayer identify="true" layers="southeast-ndvi-current" legend="%(SERVER_URL)s/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndvi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCC" name="NDVI" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
 				<wmsLayer identify="true" layers="southeast-ndmi-current" legend="%(SERVER_URL)s/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndmi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCD" name="NDMI" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
             </wmsSubgroup>
         </wmsGroup>
-		<wmsGroup gid="G03" label="LandsatFACT B7 Threshold Archive" name="LandsatFACT_B7_Threshold_Archive">
-            <wmsSubgroup label="B7 Archive (Threshold)">
+		<wmsGroup gid="G03" label="LandsatFACT SWIR Threshold Archive" name="LandsatFACT_SWIR_Threshold_Archive">
+            <wmsSubgroup label="SWIR Archive (Threshold)">
 				%(LSF_LAYERS_SWIR_THRESH)s
             </wmsSubgroup>
 		</wmsGroup>
-		<wmsGroup gid="G04" label="LandsatFACT B7 All Change Archive" name="LandsatFACT_B7_AllChange_Archive">
-            <wmsSubgroup label="B7 Archive (All Change)">
+		<wmsGroup gid="G04" label="LandsatFACT SWIR All Change Archive" name="LandsatFACT_SWIR_AllChange_Archive">
+            <wmsSubgroup label="SWIR Archive (All Change)">
 				%(LSF_LAYERS_SWIR_ALLCHANGE)s
             </wmsSubgroup>
 		</wmsGroup>

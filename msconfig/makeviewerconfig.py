@@ -52,7 +52,7 @@ lsfWMSLayerTemplate = Template(string="""
           name="%(LAYER_TITLE)s"
           styles="default" 
           identify="false"
-          legend="%(SERVER_URL)s/cmapicons/change.png"
+          legend="%(SERVER_URL)s/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-swir-current-threshold&amp;VERSION=1.1.1&amp;FORMAT=image/png"
           mask="true"/>""")  
           
 
@@ -91,7 +91,7 @@ def getLSFLayers():
             layers[type].append(lsfWMSLayerTemplate.render(thing))   
     return layers
 	
-def getB7ThresholdLayers():
+def getSWIRThresholdLayers():
     #automating the latest change layers
     lsfDict = {
        'SWIR' : []
@@ -123,7 +123,7 @@ def getB7ThresholdLayers():
             layers[type].append(lsfWMSLayerTemplate.render(thing))   
     return layers
 	
-def getB7AllChangeLayers():
+def getSWIRAllChangeLayers():
     #automating the latest change layers
     lsfDict = {
        'SWIR' : []
@@ -161,8 +161,8 @@ if not os.path.exists("../html"):
     os.makedirs("../html")
 
 lsfLayers = getLSFLayers()
-thresholdLayers = getB7ThresholdLayers()
-allChangeLayers = getB7AllChangeLayers()
+thresholdLayers = getSWIRThresholdLayers()
+allChangeLayers = getSWIRAllChangeLayers()
 #End NRT 8 day & drought monitor automation-------------------------------------------------
 
 f = open("../html/landsatfact_config.xml", "w")

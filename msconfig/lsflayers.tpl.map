@@ -76,360 +76,1920 @@ MAP
 	
 	
 	LAYER
-		NAME "southeast-b7diff-current-threshold"
+		NAME "southeast-swir-current-threshold"
 		STATUS ON
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
 		END
         METADATA
-            "wms_title"             "southeast-b7diff-current-threshold"
-            "wms_abstract"          "southeast-b7diff-current-threshold"
+            "wms_title"             "southeast-swir-current-threshold"
+            "wms_abstract"          "southeast-swir-current-threshold"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
 	LAYER
-		NAME "southeast-b7diff-current-thresholdMaskForDeciduousForest"
+		NAME "southeast-swir-current-thresholdMaskForForest"
 		STATUS ON
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-forest
+        METADATA
+            "wms_title"             "southeast-swir-current-thresholdMaskForForest"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-thresholdMaskForDeciduous"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-deciduous
+        METADATA
+            "wms_title"             "southeast-swir-current-thresholdMaskForDeciduous"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForDeciduous"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-thresholdMaskForEvergreen"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-evergreen
+        METADATA
+            "wms_title"             "southeast-swir-current-thresholdMaskForEvergreen"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForEvergreen"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-thresholdMaskForMixed"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-mixed
+        METADATA
+            "wms_title"             "southeast-swir-current-thresholdMaskForMixed"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForMixed"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-thresholdMaskForShrubScrub"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-shrubscrub
+        METADATA
+            "wms_title"             "southeast-swir-current-thresholdMaskForShrubScrub"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForShrubScrub"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-thresholdMaskForWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-woodywetlands
+        METADATA
+            "wms_title"             "southeast-swir-current-thresholdMaskForWoodyWetlands"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForWoodyWetlands"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-thresholdMaskForGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
 		END
 		MASK southeast-gap-current
         METADATA
-            "wms_title"             "southeast-b7diff-current-thresholdMaskForDeciduousForest"
-            "wms_abstract"          "southeast-b7diff-current-thresholdMaskForDeciduousForest"
+            "wms_title"             "southeast-swir-current-thresholdMaskForGap"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForGap"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
 	LAYER
-		NAME "southeast-b7diff-current-thresholdMaskForConiferForest"
+		NAME "southeast-swir-current-thresholdMaskForCloud"
 		STATUS ON
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
 		END
 		MASK southeast-cloud-current
         METADATA
-            "wms_title"             "southeast-b7diff-current-thresholdMaskForConiferForest"
-            "wms_abstract"          "southeast-b7diff-current-thresholdMaskForConiferForest"
+            "wms_title"             "southeast-swir-current-thresholdMaskForCloud"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForCloud"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
 	LAYER
-		NAME "southeast-b7diff-current-thresholdMaskForForest"
+		NAME "southeast-swir-current-thresholdMaskForCloudGap"
 		STATUS ON
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
 		END
 		MASK southeast-cloudGap-current
         METADATA
-            "wms_title"             "southeast-b7diff-current-thresholdMaskForForest"
-            "wms_abstract"          "southeast-b7diff-current-thresholdMaskForForest"
+            "wms_title"             "southeast-swir-current-thresholdMaskForCloudGap"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForCloudGap"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
 	LAYER
-		NAME "southeast-b7diff-current-allchange"
+		NAME "southeast-swir-current-allchange"
 		STATUS ON
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
 		END
         METADATA
-            "wms_title"             "southeast-b7diff-current-allchange"
-            "wms_abstract"          "southeast-b7diff-current-allchange"
+            "wms_title"             "southeast-swir-current-allchange"
+            "wms_abstract"          "southeast-swir-current-allchange"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
 	LAYER
-		NAME "southeast-b7diff-current-allchangeMaskForDeciduousForest"
+		NAME "southeast-swir-current-allchangeMaskForForest"
 		STATUS ON
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-forest
+        METADATA
+            "wms_title"             "southeast-swir-current-allchangeMaskForForest"
+            "wms_abstract"          "southeast-swir-current-allchangeMaskForForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-allchangeMaskForDeciduous"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-deciduous
+        METADATA
+            "wms_title"             "southeast-swir-current-allchangeMaskForDeciduous"
+            "wms_abstract"          "southeast-swir-current-allchangeMaskForDeciduous"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-allchangeMaskForEvergreen"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-evergreen
+        METADATA
+            "wms_title"             "southeast-swir-current-allchangeMaskForEvergreen"
+            "wms_abstract"          "southeast-swir-current-allchangeMaskForEvergreen"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-allchangeMaskForMixed"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-mixed
+        METADATA
+            "wms_title"             "southeast-swir-current-allchangeMaskForMixed"
+            "wms_abstract"          "southeast-swir-current-allchangeMaskForMixed"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-allchangeMaskForShrubScrub"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-shrubscrub
+        METADATA
+            "wms_title"             "southeast-swir-current-allchangeMaskForShrubScrub"
+            "wms_abstract"          "southeast-swir-current-allchangeMaskForShrubScrub"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-allchangeMaskForWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-woodywetlands
+        METADATA
+            "wms_title"             "southeast-swir-current-allchangeMaskForWoodyWetlands"
+            "wms_abstract"          "southeast-swir-current-allchangeMaskForWoodyWetlands"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-allchangeMaskForGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
 		END
 		MASK southeast-gap-current
         METADATA
-            "wms_title"             "southeast-b7diff-current-allchangeMaskForDeciduousForest"
-            "wms_abstract"          "southeast-b7diff-current-allchangeMaskForDeciduousForest"
+            "wms_title"             "southeast-swir-current-allchangeMaskForGap"
+            "wms_abstract"          "southeast-swir-current-allchangeMaskForGap"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
 	LAYER
-		NAME "southeast-b7diff-current-allchangeMaskForConiferForest"
+		NAME "southeast-swir-current-allchangeMaskForCloud"
 		STATUS ON
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
 		END
 		MASK southeast-cloud-current
         METADATA
-            "wms_title"             "southeast-b7diff-current-allchangeMaskForConiferForest"
-            "wms_abstract"          "southeast-b7diff-current-allchangeMaskForConiferForest"
+            "wms_title"             "southeast-swir-current-allchangeMaskForCloud"
+            "wms_abstract"          "southeast-swir-current-allchangeMaskForCloud"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
 	LAYER
-		NAME "southeast-b7diff-current-allchangeMaskForForest"
+		NAME "southeast-swir-current-allchangeMaskForCloudGap"
 		STATUS ON
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicB7.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
 		END
 		MASK southeast-cloudGap-current
         METADATA
-            "wms_title"             "southeast-b7diff-current-allchangeMaskForForest"
-            "wms_abstract"          "southeast-b7diff-current-allchangeMaskForForest"
+            "wms_title"             "southeast-swir-current-allchangeMaskForCloudGap"
+            "wms_abstract"          "southeast-swir-current-allchangeMaskForCloudGap"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
@@ -439,131 +1999,92 @@ MAP
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDVI.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
 		END
         METADATA
             "wms_title"             "southeast-ndvi-current"
             "wms_abstract"          "southeast-ndvi-current"
-            "gml_include_items"     "value_0"
-        END  # end METADATA	
-	END # end LAYER
-	LAYER
-		NAME "southeast-ndvi-currentMaskForDeciduousForest"
-		STATUS ON
-		TYPE RASTER
-		HEADER   ./templates/layer_query_header.html
-        TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDVI.tif.tif"
-		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
-			"datum=NAD83"
-			"units=m"
-			"no_defs"
-        END
-		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
-		END
-		MASK southeast-gap-current
-        METADATA
-            "wms_title"             "southeast-ndvi-currentMaskForDeciduousForest"
-            "wms_abstract"          "southeast-ndvi-currentMaskForDeciduousForest"
-            "gml_include_items"     "value_0"
-        END  # end METADATA	
-	END # end LAYER
-	LAYER
-		NAME "southeast-ndvi-currentMaskForConiferForest"
-		STATUS ON
-		TYPE RASTER
-		HEADER   ./templates/layer_query_header.html
-        TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDVI.tif.tif"
-		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
-			"datum=NAD83"
-			"units=m"
-			"no_defs"
-        END
-		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
-		END
-		MASK southeast-cloud-current
-        METADATA
-            "wms_title"             "southeast-ndvi-currentMaskForConiferForest"
-            "wms_abstract"          "southeast-ndvi-currentMaskForConiferForest"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
@@ -573,42 +2094,861 @@ MAP
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDVI.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
 		END
-		MASK southeast-cloudGap-current
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-forest
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForForest"
             "wms_abstract"          "southeast-ndvi-currentMaskForForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForDeciduous"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-deciduous
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForDeciduous"
+            "wms_abstract"          "southeast-ndvi-currentMaskForDeciduous"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForEvergreen"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-evergreen
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForEvergreen"
+            "wms_abstract"          "southeast-ndvi-currentMaskForEvergreen"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForMixed"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-mixed
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForMixed"
+            "wms_abstract"          "southeast-ndvi-currentMaskForMixed"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForShrubScrub"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-shrubscrub
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForShrubScrub"
+            "wms_abstract"          "southeast-ndvi-currentMaskForShrubScrub"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-woodywetlands
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForWoodyWetlands"
+            "wms_abstract"          "southeast-ndvi-currentMaskForWoodyWetlands"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCloudGap"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
@@ -618,131 +2958,92 @@ MAP
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDMI.tif.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndmi.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
 		END
         METADATA
             "wms_title"             "southeast-ndmi-current"
             "wms_abstract"          "southeast-ndmi-current"
-            "gml_include_items"     "value_0"
-        END  # end METADATA	
-	END # end LAYER
-	LAYER
-		NAME "southeast-ndmi-currentMaskForDeciduousForest"
-		STATUS ON
-		TYPE RASTER
-		HEADER   ./templates/layer_query_header.html
-        TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDMI.tif.tif"
-		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
-			"datum=NAD83"
-			"units=m"
-			"no_defs"
-        END
-		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
-		END
-		MASK southeast-gap-current
-        METADATA
-            "wms_title"             "southeast-ndmi-currentMaskForDeciduousForest"
-            "wms_abstract"          "southeast-ndmi-currentMaskForDeciduousForest"
-            "gml_include_items"     "value_0"
-        END  # end METADATA	
-	END # end LAYER
-	LAYER
-		NAME "southeast-ndmi-currentMaskForConiferForest"
-		STATUS ON
-		TYPE RASTER
-		HEADER   ./templates/layer_query_header.html
-        TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDMI.tif.tif"
-		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
-			"datum=NAD83"
-			"units=m"
-			"no_defs"
-        END
-		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
-		END
-		MASK southeast-cloud-current
-        METADATA
-            "wms_title"             "southeast-ndmi-currentMaskForConiferForest"
-            "wms_abstract"          "southeast-ndmi-currentMaskForConiferForest"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
@@ -752,42 +3053,861 @@ MAP
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicNDMI.tif.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndmi.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
 		END
-		MASK southeast-cloudGap-current
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-forest
         METADATA
             "wms_title"             "southeast-ndmi-currentMaskForForest"
             "wms_abstract"          "southeast-ndmi-currentMaskForForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndmi-currentMaskForDeciduous"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndmi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-deciduous
+        METADATA
+            "wms_title"             "southeast-ndmi-currentMaskForDeciduous"
+            "wms_abstract"          "southeast-ndmi-currentMaskForDeciduous"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndmi-currentMaskForEvergreen"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndmi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-evergreen
+        METADATA
+            "wms_title"             "southeast-ndmi-currentMaskForEvergreen"
+            "wms_abstract"          "southeast-ndmi-currentMaskForEvergreen"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndmi-currentMaskForMixed"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndmi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-mixed
+        METADATA
+            "wms_title"             "southeast-ndmi-currentMaskForMixed"
+            "wms_abstract"          "southeast-ndmi-currentMaskForMixed"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndmi-currentMaskForShrubScrub"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndmi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-shrubscrub
+        METADATA
+            "wms_title"             "southeast-ndmi-currentMaskForShrubScrub"
+            "wms_abstract"          "southeast-ndmi-currentMaskForShrubScrub"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndmi-currentMaskForWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndmi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-woodywetlands
+        METADATA
+            "wms_title"             "southeast-ndmi-currentMaskForWoodyWetlands"
+            "wms_abstract"          "southeast-ndmi-currentMaskForWoodyWetlands"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndmi-currentMaskForGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndmi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-ndmi-currentMaskForGap"
+            "wms_abstract"          "southeast-ndmi-currentMaskForGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndmi-currentMaskForCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndmi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-ndmi-currentMaskForCloud"
+            "wms_abstract"          "southeast-ndmi-currentMaskForCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndmi-currentMaskForCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndmi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+			NAME "Percent Change"
+			EXPRESSION ""
+			COLOR 255 255 255
+		END
+		CLASS
+			NAME "< -127"
+			EXPRESSION ([pixel] < -120)
+			COLOR 89 0 0 
+		END
+		CLASS
+			NAME "-101 to -120"
+			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+			COLOR 163 0 0
+		END
+		CLASS
+			NAME "-81 to -100"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 255 0 0
+		END
+		CLASS
+			NAME "-61 to -80"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 128 0
+		END
+		CLASS
+			NAME "-41 to -60"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 193 0
+		END
+		CLASS
+			NAME "-21 to -40"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 255 0
+		END
+		CLASS
+			NAME "-1 to -20"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 192 255 0
+		END
+		CLASS
+			NAME "0 to 20"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 1 255 0
+		END
+		CLASS
+			NAME "21 to 40"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 0 192 128
+		END
+		CLASS
+			NAME "41 to 60"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 128 255
+		END
+		CLASS
+			NAME "61 to 80"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 0 232
+		END
+		CLASS
+			NAME "81 to 100"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 128
+		END
+		CLASS
+			NAME "101 to 120"
+			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+			COLOR 0 0 89
+		END
+		CLASS
+			NAME "> 120"
+			EXPRESSION ([pixel] > 120)
+			COLOR 0 0 60
+		END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-ndmi-currentMaskForCloudGap"
+            "wms_abstract"          "southeast-ndmi-currentMaskForCloudGap"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
@@ -795,12 +3915,12 @@ MAP
 	#Begin the tile index products
 	
 	LAYER
-		NAME "b7diff-tdx"
+		NAME "swir-tdx"
 		STATUS ON
 		TYPE POLYGON
 		CONNECTIONTYPE   postgis
         CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
-        DATA             "geom from vw_tile_index_b7diff"
+        DATA             "geom from vw_tile_index_swir"
 		#HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
 		PROJECTION
@@ -814,8 +3934,8 @@ MAP
 			END
 		END
         METADATA
-                "wms_title"             "b7diff-tdx"
-                "wms_abstract"          "b7diff-tdx"
+                "wms_title"             "swir-tdx"
+                "wms_abstract"          "swir-tdx"
                 "gml_include_items"     "location"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -823,11 +3943,11 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "B7DIFF-raster-threshold"
+		NAME "SWIR-raster-threshold"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
-		TILEINDEX "b7diff-tdx"
+		TILEINDEX "swir-tdx"
 		TILESRS "srs"
 		#HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
@@ -840,25 +3960,62 @@ MAP
 		#OFFSITE 0 0 0 
 		CLASS
 			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
-		END        
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END       
         METADATA
-                "wms_title"             "B7DIFF-raster-threshold"
-                "wms_abstract"          "B7DIFF-raster-threshold"
+                "wms_title"             "SWIR-raster-threshold"
+                "wms_abstract"          "SWIR-raster-threshold"
                 "gml_include_items"     "value_0"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -866,11 +4023,11 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "B7DIFF-raster-thresholdMaskForDeciduousForest"
+		NAME "SWIR-raster-thresholdMaskForForest"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
-		TILEINDEX "b7diff-tdx"
+		TILEINDEX "swir-tdx"
 		TILESRS "srs"
 		#HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
@@ -883,26 +4040,549 @@ MAP
 		#OFFSITE 0 0 0 
 		CLASS
 			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-forest
+        METADATA
+                "wms_title"             "SWIR-raster-thresholdMaskForForest"
+                "wms_abstract"          "SWIR-raster-thresholdMaskForForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "SWIR-raster-thresholdMaskForDeciduous"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "swir-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-deciduous
+        METADATA
+                "wms_title"             "SWIR-raster-thresholdMaskForDeciduous"
+                "wms_abstract"          "SWIR-raster-thresholdMaskForDeciduous"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "SWIR-raster-thresholdMaskForEvergreen"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "swir-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-evergreen
+        METADATA
+                "wms_title"             "SWIR-raster-thresholdMaskForEvergreen"
+                "wms_abstract"          "SWIR-raster-thresholdMaskForEvergreen"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "SWIR-raster-thresholdMaskForMixed"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "swir-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-mixed
+        METADATA
+                "wms_title"             "SWIR-raster-thresholdMaskForMixed"
+                "wms_abstract"          "SWIR-raster-thresholdMaskForMixed"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "SWIR-raster-thresholdMaskForShrubScrub"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "swir-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-shrubscrub
+        METADATA
+                "wms_title"             "SWIR-raster-thresholdMaskForShrubScrub"
+                "wms_abstract"          "SWIR-raster-thresholdMaskForShrubScrub"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "SWIR-raster-thresholdMaskForWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "swir-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-woodywetlands
+        METADATA
+                "wms_title"             "SWIR-raster-thresholdMaskForWoodyWetlands"
+                "wms_abstract"          "SWIR-raster-thresholdMaskForWoodyWetlands"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "SWIR-raster-thresholdMaskForGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "swir-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
 		END     
 		MASK gap-raster
         METADATA
-                "wms_title"             "B7DIFF-raster-thresholdMaskForDeciduousForest"
-                "wms_abstract"          "B7DIFF-raster-thresholdMaskForDeciduousForest"
+                "wms_title"             "SWIR-raster-thresholdMaskForGap"
+                "wms_abstract"          "SWIR-raster-thresholdMaskForGap"
                 "gml_include_items"     "value_0"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -910,11 +4590,11 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "B7DIFF-raster-thresholdMaskForConiferForest"
+		NAME "SWIR-raster-thresholdMaskForCloud"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
-		TILEINDEX "b7diff-tdx"
+		TILEINDEX "swir-tdx"
 		TILESRS "srs"
 		#HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
@@ -927,26 +4607,63 @@ MAP
 		#OFFSITE 0 0 0 
 		CLASS
 			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
-		END   
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END 
 		MASK cloud-raster
         METADATA
-                "wms_title"             "B7DIFF-raster-thresholdMaskForConiferForest"
-                "wms_abstract"          "B7DIFF-raster-thresholdMaskForConiferForest"
+                "wms_title"             "SWIR-raster-thresholdMaskForCloud"
+                "wms_abstract"          "SWIR-raster-thresholdMaskForCloud"
                 "gml_include_items"     "value_0"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -954,11 +4671,11 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "B7DIFF-raster-thresholdMaskForForest"
+		NAME "SWIR-raster-thresholdMaskForCloudGap"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
-		TILEINDEX "b7diff-tdx"
+		TILEINDEX "swir-tdx"
 		TILESRS "srs"
 		#HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
@@ -989,8 +4706,8 @@ MAP
 		END  
 		MASK cloudGap-raster
         METADATA
-                "wms_title"             "B7DIFF-raster-thresholdMaskForForest"
-                "wms_abstract"          "B7DIFF-raster-thresholdMaskForForest"
+                "wms_title"             "SWIR-raster-thresholdMaskForCloudGap"
+                "wms_abstract"          "SWIR-raster-thresholdMaskForCloudGap"
                 "gml_include_items"     "value_0"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -998,11 +4715,11 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "B7DIFF-raster-allchange"
+		NAME "SWIR-raster-allchange"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
-		TILEINDEX "b7diff-tdx"
+		TILEINDEX "swir-tdx"
 		TILESRS "srs"
 		#HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
@@ -1015,69 +4732,629 @@ MAP
 		#OFFSITE 0 0 0 
 		CLASS
 			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
 		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
-		END        
-        METADATA
-                "wms_title"             "B7DIFF-raster-allchange"
-                "wms_abstract"          "B7DIFF-raster-allchange"
-                "gml_include_items"     "value_0"
-				"wms_timeextent" "2013-03-09/2017-05-13"
-				"wms_timeitem" "product_date" #column in postgis table of type timestamp
-				"wms_timedefault" "2015-03-09"
-        END  # end METADATA
-	END # end LAYER
-	LAYER
-		NAME "B7DIFF-raster-allchangeMaskForDeciduousForest"
-		STATUS ON
-		TYPE RASTER
-		TILEITEM "location"
-		TILEINDEX "b7diff-tdx"
-		TILESRS "srs"
-		#HEADER   ./templates/layer_query_header.html
-        TEMPLATE ./templates/layer.html
-		PROJECTION
-            AUTO
-			#"init=epsg:4326"
-        END
-		#OPACITY 0
-		FILTER ([date] = "2015-03-09")
-		#OFFSITE 0 0 0 
 		CLASS
 			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
 		END     
+        METADATA
+                "wms_title"             "SWIR-raster-allchange"
+                "wms_abstract"          "SWIR-raster-allchange"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "SWIR-raster-allchangeMaskForForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "swir-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-forest
+        METADATA
+                "wms_title"             "SWIR-raster-allchangeMaskForForest"
+                "wms_abstract"          "SWIR-raster-allchangeMaskForForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "SWIR-raster-allchangeMaskForDeciduous"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "swir-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-deciduous
+        METADATA
+                "wms_title"             "SWIR-raster-allchangeMaskForDeciduous"
+                "wms_abstract"          "SWIR-raster-allchangeMaskForDeciduous"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "SWIR-raster-allchangeMaskForEvergreen"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "swir-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-evergreen
+        METADATA
+                "wms_title"             "SWIR-raster-allchangeMaskForEvergreen"
+                "wms_abstract"          "SWIR-raster-allchangeMaskForEvergreen"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "SWIR-raster-allchangeMaskForMixed"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "swir-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-mixed
+        METADATA
+                "wms_title"             "SWIR-raster-allchangeMaskForMixed"
+                "wms_abstract"          "SWIR-raster-allchangeMaskForMixed"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "SWIR-raster-allchangeMaskForShrubScrub"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "swir-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-shrubscrub
+        METADATA
+                "wms_title"             "SWIR-raster-allchangeMaskForShrubScrub"
+                "wms_abstract"          "SWIR-raster-allchangeMaskForShrubScrub"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "SWIR-raster-allchangeMaskForWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "swir-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-woodywetlands
+        METADATA
+                "wms_title"             "SWIR-raster-allchangeMaskForWoodyWetlands"
+                "wms_abstract"          "SWIR-raster-allchangeMaskForWoodyWetlands"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "SWIR-raster-allchangeMaskForGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "swir-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END 
 		MASK gap-raster
         METADATA
-                "wms_title"             "B7DIFF-raster-allchangeMaskForDeciduousForest"
-                "wms_abstract"          "B7DIFF-raster-allchangeMaskForDeciduousForest"
+                "wms_title"             "SWIR-raster-allchangeMaskForGap"
+                "wms_abstract"          "SWIR-raster-allchangeMaskForGap"
                 "gml_include_items"     "value_0"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -1085,11 +5362,11 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "B7DIFF-raster-allchangeMaskForConiferForest"
+		NAME "SWIR-raster-allchangeMaskForCloud"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
-		TILEINDEX "b7diff-tdx"
+		TILEINDEX "swir-tdx"
 		TILESRS "srs"
 		#HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
@@ -1102,26 +5379,63 @@ MAP
 		#OFFSITE 0 0 0 
 		CLASS
 			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
-		END   
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END 
 		MASK cloud-raster
         METADATA
-                "wms_title"             "B7DIFF-raster-allchangeMaskForConiferForest"
-                "wms_abstract"          "B7DIFF-raster-allchangeMaskForConiferForest"
+                "wms_title"             "SWIR-raster-allchangeMaskForCloud"
+                "wms_abstract"          "SWIR-raster-allchangeMaskForCloud"
                 "gml_include_items"     "value_0"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -1129,11 +5443,11 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "B7DIFF-raster-allchangeMaskForForest"
+		NAME "SWIR-raster-allchangeMaskForCloudGap"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
-		TILEINDEX "b7diff-tdx"
+		TILEINDEX "swir-tdx"
 		TILESRS "srs"
 		#HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
@@ -1164,8 +5478,8 @@ MAP
 		END  
 		MASK cloudGap-raster
         METADATA
-                "wms_title"             "B7DIFF-raster-allchangeMaskForForest"
-                "wms_abstract"          "B7DIFF-raster-allchangeMaskForForest"
+                "wms_title"             "SWIR-raster-allchangeMaskForCloudGap"
+                "wms_abstract"          "SWIR-raster-allchangeMaskForCloudGap"
                 "gml_include_items"     "value_0"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -1218,22 +5532,59 @@ MAP
 		#OFFSITE 0 0 0 
 		CLASS
 			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
-		END        
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END       
         METADATA
                 "wms_title"             "NDVI-raster"
                 "wms_abstract"          "NDVI-raster"
@@ -1244,7 +5595,7 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "NDVI-rasterMaskForDeciduousForest"
+		NAME "NDVI-rasterMaskForForest"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
@@ -1261,26 +5612,549 @@ MAP
 		#OFFSITE 0 0 0 
 		CLASS
 			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-forest
+        METADATA
+                "wms_title"             "NDVI-rasterMaskForForest"
+                "wms_abstract"          "NDVI-rasterMaskForForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDVI-rasterMaskForDeciduous"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-deciduous
+        METADATA
+                "wms_title"             "NDVI-rasterMaskForDeciduous"
+                "wms_abstract"          "NDVI-rasterMaskForDeciduous"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDVI-rasterMaskForEvergreen"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-evergreen
+        METADATA
+                "wms_title"             "NDVI-rasterMaskForEvergreen"
+                "wms_abstract"          "NDVI-rasterMaskForEvergreen"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDVI-rasterMaskForMixed"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-mixed
+        METADATA
+                "wms_title"             "NDVI-rasterMaskForMixed"
+                "wms_abstract"          "NDVI-rasterMaskForMixed"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDVI-rasterMaskForShrubScrub"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-shrubscrub
+        METADATA
+                "wms_title"             "NDVI-rasterMaskForShrubScrub"
+                "wms_abstract"          "NDVI-rasterMaskForShrubScrub"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDVI-rasterMaskForWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-woodywetlands
+        METADATA
+                "wms_title"             "NDVI-rasterMaskForWoodyWetlands"
+                "wms_abstract"          "NDVI-rasterMaskForWoodyWetlands"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDVI-rasterMaskForGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
 		END     
 		MASK gap-raster
         METADATA
-                "wms_title"             "NDVI-rasterMaskForDeciduousForest"
-                "wms_abstract"          "NDVI-rasterMaskForDeciduousForest"
+                "wms_title"             "NDVI-rasterMaskForGap"
+                "wms_abstract"          "NDVI-rasterMaskForGap"
                 "gml_include_items"     "value_0"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -1288,7 +6162,7 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "NDVI-rasterMaskForConiferForest"
+		NAME "NDVI-rasterMaskForCloud"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
@@ -1305,26 +6179,63 @@ MAP
 		#OFFSITE 0 0 0 
 		CLASS
 			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
-		END   
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END 
 		MASK cloud-raster
         METADATA
-                "wms_title"             "NDVI-rasterMaskForConiferForest"
-                "wms_abstract"          "NDVI-rasterMaskForConiferForest"
+                "wms_title"             "NDVI-rasterMaskForCloud"
+                "wms_abstract"          "NDVI-rasterMaskForCloud"
                 "gml_include_items"     "value_0"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -1332,7 +6243,7 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "NDVI-rasterMaskForForest"
+		NAME "NDVI-rasterMaskForCloudGap"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
@@ -1367,8 +6278,8 @@ MAP
 		END  
 		MASK cloudGap-raster
         METADATA
-                "wms_title"             "NDVI-rasterMaskForForest"
-                "wms_abstract"          "NDVI-rasterMaskForForest"
+                "wms_title"             "NDVI-rasterMaskForCloudGap"
+                "wms_abstract"          "NDVI-rasterMaskForCloudGap"
                 "gml_include_items"     "value_0"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -1421,22 +6332,59 @@ MAP
 		#OFFSITE 0 0 0 
 		CLASS
 			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
-		END        
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END      
         METADATA
                 "wms_title"             "NDMI-raster"
                 "wms_abstract"          "NDMI-raster"
@@ -1447,7 +6395,7 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "NDMI-rasterMaskForDeciduousForest"
+		NAME "NDMI-rasterMaskForForest"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
@@ -1464,26 +6412,549 @@ MAP
 		#OFFSITE 0 0 0 
 		CLASS
 			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-forest
+        METADATA
+                "wms_title"             "NDMI-rasterMaskForForest"
+                "wms_abstract"          "NDMI-rasterMaskForForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDMI-rasterMaskForDeciduous"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndmi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-deciduous
+        METADATA
+                "wms_title"             "NDMI-rasterMaskForDeciduous"
+                "wms_abstract"          "NDMI-rasterMaskForDeciduous"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDMI-rasterMaskForEvergreen"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndmi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-evergreen
+        METADATA
+                "wms_title"             "NDMI-rasterMaskForEvergreen"
+                "wms_abstract"          "NDMI-rasterMaskForEvergreen"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDMI-rasterMaskForMixed"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndmi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-mixed
+        METADATA
+                "wms_title"             "NDMI-rasterMaskForMixed"
+                "wms_abstract"          "NDMI-rasterMaskForMixed"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDMI-rasterMaskForShrubScrub"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndmi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-shrubscrub
+        METADATA
+                "wms_title"             "NDMI-rasterMaskForShrubScrub"
+                "wms_abstract"          "NDMI-rasterMaskForShrubScrub"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDMI-rasterMaskForWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndmi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END     
+		MASK southeast-woodywetlands
+        METADATA
+                "wms_title"             "NDMI-rasterMaskForWoodyWetlands"
+                "wms_abstract"          "NDMI-rasterMaskForWoodyWetlands"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "NDMI-rasterMaskForGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndmi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
 		END     
 		MASK gap-raster
         METADATA
-                "wms_title"             "NDMI-rasterMaskForDeciduousForest"
-                "wms_abstract"          "NDMI-rasterMaskForDeciduousForest"
+                "wms_title"             "NDMI-rasterMaskForGap"
+                "wms_abstract"          "NDMI-rasterMaskForGap"
                 "gml_include_items"     "value_0"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -1491,7 +6962,7 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "NDMI-rasterMaskForConiferForest"
+		NAME "NDMI-rasterMaskForCloud"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
@@ -1508,26 +6979,63 @@ MAP
 		#OFFSITE 0 0 0 
 		CLASS
 			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
+			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
+			COLOR 89 0 0 
 		END
 		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
-		END   
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+			COLOR 163 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+			COLOR 255 0 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+			COLOR 255 128 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+			COLOR 255 193 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+			COLOR 255 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+			COLOR 192 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+			COLOR 1 255 0
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+			COLOR 0 192 128
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+			COLOR 0 128 255
+		END
+		CLASS
+			#NAME "Values -119 to 0"
+			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+			COLOR 0 0 232
+		END
 		MASK cloud-raster
         METADATA
-                "wms_title"             "NDMI-rasterMaskForConiferForest"
-                "wms_abstract"          "NDMI-rasterMaskForConiferForest"
+                "wms_title"             "NDMI-rasterMaskForCloud"
+                "wms_abstract"          "NDMI-rasterMaskForCloud"
                 "gml_include_items"     "value_0"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -1535,7 +7043,7 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "NDMI-rasterMaskForForest"
+		NAME "NDMI-rasterMaskForCloudGap"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
@@ -1570,8 +7078,8 @@ MAP
 		END  
 		MASK cloudGap-raster
         METADATA
-                "wms_title"             "NDMI-rasterMaskForForest"
-                "wms_abstract"          "NDMI-rasterMaskForForest"
+                "wms_title"             "NDMI-rasterMaskForCloudGap"
+                "wms_abstract"          "NDMI-rasterMaskForCloudGap"
                 "gml_include_items"     "value_0"
 				"wms_timeextent" "2013-03-09/2017-05-13"
 				"wms_timeitem" "product_date" #column in postgis table of type timestamp
@@ -1625,32 +7133,9 @@ MAP
 		FILTER ([date] = "2015-03-09")
 		OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to -1"
-			EXPRESSION ([pixel] >= -119 AND [pixel] < 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 -1
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 0"
-			EXPRESSION ([pixel] = 0)
-			STYLE
-				COLOR 0 0 0
-				#DATARANGE -119 -1
-				#RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
-		END        
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END  
         METADATA
                 "wms_title"             "gap-raster"
                 "wms_abstract"          "gap-raster"
@@ -1704,32 +7189,9 @@ MAP
 		FILTER ([date] = "2015-03-09")
 		OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to -1"
-			EXPRESSION ([pixel] >= -119 AND [pixel] < 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 -1
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 0"
-			EXPRESSION ([pixel] = 0)
-			STYLE
-				COLOR 0 0 0
-				#DATARANGE -119 -1
-				#RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
-		END        
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
         METADATA
                 "wms_title"             "cloud-raster"
                 "wms_abstract"          "cloud-raster"
@@ -1755,32 +7217,9 @@ MAP
 		FILTER ([date] = "2015-03-09")
 		OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to -1"
-			EXPRESSION ([pixel] >= -119 AND [pixel] < 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 -1
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 0"
-			EXPRESSION ([pixel] = 0)
-			STYLE
-				COLOR 0 0 0
-				#DATARANGE -119 -1
-				#RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
-		END        
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END   
 		MASK gap-raster
         METADATA
                 "wms_title"             "cloudGap-raster"
@@ -1800,38 +7239,18 @@ MAP
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicGAP.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_gap.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
-		END
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
         METADATA
             "wms_title"             "southeast-gap-current"
             "wms_abstract"          "southeast-gap-current"
@@ -1844,38 +7263,18 @@ MAP
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicCLOUD.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_cloud.tif"
 		PROJECTION
-			"proj=aea"
-			"lat_1=29.5"
-			"lat_2=45.5"
-			"lat_0=23"
-			"lon_0=-96"
-			"x_0=0"
-			"y_0=0"
+			"proj=longlat"
+			"ellps=GRS80"
 			"datum=NAD83"
-			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
-		END
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
         METADATA
             "wms_title"             "southeast-cloud-current"
             "wms_abstract"          "southeast-cloud-current"
@@ -1888,7 +7287,32 @@ MAP
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
-		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaicCLOUD.tif"
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_cloud.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-cloudGAP-current"
+            "wms_abstract"          "southeast-cloudGAP-current"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-forest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest.tif"
 		PROJECTION
 			"proj=aea"
 			"lat_1=29.5"
@@ -1897,33 +7321,174 @@ MAP
 			"lon_0=-96"
 			"x_0=0"
 			"y_0=0"
+			"ellps=GRS80"
 			"datum=NAD83"
 			"units=m"
 			"no_defs"
-        END
+		END
 		#OFFSITE 0 0 0 
 		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 0 254
-				RANGEITEM "pixel"
-			END
-		END
-		MASK southeast-gap-current
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
         METADATA
-            "wms_title"             "southeast-cloudGAP-current"
-            "wms_abstract"          "southeast-cloudGAP-current"
+            "wms_title"             "southeast-forest"
+            "wms_abstract"          "southeast-forest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-deciduous"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-deciduous"
+            "wms_abstract"          "southeast-deciduous"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-evergreen"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-evergreen"
+            "wms_abstract"          "southeast-evergreen"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-mixed"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-mixed"
+            "wms_abstract"          "southeast-mixed"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-shrubscrub"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-shrubscrub"
+            "wms_abstract"          "southeast-shrubscrub"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-woodywetlands"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-woodywetlands"
+            "wms_abstract"          "southeast-woodywetlands"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
