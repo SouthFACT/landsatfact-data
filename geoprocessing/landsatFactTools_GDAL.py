@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
 # Name:		landsatFactTools_GDAL.py
 # Purpose:	LandsatFACT application script that defines primary
-#		TAR file handling and geoprocessing functions. 
+#		TAR file handling and geoprocessing functions.
 #
 # Author:	LandsatFACT Project Team
 #		support@landsatfact.com
@@ -35,7 +35,7 @@ except:
 
 reload(rasterAnalysis_GDAL)
 
-def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,quadsFolder):
+def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,quadsFolder,outRasterFolder):
     print "call to extractProductForCompare with: "+ diff_tar
     try:
         # call download_landsat_data_by_sceneid.php
@@ -56,13 +56,13 @@ def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,qua
             dnMinDict = rasterAnalysis_GDAL.getDNmin(extractedPath)
         writeDNminToDB(dnMinDict,extractedPath)
         # create quads from the input scene
-        quadPaths = rasterAnalysis_GDAL.cropToQuad(extractedPath,quadsFolder)
+        quadPaths = rasterAnalysis_GDAL.cropToQuad(extractedPath,outRasterFolder,quadsFolder)
         writeQuadToDB(quadPaths)
         # get cloud cover percentage for each quad
         quadCCDict = getQuadCCpercent(quadPaths)
         # =========================================================================
         # write input scene quads cloud cover percentage to the landsat_metadata table in the database
-        writeQuadsCCtoDB(quadCCDict,extractedPath)	
+        writeQuadsCCtoDB(quadCCDict,extractedPath)
         print os.getcwd()
     except Exception as e:
         print "Error in extractProductForCompare"
@@ -105,7 +105,7 @@ def checkExisting(inTarPath, extractFolder):
         neededBands = sensorType + fmaskFiles
         unzipTIFgap(inTarPath, neededBands, extractedRoot)
         return extractedRoot
-		
+
 def unzipTIFgap(inTar, sensorType, extractPath):
     """Extracts the tar files based on which bands checkExisting tells it to."""
     tar = tarfile.open(inTar)
@@ -126,7 +126,7 @@ def unzipTIFgap(inTar, sensorType, extractPath):
                 print ("Extracting " + item.name)
                 #extractPath=extracted
                 tar.extract(item, path=extractPath)
-                #jdm 6/11/15 make sure the file you just extract is group and owner 
+                #jdm 6/11/15 make sure the file you just extract is group and owner
                 file_of_interest = extractPath+'/'+item.name
                 print "file_of_interest on which to set file perms: "+file_of_interest
                 os.chmod(file_of_interest, 0664)
@@ -151,8 +151,8 @@ def unzipTIFgap(inTar, sensorType, extractPath):
 	for dirpath, dirnames, filenames in os.walk(extractPath):
 		for filename in filenames:
 			path = os.path.join(dirpath, filename)
-			os.chmod(path, 0o777)			
-			
+			os.chmod(path, 0o777)
+
 def gaper(date1, date2, outGAPfolder, baseName):
     # input val are rasterAnalysis_GDAL sensorBand Class objects
     # Creates a gap mask for the scene if it came from Landsat 7 after
@@ -166,14 +166,14 @@ def gaper(date1, date2, outGAPfolder, baseName):
         gapMaskList.append(gapMask2)
     if len(gapMaskList) == 2:
         gapMask = gapMask1[0] * gapMask2[0]
-        outputTiffName = rasterAnalysis_GDAL.createOutTiff(gapMask1[1],gapMask,os.path.join(outGAPfolder,baseName),'gm')
+        outputTiffName = rasterAnalysis_GDAL.createOutTIFF(gapMask1[1],gapMask,os.path.join(outGAPfolder,baseName),'gm')
 	print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]
-	writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16])		
+	writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16])
     elif len(gapMaskList) == 1:
         gapMask = gapMaskList[0]
-        outputTiffName = rasterAnalysis_GDAL.createOutTiff(gapMask[1],gapMask[0],os.path.join(outGAPfolder,baseName),'gm')
+        outputTiffName = rasterAnalysis_GDAL.createOutTIFF(gapMask[1],gapMask[0],os.path.join(outGAPfolder,baseName),'gm')
 	print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]
-	writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16])			
+	writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16])
 
 
 def getQuadCCpercent(quadPaths):
@@ -214,7 +214,7 @@ def writeProductToDB(product_id,input1,input2,product_type,product_date):
 	statement = "INSERT INTO {0}(product_id, input1, input2, product_type, product_date) VALUES ('{1}', '{2}', '{3}', '{4}', '{5}');".format(tableName,product_id,input1,input2,product_type,str(normaldate_truncated))
 	print statement
 	postgresCommand(statement)
-		
+
 def writeDNminToDB(dataDict,path):
     # writes DN min values to minimum_dn table in database
     sceneID = os.path.basename(path)
@@ -294,8 +294,9 @@ def getDNminDictfromDB(sceneID):
 def postgresCommand(command,values=None):
     """ """
     try:
+        print("postgresCommand args command {}, values {}".format(command,values))
         # dbConn = psycopg2.connect("dbname=x user=y password=z")
-		dbConn = psycopg2.connect(POSTGIS_CONNECTION_STRING)
+        dbConn = psycopg2.connect(POSTGIS_CONNECTION_STRING)
     except:
         print "Unable to connect to the database"
         sys.exit()

@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
 # Name:		rasterAnalysis_GDAL.py
 # Purpose:	LandsatFACT application script that defines primary
-#		raster processing functions. 
+#		raster processing functions.
 #
 # Author:	LandsatFACT Project Team
 #		support@landsatfact.com
@@ -16,17 +16,14 @@ other dealings in the software."""
 #-------------------------------------------------------------------------------
 
 
-import sys, os, subprocess, math
-from subprocess import PIPE
+import os, subprocess, math
 from osgeo import gdal, gdalconst
 import numpy as np
-import numpy.ma as ma
 import landsatFactTools_GDAL
 
 #import socket, errno
 
 reload(landsatFactTools_GDAL)
-
 
 # Landsat 8 doesn't use Esun values
 EsunData = {"LT5":{"red":1536,"nir":1031,"swir1":220.0,"swir2":83.44},"LE7":{"red":1533,"nir":1039,"swir1":230.8,"swir2":84.90}}
@@ -86,12 +83,12 @@ def bandID(folder, band):
 
 
 class sensorBand:
-    def __init__(self, folder):
+    def __init__(self, folder, mtlFolder):
         self.folder = folder
         self.platformType = os.path.basename(self.folder)[0:3]
         self.ordinalData = os.path.basename(self.folder)[9:16]
         self.sceneID = os.path.basename(self.folder)
-        self.mtlFile = mtlData(os.path.join(os.path.dirname(self.folder), self.sceneID[0:21],self.sceneID[0:21] + '_MTL.txt'),self.platformType)
+        self.mtlFile = mtlData(os.path.join(mtlFolder, self.sceneID[0:21],self.sceneID[0:21] + '_MTL.txt'),self.platformType)
         self.mtlDataDict = self.mtlFile.getMtlData()
         redData = bandID(self.folder,'red')
         self.red = redData[0]
@@ -114,7 +111,7 @@ class sensorBand:
             r = array
         return r
 
-    
+
     def reclassFmask(self):
 	    """ """
 	    FmaskQuad = os.path.join(self.folder,self.sceneID+"_MTLFmask.TIF")
@@ -122,8 +119,8 @@ class sensorBand:
 	    FmaskArray[FmaskArray == 0] = 10
 	    FmaskArray[(FmaskArray == 1) | (FmaskArray == 2) | (FmaskArray == 3) | (FmaskArray == 4) |(FmaskArray == 255)] = 0
 	    FmaskArray[FmaskArray == 10] = 1
-	    return FmaskArray	
-	
+	    return FmaskArray
+
     def TOAradiance(self, array, band, Ml="Grescale", Al="Brescale"):
         """ """
         # Same formula for Landsat 5, 7 & 8
@@ -290,8 +287,6 @@ class mtlData:
         bandNum = platformSensorBands[self.pltType][band][1]
         return self.getMTLobject('REFLECTANCE_MAXIMUM_BAND_', bandNum)
 
-
-
 def getDNmin(folder):
     # calculates the min DN value for each band based on the equal to or less than .01% method
     #print folder
@@ -333,31 +328,125 @@ def rast2array(inBand):
     ds = None
     return [dsArray, attList]
 
-def createOutTiff(dsList,array,of,outType):
+def clearOutputLocation(pathname):
+    if os.path.exists(pathname):
+        os.remove(pathname)
+    if not os.path.exists(os.path.dirname(pathname)):
+        os.makedirs(os.path.dirname(pathname))
+
+def writeOutTIFFDataset(dataset, array, transform, projection):
+    outBand = dataset.GetRasterBand(1)
+    outBand.WriteArray(array)
+    outBand.FlushCache()
+    dataset.SetGeoTransform(transform)
+    dataset.SetProjection(projection)
+
+
+def createOutTIFF(dsList,array,of,outType):
     """attList, array, outFolder, outType--'ndvi','ndmi','gm','cloud',swir' """
-    outTypeDict={"ndvi":["_NDVI.tif",gdal.GDT_Float32],"swir":["_swir.tif",gdal.GDT_Float32],"sr":["_sr.tif",gdal.GDT_Float32],"ndmi":["_NDMI.tif",gdal.GDT_Float32],"ndvi16":["_NDVI16.tif",gdal.GDT_Int16], "ndmi16":["_NDMI16.tif",gdal.GDT_Int16],\
-    "gm":["_GapMask.tif",gdal.GDT_Byte],"cloud":["_CloudMask.tif",gdal.GDT_Byte],"swir":["_swir.tif",gdal.GDT_Int16],"ndviPer":["_NDVIper8bit.tif",gdal.GDT_Byte],"Fmask":["_Fmask.tif",gdal.GDT_Byte]}
+    outTypeDict={"ndvi":["_NDVI.tif",gdal.GDT_Float32],"swir":["_SWIR.tif",gdal.GDT_Float32],"sr":["_SR.tif",gdal.GDT_Float32],"ndmi":["_NDMI.tif",gdal.GDT_Float32],\
+    "gm":["_GapMask.tif",gdal.GDT_Byte],"cloud":["_CloudMask.tif",gdal.GDT_Byte],"Fmask":["_Fmask.tif",gdal.GDT_Byte], }
     #print "dsList: ", dsList
     driver = gdal.GetDriverByName("GTiff")
     outputTiffName = of + outTypeDict[outType][0]
     #print "outputTiffName:  ", outputTiffName
-
-    if os.path.exists(outputTiffName):
-        os.remove(outputTiffName)
-    if not os.path.exists(os.path.dirname(outputTiffName)):
-        os.makedirs(os.path.dirname(outputTiffName))
-
+    clearOutputLocation(outputTiffName)
     outputDataset = driver.Create(outputTiffName,dsList[0], dsList[1], 1, outTypeDict[outType][1])
-    outBand = outputDataset.GetRasterBand(1)
-    outBand.WriteArray(array)
-    outBand.FlushCache()
-    #print "dsList[2] tuple %s" % (dsList[2],)
-    #print "dsList[3] tuple  %s" % (dsList[3],)
-    outputDataset.SetGeoTransform(dsList[2])
-    outputDataset.SetProjection(dsList[3])
+    print "dsList[2] tuple %s" % (dsList[2],)
+    print "dsList[3] tuple  %s" % (dsList[3],)
+    writeOutTIFFDataset(outputDataset, array, dsList[2], dsList[3])
+    return outputTiffName
+	
+def outputChangeProductTIFFs(geoAttrsList, gdalArray, quadsFolder, tiffPrefixStr, outType, outFolder, wrs2Name):
+
+    outputTiffName = createOutTIFF(geoAttrsList,gdalArray,os.path.join(outFolder,'32bit',
+                                                                       tiffPrefixStr+'_percent'),outType)
+    outputSignedIntTiffName = createSignedIntTIFF(outputTiffName, tiffPrefixStr, outType, os.path.join(outFolder,'16bit'))
+    # clean up the TIFF display by setting pixels outside the quad boundary to NoData
+    shp=os.path.join(quadsFolder,'wrs2_'+wrs2Name+tiffPrefixStr[-2:]+'.shp')
+    croppedFilename = (os.path.splitext(os.path.basename(outputSignedIntTiffName))[0])+'_cropped'
+    outputCropped = os.path.join(os.path.dirname(outputSignedIntTiffName),croppedFilename) + '.tif'
+    cropSingleRasterToQuad(outputSignedIntTiffName, outputCropped, shp, '-128')
     return outputTiffName
 
-def cropToQuad(inRastFolder, quadsFolder):
+def createSignedIntTIFF(inRast, tiffPrefixStr, outType, outFolder):
+    # Open test change product as in rast2array
+    outTypeDict={"ndvi":["_percent_NDVI.tif",gdal.GDT_Int16],"ndmi":["_percent_NDMI.tif",gdal.GDT_Int16],\
+                    "swir":["_percent_SWIR.tif",gdal.GDT_Int16]}
+
+    result=rast2array(inRast)
+    dsArray=result[0]
+    attList=result[1]
+    # Index the array and re-assign values greater than 127 and less than -127
+    # http://docs.scipy.org/doc/numpy/user/basics.indexing.html#boolean-or-mask-index-arrays
+    a1=dsArray>127.0
+    dsArray[a1]=127.0
+    a2=dsArray<-127.0
+    dsArray[a2]=-127.0 
+    # Round everything else to the nearest integer
+    a3=np.rint(dsArray)
+    # Convert the resulting array to signed int
+    a4=a3.astype('int16')
+    outputTiffName = os.path.join(outFolder,tiffPrefixStr+outTypeDict[outType][0])
+    clearOutputLocation(outputTiffName)
+    driver = gdal.GetDriverByName("GTiff")
+    # Write the TIFF out as Int16 Signed Byte 
+    dataset = driver.Create(outputTiffName, attList[0], attList[1], 1, gdal.GDT_Int16, ['PIXELTYPE=SIGNEDBYTE'])
+    # Write out like in createOutTiff
+    writeOutTIFFDataset(dataset, a4, attList[2], attList[3])
+    return outputTiffName
+	
+"""
+def createSignedIntTIFF(inRast, tiffPrefixStr, outType, outFolder):
+    # open test change product as in rast2array
+    outTypeDict={"ndvi":["_percent_NDVI.tif",gdal.GDT_Byte],"ndmi":["_percent_NDMI.tif",gdal.GDT_Byte],\
+                    "swir":["_percent_SWIR.tif",gdal.GDT_Byte]}
+
+    result=rast2array(inRast)
+    dsArray=result[0]
+    attList=result[1]
+    # do the rounding
+    # using boolean index arrays as in http://docs.scipy.org/doc/numpy/user/basics.indexing.html#boolean-or-mask-index-arrays
+    a1=dsArray>127
+    dsArray[a1]=127
+    a2=dsArray<-127
+    dsArray[a2]=-127
+    # round everything esle in the right direction
+    a3=np.rint(dsArray)
+    # as suggested in https://trac.osgeo.org/gdal/ticket/3151
+    # convert the resulting array to signed int
+    a4=a3.astype('int8')
+    # then to unsigned int. it appears that if you don't do this last step, negatives are lost?
+    b = np.cast['uint8'](a4)
+    outputTiffName = os.path.join(outFolder,tiffPrefixStr+outTypeDict[outType][0])
+    clearOutputLocation(outputTiffName)
+    driver = gdal.GetDriverByName("GTiff")
+    # as suggested in https://trac.osgeo.org/gdal/ticket/3151
+    # write the tiff out as pixeltype 8-bit signed
+    dataset = driver.Create(outputTiffName, attList[0], attList[1], 1, gdal.GDT_Byte, ['PIXELTYPE=SIGNEDBYTE'])
+    # write out like in createOutTiff
+    writeOutTIFFDataset(dataset, b, attList[2], attList[3])
+    return outputTiffName
+"""
+
+def cropSingleRasterToQuad(inRasterPath, outraster, shp, dstnodataValue=None):
+    # use dstnodata if not None. value is a string.
+    #
+
+    print("cropSingleRasterToQuad args inRasterPath {}, outraster {}, shp {}, dstnodataValue {}".format(inRasterPath, outraster, shp, dstnodataValue))
+    if dstnodataValue is not None:
+        codeIn = ['gdal_rasterize','-burn', dstnodataValue,'-i', '-l', os.path.splitext(os.path.basename(shp))[0], shp, inRasterPath]
+    else:
+        codeIn = ['gdalwarp', inRasterPath, outraster,'-cutline', shp,'-crop_to_cutline','-tr','15','15',
+              '-tap','-overwrite']
+    process = subprocess.Popen(codeIn,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out,err = process.communicate()
+    errcode = process.returncode
+    print out, err
+    # non-zero is error
+    return errcode
+
+def cropToQuad(inRastFolder, outRasterFolder, quadsFolder):
     """ """
     sceneQuadList = []
     wrs2 = os.path.basename(inRastFolder)[3:9]
@@ -367,7 +456,7 @@ def cropToQuad(inRastFolder, quadsFolder):
     for quad in quadFiles:
         if quad[-4:] == ".shp" and quad [5:11] == wrs2:
             #print "Cropping Quad: ", quad[0:-4]
-            sceneQuadFolder = os.path.join(os.path.dirname(inRastFolder),os.path.basename(inRastFolder) + quad[-6:-4])
+            sceneQuadFolder = os.path.join(outRasterFolder,os.path.basename(inRastFolder) + quad[-6:-4])
             if sceneQuadFolder not in sceneQuadList:
                 sceneQuadList.append(sceneQuadFolder)
             if os.path.exists(sceneQuadFolder) == False:
@@ -379,12 +468,7 @@ def cropToQuad(inRastFolder, quadsFolder):
                     #srs = os.path.join(quadsFolder, os.path.basename(quad)[:-4] + ".prj")
                     outraster = os.path.join(sceneQuadFolder, tiff[0:21] + quad[-6:-4] + tiff[21:-4] + ".TIF")
                     if os.path.exists(outraster) == False:
-                        codeIn = ['gdalwarp', tiffFull, outraster,'-cutline', quadFull,'-crop_to_cutline','-tr','15','15','-tap','-overwrite'] #'-dstnodata','0',
-                        process = subprocess.Popen(codeIn,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                        out,err = process.communicate()
-                        errcode = process.returncode
-                        print out, err
-                        print errcode
+                       print cropSingleRasterToQuad(tiffFull, outraster, quadFull)
                 elif 'gap_mask' in tiff:
                     sceneQuadGmFolder = os.path.join(sceneQuadFolder, "gap_mask")
                     if os.path.exists(sceneQuadGmFolder) == False:
@@ -396,7 +480,7 @@ def cropToQuad(inRastFolder, quadsFolder):
                             quadFull = os.path.join(quadsFolder, quad)
                             outraster = os.path.join(sceneQuadGmFolder, gm[0:21] + quad[-6:-4] + gm[21:-4] + ".TIF")
                             if os.path.exists(outraster) == False:
-                                subprocess.call(['gdalwarp', gmFull, outraster,'-cutline', quadFull,'-crop_to_cutline','-tr','15','15','-tap','-overwrite']) #'-dstnodata','0',
+                                cropSingleRasterToQuad(gmFull, outraster, quadFull)
     return sceneQuadList
 
 
@@ -413,7 +497,7 @@ def runFmask(tiffFolder,fmaskShellCall):
 			print("working dir:" + os.getcwd() + "\n")
 			process = subprocess.Popen([fmaskShellCall],cwd=tiffFolder,stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
 			out,err = process.communicate()
-			errcode = process.returncode 
+			errcode = process.returncode
 			os.rename(os.path.join(tiffFolder,os.path.basename(tiffFolder)+"_MTLFmask"), os.path.join(tiffFolder,os.path.basename(tiffFolder)+"_MTLFmask.TIF"))
 		else:
 			print "Mask already created for: "+tiffFolder
@@ -423,7 +507,7 @@ def runFmask(tiffFolder,fmaskShellCall):
 			print("Fmask Execution failed:"+str(out)+"/n"+str(err)+"/n"+str(errcode))
 		return_value = False;
 		return return_value
-		
+
 def cloudCover(FmaskData):
     """ """
     #print "Computing Cloud Cover"
