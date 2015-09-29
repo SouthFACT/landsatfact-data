@@ -69,7 +69,7 @@ MAP
 
     # set defaults for GetLegendGraphic requests 
     LEGEND
-        KEYSIZE 30 20
+        KEYSIZE 25 15
     END
 
 	#Begin the southeast mosaic products
@@ -89,81 +89,8 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
+		
         METADATA
             "wms_title"             "southeast-swir-current-threshold"
             "wms_abstract"          "southeast-swir-current-threshold"
@@ -184,81 +111,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-forest
         METADATA
             "wms_title"             "southeast-swir-current-thresholdMaskForForest"
@@ -280,85 +133,77 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-deciduous
         METADATA
             "wms_title"             "southeast-swir-current-thresholdMaskForDeciduous"
             "wms_abstract"          "southeast-swir-current-thresholdMaskForDeciduous"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-thresholdMaskForDeciduousCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-deciduous-cloud
+        METADATA
+            "wms_title"             "southeast-swir-current-thresholdMaskForDeciduousCloud"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForDeciduousCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-thresholdMaskForDeciduousGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-deciduous-gap
+        METADATA
+            "wms_title"             "southeast-swir-current-thresholdMaskForDeciduousGap"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForDeciduousGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-thresholdMaskForDeciduousCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-deciduous-cloudGap
+        METADATA
+            "wms_title"             "southeast-swir-current-thresholdMaskForDeciduousCloudGap"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForDeciduousCloudGap"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
@@ -376,85 +221,77 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-evergreen
         METADATA
             "wms_title"             "southeast-swir-current-thresholdMaskForEvergreen"
             "wms_abstract"          "southeast-swir-current-thresholdMaskForEvergreen"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-thresholdMaskForEvergreenCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-evergreen-cloud
+        METADATA
+            "wms_title"             "southeast-swir-current-thresholdMaskForEvergreenCloud"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForEvergreenCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-thresholdMaskForEvergreenGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-evergreen-gap
+        METADATA
+            "wms_title"             "southeast-swir-current-thresholdMaskForEvergreenGap"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForEvergreenGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-swir-current-thresholdMaskForEvergreenCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_swir.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-evergreen-cloudGap
+        METADATA
+            "wms_title"             "southeast-swir-current-thresholdMaskForEvergreenCloudGap"
+            "wms_abstract"          "southeast-swir-current-thresholdMaskForEvergreenCloudGap"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER
@@ -472,81 +309,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-mixed
         METADATA
             "wms_title"             "southeast-swir-current-thresholdMaskForMixed"
@@ -568,81 +331,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-shrubscrub
         METADATA
             "wms_title"             "southeast-swir-current-thresholdMaskForShrubScrub"
@@ -664,81 +353,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-woodywetlands
         METADATA
             "wms_title"             "southeast-swir-current-thresholdMaskForWoodyWetlands"
@@ -760,81 +375,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-gap-current
         METADATA
             "wms_title"             "southeast-swir-current-thresholdMaskForGap"
@@ -856,81 +397,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-cloud-current
         METADATA
             "wms_title"             "southeast-swir-current-thresholdMaskForCloud"
@@ -952,81 +419,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-cloudGap-current
         METADATA
             "wms_title"             "southeast-swir-current-thresholdMaskForCloudGap"
@@ -1048,81 +441,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
         METADATA
             "wms_title"             "southeast-swir-current-allchange"
             "wms_abstract"          "southeast-swir-current-allchange"
@@ -1143,81 +462,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-forest
         METADATA
             "wms_title"             "southeast-swir-current-allchangeMaskForForest"
@@ -1239,81 +484,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-deciduous
         METADATA
             "wms_title"             "southeast-swir-current-allchangeMaskForDeciduous"
@@ -1335,81 +506,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-evergreen
         METADATA
             "wms_title"             "southeast-swir-current-allchangeMaskForEvergreen"
@@ -1431,81 +528,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-mixed
         METADATA
             "wms_title"             "southeast-swir-current-allchangeMaskForMixed"
@@ -1527,81 +550,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-shrubscrub
         METADATA
             "wms_title"             "southeast-swir-current-allchangeMaskForShrubScrub"
@@ -1623,81 +572,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-woodywetlands
         METADATA
             "wms_title"             "southeast-swir-current-allchangeMaskForWoodyWetlands"
@@ -1719,81 +594,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-gap-current
         METADATA
             "wms_title"             "southeast-swir-current-allchangeMaskForGap"
@@ -1815,81 +616,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-cloud-current
         METADATA
             "wms_title"             "southeast-swir-current-allchangeMaskForCloud"
@@ -1911,81 +638,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-cloudGap-current
         METADATA
             "wms_title"             "southeast-swir-current-allchangeMaskForCloudGap"
@@ -2007,81 +660,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
         METADATA
             "wms_title"             "southeast-ndvi-current"
             "wms_abstract"          "southeast-ndvi-current"
@@ -2102,81 +681,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-forest
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForForest"
@@ -2198,81 +703,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-deciduous
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForDeciduous"
@@ -2294,81 +725,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-evergreen
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForEvergreen"
@@ -2390,81 +747,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-mixed
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForMixed"
@@ -2486,81 +769,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-shrubscrub
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForShrubScrub"
@@ -2582,81 +791,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-woodywetlands
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForWoodyWetlands"
@@ -2678,81 +813,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-gap-current
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForGap"
@@ -2774,81 +835,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-cloud-current
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCloud"
@@ -2870,81 +857,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-cloudGap-current
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCloudGap"
@@ -2966,81 +879,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
         METADATA
             "wms_title"             "southeast-ndmi-current"
             "wms_abstract"          "southeast-ndmi-current"
@@ -3061,81 +900,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-forest
         METADATA
             "wms_title"             "southeast-ndmi-currentMaskForForest"
@@ -3157,81 +922,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-deciduous
         METADATA
             "wms_title"             "southeast-ndmi-currentMaskForDeciduous"
@@ -3253,81 +944,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-evergreen
         METADATA
             "wms_title"             "southeast-ndmi-currentMaskForEvergreen"
@@ -3349,81 +966,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-mixed
         METADATA
             "wms_title"             "southeast-ndmi-currentMaskForMixed"
@@ -3445,81 +988,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-shrubscrub
         METADATA
             "wms_title"             "southeast-ndmi-currentMaskForShrubScrub"
@@ -3541,81 +1010,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-woodywetlands
         METADATA
             "wms_title"             "southeast-ndmi-currentMaskForWoodyWetlands"
@@ -3637,81 +1032,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-gap-current
         METADATA
             "wms_title"             "southeast-ndmi-currentMaskForGap"
@@ -3733,81 +1054,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-cloud-current
         METADATA
             "wms_title"             "southeast-ndmi-currentMaskForCloud"
@@ -3829,81 +1076,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		CLASS
-			NAME "Percent Change"
-			EXPRESSION ""
-			COLOR 255 255 255
-		END
-		CLASS
-			NAME "< -127"
-			EXPRESSION ([pixel] < -120)
-			COLOR 89 0 0 
-		END
-		CLASS
-			NAME "-101 to -120"
-			EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
-			COLOR 163 0 0
-		END
-		CLASS
-			NAME "-81 to -100"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 255 0 0
-		END
-		CLASS
-			NAME "-61 to -80"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 128 0
-		END
-		CLASS
-			NAME "-41 to -60"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 193 0
-		END
-		CLASS
-			NAME "-21 to -40"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 255 0
-		END
-		CLASS
-			NAME "-1 to -20"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 192 255 0
-		END
-		CLASS
-			NAME "0 to 20"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 1 255 0
-		END
-		CLASS
-			NAME "21 to 40"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 0 192 128
-		END
-		CLASS
-			NAME "41 to 60"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 128 255
-		END
-		CLASS
-			NAME "61 to 80"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 0 232
-		END
-		CLASS
-			NAME "81 to 100"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 128
-		END
-		CLASS
-			NAME "101 to 120"
-			EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
-			COLOR 0 0 89
-		END
-		CLASS
-			NAME "> 120"
-			EXPRESSION ([pixel] > 120)
-			COLOR 0 0 60
-		END
+		INCLUDE "lsf.cmap"
 		MASK southeast-cloudGap-current
         METADATA
             "wms_title"             "southeast-ndmi-currentMaskForCloudGap"
@@ -3958,61 +1131,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END       
+		INCLUDE "lsf.cmap"       
         METADATA
                 "wms_title"             "SWIR-raster-threshold"
                 "wms_abstract"          "SWIR-raster-threshold"
@@ -4038,61 +1157,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-forest
         METADATA
                 "wms_title"             "SWIR-raster-thresholdMaskForForest"
@@ -4119,61 +1184,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-deciduous
         METADATA
                 "wms_title"             "SWIR-raster-thresholdMaskForDeciduous"
@@ -4200,61 +1211,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-evergreen
         METADATA
                 "wms_title"             "SWIR-raster-thresholdMaskForEvergreen"
@@ -4281,61 +1238,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-mixed
         METADATA
                 "wms_title"             "SWIR-raster-thresholdMaskForMixed"
@@ -4362,61 +1265,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-shrubscrub
         METADATA
                 "wms_title"             "SWIR-raster-thresholdMaskForShrubScrub"
@@ -4443,61 +1292,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-woodywetlands
         METADATA
                 "wms_title"             "SWIR-raster-thresholdMaskForWoodyWetlands"
@@ -4524,61 +1319,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK gap-raster
         METADATA
                 "wms_title"             "SWIR-raster-thresholdMaskForGap"
@@ -4605,61 +1346,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END 
+		INCLUDE "lsf.cmap" 
 		MASK cloud-raster
         METADATA
                 "wms_title"             "SWIR-raster-thresholdMaskForCloud"
@@ -4686,24 +1373,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
-		END  
+		INCLUDE "lsf.cmap"
 		MASK cloudGap-raster
         METADATA
                 "wms_title"             "SWIR-raster-thresholdMaskForCloudGap"
@@ -4730,61 +1400,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
         METADATA
                 "wms_title"             "SWIR-raster-allchange"
                 "wms_abstract"          "SWIR-raster-allchange"
@@ -4810,61 +1426,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-forest
         METADATA
                 "wms_title"             "SWIR-raster-allchangeMaskForForest"
@@ -4891,61 +1453,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-deciduous
         METADATA
                 "wms_title"             "SWIR-raster-allchangeMaskForDeciduous"
@@ -4972,61 +1480,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-evergreen
         METADATA
                 "wms_title"             "SWIR-raster-allchangeMaskForEvergreen"
@@ -5053,61 +1507,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-mixed
         METADATA
                 "wms_title"             "SWIR-raster-allchangeMaskForMixed"
@@ -5134,61 +1534,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-shrubscrub
         METADATA
                 "wms_title"             "SWIR-raster-allchangeMaskForShrubScrub"
@@ -5215,61 +1561,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-woodywetlands
         METADATA
                 "wms_title"             "SWIR-raster-allchangeMaskForWoodyWetlands"
@@ -5296,61 +1588,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END 
+		INCLUDE "lsf.cmap" 
 		MASK gap-raster
         METADATA
                 "wms_title"             "SWIR-raster-allchangeMaskForGap"
@@ -5377,61 +1615,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END 
+		INCLUDE "lsf.cmap" 
 		MASK cloud-raster
         METADATA
                 "wms_title"             "SWIR-raster-allchangeMaskForCloud"
@@ -5458,24 +1642,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
-		END  
+		INCLUDE "lsf.cmap"
 		MASK cloudGap-raster
         METADATA
                 "wms_title"             "SWIR-raster-allchangeMaskForCloudGap"
@@ -5530,61 +1697,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END       
+		INCLUDE "lsf.cmap"       
         METADATA
                 "wms_title"             "NDVI-raster"
                 "wms_abstract"          "NDVI-raster"
@@ -5610,61 +1723,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-forest
         METADATA
                 "wms_title"             "NDVI-rasterMaskForForest"
@@ -5691,61 +1750,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-deciduous
         METADATA
                 "wms_title"             "NDVI-rasterMaskForDeciduous"
@@ -5772,61 +1777,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-evergreen
         METADATA
                 "wms_title"             "NDVI-rasterMaskForEvergreen"
@@ -5853,61 +1804,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-mixed
         METADATA
                 "wms_title"             "NDVI-rasterMaskForMixed"
@@ -5934,61 +1831,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-shrubscrub
         METADATA
                 "wms_title"             "NDVI-rasterMaskForShrubScrub"
@@ -6015,61 +1858,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-woodywetlands
         METADATA
                 "wms_title"             "NDVI-rasterMaskForWoodyWetlands"
@@ -6096,61 +1885,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK gap-raster
         METADATA
                 "wms_title"             "NDVI-rasterMaskForGap"
@@ -6177,61 +1912,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END 
+		INCLUDE "lsf.cmap" 
 		MASK cloud-raster
         METADATA
                 "wms_title"             "NDVI-rasterMaskForCloud"
@@ -6258,24 +1939,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
-		END  
+		INCLUDE "lsf.cmap"
 		MASK cloudGap-raster
         METADATA
                 "wms_title"             "NDVI-rasterMaskForCloudGap"
@@ -6330,61 +1994,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END      
+		INCLUDE "lsf.cmap"      
         METADATA
                 "wms_title"             "NDMI-raster"
                 "wms_abstract"          "NDMI-raster"
@@ -6410,61 +2020,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-forest
         METADATA
                 "wms_title"             "NDMI-rasterMaskForForest"
@@ -6491,61 +2047,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-deciduous
         METADATA
                 "wms_title"             "NDMI-rasterMaskForDeciduous"
@@ -6572,61 +2074,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-evergreen
         METADATA
                 "wms_title"             "NDMI-rasterMaskForEvergreen"
@@ -6653,61 +2101,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-mixed
         METADATA
                 "wms_title"             "NDMI-rasterMaskForMixed"
@@ -6734,61 +2128,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-shrubscrub
         METADATA
                 "wms_title"             "NDMI-rasterMaskForShrubScrub"
@@ -6815,61 +2155,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK southeast-woodywetlands
         METADATA
                 "wms_title"             "NDMI-rasterMaskForWoodyWetlands"
@@ -6896,61 +2182,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END     
+		INCLUDE "lsf.cmap"     
 		MASK gap-raster
         METADATA
                 "wms_title"             "NDMI-rasterMaskForGap"
@@ -6977,61 +2209,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -127 AND [pixel] <= -101)
-			COLOR 89 0 0 
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
-			COLOR 163 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
-			COLOR 255 0 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
-			COLOR 255 128 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
-			COLOR 255 193 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
-			COLOR 255 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
-			COLOR 192 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
-			COLOR 1 255 0
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
-			COLOR 0 192 128
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
-			COLOR 0 128 255
-		END
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
-			COLOR 0 0 232
-		END
+		INCLUDE "lsf.cmap"
 		MASK cloud-raster
         METADATA
                 "wms_title"             "NDMI-rasterMaskForCloud"
@@ -7058,24 +2236,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		CLASS
-			#NAME "Values -119 to 0"
-			EXPRESSION ([pixel] >= -119 AND [pixel] <= 0)
-			STYLE
-				COLORRANGE 179 0 0 254 240 217
-				DATARANGE -119 0
-				RANGEITEM "pixel"
-			END
-		END
-		CLASS
-			#NAME "Values 1 to 255"
-			EXPRESSION ([pixel] >= 1 AND [pixel] < 255)
-			STYLE
-				COLORRANGE 161 218 180 37 52 148
-				DATARANGE 1 254
-				RANGEITEM "pixel"
-			END
-		END  
+		INCLUDE "lsf.cmap"
 		MASK cloudGap-raster
         METADATA
                 "wms_title"             "NDMI-rasterMaskForCloudGap"
@@ -7098,6 +2259,10 @@ MAP
         DATA             "geom from vw_tile_index_gap"
 		#HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
+		VALIDATION
+			"TIME" "[0-9]+"
+		END
+		FILTER "product_date = 'TIME'"
 		PROJECTION
             "init=epsg:4326"
         END
@@ -7154,6 +2319,10 @@ MAP
         DATA             "geom from vw_tile_index_cloud"
 		#HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
+		VALIDATION
+			"TIME" "[0-9]+"
+		END
+		FILTER "product_date = 'TIME'"
 		PROJECTION
             "init=epsg:4326"
         END
@@ -7210,6 +2379,10 @@ MAP
 		TILESRS "srs"
 		#HEADER   ./templates/layer_query_header.html
         TEMPLATE ./templates/layer.html
+		VALIDATION
+			"TIME" "[0-9]+"
+		END
+		FILTER "product_date = 'TIME'"
 		PROJECTION
             AUTO
 			#"init=epsg:4326"
@@ -7369,6 +2542,102 @@ MAP
         END  # end METADATA	
 	END # end LAYER
 	LAYER
+		NAME "southeast-deciduous-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-deciduous-cloud"
+            "wms_abstract"          "southeast-deciduous-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-deciduous-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-deciduous-gap"
+            "wms_abstract"          "southeast-deciduous-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-deciduous-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-deciduous-cloudGap"
+            "wms_abstract"          "southeast-deciduous-cloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER	
+	LAYER
 		NAME "southeast-evergreen"
 		STATUS ON
 		TYPE RASTER
@@ -7396,6 +2665,102 @@ MAP
         METADATA
             "wms_title"             "southeast-evergreen"
             "wms_abstract"          "southeast-evergreen"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-evergreen-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-evergreen-cloud"
+            "wms_abstract"          "southeast-evergreen-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-evergreen-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-evergreen-gap"
+            "wms_abstract"          "southeast-evergreen-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-evergreen-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-evergreen-cloudGap"
+            "wms_abstract"          "southeast-evergreen-cloudGap"
             "gml_include_items"     "value_0"
         END  # end METADATA	
 	END # end LAYER

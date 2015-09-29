@@ -2,6 +2,10 @@
 msconfig/vlayers.map
 msconfig/rlayers.map
 msconfig/lsflayers.map
+msconfig/lsf-ndmi.map
+msconfig/lsf-ndvi.map
+msconfig/lsf-swir-threshold.map
+msconfig/lsf-swir-allchange.map
 msconfig/data
 var/Config.py
 var/Config.pyc
@@ -26,3 +30,4 @@ geoprocessing/fmaskLinux/Fmask32/*
 dataexchange/LANDSAT_ETM_SLC_OFF.csv
 html/landsatfact_config.xml
 geoprocessing/old/*
+var/log/lsf_cron.log

@@ -1,0 +1,5556 @@
+MAP
+    # the following two lines tell MapServer to write debugging output to a log file.  Remove the '#' from the beginning
+    # of the two lines below to enable this logging:
+    #CONFIG "MS_ERRORFILE" "../var/log/vlayers.log"
+    DEBUG 5
+
+    # all temp files get prefixed with this string
+    NAME lsf_ndvi
+
+    #jdm:added to accomodate map layers
+    #see http://trac.osgeo.org/mapserver/ticket/3055
+    MAXSIZE 3072 
+    
+    # background color of image if transparency
+    # is not requested
+    IMAGECOLOR 255 255 255
+
+    # default output image dimensions
+    SIZE 600 400
+
+    # always returns a map
+    STATUS ON
+
+    # set top level projection
+    PROJECTION
+        "init=epsg:3785"
+    END
+
+    # image format options
+    OUTPUTFORMAT
+        NAME "PNG"
+        DRIVER "GDAL/PNG"
+        MIMETYPE "image/png"
+        IMAGEMODE "RGB"
+        EXTENSION "png"
+    END
+
+    # minx miny maxx maxy
+    EXTENT    -124.733174 24.543940 -66.950005 49.384359 # US
+
+    # add def pointers for symbols
+    SYMBOLSET "./symbols/symbols35.sym"
+    FONTSET   "./fonts/fonts.list"
+
+    # Start of web interface definition
+    WEB
+
+        # this is the real filepath to the temp dir for intermediate file creation
+        IMAGEPATH "./tmp"
+
+        # this is the web-accessible path to IMAGEPATH
+        IMAGEURL "/tmp/"
+
+        HEADER "./templates/query_header.html"
+        FOOTER "./templates/query_footer.html"
+
+        METADATA
+            "ows_enable_request"     "*"
+            "wms_title"              "NEMAC LandsatFACT NDVI Product Layers WMS"
+            "wms_abstract"           "NEMAC LandsatFACT NDVI Product Layers WMS"
+            "wms_onlineresource"     "%(SERVICE_URL)s"
+            "wms_srs"                "EPSG:3785 EPSG:4326 EPSG:900913"
+        END
+    END
+
+    QUERYMAP
+        STATUS OFF
+    END
+
+    # set defaults for GetLegendGraphic requests 
+    LEGEND
+        KEYSIZE 25 15
+    END
+
+	#Begin the southeast latest change mosaic products
+	
+	LAYER
+		NAME "southeast-ndvi-current"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+        METADATA
+            "wms_title"             "southeast-ndvi-current"
+            "wms_abstract"          "southeast-ndvi-current"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDforest
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDForest"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForForestCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDforest-cloud
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDForestCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDForestCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForForestGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDforest-gap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDForestGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDForestGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForForestCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDforest-cloudGap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDForestCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDForestCloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDDeciduous"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDdeciduous
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDDeciduous"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDDeciduous"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDDeciduousCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDdeciduous-cloud
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDDeciduousCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDDeciduousCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDDeciduousGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDdeciduous-gap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDDeciduousGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDDeciduousGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDDeciduousCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDdeciduous-cloudGap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDDeciduousCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDDeciduousCloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDEvergreen"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDevergreen
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDEvergreen"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDEvergreen"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDEvergreenCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDevergreen-cloud
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDEvergreenCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDEvergreenCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDEvergreenGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDevergreen-gap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDEvergreenGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDEvergreenGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDEvergreenCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDevergreen-cloudGap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDEvergreenCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDEvergreenCloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDMixed"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDmixed
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDMixed"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDMixed"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDMixedCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDmixed-cloud
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDMixedCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDMixedCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDMixedGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDmixed-gap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDMixedGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDMixedGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDMixedCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDmixed-cloudGap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDMixedCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDMixedCloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDShrubScrub"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDshrubscrub
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDShrubScrub"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDShrubScrub"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDShrubScrubCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDshrubscrub-cloud
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDShrubScrubCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDShrubScrubCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDShrubScrubGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDshrubscrub-gap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDShrubScrubGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDShrubScrubGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDShrubScrubCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-NLCDshrubscrub-cloudGap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDShrubScrubCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDShrubScrubCloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-nlcdwoodywetlands
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDWoodyWetlands"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDWoodyWetlands"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDWoodyWetlandsCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-nlcdwoodywetlands-cloud
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDWoodyWetlandsCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDWoodyWetlandsCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDWoodyWetlandsGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-nlcdwoodywetlands-gap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDWoodyWetlandsGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDWoodyWetlandsGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForNLCDWoodyWetlandsCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-nlcdwoodywetlands-cloudGap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForNLCDWoodyWetlandsCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForNLCDWoodyWetlandsCloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLForest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLforest
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLForest"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLForest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLForestCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLforest-cloud
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLForestCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLForestCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLForestGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLforest-gap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLForestGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLForestGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLForestCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLforest-cloudGap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLForestCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLForestCloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLDeciduous"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLdeciduous
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLDeciduous"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLDeciduous"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLDeciduousCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLdeciduous-cloud
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLDeciduousCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLDeciduousCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLDeciduousGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLdeciduous-gap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLDeciduousGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLDeciduousGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLDeciduousCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLdeciduous-cloudGap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLDeciduousCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLDeciduousCloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLEvergreen"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLevergreen
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLEvergreen"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLEvergreen"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLEvergreenCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLevergreen-cloud
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLEvergreenCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLEvergreenCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLEvergreenGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLevergreen-gap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLEvergreenGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLEvergreenGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLEvergreenCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLevergreen-cloudGap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLEvergreenCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLEvergreenCloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLMixed"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLmixed
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLMixed"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLMixed"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLMixedCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLmixed-cloud
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLMixedCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLMixedCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLMixedGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLmixed-gap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLMixedGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLMixedGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLMixedCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLmixed-cloudGap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLMixedCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLMixedCloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLShrubScrub"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLshrubscrub
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLShrubScrub"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLShrubScrub"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLShrubScrubCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLshrubscrub-cloud
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLShrubScrubCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLShrubScrubCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLShrubScrubGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLshrubscrub-gap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLShrubScrubGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLShrubScrubGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLShrubScrubCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLshrubscrub-cloudGap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLShrubScrubCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLShrubScrubCloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLwoodywetlands
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLWoodyWetlands"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLWoodyWetlands"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLWoodyWetlandsCloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLwoodywetlands-cloud
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLWoodyWetlandsCloud"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLWoodyWetlandsCloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLWoodyWetlandsGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLwoodywetlands-gap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLWoodyWetlandsGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLWoodyWetlandsGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-ndvi-currentMaskForCDLWoodyWetlandsCloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_ndvi.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK southeast-CDLwoodywetlands-cloudGap
+        METADATA
+            "wms_title"             "southeast-ndvi-currentMaskForCDLWoodyWetlandsCloudGap"
+            "wms_abstract"          "southeast-ndvi-currentMaskForCDLWoodyWetlandsCloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	
+	#Begin the tile index products
+	
+	LAYER
+		NAME "ndvi-tdx"
+		STATUS ON
+		TYPE POLYGON
+		CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from vw_tile_index_ndvi"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            "init=epsg:4326"
+        END
+		#OPACITY 0
+		CLASS	
+			STYLE	
+				COLOR 200 200 200
+				OUTLINECOLOR 0 0 0
+			END
+		END
+        METADATA
+                "wms_title"             "ndvi-tdx"
+                "wms_abstract"          "ndvi-tdx"
+                "gml_include_items"     "location"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-05-13"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archive"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"      
+        METADATA
+                "wms_title"             "ndvi-archive"
+                "wms_abstract"          "ndvi-archive"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK southeast-NLCDforest
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDForest"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForForestCloud"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDforest-cloud
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDForestCloud"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDForestCloud"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForForestGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDforest-gap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDForestGap"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDForestGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForForestCloudGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDforest-cloudgap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDForestCloudGap"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDForestCloudGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDDeciduous"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK southeast-NLCDdeciduous
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDDeciduous"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDDeciduous"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDDeciduousCloud"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDdeciduous-cloud
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDDeciduousCloud"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDDeciduousCloud"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDDeciduousGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDdeciduous-gap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDDeciduousGap"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDDeciduousGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDDeciduousCloudGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDdeciduous-cloudgap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDDeciduousCloudGap"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDDeciduousCloudGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDEvergreen"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK southeast-NLCDevergreen
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDEvergreen"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDEvergreen"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDEvergreenCloud"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDevergreen-cloud
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDEvergreenCloud"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDEvergreenCloud"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDEvergreenGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDevergreen-gap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDEvergreenGap"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDEvergreenGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDEvergreenCloudGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDevergreen-cloudgap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDEvergreenCloudGap"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDEvergreenCloudGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDMixed"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK southeast-NLCDmixed
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDMixed"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDMixed"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDMixedCloud"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDmixed-cloud
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDMixedCloud"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDMixedCloud"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDMixedGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDmixed-gap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDMixedGap"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDMixedGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDMixedCloudGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDmixed-cloudgap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDMixedCloudGap"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDMixedCloudGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDShrubScrub"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK southeast-NLCDshrubscrub
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDShrubScrub"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDShrubScrub"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDShrubScrubCloud"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDshrubscrub-cloud
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDShrubScrubCloud"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDShrubScrubCloud"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDShrubScrubGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDshrubscrub-gap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDShrubScrubGap"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDShrubScrubGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDShrubScrubCloudGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-NLCDshrubscrub-cloudgap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDShrubScrubCloudGap"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDShrubScrubCloudGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK southeast-nlcdwoodywetlands
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDWoodyWetlands"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDWoodyWetlands"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDWoodyWetlandsCloud"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-nlcdwoodywetlands-cloud
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDWoodyWetlandsCloud"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDWoodyWetlandsCloud"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDWoodyWetlandsGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-nlcdwoodywetlands-gap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDWoodyWetlandsGap"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDWoodyWetlandsGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForNLCDWoodyWetlandsCloudGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-nlcdwoodywetlands-cloudgap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForNLCDWoodyWetlandsCloudGap"
+                "wms_abstract"          "ndvi-archiveMaskForNLCDWoodyWetlandsCloudGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	    LAYER
+		NAME "ndvi-archiveMaskForCDLForest"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK southeast-CDLforest
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLForest"
+                "wms_abstract"          "ndvi-archiveMaskForCDLForest"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLForestCloud"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLforest-cloud
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLForestCloud"
+                "wms_abstract"          "ndvi-archiveMaskForCDLForestCloud"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLForestGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLforest-gap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLForestGap"
+                "wms_abstract"          "ndvi-archiveMaskForCDLForestGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLForestCloudGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLforest-cloudgap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLForestCloudGap"
+                "wms_abstract"          "ndvi-archiveMaskForCDLForestCloudGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLDeciduous"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK southeast-CDLdeciduous
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLDeciduous"
+                "wms_abstract"          "ndvi-archiveMaskForCDLDeciduous"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLDeciduousCloud"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLdeciduous-cloud
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLDeciduousCloud"
+                "wms_abstract"          "ndvi-archiveMaskForCDLDeciduousCloud"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLDeciduousGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLdeciduous-gap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLDeciduousGap"
+                "wms_abstract"          "ndvi-archiveMaskForCDLDeciduousGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLDeciduousCloudGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLdeciduous-cloudgap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLDeciduousCloudGap"
+                "wms_abstract"          "ndvi-archiveMaskForCDLDeciduousCloudGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLEvergreen"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK southeast-CDLevergreen
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLEvergreen"
+                "wms_abstract"          "ndvi-archiveMaskForCDLEvergreen"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLEvergreenCloud"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLevergreen-cloud
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLEvergreenCloud"
+                "wms_abstract"          "ndvi-archiveMaskForCDLEvergreenCloud"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLEvergreenGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLevergreen-gap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLEvergreenGap"
+                "wms_abstract"          "ndvi-archiveMaskForCDLEvergreenGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLEvergreenCloudGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLevergreen-cloudgap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLEvergreenCloudGap"
+                "wms_abstract"          "ndvi-archiveMaskForCDLEvergreenCloudGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLMixed"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK southeast-CDLmixed
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLMixed"
+                "wms_abstract"          "ndvi-archiveMaskForCDLMixed"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLMixedCloud"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLmixed-cloud
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLMixedCloud"
+                "wms_abstract"          "ndvi-archiveMaskForCDLMixedCloud"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLMixedGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLmixed-gap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLMixedGap"
+                "wms_abstract"          "ndvi-archiveMaskForCDLMixedGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLMixedCloudGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLmixed-cloudgap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLMixedCloudGap"
+                "wms_abstract"          "ndvi-archiveMaskForCDLMixedCloudGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLShrubScrub"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK southeast-CDLshrubscrub
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLShrubScrub"
+                "wms_abstract"          "ndvi-archiveMaskForCDLShrubScrub"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLShrubScrubCloud"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLshrubscrub-cloud
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLShrubScrubCloud"
+                "wms_abstract"          "ndvi-archiveMaskForCDLShrubScrubCloud"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLShrubScrubGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLshrubscrub-gap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLShrubScrubGap"
+                "wms_abstract"          "ndvi-archiveMaskForCDLShrubScrubGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLShrubScrubCloudGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLshrubscrub-cloudgap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLShrubScrubCloudGap"
+                "wms_abstract"          "ndvi-archiveMaskForCDLShrubScrubCloudGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK southeast-CDLwoodywetlands
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLWoodyWetlands"
+                "wms_abstract"          "ndvi-archiveMaskForCDLWoodyWetlands"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLWoodyWetlandsCloud"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLwoodywetlands-cloud
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLWoodyWetlandsCloud"
+                "wms_abstract"          "ndvi-archiveMaskForCDLWoodyWetlandsCloud"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLWoodyWetlandsGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLwoodywetlands-gap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLWoodyWetlandsGap"
+                "wms_abstract"          "ndvi-archiveMaskForCDLWoodyWetlandsGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCDLWoodyWetlandsCloudGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK archive-CDLwoodywetlands-cloudgap
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCDLWoodyWetlandsCloudGap"
+                "wms_abstract"          "ndvi-archiveMaskForCDLWoodyWetlandsCloudGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"     
+		MASK gap-archive
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForGap"
+                "wms_abstract"          "ndvi-archiveMaskForGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCloud"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK cloud-archive
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCloud"
+                "wms_abstract"          "ndvi-archiveMaskForCloud"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "ndvi-archiveMaskForCloudGap"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "ndvi-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		#OPACITY 0
+		FILTER ([date] = "2015-03-09")
+		#OFFSITE 0 0 0 
+		INCLUDE "lsf.cmap"
+		MASK cloudGap-archive
+        METADATA
+                "wms_title"             "ndvi-archiveMaskForCloudGap"
+                "wms_abstract"          "ndvi-archiveMaskForCloudGap"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	
+	#Begin the southeast and archive masks
+	
+	LAYER
+		NAME "gap-tdx"
+		STATUS ON
+		TYPE POLYGON
+		CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from vw_tile_index_gap"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		VALIDATION
+			"TIME" "[0-9]+"
+		END
+		FILTER "product_date = 'TIME'"
+		PROJECTION
+            "init=epsg:4326"
+        END
+		#OPACITY 0
+		CLASS	
+			STYLE	
+				COLOR 200 200 200
+				OUTLINECOLOR 0 0 0
+			END
+		END
+        METADATA
+                "wms_title"             "gap-tdx"
+                "wms_abstract"          "gap-tdx"
+                "gml_include_items"     "location"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-05-13"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "gap-archive"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "gap-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		FILTER ([date] = "2015-03-09")
+		OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END  
+        METADATA
+                "wms_title"             "gap-archive"
+                "wms_abstract"          "gap-archive"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "cloud-tdx"
+		STATUS ON
+		TYPE POLYGON
+		CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from vw_tile_index_cloud"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		VALIDATION
+			"TIME" "[0-9]+"
+		END
+		FILTER "product_date = 'TIME'"
+		PROJECTION
+            "init=epsg:4326"
+        END
+		#OPACITY 0
+		CLASS	
+			STYLE	
+				COLOR 200 200 200
+				OUTLINECOLOR 0 0 0
+			END
+		END
+        METADATA
+                "wms_title"             "cloud-tdx"
+                "wms_abstract"          "cloud-tdx"
+                "gml_include_items"     "location"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-05-13"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "cloud-archive"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "cloud-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		FILTER ([date] = "2015-03-09")
+		OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+                "wms_title"             "cloud-archive"
+                "wms_abstract"          "cloud-archive"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+	LAYER
+		NAME "cloudGap-archive"
+		STATUS ON
+		TYPE RASTER
+		TILEITEM "location"
+		TILEINDEX "cloud-tdx"
+		TILESRS "srs"
+		#HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		PROJECTION
+            AUTO
+			#"init=epsg:4326"
+        END
+		FILTER ([date] = "2015-03-09")
+		OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END   
+		MASK gap-archive
+        METADATA
+                "wms_title"             "cloudGap-archive"
+                "wms_abstract"          "cloudGap-archive"
+                "gml_include_items"     "value_0"
+				"wms_timeextent" "2013-03-09/2017-05-13"
+				"wms_timeitem" "product_date" #column in postgis table of type timestamp
+				"wms_timedefault" "2015-03-09"
+        END  # end METADATA
+	END # end LAYER
+		
+	LAYER
+		NAME "southeast-gap-current"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_gap.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-gap-current"
+            "wms_abstract"          "southeast-gap-current"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-cloud-current"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_cloud.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-cloud-current"
+            "wms_abstract"          "southeast-cloud-current"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-cloudGap-current"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/products/mosaics/southeast_mosaic_cloud.tif"
+		PROJECTION
+			"proj=longlat"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-cloudGAP-current"
+            "wms_abstract"          "southeast-cloudGAP-current"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDforest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-NLCDforest"
+            "wms_abstract"          "southeast-NLCDforest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDforest-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-NLCDforest-cloud"
+            "wms_abstract"          "southeast-NLCDforest-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDforest-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-NLCDforest-gap"
+            "wms_abstract"          "southeast-NLCDforest-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDforest-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-NLCDforest-cloudGap"
+            "wms_abstract"          "southeast-NLCDforest-cloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDforest-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForGap
+        METADATA
+            "wms_title"             "archive-NLCDforest-gap"
+            "wms_abstract"          "archive-NLCDforest-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDforest-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloud
+        METADATA
+            "wms_title"             "archive-NLCDforest-cloud"
+            "wms_abstract"          "archive-NLCDforest-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDforest-cloudgap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloudGap
+        METADATA
+            "wms_title"             "archive-NLCDforest-cloudgap"
+            "wms_abstract"          "archive-NLCDforest-cloudgap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDdeciduous"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-NLCDdeciduous"
+            "wms_abstract"          "southeast-NLCDdeciduous"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDdeciduous-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-NLCDdeciduous-cloud"
+            "wms_abstract"          "southeast-NLCDdeciduous-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDdeciduous-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-NLCDdeciduous-gap"
+            "wms_abstract"          "southeast-NLCDdeciduous-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDdeciduous-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-NLCDdeciduous-cloudGap"
+            "wms_abstract"          "southeast-NLCDdeciduous-cloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER	
+	LAYER
+		NAME "archive-NLCDdeciduous-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForGap
+        METADATA
+            "wms_title"             "archive-NLCDdeciduous-gap"
+            "wms_abstract"          "archive-NLCDdeciduous-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDdeciduous-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloud
+        METADATA
+            "wms_title"             "archive-NLCDdeciduous-cloud"
+            "wms_abstract"          "archive-NLCDdeciduous-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDdeciduous-cloudgap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloudGap
+        METADATA
+            "wms_title"             "archive-NLCDdeciduous-cloudgap"
+            "wms_abstract"          "archive-NLCDdeciduous-cloudgap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDevergreen"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-NLCDevergreen"
+            "wms_abstract"          "southeast-NLCDevergreen"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDevergreen-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-NLCDevergreen-cloud"
+            "wms_abstract"          "southeast-NLCDevergreen-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDevergreen-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-NLCDevergreen-gap"
+            "wms_abstract"          "southeast-NLCDevergreen-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDevergreen-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-NLCDevergreen-cloudGap"
+            "wms_abstract"          "southeast-NLCDevergreen-cloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDevergreen-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForGap
+        METADATA
+            "wms_title"             "archive-NLCDevergreen-gap"
+            "wms_abstract"          "archive-NLCDevergreen-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDevergreen-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloud
+        METADATA
+            "wms_title"             "archive-NLCDevergreen-cloud"
+            "wms_abstract"          "archive-NLCDevergreen-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDevergreen-cloudgap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloudGap
+        METADATA
+            "wms_title"             "archive-NLCDevergreen-cloudgap"
+            "wms_abstract"          "archive-NLCDevergreen-cloudgap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDmixed"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-NLCDmixed"
+            "wms_abstract"          "southeast-NLCDmixed"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDmixed-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-NLCDmixed-cloud"
+            "wms_abstract"          "southeast-NLCDmixed-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDmixed-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-NLCDmixed-gap"
+            "wms_abstract"          "southeast-NLCDmixed-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDmixed-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-NLCDmixed-cloudGap"
+            "wms_abstract"          "southeast-NLCDmixed-cloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDmixed-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForGap
+        METADATA
+            "wms_title"             "archive-NLCDmixed-gap"
+            "wms_abstract"          "archive-NLCDmixed-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDmixed-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloud
+        METADATA
+            "wms_title"             "archive-NLCDmixed-cloud"
+            "wms_abstract"          "archive-NLCDmixed-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDmixed-cloudgap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloudGap
+        METADATA
+            "wms_title"             "archive-NLCDmixed-cloudgap"
+            "wms_abstract"          "archive-NLCDmixed-cloudgap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDshrubscrub"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-NLCDshrubscrub"
+            "wms_abstract"          "southeast-NLCDshrubscrub"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDshrubscrub-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-NLCDshrubscrub-cloud"
+            "wms_abstract"          "southeast-NLCDshrubscrub-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDshrubscrub-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-NLCDshrubscrub-gap"
+            "wms_abstract"          "southeast-NLCDshrubscrub-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDshrubscrub-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-NLCDshrubscrub-cloudGap"
+            "wms_abstract"          "southeast-NLCDshrubscrub-cloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDshrubscrub-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForGap
+        METADATA
+            "wms_title"             "archive-NLCDshrubscrub-gap"
+            "wms_abstract"          "archive-NLCDshrubscrub-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDshrubscrub-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloud
+        METADATA
+            "wms_title"             "archive-NLCDshrubscrub-cloud"
+            "wms_abstract"          "archive-NLCDshrubscrub-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDshrubscrub-cloudgap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloudGap
+        METADATA
+            "wms_title"             "archive-NLCDshrubscrub-cloudgap"
+            "wms_abstract"          "archive-NLCDshrubscrub-cloudgap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-NLCDWoodyWetlands"
+            "wms_abstract"          "southeast-NLCDWoodyWetlands"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDWoodyWetlands-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-NLCDWoodyWetlands-cloud"
+            "wms_abstract"          "southeast-NLCDWoodyWetlands-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-NLCDWoodyWetlands-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-NLCDWoodyWetlands-gap"
+            "wms_abstract"          "southeast-NLCDWoodyWetlands-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-nlcdwoodywetlands-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-NLCDWoodyWetlands-cloudGap"
+            "wms_abstract"          "southeast-NLCDWoodyWetlands-cloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDWoodyWetlands-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForGap
+        METADATA
+            "wms_title"             "archive-NLCDWoodyWetlands-gap"
+            "wms_abstract"          "archive-NLCDWoodyWetlands-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDWoodyWetlands-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloud
+        METADATA
+            "wms_title"             "archive-NLCDWoodyWetlands-cloud"
+            "wms_abstract"          "archive-NLCDWoodyWetlands-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-NLCDWoodyWetlands-cloudgap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/nlcd/NLCD_2011_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloudGap
+        METADATA
+            "wms_title"             "archive-NLCDWoodyWetlands-cloudgap"
+            "wms_abstract"          "archive-NLCDWoodyWetlands-cloudgap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLforest"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-CDLforest"
+            "wms_abstract"          "southeast-CDLforest"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLforest-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-CDLforest-cloud"
+            "wms_abstract"          "southeast-CDLforest-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLforest-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-CDLforest-gap"
+            "wms_abstract"          "southeast-CDLforest-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLforest-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-CDLforest-cloudGap"
+            "wms_abstract"          "southeast-CDLforest-cloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLforest-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForGap
+        METADATA
+            "wms_title"             "archive-CDLforest-gap"
+            "wms_abstract"          "archive-CDLforest-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLforest-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloud
+        METADATA
+            "wms_title"             "archive-CDLforest-cloud"
+            "wms_abstract"          "archive-CDLforest-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLforest-cloudgap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloudGap
+        METADATA
+            "wms_title"             "archive-CDLforest-cloudgap"
+            "wms_abstract"          "archive-CDLforest-cloudgap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLdeciduous"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-CDLdeciduous"
+            "wms_abstract"          "southeast-CDLdeciduous"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLdeciduous-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-CDLdeciduous-cloud"
+            "wms_abstract"          "southeast-CDLdeciduous-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLdeciduous-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-CDLdeciduous-gap"
+            "wms_abstract"          "southeast-CDLdeciduous-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLdeciduous-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-CDLdeciduous-cloudGap"
+            "wms_abstract"          "southeast-CDLdeciduous-cloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER	
+	LAYER
+		NAME "archive-CDLdeciduous-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForGap
+        METADATA
+            "wms_title"             "archive-CDLdeciduous-gap"
+            "wms_abstract"          "archive-CDLdeciduous-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLdeciduous-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloud
+        METADATA
+            "wms_title"             "archive-CDLdeciduous-cloud"
+            "wms_abstract"          "archive-CDLdeciduous-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLdeciduous-cloudgap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Deciduous.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloudGap
+        METADATA
+            "wms_title"             "archive-CDLdeciduous-cloudgap"
+            "wms_abstract"          "archive-CDLdeciduous-cloudgap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLevergreen"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-CDLevergreen"
+            "wms_abstract"          "southeast-CDLevergreen"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLevergreen-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-CDLevergreen-cloud"
+            "wms_abstract"          "southeast-CDLevergreen-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLevergreen-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-CDLevergreen-gap"
+            "wms_abstract"          "southeast-CDLevergreen-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLevergreen-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-CDLevergreen-cloudGap"
+            "wms_abstract"          "southeast-CDLevergreen-cloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLevergreen-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForGap
+        METADATA
+            "wms_title"             "archive-CDLevergreen-gap"
+            "wms_abstract"          "archive-CDLevergreen-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLevergreen-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloud
+        METADATA
+            "wms_title"             "archive-CDLevergreen-cloud"
+            "wms_abstract"          "archive-CDLevergreen-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLevergreen-cloudgap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Evergreen.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloudGap
+        METADATA
+            "wms_title"             "archive-CDLevergreen-cloudgap"
+            "wms_abstract"          "archive-CDLevergreen-cloudgap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLmixed"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-CDLmixed"
+            "wms_abstract"          "southeast-CDLmixed"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLmixed-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-CDLmixed-cloud"
+            "wms_abstract"          "southeast-CDLmixed-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLmixed-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-CDLmixed-gap"
+            "wms_abstract"          "southeast-CDLmixed-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLmixed-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-CDLmixed-cloudGap"
+            "wms_abstract"          "southeast-CDLmixed-cloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLmixed-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForGap
+        METADATA
+            "wms_title"             "archive-CDLmixed-gap"
+            "wms_abstract"          "archive-CDLmixed-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLmixed-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloud
+        METADATA
+            "wms_title"             "archive-CDLmixed-cloud"
+            "wms_abstract"          "archive-CDLmixed-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLmixed-cloudgap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_Mixed.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloudGap
+        METADATA
+            "wms_title"             "archive-CDLmixed-cloudgap"
+            "wms_abstract"          "archive-CDLmixed-cloudgap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLshrubscrub"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-CDLshrubscrub"
+            "wms_abstract"          "southeast-CDLshrubscrub"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLshrubscrub-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-CDLshrubscrub-cloud"
+            "wms_abstract"          "southeast-CDLshrubscrub-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLshrubscrub-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-CDLshrubscrub-gap"
+            "wms_abstract"          "southeast-CDLshrubscrub-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLshrubscrub-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-CDLshrubscrub-cloudGap"
+            "wms_abstract"          "southeast-CDLshrubscrub-cloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLshrubscrub-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForGap
+        METADATA
+            "wms_title"             "archive-CDLshrubscrub-gap"
+            "wms_abstract"          "archive-CDLshrubscrub-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLshrubscrub-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloud
+        METADATA
+            "wms_title"             "archive-CDLshrubscrub-cloud"
+            "wms_abstract"          "archive-CDLshrubscrub-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLshrubscrub-cloudgap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_ShrubScrub.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloudGap
+        METADATA
+            "wms_title"             "archive-CDLshrubscrub-cloudgap"
+            "wms_abstract"          "archive-CDLshrubscrub-cloudgap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLWoodyWetlands"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+        METADATA
+            "wms_title"             "southeast-CDLWoodyWetlands"
+            "wms_abstract"          "southeast-CDLWoodyWetlands"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLWoodyWetlands-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloud-current
+        METADATA
+            "wms_title"             "southeast-CDLWoodyWetlands-cloud"
+            "wms_abstract"          "southeast-CDLWoodyWetlands-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLWoodyWetlands-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-gap-current
+        METADATA
+            "wms_title"             "southeast-CDLWoodyWetlands-gap"
+            "wms_abstract"          "southeast-CDLWoodyWetlands-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "southeast-CDLwoodywetlands-cloudGap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK southeast-cloudGap-current
+        METADATA
+            "wms_title"             "southeast-CDLWoodyWetlands-cloudGap"
+            "wms_abstract"          "southeast-CDLWoodyWetlands-cloudGap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLWoodyWetlands-gap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForGap
+        METADATA
+            "wms_title"             "archive-CDLWoodyWetlands-gap"
+            "wms_abstract"          "archive-CDLWoodyWetlands-gap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLWoodyWetlands-cloud"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloud
+        METADATA
+            "wms_title"             "archive-CDLWoodyWetlands-cloud"
+            "wms_abstract"          "archive-CDLWoodyWetlands-cloud"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+	LAYER
+		NAME "archive-CDLWoodyWetlands-cloudgap"
+		STATUS ON
+		TYPE RASTER
+		HEADER   ./templates/layer_query_header.html
+        TEMPLATE ./templates/layer.html
+		DATA "%(DATA_DIR)s/masks/cdl/CDL_2014_Forest_WoodyWetlands.tif"
+		PROJECTION
+			"proj=aea"
+			"lat_1=29.5"
+			"lat_2=45.5"
+			"lat_0=23"
+			"lon_0=-96"
+			"x_0=0"
+			"y_0=0"
+			"ellps=GRS80"
+			"datum=NAD83"
+			"units=m"
+			"no_defs"
+		END
+		#OFFSITE 0 0 0 
+		CLASS
+            EXPRESSION ([pixel] > 0)
+            COLOR 0 0 0
+        END
+		MASK ndvi-archiveMaskForCloudGap
+        METADATA
+            "wms_title"             "archive-CDLWoodyWetlands-cloudgap"
+            "wms_abstract"          "archive-CDLWoodyWetlands-cloudgap"
+            "gml_include_items"     "value_0"
+        END  # end METADATA	
+	END # end LAYER
+END

@@ -97,7 +97,7 @@ MAP
         METADATA
             "wms_title"            "states"
             "wms_abstract"         "states"
-            "gml_include_items"    "all"
+            "gml_include_items"    "dtl_counti"
         END  # end METADATA
     END # end Layer	
 	LAYER # 
@@ -114,6 +114,46 @@ MAP
         DUMP             TRUE
         HEADER           ./templates/layer_query_header.html
         TEMPLATE         ./templates/layer_query_body.html
+        LABELITEM quad_id
+		CLASS
+            STYLE
+                #COLOR        232 232 232
+                OUTLINECOLOR 90 90 90 
+            END
+			LABEL
+			  MAXSCALEDENOM 500000
+			  #MINSCALEDENOM
+			  POSITION cc
+			  COLOR  0 0 0
+			  OUTLINECOLOR 255 255 255
+			  FONT "arial"
+			  TYPE truetype
+			  SIZE 6
+			  #ANGLE [MYANGLE]
+			  POSITION AUTO
+			  PARTIALS FALSE
+			END
+        END
+        METADATA
+            "wms_title"            "landsat_quads"
+            "wms_abstract"         "landsat_quads"
+            "gml_include_items"    "all"
+        END  # end METADATA
+    END # end Layer	
+	LAYER # 
+        NAME viewer_quads
+        PROJECTION
+            "init=epsg:4326"
+        END
+        CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from vw_viewer_quads"
+        EXTENT           -124.733174 24.543940 -66.950005 49.384359 # US
+        STATUS           OFF
+        TYPE             POLYGON
+        DUMP             TRUE
+        HEADER           ./templates/layer_query_header.html
+        TEMPLATE         ./templates/layer_query_body.html
         CLASS
             STYLE
                 #COLOR        232 232 232
@@ -122,9 +162,9 @@ MAP
 
         END
         METADATA
-            "wms_title"            "landsat_quads"
-            "wms_abstract"         "landsat_quads"
-            "gml_include_items"    "all"
+            "wms_title"            "viewer_quads"
+            "wms_abstract"         "viewer_quads"
+            "gml_include_items"    "oid,last_update,input1,input2"
         END  # end METADATA
     END # end Layer	
 	LAYER # 

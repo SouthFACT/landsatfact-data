@@ -11,3 +11,19 @@ Header set Access-Control-Allow-Origin "*"
     Allow from all
     SetHandler cgi-script
 </Files>
+<Files "lsf-NDMI">
+    Allow from all
+    SetHandler cgi-script
+</Files>
+<Files "lsf-NDVI">
+    Allow from all
+    SetHandler cgi-script
+</Files>
+<Files "lsf-swir-threshold">
+    Allow from all
+    SetHandler cgi-script
+</Files>
+<Files "lsf-swir-allchange">
+    Allow from all
+    SetHandler cgi-script
+</Files>
