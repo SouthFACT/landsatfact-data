@@ -77,3 +77,51 @@ f_new.write( template.render( {
     'DATA_DIR' : DATA_DIR
             } ) )
 f_new.close()
+
+###
+### Create the lsf-ndmi.map file:
+###
+template = Template("lsf-ndmi.tpl.map")
+f_new = openMapfileForWriting("lsf-ndmi.map")
+f_new.write( template.render( {
+    'SERVICE_URL'  : "%s/%s" % (SERVER_URL, "lsf-ndmi"),
+	'POSTGIS_CONNECTION_STRING' : POSTGIS_CONNECTION_STRING,
+    'DATA_DIR' : DATA_DIR
+            } ) )
+f_new.close()
+
+###
+### Create the lsf-ndvi.map file:
+###
+template = Template("lsf-ndvi.tpl.map")
+f_new = openMapfileForWriting("lsf-ndvi.map")
+f_new.write( template.render( {
+    'SERVICE_URL'  : "%s/%s" % (SERVER_URL, "lsf-ndvi"),
+	'POSTGIS_CONNECTION_STRING' : POSTGIS_CONNECTION_STRING,
+    'DATA_DIR' : DATA_DIR
+            } ) )
+f_new.close()
+
+###
+### Create the lsf-swir-allchange.map file:
+###
+template = Template("lsf-swir-allchange.tpl.map")
+f_new = openMapfileForWriting("lsf-swir-allchange.map")
+f_new.write( template.render( {
+    'SERVICE_URL'  : "%s/%s" % (SERVER_URL, "lsf-swir-allchange"),
+	'POSTGIS_CONNECTION_STRING' : POSTGIS_CONNECTION_STRING,
+    'DATA_DIR' : DATA_DIR
+            } ) )
+f_new.close()
+
+###
+### Create the lsf-swir-threshold.map file:
+###
+template = Template("lsf-swir-threshold.tpl.map")
+f_new = openMapfileForWriting("lsf-swir-threshold.map")
+f_new.write( template.render( {
+    'SERVICE_URL'  : "%s/%s" % (SERVER_URL, "lsf-swir-threshold"),
+	'POSTGIS_CONNECTION_STRING' : POSTGIS_CONNECTION_STRING,
+    'DATA_DIR' : DATA_DIR
+            } ) )
+f_new.close()
