@@ -96,7 +96,7 @@ MAP
         END  # end METADATA	
 	END # end LAYER
 	LAYER
-		NAME "southeast-ndmi-currentMaskForCloud"
+		NAME "southeast-ndmi-currentCloud"
 		STATUS ON
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
@@ -118,7 +118,7 @@ MAP
         END  # end METADATA	
 	END # end LAYER
 	LAYER
-		NAME "southeast-ndmi-currentMaskForGap"
+		NAME "southeast-ndmi-currentGap"
 		STATUS ON
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
@@ -140,7 +140,7 @@ MAP
         END  # end METADATA	
 	END # end LAYER
 	LAYER
-		NAME "southeast-ndmi-currentMaskForCloudGap"
+		NAME "southeast-ndmi-currentCloudGap"
 		STATUS ON
 		TYPE RASTER
 		HEADER   ./templates/layer_query_header.html
@@ -2571,7 +2571,7 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "ndmi-archiveMaskForGap"
+		NAME "ndmi-archiveGap"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
@@ -2598,7 +2598,7 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "ndmi-archiveMaskForCloud"
+		NAME "ndmi-archiveCloud"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
@@ -2625,7 +2625,7 @@ MAP
         END  # end METADATA
 	END # end LAYER
 	LAYER
-		NAME "ndmi-archiveMaskForCloudGap"
+		NAME "ndmi-archiveCloudGap"
 		STATUS ON
 		TYPE RASTER
 		TILEITEM "location"
@@ -3029,7 +3029,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForGap
+		MASK ndmi-archiveGap
         METADATA
             "wms_title"             "archive-NLCDforest-gap"
             "wms_abstract"          "archive-NLCDforest-gap"
@@ -3061,7 +3061,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloud
+		MASK ndmi-archiveCloud
         METADATA
             "wms_title"             "archive-NLCDforest-cloud"
             "wms_abstract"          "archive-NLCDforest-cloud"
@@ -3093,7 +3093,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloudGap
+		MASK ndmi-archiveCloudGap
         METADATA
             "wms_title"             "archive-NLCDforest-cloudgap"
             "wms_abstract"          "archive-NLCDforest-cloudgap"
@@ -3252,7 +3252,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForGap
+		MASK ndmi-archiveGap
         METADATA
             "wms_title"             "archive-NLCDdeciduous-gap"
             "wms_abstract"          "archive-NLCDdeciduous-gap"
@@ -3284,7 +3284,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloud
+		MASK ndmi-archiveCloud
         METADATA
             "wms_title"             "archive-NLCDdeciduous-cloud"
             "wms_abstract"          "archive-NLCDdeciduous-cloud"
@@ -3316,7 +3316,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloudGap
+		MASK ndmi-archiveCloudGap
         METADATA
             "wms_title"             "archive-NLCDdeciduous-cloudgap"
             "wms_abstract"          "archive-NLCDdeciduous-cloudgap"
@@ -3475,7 +3475,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForGap
+		MASK ndmi-archiveGap
         METADATA
             "wms_title"             "archive-NLCDevergreen-gap"
             "wms_abstract"          "archive-NLCDevergreen-gap"
@@ -3507,7 +3507,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloud
+		MASK ndmi-archiveCloud
         METADATA
             "wms_title"             "archive-NLCDevergreen-cloud"
             "wms_abstract"          "archive-NLCDevergreen-cloud"
@@ -3539,7 +3539,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloudGap
+		MASK ndmi-archiveCloudGap
         METADATA
             "wms_title"             "archive-NLCDevergreen-cloudgap"
             "wms_abstract"          "archive-NLCDevergreen-cloudgap"
@@ -3698,7 +3698,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForGap
+		MASK ndmi-archiveGap
         METADATA
             "wms_title"             "archive-NLCDmixed-gap"
             "wms_abstract"          "archive-NLCDmixed-gap"
@@ -3730,7 +3730,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloud
+		MASK ndmi-archiveCloud
         METADATA
             "wms_title"             "archive-NLCDmixed-cloud"
             "wms_abstract"          "archive-NLCDmixed-cloud"
@@ -3762,7 +3762,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloudGap
+		MASK ndmi-archiveCloudGap
         METADATA
             "wms_title"             "archive-NLCDmixed-cloudgap"
             "wms_abstract"          "archive-NLCDmixed-cloudgap"
@@ -3921,7 +3921,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForGap
+		MASK ndmi-archiveGap
         METADATA
             "wms_title"             "archive-NLCDshrubscrub-gap"
             "wms_abstract"          "archive-NLCDshrubscrub-gap"
@@ -3953,7 +3953,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloud
+		MASK ndmi-archiveCloud
         METADATA
             "wms_title"             "archive-NLCDshrubscrub-cloud"
             "wms_abstract"          "archive-NLCDshrubscrub-cloud"
@@ -3985,7 +3985,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloudGap
+		MASK ndmi-archiveCloudGap
         METADATA
             "wms_title"             "archive-NLCDshrubscrub-cloudgap"
             "wms_abstract"          "archive-NLCDshrubscrub-cloudgap"
@@ -4144,7 +4144,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForGap
+		MASK ndmi-archiveGap
         METADATA
             "wms_title"             "archive-NLCDWoodyWetlands-gap"
             "wms_abstract"          "archive-NLCDWoodyWetlands-gap"
@@ -4176,7 +4176,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloud
+		MASK ndmi-archiveCloud
         METADATA
             "wms_title"             "archive-NLCDWoodyWetlands-cloud"
             "wms_abstract"          "archive-NLCDWoodyWetlands-cloud"
@@ -4208,7 +4208,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloudGap
+		MASK ndmi-archiveCloudGap
         METADATA
             "wms_title"             "archive-NLCDWoodyWetlands-cloudgap"
             "wms_abstract"          "archive-NLCDWoodyWetlands-cloudgap"
@@ -4367,7 +4367,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForGap
+		MASK ndmi-archiveGap
         METADATA
             "wms_title"             "archive-CDLforest-gap"
             "wms_abstract"          "archive-CDLforest-gap"
@@ -4399,7 +4399,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloud
+		MASK ndmi-archiveCloud
         METADATA
             "wms_title"             "archive-CDLforest-cloud"
             "wms_abstract"          "archive-CDLforest-cloud"
@@ -4431,7 +4431,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloudGap
+		MASK ndmi-archiveCloudGap
         METADATA
             "wms_title"             "archive-CDLforest-cloudgap"
             "wms_abstract"          "archive-CDLforest-cloudgap"
@@ -4590,7 +4590,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForGap
+		MASK ndmi-archiveGap
         METADATA
             "wms_title"             "archive-CDLdeciduous-gap"
             "wms_abstract"          "archive-CDLdeciduous-gap"
@@ -4622,7 +4622,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloud
+		MASK ndmi-archiveCloud
         METADATA
             "wms_title"             "archive-CDLdeciduous-cloud"
             "wms_abstract"          "archive-CDLdeciduous-cloud"
@@ -4654,7 +4654,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloudGap
+		MASK ndmi-archiveCloudGap
         METADATA
             "wms_title"             "archive-CDLdeciduous-cloudgap"
             "wms_abstract"          "archive-CDLdeciduous-cloudgap"
@@ -4813,7 +4813,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForGap
+		MASK ndmi-archiveGap
         METADATA
             "wms_title"             "archive-CDLevergreen-gap"
             "wms_abstract"          "archive-CDLevergreen-gap"
@@ -4845,7 +4845,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloud
+		MASK ndmi-archiveCloud
         METADATA
             "wms_title"             "archive-CDLevergreen-cloud"
             "wms_abstract"          "archive-CDLevergreen-cloud"
@@ -4877,7 +4877,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloudGap
+		MASK ndmi-archiveCloudGap
         METADATA
             "wms_title"             "archive-CDLevergreen-cloudgap"
             "wms_abstract"          "archive-CDLevergreen-cloudgap"
@@ -5036,7 +5036,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForGap
+		MASK ndmi-archiveGap
         METADATA
             "wms_title"             "archive-CDLmixed-gap"
             "wms_abstract"          "archive-CDLmixed-gap"
@@ -5068,7 +5068,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloud
+		MASK ndmi-archiveCloud
         METADATA
             "wms_title"             "archive-CDLmixed-cloud"
             "wms_abstract"          "archive-CDLmixed-cloud"
@@ -5100,7 +5100,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloudGap
+		MASK ndmi-archiveCloudGap
         METADATA
             "wms_title"             "archive-CDLmixed-cloudgap"
             "wms_abstract"          "archive-CDLmixed-cloudgap"
@@ -5259,7 +5259,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForGap
+		MASK ndmi-archiveGap
         METADATA
             "wms_title"             "archive-CDLshrubscrub-gap"
             "wms_abstract"          "archive-CDLshrubscrub-gap"
@@ -5291,7 +5291,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloud
+		MASK ndmi-archiveCloud
         METADATA
             "wms_title"             "archive-CDLshrubscrub-cloud"
             "wms_abstract"          "archive-CDLshrubscrub-cloud"
@@ -5323,7 +5323,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloudGap
+		MASK ndmi-archiveCloudGap
         METADATA
             "wms_title"             "archive-CDLshrubscrub-cloudgap"
             "wms_abstract"          "archive-CDLshrubscrub-cloudgap"
@@ -5482,7 +5482,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForGap
+		MASK ndmi-archiveGap
         METADATA
             "wms_title"             "archive-CDLWoodyWetlands-gap"
             "wms_abstract"          "archive-CDLWoodyWetlands-gap"
@@ -5514,7 +5514,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloud
+		MASK ndmi-archiveCloud
         METADATA
             "wms_title"             "archive-CDLWoodyWetlands-cloud"
             "wms_abstract"          "archive-CDLWoodyWetlands-cloud"
@@ -5546,7 +5546,7 @@ MAP
             EXPRESSION ([pixel] > 0)
             COLOR 0 0 0
         END
-		MASK ndmi-archiveMaskForCloudGap
+		MASK ndmi-archiveCloudGap
         METADATA
             "wms_title"             "archive-CDLWoodyWetlands-cloudgap"
             "wms_abstract"          "archive-CDLWoodyWetlands-cloudgap"
