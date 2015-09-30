@@ -52,7 +52,7 @@ lsfWMSLayerTemplate = Template(string="""
           name="%(LAYER_TITLE)s"
           styles="default" 
           identify="false"
-          legend="%(SERVER_URL)s/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-swir-current-threshold&amp;VERSION=1.1.1&amp;FORMAT=image/png"
+          legend="%(LSF_URL)s&amp;SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=%(LAYER_NAME)s&amp;VERSION=1.1.1&amp;FORMAT=image/png"
           mask="true"/>""")  
           
 
@@ -73,9 +73,9 @@ def getLSFLayers():
             #date = date.join(data)
             print 'The date is ' + date_string + type
             lid = type+date_no_hyphens
-            lsfURL = "http://landsatfact-data-dev.nemac.org/lsflayers?TIME="+date_string+"&amp;TRANSPARENT=true"
+            lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-"+type+"?TIME="+date_string+"&amp;TRANSPARENT=true"
             lsfDict[type].append({'LAYER_LID' : lid,
-                            'LAYER_NAME'      : type+"-raster",
+                            'LAYER_NAME'      : type+"-archive",
                             'LAYER_TITLE'     : type+date_no_hyphens,
                             'SERVER_URL'      : SERVER_URL,
                             'LSF_URL'         : lsfURL
@@ -106,9 +106,9 @@ def getSWIRThresholdLayers():
             #date = date.join(data)
             print 'The date is ' + date_string + type
             lid = type+date_no_hyphens
-            lsfURL = "http://landsatfact-data-dev.nemac.org/lsflayers?TIME="+date_string+"&amp;TRANSPARENT=true"
+            lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-swir-threshold?TIME="+date_string+"&amp;TRANSPARENT=true"
             lsfDict[type].append({'LAYER_LID' : lid,
-                            'LAYER_NAME'      : type+"-raster-threshold",
+                            'LAYER_NAME'      : type+"-archive",
                             'LAYER_TITLE'     : type+date_no_hyphens,
                             'SERVER_URL'      : SERVER_URL,
                             'LSF_URL'         : lsfURL
@@ -138,9 +138,9 @@ def getSWIRAllChangeLayers():
             #date = date.join(data)
             print 'The date is ' + date_string + type
             lid = type+date_no_hyphens
-            lsfURL = "http://landsatfact-data-dev.nemac.org/lsflayers?TIME="+date_string+"&amp;TRANSPARENT=true"
+            lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-swir-allchange?TIME="+date_string+"&amp;TRANSPARENT=true"
             lsfDict[type].append({'LAYER_LID' : lid,
-                            'LAYER_NAME'      : type+"-raster-allchange",
+                            'LAYER_NAME'      : type+"-archive",
                             'LAYER_TITLE'     : type+date_no_hyphens,
                             'SERVER_URL'      : SERVER_URL,
                             'LSF_URL'         : lsfURL
