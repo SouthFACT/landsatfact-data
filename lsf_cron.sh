@@ -8,3 +8,8 @@ php download_landsat_data.php
 
 cd /var/vsites/landsatfact-data-dev.nemac.org/project/geoprocessing
 ./landsatFACTmain.py
+
+cd /var/vsites/landsatfact-data-dev.nemac.org/project/msconfig
+./make_latest_mosaics.sh
+
+./makeviewerconfig.py
