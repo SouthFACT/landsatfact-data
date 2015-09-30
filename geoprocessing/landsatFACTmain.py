@@ -31,7 +31,7 @@ reload(rasterAnalysis_GDAL)
 
 # =========================================================================
 runList = []
-os.chdir(r'/lsfdata1/eros_data/')
+os.chdir(r'/lsfdata/eros_data/')
 for file in glob.glob("*.tar.gz"):
     runList.append(file)
 
@@ -46,21 +46,21 @@ for tar in runList:
 	# Fmaskexe = r'G:\LandsatFACT\Fmask.exe'
 	# set folder location of the quad vector files
 	# quadsFolder = r'S:\Geospatial\LandsatFACT\geodata\vector\quads_indv_proj' #BM's original
-	quadsFolder = r'/var/lsfdata1/eros_data/quads_indv_proj'
+	quadsFolder = r'/lsfdata/eros_data/quads_indv_proj'
 	# set folder locations
 	# folder where the tar.gz's are stored
 	# tarStorage = r'S:\Geospatial\LandsatFACT\data\tarFiles' #BM's original
-	tarStorage = r'/lsfdata1/eros_data'
+	tarStorage = r'/lsfdata/eros_data'
 	# folder where you want the extracted tiff's to be stored, they will automatically be
 	# put inside of a subfolder labeled with the scene name
 	# tiffsStorage = r'S:\Geospatial\LandsatFACT\data\extractedTars' #BM's original
-	tiffsStorage = r'/lsfdata1/eros_data/extractedTars'
+	tiffsStorage = r'/lsfdata/eros_data/extractedTars'
 	# root folder for the project output storage, intermediate products that could be combined for custom request products
 	# if this path does not exist the script will create it
-	projectStorage = r'/lsfdata1/project_data'# root folder for the project output storage
+	projectStorage = r'/lsfdata/project_data'# root folder for the project output storage
 	# if this path does not exist the script will create it
 	# productStorage = r'S:\Geospatial\LandsatFACT\data\20150414' #BM's original
-	productStorage = r'/lsfdata1/products'
+	productStorage = r'/lsfdata/products'
 	# set output folder locations per product
 	# if this path does not exist the script will create it
 	outNDVIfolder = os.path.join(productStorage,'ndvi')

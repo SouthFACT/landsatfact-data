@@ -69,12 +69,12 @@ try{
 	}
 	print_r("Downloading " . $in_scene_id);
 	print_r(" with dataset " . $datasetName);
-	if (file_exists('/lsfdata1/eros_data/'.$in_scene_id.'.tar.gz')) {
+	if (file_exists('/lsfdata/eros_data/'.$in_scene_id.'.tar.gz')) {
 		echo "\n The file already exists";
 	} else {
 		$downloadUrl = getDownloadUrl($datasetName, $client, $apiKey, $in_scene_id);
 		print_r("\n downloadUrl->item :".$downloadUrl->item);
-		custom_put_contents($downloadUrl->item,'/lsfdata1/eros_data/'.$in_scene_id.'.tar.gz');
+		custom_put_contents($downloadUrl->item,'/lsfdata/eros_data/'.$in_scene_id.'.tar.gz');
 	}						
 	print_r("\n");		  
 	pg_close($lsf_conn);
