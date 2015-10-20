@@ -51,7 +51,7 @@ lsfWMSLayerTemplate = Template(string="""
           layers="%(LAYER_NAME)s"
           name="%(LAYER_TITLE)s"
           styles="default" 
-          identify="false"
+          identify="true"
           legend="%(LSF_URL)s&amp;SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=%(LAYER_NAME)s&amp;VERSION=1.1.1&amp;FORMAT=image/png"
           mask="true"/>""")  
           
