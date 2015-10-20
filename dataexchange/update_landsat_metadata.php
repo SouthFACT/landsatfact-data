@@ -125,7 +125,7 @@ try{
 	$doy = date('z')+1;
 	print_r("doy: ".$doy."\n");
 	print('Current Date: ' . $currDate ."\n");
-	$prevDate = date('Y-m-d', strtotime($currDate .' -1 day'));
+	$prevDate = date('Y-m-d', strtotime($currDate .' -8 day'));
 	print('Previous Date: ' . $prevDate ."\n");
 
 	//* Search function should be next to get a list of entityIDs

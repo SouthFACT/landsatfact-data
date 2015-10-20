@@ -66,7 +66,9 @@ function getDatasetsForDownload($datasetName, $client, $apiKey, $lowerLeft, $upp
 // */
 function getDatasetMetadata($client, $datasetName, $node, $entityId, $apiKey) {
     try {
-        $datasetMetadata = $client->metadata($datasetName, $node, $entityId, $apiKey);
+        $acct_id = array();
+        $entityIds = json_encode($acct_id);
+        $datasetMetadata = $client->metadata($datasetName, $node, $entityId, $entityIds, $apiKey);
         // return $client->__getLastResponse() . "\n";
 		return $datasetMetadata;
     }
