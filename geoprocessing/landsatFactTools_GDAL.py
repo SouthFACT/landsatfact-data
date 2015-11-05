@@ -152,8 +152,8 @@ def unzipTIFgap(inTar, sensorType, extractPath):
 		for filename in filenames:
 			path = os.path.join(dirpath, filename)
 			os.chmod(path, 0o777)
-
-def gaper(date1, date2, outGAPfolder, baseName):
+def gaper(date1, date2, outGAPfolder, baseName, quadsFolder,wrs2Name):
+    # date1,date2,outGAPfolder,outBasename,quadsFolder,wrs2Name
     # input val are rasterAnalysis_GDAL sensorBand Class objects
     # Creates a gap mask for the scene if it came from Landsat 7 after
     # the ordinal date of 2003151 (5/31/2003) when the SLC went offline
@@ -166,12 +166,12 @@ def gaper(date1, date2, outGAPfolder, baseName):
         gapMaskList.append(gapMask2)
     if len(gapMaskList) == 2:
         gapMask = gapMask1[0] * gapMask2[0]
-        outputTiffName = rasterAnalysis_GDAL.createOutTIFF(gapMask1[1],gapMask,os.path.join(outGAPfolder,baseName),'gm')
+        outputTiffName = rasterAnalysis_GDAL.outputMaskProductTIFFs(gapMask1[1],gapMask,quadsFolder,baseName,'gm',os.path.join(outGAPfolder,baseName),wrs2Name)
 	print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]
 	writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16])
     elif len(gapMaskList) == 1:
         gapMask = gapMaskList[0]
-        outputTiffName = rasterAnalysis_GDAL.createOutTIFF(gapMask[1],gapMask[0],os.path.join(outGAPfolder,baseName),'gm')
+        outputTiffName = rasterAnalysis_GDAL.outputMaskProductTIFFs(gapMask[1],gapMask[0],quadsFolder,baseName,'gm',os.path.join(outGAPfolder,baseName),wrs2Name)
 	print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]
 	writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16])
 
@@ -328,9 +328,6 @@ def cleanDir(dirPath):
                     os.mkdir(moveDir)
                 shutil.copy(os.path.join(dirPath,f),moveDir)
                 os.remove(os.path.join(dirPath,f))
-
-
-
 
 
 

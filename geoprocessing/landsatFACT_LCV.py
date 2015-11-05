@@ -1,6 +1,6 @@
 #! /usr/bin/python
 #-------------------------------------------------------------------------------
-# Name:		landsatFACTmain.py
+# Name:		landsatFACT_LCV.py
 # Purpose:	LandsatFACT application script that calls needed functions to
 #		process TAR compressed files into Vegetation Index products.
 #
@@ -85,6 +85,7 @@ for tar in runList:
 	runFmaskBool = rasterAnalysis_GDAL.runFmask(extractedPath,fmaskShellCall)
 	if (runFmaskBool== True):
         # get DN min number from each band in the scene and write to database
+		wrs2Name=tar[3:9]
 		dnminExists = landsatFactTools_GDAL.checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
 		if dnminExists == False:
 			dnMinDict = rasterAnalysis_GDAL.getDNmin(extractedPath)
@@ -147,8 +148,8 @@ for tar in runList:
 			# =========================================================================
 				# Gap mask
 				# creates a gap mask for the scene if it came from Landsat 7 after
-				# the ordinal date of 2003151 (5/31/2003) when the SLC went offline
-				landsatFactTools_GDAL.gaper(date1,date2,outGAPfolder,outBasename)
+				# the ordinal date of 2003152 (5/31/2003) when the SLC went offline
+				landsatFactTools_GDAL.gaper(date1,date2,outGAPfolder,outBasename,quadsFolder,wrs2Name)
 				print "here after gapmasker"
 				print "date1.sceneID:" , date1.sceneID
 				print "date2.sceneID:" , date2.sceneID
@@ -180,7 +181,7 @@ for tar in runList:
                                     FmaskReclassedArray1 = date1.reclassFmask()
                                     FmaskReclassedArray2 = date2.reclassFmask()
                                     FmaskReclassedArray = FmaskReclassedArray1 * FmaskReclassedArray2
-                                    outputTiffName = rasterAnalysis_GDAL.createOutTIFF(date1.geoTiffAtts,FmaskReclassedArray,os.path.join(outFMASKfolder,outBasename),'Fmask')
+                                    outputTiffName = rasterAnalysis_GDAL.outputMaskProductTIFFs(date1.geoTiffAtts,FmaskReclassedArray,quadsFolder,outBasename,'Fmask',os.path.join(outFMASKfolder,outBasename),wrs2Name)
                                     print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'CLOUD'+" ,"+date2.sceneID[9:16]
                                     landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'CLOUD',date2.sceneID[9:16])
                                 else:
@@ -194,7 +195,6 @@ for tar in runList:
 				ndvi1 = None
 				ndvi2 = None
 				ndviPercentChange = np.multiply(100,ndviPercentChange)
-				wrs2Name = tar[3:9]
 				outputTiffName=rasterAnalysis_GDAL.outputChangeProductTIFFs(date1.geoTiffAtts, ndviPercentChange, quadsFolder, outBasename, 'ndvi', outNDVIfolder, wrs2Name)
 				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDVI'+" ,"+date2.sceneID[9:16]
 				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDVI',date2.sceneID[9:16])
