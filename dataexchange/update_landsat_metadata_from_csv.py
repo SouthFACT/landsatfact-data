@@ -1,4 +1,7 @@
 #! /usr/bin/python
+
+# Find the Landsat CSV files here
+# http://landsat.usgs.gov/metadatalist.php
 import urllib
 import csv, sys
 import psycopg2
@@ -28,9 +31,20 @@ print type(lsf_quads['wrs2_code'][5])
 
 # Loop through CSV inserting into PGSQL
 # LANDSAT_8 
-filename = 'LANDSAT_8.csv'
-# LANDSAT_7 
+#filename = 'LANDSAT_8.csv'
+# LANDSAT_7 SLC OFF
 #filename = 'LANDSAT_ETM_SLC_OFF.csv'
+#L7 file SLC ON
+#filename = 'LANDSAT_ETM.csv'
+#L5 file (4 CSV files)
+#1980-89
+#filename = 'LANDSAT_TM-1980-1989.csv'
+#1990-99
+#filename = 'LANDSAT_TM-1990-1999.csv'
+#2000-2009
+#filename = 'LANDSAT_TM-2000-2009.csv'
+#2010-2012
+filename = 'LANDSAT_TM-2010-2012.csv'
 
 #print lsf_quads['wrs2_code']
 

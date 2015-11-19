@@ -11,6 +11,10 @@ var/Config.py
 var/Config.pyc
 dataexchange/LANDSAT_8.csv
 dataexchange/LANDSAT_ETM.csv
+dataexchange/LANDSAT_TM-1980-1989.csv
+dataexchange/LANDSAT_TM-1990-1999.csv
+dataexchange/LANDSAT_TM-2000-2009.csv
+dataexchange/LANDSAT_TM-2010-2012.csv
 #ShapeFileExtensions
 *.tar.gz
 *.dbf
