@@ -28,6 +28,7 @@ import psycopg2
 
 reload(landsatFactTools_GDAL)
 reload(rasterAnalysis_GDAL)
+import LSFGeoTIFF
 
 # =========================================================================
 runList = []
@@ -181,7 +182,9 @@ for tar in runList:
                                     FmaskReclassedArray1 = date1.reclassFmask()
                                     FmaskReclassedArray2 = date2.reclassFmask()
                                     FmaskReclassedArray = FmaskReclassedArray1 * FmaskReclassedArray2
-                                    outputTiffName = rasterAnalysis_GDAL.outputMaskProductTIFFs(date1.geoTiffAtts,FmaskReclassedArray,quadsFolder,outBasename,'Fmask',os.path.join(outFMASKfolder,outBasename),wrs2Name)
+                                    outputTiffName=os.path.join(outFMASKfolder,outBasename + '_Fmask.tif')
+                                    shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
+                                    LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(FmaskReclassedArray, date1.geoTiffAtts).write(outputTiffName, shpName)
                                     print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'CLOUD'+" ,"+date2.sceneID[9:16]
                                     landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'CLOUD',date2.sceneID[9:16])
                                 else:
@@ -195,7 +198,9 @@ for tar in runList:
 				ndvi1 = None
 				ndvi2 = None
 				ndviPercentChange = np.multiply(100,ndviPercentChange)
-				outputTiffName=rasterAnalysis_GDAL.outputChangeProductTIFFs(date1.geoTiffAtts, ndviPercentChange, quadsFolder, outBasename, 'ndvi', outNDVIfolder, wrs2Name)
+				outputTiffName=os.path.join(outNDVIfolder, outBasename + '_percent_NDVI.tif')
+				shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
+				LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(ndviPercentChange, date1.geoTiffAtts).write(outputTiffName, shpName)
 				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDVI'+" ,"+date2.sceneID[9:16]
 				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDVI',date2.sceneID[9:16])
 				ndviPercentChange = None
@@ -207,7 +212,9 @@ for tar in runList:
 				ndmi1 = None
 				ndmi2 = None
 				ndmiPercentChange = np.multiply(100,ndmiPercentChange)
-				outputTiffName=rasterAnalysis_GDAL.outputChangeProductTIFFs(date1.geoTiffAtts, ndmiPercentChange, quadsFolder, outBasename, 'ndmi', outNDMIfolder, wrs2Name)
+				outputTiffName=os.path.join(outNDMIfolder, outBasename + '_percent_NDMI.tif')
+				shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
+				LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(ndmiPercentChange, date1.geoTiffAtts).write(outputTiffName, shpName)
 				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDMI'+" ,"+date2.sceneID[9:16]
 				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDMI',date2.sceneID[9:16])
 				ndmiPercentChange = None
@@ -220,7 +227,9 @@ for tar in runList:
 				swir1 = None
 				swir2 = None
 				swirPercentChange = np.multiply(100,swirPercentChange)
-				outputTiffName=rasterAnalysis_GDAL.outputChangeProductTIFFs(date1.geoTiffAtts, swirPercentChange, quadsFolder, outBasename, 'swir', outSWIRfolder, wrs2Name)
+				outputTiffName=os.path.join(outSWIRfolder, outBasename + '_percent_SWIR.tif')
+				shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
+				LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(swirPercentChange, date1.geoTiffAtts).write(outputTiffName, shpName)
 				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'SWIR'+" ,"+date2.sceneID[9:16]
 				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'SWIR',date2.sceneID[9:16])
 				swirPercentChange = None

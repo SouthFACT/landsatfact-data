@@ -21,6 +21,7 @@ from subprocess import PIPE
 import psycopg2
 from operator import itemgetter
 import rasterAnalysis_GDAL
+import LSFGeoTIFF
 
 
 
@@ -166,12 +167,16 @@ def gaper(date1, date2, outGAPfolder, baseName, quadsFolder,wrs2Name):
         gapMaskList.append(gapMask2)
     if len(gapMaskList) == 2:
         gapMask = gapMask1[0] * gapMask2[0]
-        outputTiffName = rasterAnalysis_GDAL.outputMaskProductTIFFs(gapMask1[1],gapMask,quadsFolder,baseName,'gm',os.path.join(outGAPfolder,baseName),wrs2Name)
+        outputTiffName=os.path.join(outGAPfolder,baseName + '_GapMask.tif')
+        shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
+        LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(gapMask1[1], gapMask).write(outputTiffName, shpName)
 	print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]
 	writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16])
     elif len(gapMaskList) == 1:
         gapMask = gapMaskList[0]
-        outputTiffName = rasterAnalysis_GDAL.outputMaskProductTIFFs(gapMask[1],gapMask[0],quadsFolder,baseName,'gm',os.path.join(outGAPfolder,baseName),wrs2Name)
+        outputTiffName=os.path.join(outGAPfolder,baseName + '_GapMask.tif')
+        shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
+        LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(gapMask[0],gapMask[1]).write(outputTiffName, shpName)
 	print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]
 	writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16])
 
@@ -182,7 +187,7 @@ def getQuadCCpercent(quadPaths):
         quadTiffs = os.listdir(quadPath)
         for tiff in quadTiffs:
             if tiff[-12:] == "MTLFmask.TIF":
-                FmaskQuadData = rasterAnalysis_GDAL.rast2array(os.path.join(quadPath,tiff))
+                FmaskQuadData = LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(os.path.join(quadPath,tiff)).asGeoreferencedArray()
                 ccPer = rasterAnalysis_GDAL.cloudCover(FmaskQuadData[0])
 		quadCCDict.update({tiff[0:23]:ccPer})
 		FmaskQuadData = None

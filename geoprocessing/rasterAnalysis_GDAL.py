@@ -24,6 +24,7 @@ import landsatFactTools_GDAL
 #import socket, errno
 
 reload(landsatFactTools_GDAL)
+import LSFGeoTIFF
 
 # Landsat 8 doesn't use Esun values
 EsunData = {"LT5":{"red":1536,"nir":1031,"swir1":220.0,"swir2":83.44},"LE7":{"red":1533,"nir":1039,"swir1":230.8,"swir2":84.90}}
@@ -77,8 +78,8 @@ platformSensorBands={"LT5":{"red":["_B3","BAND_3"],"nir":["_B4","BAND_4"],"swir1
 def bandID(folder, band):
         """Band Options: red, nir, swir1, tir, swir2"""
         bID = os.path.join(folder,os.path.basename(folder)+(platformSensorBands[os.path.basename(folder)[0:3]][band][0])+'.TIF')
-        dsInfo = rast2array(bID)
-        #format of return -- [dsArray, attList] returned from rast2array
+        dsInfo = LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(bID).asGeoreferencedArray()
+        #format of return -- [dsArray, attList] 
         return dsInfo
 
 
@@ -115,7 +116,7 @@ class sensorBand:
     def reclassFmask(self):
 	    """ """
 	    FmaskQuad = os.path.join(self.folder,self.sceneID+"_MTLFmask.TIF")
-	    FmaskArray = rast2array(FmaskQuad)[0]
+	    FmaskArray = (LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(FmaskQuad).asGeoreferencedArray())[0]
 	    FmaskArray[FmaskArray == 0] = 10
 	    FmaskArray[(FmaskArray == 1) | (FmaskArray == 2) | (FmaskArray == 3) | (FmaskArray == 4) |(FmaskArray == 255)] = 0
 	    FmaskArray[FmaskArray == 10] = 1
@@ -193,11 +194,16 @@ class sensorBand:
         """ """
         gapFolder = os.path.join(self.folder,"gap_mask")
         gapPath = os.path.join(gapFolder,os.path.basename(self.folder))
-        b3 = rast2array(gapPath + "_GM_B3.TIF")
-        b4 = rast2array(gapPath + "_GM_B4.TIF")
-        b5 = rast2array(gapPath + "_GM_B5.TIF")
-        b6 = rast2array(gapPath + "_GM_B6_VCID_2.TIF")
-        b7 = rast2array(gapPath + "_GM_B7.TIF")
+        b3 = LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(gapPath + "_GM_B3.TIF").asGeoreferencedArray()
+        #rast2array(gapPath + "_GM_B3.TIF")
+        b4 = LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(gapPath + "_GM_B4.TIF").asGeoreferencedArray()
+        #rast2array(gapPath + "_GM_B4.TIF")
+        b5 = LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(gapPath + "_GM_B5.TIF").asGeoreferencedArray()
+        #rast2array(gapPath + "_GM_B5.TIF")
+        b6 = LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(gapPath + "_GM_B6_VCID_2.TIF").asGeoreferencedArray()
+        #rast2array(gapPath + "_GM_B6_VCID_2.TIF")
+        b7 = LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(gapPath + "_GM_B7.TIF").asGeoreferencedArray()
+        #rast2array(gapPath + "_GM_B7.TIF")
         gapMask = b3[0] * b4[0] * b5[0] * b6[0] * b7[0]
         return [gapMask,b7[1]]
 
@@ -314,159 +320,6 @@ def getDNmin(folder):
         #print band, DNmin
     return DNminDict
 
-def rast2array(inBand):
-    """ """
-    #print "inBand rast2array: ", inBand
-    ds = gdal.Open(inBand, gdal.GA_ReadOnly)
-    dsBand = ds.GetRasterBand(1)
-    dsArray = dsBand.ReadAsArray()
-    x_size = ds.RasterXSize
-    y_size = ds.RasterYSize
-    geoTransform = ds.GetGeoTransform()
-    proj = ds.GetProjection()
-    attList = [x_size, y_size, geoTransform, proj]
-    ds = None
-    return [dsArray, attList]
-
-def clearOutputLocation(pathname):
-    if os.path.exists(pathname):
-        os.remove(pathname)
-    if not os.path.exists(os.path.dirname(pathname)):
-        os.makedirs(os.path.dirname(pathname))
-
-def writeOutTIFFDataset(dataset, array, transform, projection):
-    outBand = dataset.GetRasterBand(1)
-    outBand.WriteArray(array)
-    outBand.FlushCache()
-    dataset.SetGeoTransform(transform)
-    dataset.SetProjection(projection)
-
-def cropSingleDisplayRasterToQuad(inRasterPath, shp, dstnodataValue):
-    # "Display" rasters are 8 bit unsigned integer with NoData values set outside the quad boundary, suitable for display products (e.g., analysis outputs).
-    # the scene raster, inRasterPath, has already been already been clipped to the quad and analyzed.
-    # the analysis operation determines appropriate values (NDMI, NDVI, SIR) for the scene raster inside the quad boundary.
-    # replace values outside the quad boundary with dstnodataValue.
-    print("cropSingleDisplayRasterToQuad args inRasterPath {}, shp {}, dstnodataValue {}".format(inRasterPath, shp, dstnodataValue))
-
-    codeIn = ['gdal_rasterize','-burn', dstnodataValue,'-i', '-l', os.path.splitext(os.path.basename(shp))[0], shp, inRasterPath]
-    process = subprocess.Popen(codeIn,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    out,err = process.communicate()
-    errcode = process.returncode
-    print out, err
-    # non-zero is error
-    return errcode
-
-def cropSingleAnalysisRasterToQuad(inRasterPath, outraster, shp):
-    # "Analysis" rasters are unsigned integer generally containing landsat digital numbers and are used as inputs to the analysis functions (e.g., ndmi).
-    #
-    print("cropSingleAnalysisRasterToQuad args inRasterPath {}, outraster {}, shp {}".format(inRasterPath, outraster, shp))
-
-    codeIn = ['gdalwarp', inRasterPath, outraster,'-cutline', shp,'-crop_to_cutline','-tr','30','30',
-              '-tap','-overwrite']
-    process = subprocess.Popen(codeIn,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    out,err = process.communicate()
-    errcode = process.returncode
-    print out, err
-    # non-zero is error
-    return errcode
-
-def createOutTIFF(dsList,array,of,outType):
-    """attList, array, outFolder, outType--'ndvi','ndmi','gm','cloud',swir' """
-    outTypeDict={"ndvi":["_NDVI.tif",gdal.GDT_Float32],"swir":["_SWIR.tif",gdal.GDT_Float32],"sr":["_SR.tif",gdal.GDT_Float32],"ndmi":["_NDMI.tif",gdal.GDT_Float32],\
-    "gm":["_GapMask.tif",gdal.GDT_Byte],"cloud":["_CloudMask.tif",gdal.GDT_Byte],"Fmask":["_Fmask.tif",gdal.GDT_Byte], }
-    #print "dsList: ", dsList
-    driver = gdal.GetDriverByName("GTiff")
-    outputTiffName = of + outTypeDict[outType][0]
-    #print "outputTiffName:  ", outputTiffName
-    clearOutputLocation(outputTiffName)
-    outputDataset = driver.Create(outputTiffName,dsList[0], dsList[1], 1, outTypeDict[outType][1])
-    print "dsList[2] tuple %s" % (dsList[2],)
-    print "dsList[3] tuple  %s" % (dsList[3],)
-    writeOutTIFFDataset(outputDataset, array, dsList[2], dsList[3])
-    return outputTiffName
-
-def createPercentChangedUnsignedIntTIFF(inRast, tiffPrefixStr, outType, outFolder):
-    # Open test change product as in rast2array
-    outTypeDict={"ndvi":["_percent_NDVI.tif"],"ndmi":["_percent_NDMI.tif"],"swir":["_percent_SWIR.tif"]}
-
-    result=rast2array(inRast)
-    dsArray=result[0]
-    attList=result[1]
-    # Index the array and re-assign values greater than 127 and less than -127
-    # http://docs.scipy.org/doc/numpy/user/basics.indexing.html#boolean-or-mask-index-arrays
-    a1=dsArray>127.0
-    dsArray[a1]=127.0
-    a2=dsArray<-127.0
-    dsArray[a2]=-127.0
-    # make the range 1 to 255
-    dsArray+=128
-    # Round everything else to the nearest integer. Unfortunately, this copies the entire array.
-    # astype and, I think, the cast to GDT_Byte just truncates
-    a3=np.rint(dsArray)
-    outputTiffName = os.path.join(outFolder,tiffPrefixStr+outTypeDict[outType][0])
-    clearOutputLocation(outputTiffName)
-    driver = gdal.GetDriverByName("GTiff")
-    # Write the TIFF out as unsigned 8 bit
-    dataset = driver.Create(outputTiffName, attList[0], attList[1], 1, gdal.GDT_Byte)
-    writeOutTIFFDataset(dataset, a3, attList[2], attList[3])
-    return outputTiffName
-
-def createPercentChangedSignedIntTIFF(inRast, tiffPrefixStr, outType, outFolder):
-    # Open test change product as in rast2array
-    outTypeDict={"ndvi":["_percent_NDVI.tif",gdal.GDT_Int16],"ndmi":["_percent_NDMI.tif",gdal.GDT_Int16],\
-                    "swir":["_percent_SWIR.tif",gdal.GDT_Int16]}
-
-    result=rast2array(inRast)
-    dsArray=result[0]
-    attList=result[1]
-    # Index the array and re-assign values greater than 127 and less than -127
-    # http://docs.scipy.org/doc/numpy/user/basics.indexing.html#boolean-or-mask-index-arrays
-    a1=dsArray>127.0
-    dsArray[a1]=127.0
-    a2=dsArray<-127.0
-    dsArray[a2]=-127.0
-    # Round everything else to the nearest integer
-    a3=np.rint(dsArray)
-    # Convert the resulting array to signed int
-    a4=a3.astype('int16')
-    outputTiffName = os.path.join(outFolder,tiffPrefixStr+outTypeDict[outType][0])
-    clearOutputLocation(outputTiffName)
-    driver = gdal.GetDriverByName("GTiff")
-    # Write the TIFF out as Int16 Signed
-    dataset = driver.Create(outputTiffName, attList[0], attList[1], 1, gdal.GDT_Int16, ['PIXELTYPE=SIGNEDBYTE'])
-    # Write out like in createOutTiff
-    writeOutTIFFDataset(dataset, a4, attList[2], attList[3])
-    return outputTiffName
-
-def setNoData(tiffName, quadsFolder, tiffPrefixStr, wrs2Name):
-    # clean up the TIFF display by setting pixels outside the quad boundary to NoData
-    shp=os.path.join(quadsFolder,'wrs2_'+wrs2Name+tiffPrefixStr[-2:]+'.shp')
-    cropSingleDisplayRasterToQuad(tiffName, shp, '0')
-    return tiffName
-
-def outputChangeProductTIFFs(geoAttrsList, gdalArray, quadsFolder, tiffPrefixStr, outType, outFolder, wrs2Name):
-    # create both a 8 and 32 bit TIFF. The 8 bit with NoData value set outside of the quad boundary.
-
-    outputTiffName = createOutTIFF(geoAttrsList,gdalArray,os.path.join(outFolder,'32bit',
-                                                                       tiffPrefixStr+'_percent'),outType)
-    outputSignedIntTiffName = createPercentChangedUnsignedIntTIFF(outputTiffName, tiffPrefixStr, outType, os.path.join(outFolder,'8bit'))
-    setNoData(outputSignedIntTiffName, quadsFolder, tiffPrefixStr, wrs2Name)
-    return outputTiffName
-
-def outputMaskProductTIFFs(geoAttrsList, gdalArray, quadsFolder, tiffPrefixStr, outType, outFolder, wrs2Name):
-    # create a 8 TIFF with NoData value set outside of the quad boundary.
-
-    outputSignedIntTiffName = createOutTIFF(geoAttrsList, gdalArray.astype('int16'), outFolder, outType)
-    setNoData(outputSignedIntTiffName, quadsFolder, tiffPrefixStr, wrs2Name)
-    return outputSignedIntTiffName
-
-def outputMaskProductTIFFs(geoAttrsList, gdalArray, quadsFolder, tiffPrefixStr, outType, outFolder, wrs2Name):
-    # create a 16 TIFF with NoData value set outside of the quad boundary.
-
-    outputSignedIntTiffName = createOutTIFF(geoAttrsList, gdalArray.astype('int16'), outFolder, outType)
-    setNoData(outputSignedIntTiffName, quadsFolder, tiffPrefixStr, wrs2Name)
-    return outputSignedIntTiffName
-
 def cropToQuad(inRastFolder, outRasterFolder, quadsFolder):
     """ """
     sceneQuadList = []
@@ -489,7 +342,8 @@ def cropToQuad(inRastFolder, outRasterFolder, quadsFolder):
                     #srs = os.path.join(quadsFolder, os.path.basename(quad)[:-4] + ".prj")
                     outraster = os.path.join(sceneQuadFolder, tiff[0:21] + quad[-6:-4] + tiff[21:-4] + ".TIF")
                     if os.path.exists(outraster) == False:
-                       print cropSingleAnalysisRasterToQuad(tiffFull, outraster, quadFull)
+                       print LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(tiffFull).crop(quadFull, outraster)
+                       #cropSingleAnalysisRasterToQuad(tiffFull, outraster, quadFull)
                 elif 'gap_mask' in tiff:
                     sceneQuadGmFolder = os.path.join(sceneQuadFolder, "gap_mask")
                     if os.path.exists(sceneQuadGmFolder) == False:
@@ -501,9 +355,9 @@ def cropToQuad(inRastFolder, outRasterFolder, quadsFolder):
                             quadFull = os.path.join(quadsFolder, quad)
                             outraster = os.path.join(sceneQuadGmFolder, gm[0:21] + quad[-6:-4] + gm[21:-4] + ".TIF")
                             if os.path.exists(outraster) == False:
-                                cropSingleAnalysisRasterToQuad(gmFull, outraster, quadFull)
+                                LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(gmFull).crop(quadFull, outraster)
+                                #cropSingleAnalysisRasterToQuad(gmFull, outraster, quadFull)
     return sceneQuadList
-
 
 def runFmask(tiffFolder,fmaskShellCall):
 	""" """
@@ -540,3 +394,5 @@ def cloudCover(FmaskData):
     noData = float(np.sum(FmaskData == 255))
     ccPercent = round((cloud + snow + cloudShadow)/(clearLand + clearWater + cloudShadow + cloud + snow)*100,2)
     return ccPercent
+
+
