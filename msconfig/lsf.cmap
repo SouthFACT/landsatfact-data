@@ -5,71 +5,71 @@ CLASS
 END
 CLASS
 	NAME "< -120"
-	EXPRESSION ([pixel] < -120 AND [pixel] >= -127)
+	EXPRESSION ([pixel] < 8 AND [pixel] >= 1)
 	COLOR 89 0 0 
 END
 CLASS
 	NAME "-101 to -120"
-	EXPRESSION ([pixel] >= -120 AND [pixel] <= -101)
+	EXPRESSION ([pixel] >= 8 AND [pixel] <= 27)
 	COLOR 163 0 0
 END
 CLASS
 	NAME "-81 to -100"
-	EXPRESSION ([pixel] >= -100 AND [pixel] <= -81)
+	EXPRESSION ([pixel] >= 28 AND [pixel] <= 47)
 	COLOR 255 0 0
 END
 CLASS
 	NAME "-61 to -80"
-	EXPRESSION ([pixel] >= -80 AND [pixel] <= -61)
+	EXPRESSION ([pixel] >= 48 AND [pixel] <= 67)
 	COLOR 255 128 0
 END
 CLASS
 	NAME "-41 to -60"
-	EXPRESSION ([pixel] >= -60 AND [pixel] <= -41)
+	EXPRESSION ([pixel] >= 68 AND [pixel] <= 87)
 	COLOR 255 193 0
 END
 CLASS
 	NAME "-21 to -40"
-	EXPRESSION ([pixel] >= -40 AND [pixel] <= -21)
+	EXPRESSION ([pixel] >= 88 AND [pixel] <= 107)
 	COLOR 255 255 0
 END
 CLASS
 	NAME "-1 to -20"
-	EXPRESSION ([pixel] >= -20 AND [pixel] <= -1)
+	EXPRESSION ([pixel] >= 108 AND [pixel] <= 127)
 	COLOR 192 255 0
 END
 CLASS
 	NAME "0 to 20"
-	EXPRESSION ([pixel] >= 0 AND [pixel] <= 20)
+	EXPRESSION ([pixel] >= 128 AND [pixel] <= 147)
 	COLOR 1 255 0
 END
 CLASS
 	NAME "21 to 40"
-	EXPRESSION ([pixel] >= 21 AND [pixel] <= 40)
+	EXPRESSION ([pixel] >= 148 AND [pixel] <= 167)
 	COLOR 0 192 128
 END
 CLASS
 	NAME "41 to 60"
-	EXPRESSION ([pixel] >= 41 AND [pixel] <= 60)
+	EXPRESSION ([pixel] >= 168 AND [pixel] <= 187)
 	COLOR 0 128 255
 END
 CLASS
 	NAME "61 to 80"
-	EXPRESSION ([pixel] >= 61 AND [pixel] <= 80)
+	EXPRESSION ([pixel] >= 188 AND [pixel] <= 207)
 	COLOR 0 0 232
 END
 CLASS
 	NAME "81 to 100"
-	EXPRESSION ([pixel] >= 81 AND [pixel] <= 100)
+	EXPRESSION ([pixel] >= 208 AND [pixel] <= 227)
 	COLOR 0 0 128
 END
 CLASS
 	NAME "101 to 120"
-	EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+	EXPRESSION ([pixel] >= 228 AND [pixel] <= 247)
 	COLOR 0 0 89
 END
 CLASS
 	NAME "> 120"
-	EXPRESSION ([pixel] > 120)
+	EXPRESSION ([pixel] > 248)
 	COLOR 0 0 60
 END
