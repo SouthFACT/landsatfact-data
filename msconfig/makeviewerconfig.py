@@ -105,7 +105,7 @@ def getSWIRThresholdLayers():
             date_no_hyphens = date.strftime('%Y%m%d')
             #date = date.join(data)
             print 'The date is ' + date_string + type
-            lid = type+date_no_hyphens
+            lid = 'TSH'+type+date_no_hyphens
             lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-swir-threshold?TIME="+date_string+"&amp;TRANSPARENT=true"
             lsfDict[type].append({'LAYER_LID' : lid,
                             'LAYER_NAME'      : type+"-archive",
@@ -137,7 +137,7 @@ def getSWIRAllChangeLayers():
             date_no_hyphens = date.strftime('%Y%m%d')
             #date = date.join(data)
             print 'The date is ' + date_string + type
-            lid = type+date_no_hyphens
+            lid = 'ALC'+type+date_no_hyphens
             lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-swir-allchange?TIME="+date_string+"&amp;TRANSPARENT=true"
             lsfDict[type].append({'LAYER_LID' : lid,
                             'LAYER_NAME'      : type+"-archive",
