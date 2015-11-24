@@ -71,10 +71,58 @@ try{
 	if (pg_num_rows($select_result) > 0) {
 		print_r("Matching records found : ".pg_num_rows($select_result)."\n");
 		while ($row = pg_fetch_array($select_result)) {
-			$datasetName = "LANDSAT_8";
-			if (substr($row[0], 0, 3)=="LE7") {
-			  $datasetName = "LANDSAT_ETM_SLC_OFF";
-			}
+			//$datasetName = "LANDSAT_8";
+			//if (substr($row[0], 0, 3)=="LE7") {
+			//  $datasetName = "LANDSAT_ETM_SLC_OFF";
+`			//}
+
+                      //set time zone. this is needed for date comparsion
+                      date_default_timezone_set('America/New_York');
+
+                      //get image acquisition date from the scene id
+                      $dayOfYear = substr($row[0],13,3);
+                      $year = substr($row[0],9,4);
+
+                      // create date from julian date and year this is seconds from start of year
+                      $acquisition_date = strtotime("January 1st, ".$year." +".($dayOfYear-1)." days");
+
+                      //create date from seconds from start of year
+                      $imageDate = date('Y-m-d',$acquisition_date);
+
+                      //for lanbdsat 7 slc off is after may 2003 set date for comparsion
+                      $landsat7Date = "2003-05-31";
+                      $SLC_OFF = ($imageDate > $landsat7Date) ;
+                      $SLC_ON = ($imageDate <= $landsat7Date);
+
+                      //get product abbrevation. This identifes the imager product
+                      $proudctAbbrevation = substr($row[0], 0, 3);
+                      $isLandsat8 = ($proudctAbbrevation == "LC8");
+                      $isLandsat7 = ($proudctAbbrevation == "LE7");
+                      $isLandsat5 = ($proudctAbbrevation == "LT5");
+
+                      //decide what dataset name to use in soap request
+                      switch (true){
+                        //when Landsat 8
+                        case $isLandsat8:
+                          $datasetName = "LANDSAT_8";
+                          break;
+                        //when Landsat 7 newer
+                        case ($isLandsat7 and $SLC_OFF):
+                          $datasetName = "LANDSAT_ETM_SLC_OFF";
+                          break;
+                        //when Landsat 7 older
+                        case ($isLandsat7 and $SLC_ON):
+                          $datasetName = "LANDSAT_ETM";
+                          break;
+                        //when Landsat 5
+                        case $isLandsat5:
+                          $datasetName = "LANDSAT_TM";
+                        break;
+                        //default datasetName should be LANDSAT_8
+                        default:
+                          $datasetName = "LANDSAT_8";
+                          break;
+                      }
 			print_r("Downloading " . $row[0]);
 			print_r(" with dataset " . $datasetName);
 			if (file_exists('/lsfdata/eros_data/'.$row[0].'.tar.gz')) {
