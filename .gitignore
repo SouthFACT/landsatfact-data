@@ -35,3 +35,4 @@ dataexchange/LANDSAT_ETM_SLC_OFF.csv
 html/landsatfact_config.xml
 geoprocessing/old/*
 var/log/lsf_cron.log
+aws.config

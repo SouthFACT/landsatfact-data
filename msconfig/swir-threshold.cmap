@@ -1,0 +1,10 @@
+CLASS
+	NAME "101 to 120"
+	EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+	COLOR 163 0 0
+END
+CLASS
+	NAME "> 120"
+	EXPRESSION ([pixel] > 120)
+	COLOR 89 0 0 
+END

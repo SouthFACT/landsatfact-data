@@ -65,18 +65,22 @@ def getLSFLayers():
     }
     date_and_type_cur = conn.cursor()
     date_and_type_cur.execute("SELECT product_date, product_type FROM vw_archive_product_dates;")
+    #date_and_type_cur.execute("SELECT product_date_range, product_type FROM vw_archive_product_date_range;")
          
     for date, type in date_and_type_cur:
         if type in lsfDict.keys():
+            #date_string = str(date)
+			#uncomment the following two lines to go back to using previous view
             date_string = date.isoformat()
             date_no_hyphens = date.strftime('%Y%m%d')
             #date = date.join(data)
-            print 'The date is ' + date_string + type
+            print date_string
             lid = type+date_no_hyphens
+            #lid = type+date_string
             lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-"+type+"?TIME="+date_string+"&amp;TRANSPARENT=true"
             lsfDict[type].append({'LAYER_LID' : lid,
                             'LAYER_NAME'      : type+"-archive",
-                            'LAYER_TITLE'     : type+date_no_hyphens,
+                            'LAYER_TITLE'     : type+" "+date_string,
                             'SERVER_URL'      : SERVER_URL,
                             'LSF_URL'         : lsfURL
             })
@@ -98,18 +102,22 @@ def getSWIRThresholdLayers():
     }
     date_and_type_cur = conn.cursor()
     date_and_type_cur.execute("SELECT product_date, product_type FROM vw_archive_product_dates;")
+    #date_and_type_cur.execute("SELECT product_date_range, product_type FROM vw_archive_product_date_range;")
          
     for date, type in date_and_type_cur:
         if type in lsfDict.keys():
+            #date_string = str(date)
+			#uncomment the following two lines to go back to using previous view
             date_string = date.isoformat()
             date_no_hyphens = date.strftime('%Y%m%d')
             #date = date.join(data)
-            print 'The date is ' + date_string + type
+            print date_string
             lid = 'TSH'+type+date_no_hyphens
+            #lid = 'TSH'+type+date_string
             lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-swir-threshold?TIME="+date_string+"&amp;TRANSPARENT=true"
             lsfDict[type].append({'LAYER_LID' : lid,
                             'LAYER_NAME'      : type+"-archive",
-                            'LAYER_TITLE'     : type+date_no_hyphens,
+                            'LAYER_TITLE'     : type+" "+date_string,
                             'SERVER_URL'      : SERVER_URL,
                             'LSF_URL'         : lsfURL
             })
@@ -130,18 +138,22 @@ def getSWIRAllChangeLayers():
     }
     date_and_type_cur = conn.cursor()
     date_and_type_cur.execute("SELECT product_date, product_type FROM vw_archive_product_dates;")
+    #date_and_type_cur.execute("SELECT product_date_range, product_type FROM vw_archive_product_date_range;")
          
     for date, type in date_and_type_cur:
         if type in lsfDict.keys():
+            #date_string = str(date)
+			#uncomment the following two lines to go back to using previous view
             date_string = date.isoformat()
             date_no_hyphens = date.strftime('%Y%m%d')
             #date = date.join(data)
-            print 'The date is ' + date_string + type
+            print date_string
             lid = 'ALC'+type+date_no_hyphens
+            #lid = 'ALC'+type+date_string
             lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-swir-allchange?TIME="+date_string+"&amp;TRANSPARENT=true"
             lsfDict[type].append({'LAYER_LID' : lid,
                             'LAYER_NAME'      : type+"-archive",
-                            'LAYER_TITLE'     : type+date_no_hyphens,
+                            'LAYER_TITLE'     : type+" "+date_string,
                             'SERVER_URL'      : SERVER_URL,
                             'LSF_URL'         : lsfURL
             })
