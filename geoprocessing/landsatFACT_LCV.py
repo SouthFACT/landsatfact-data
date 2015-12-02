@@ -150,7 +150,7 @@ for tar in runList:
 				# Gap mask
 				# creates a gap mask for the scene if it came from Landsat 7 after
 				# the ordinal date of 2003152 (5/31/2003) when the SLC went offline
-				landsatFactTools_GDAL.gaper(date1,date2,outGAPfolder,outBasename,quadsFolder,wrs2Name)
+				landsatFactTools_GDAL.gaper(date1,date2,outGAPfolder,outBasename,quadsFolder,wrs2Name, 'LCV')
 				print "here after gapmasker"
 				print "date1.sceneID:" , date1.sceneID
 				print "date2.sceneID:" , date2.sceneID
@@ -185,8 +185,8 @@ for tar in runList:
                                     outputTiffName=os.path.join(outFMASKfolder,outBasename + '_Fmask.tif')
                                     shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
                                     LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(FmaskReclassedArray, date1.geoTiffAtts).write(outputTiffName, shpName)
-                                    print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'CLOUD'+" ,"+date2.sceneID[9:16]
-                                    landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'CLOUD',date2.sceneID[9:16])
+                                    print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'CLOUD'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+'LCV'
+                                    landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'CLOUD',date2.sceneID[9:16], 'LCV')
                                 else:
                                     print "Apparently the fmask file doesn't exist"
                     # =========================================================================
@@ -201,8 +201,8 @@ for tar in runList:
 				outputTiffName=os.path.join(outNDVIfolder, outBasename + '_percent_NDVI.tif')
 				shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
 				LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(ndviPercentChange, date1.geoTiffAtts).write(outputTiffName, shpName)
-				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDVI'+" ,"+date2.sceneID[9:16]
-				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDVI',date2.sceneID[9:16])
+				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDVI'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+'LCV'
+				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDVI',date2.sceneID[9:16], 'LCV')
 				ndviPercentChange = None
 				# NDMI
 				ndmi1 = date1.ndmi("SR")
@@ -215,8 +215,8 @@ for tar in runList:
 				outputTiffName=os.path.join(outNDMIfolder, outBasename + '_percent_NDMI.tif')
 				shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
 				LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(ndmiPercentChange, date1.geoTiffAtts).write(outputTiffName, shpName)
-				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDMI'+" ,"+date2.sceneID[9:16]
-				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDMI',date2.sceneID[9:16])
+				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'NDMI'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+'LCV'
+				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NDMI',date2.sceneID[9:16], 'LCV')
 				ndmiPercentChange = None
 				# SWIR
 				swir1 = date1.SurfaceReflectance(date1.swir2,"swir2")
@@ -230,8 +230,8 @@ for tar in runList:
 				outputTiffName=os.path.join(outSWIRfolder, outBasename + '_percent_SWIR.tif')
 				shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
 				LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(swirPercentChange, date1.geoTiffAtts).write(outputTiffName, shpName)
-				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'SWIR'+" ,"+date2.sceneID[9:16]
-				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'SWIR',date2.sceneID[9:16])
+				print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'SWIR'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+'LCV'
+				landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'SWIR',date2.sceneID[9:16], 'LCV')
 				swirPercentChange = None
 	else:
 		print "There was an issue with FMASK on: "+extractedPath
