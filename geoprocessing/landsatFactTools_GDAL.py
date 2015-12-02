@@ -20,8 +20,10 @@ import os, sys, tarfile, shutil, traceback, gzip, subprocess, stat, datetime
 from subprocess import PIPE
 import psycopg2
 from operator import itemgetter
+import LSF
 import rasterAnalysis_GDAL
 import LSFGeoTIFF
+import localLib
 
 
 
@@ -47,15 +49,19 @@ def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,qua
         subprocess.call(["php", "download_landsat_data_by_sceneid.php", diff_tar])
         # now extract the downloaded file accordingly
         inNewSceneTar = os.path.join(tarStorage, diff_tar+".tar.gz")
+        err=localLib.validTar(inNewSceneTar)
+        if err:
+            raise Exception(err)
         extractedPath = checkExisting(inNewSceneTar, tiffsStorage)
         #do the other pre-processing stuff
         os.chdir(in_dir)
-        rasterAnalysis_GDAL.runFmask(extractedPath,fmaskShellCall)
+        rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
         # get DN min number from each band in the scene and write to database
         dnminExists = checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
         if dnminExists == False:
             dnMinDict = rasterAnalysis_GDAL.getDNmin(extractedPath)
-        writeDNminToDB(dnMinDict,extractedPath)
+            # fix bug introduced by me in commit de5df07c4ca3ff71ae4d7da27b6018fe1bc2df04
+            writeDNminToDB(dnMinDict,extractedPath)
         # create quads from the input scene
         quadPaths = rasterAnalysis_GDAL.cropToQuad(extractedPath,outRasterFolder,quadsFolder)
         writeQuadToDB(quadPaths)
@@ -153,7 +159,8 @@ def unzipTIFgap(inTar, sensorType, extractPath):
 		for filename in filenames:
 			path = os.path.join(dirpath, filename)
 			os.chmod(path, 0o777)
-def gaper(date1, date2, outGAPfolder, baseName, quadsFolder,wrs2Name):
+
+def gaper(date1, date2, outGAPfolder, baseName, quadsFolder,wrs2Name,analysis_source):
     # date1,date2,outGAPfolder,outBasename,quadsFolder,wrs2Name
     # input val are rasterAnalysis_GDAL sensorBand Class objects
     # Creates a gap mask for the scene if it came from Landsat 7 after
@@ -169,16 +176,16 @@ def gaper(date1, date2, outGAPfolder, baseName, quadsFolder,wrs2Name):
         gapMask = gapMask1[0] * gapMask2[0]
         outputTiffName=os.path.join(outGAPfolder,baseName + '_GapMask.tif')
         shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
-        LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(gapMask1[1], gapMask).write(outputTiffName, shpName)
-	print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]
-	writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16])
+        LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(gapMask, gapMask1[1]).write(outputTiffName, shpName)
+        print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+analysis_source
+        writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16], analysis_source)
     elif len(gapMaskList) == 1:
         gapMask = gapMaskList[0]
         outputTiffName=os.path.join(outGAPfolder,baseName + '_GapMask.tif')
         shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
         LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(gapMask[0],gapMask[1]).write(outputTiffName, shpName)
-	print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]
-	writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16])
+        print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+ analysis_source
+        writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16], analysis_source)
 
 
 def getQuadCCpercent(quadPaths):
@@ -210,13 +217,13 @@ def writeQuadToDB(pathList):
         print statement
         postgresCommand(statement)
 
-def writeProductToDB(product_id,input1,input2,product_type,product_date):
+def writeProductToDB(product_id,input1,input2,product_type,product_date,analysis_source):
     # writes newly created products to products table in database
 	# product_id: LE70270402015145EDC01UR_LE70270402015161EDC00UR_percent_NDVI16.tif
 	tableName = 'products'
 	normaldate = datetime.datetime(int(product_date[0:4]), 1, 1) + datetime.timedelta(int(product_date[4:7]) - 1)
 	normaldate_truncated = datetime.date(normaldate.year, normaldate.month, normaldate.day)
-	statement = "INSERT INTO {0}(product_id, input1, input2, product_type, product_date) VALUES ('{1}', '{2}', '{3}', '{4}', '{5}');".format(tableName,product_id,input1,input2,product_type,str(normaldate_truncated))
+	statement = "INSERT INTO {0}(product_id, input1, input2, product_type, product_date, analysis_source) VALUES ('{1}', '{2}', '{3}', '{4}', '{5}','{6}');".format(tableName,product_id,input1,input2,product_type,str(normaldate_truncated), analysis_source)
 	print statement
 	postgresCommand(statement)
 
@@ -296,8 +303,19 @@ def getDNminDictfromDB(sceneID):
     return DNminDict
 
 
+"""
+# Function to execute the SQL statement with the specified value parameters
+# @param sqlString, values
+#           valid SQL statement
+#           parameter values refered to in sqlString. default is None
+# @return list of tuples
+"""
 def postgresCommand(command,values=None):
-    """ """
+    """This function is clever? It can handle SQL SELECT, UPDATE, INSERT, and DELETE.
+    It relies on the fact that SELECTs return return results and don't need to commit.
+    In the case of a SELECT command, cur.fetchall does not raise an exception, the resultsTup are returned,
+    and no commit is done (and the connection and cursor are not closed).
+    In the INSERT, UPDATE and DELETE cases, cur.fetchall raises an exception. """
     try:
         print("postgresCommand args command {}, values {}".format(command,values))
         # dbConn = psycopg2.connect("dbname=x user=y password=z")
@@ -319,6 +337,7 @@ def postgresCommand(command,values=None):
         dbConn.commit()
     except:
         pass
+    # if commit failed, this does an implicit rollback
     cur.close()
     dbConn.close()
 
