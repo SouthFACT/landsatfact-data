@@ -44,7 +44,7 @@ for data in cloud_cur:
 	print data
 print cloud
 
-cmd_cloud = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES /lsfdata/products/mosaics/southeast_mosaic_cloud.tif' + cloud + "/lsfdata/products/mosaics/temp/southeast_mosaic_cloud.tif"
+cmd_cloud = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 /lsfdata/products/mosaics/southeast_mosaic_cloud.tif' + cloud + "/lsfdata/products/mosaics/temp/southeast_mosaic_cloud.tif"
 
 #Use this command to create a new initial mosaic
 #cmd_cloud = r'gdalwarp -wm 2000 --config GDAL_CACHEMAX 2000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES' + cloud + "/lsfdata/products/mosaics/temp/southeast_mosaic_cloud.tif"

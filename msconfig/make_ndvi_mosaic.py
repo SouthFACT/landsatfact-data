@@ -45,7 +45,7 @@ for data in ndvi_cur:
 	print data
 print ndvi
 
-cmd_ndvi = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata -128 -dstnodata -128 /lsfdata/products/mosaics/southeast_mosaic_ndvi.tif' + ndvi + "/lsfdata/products/mosaics/temp/southeast_mosaic_ndvi.tif"
+cmd_ndvi = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 /lsfdata/products/mosaics/southeast_mosaic_ndvi.tif' + ndvi + "/lsfdata/products/mosaics/temp/southeast_mosaic_ndvi.tif"
 
 #Use this command to create a new initial mosaic
 #cmd_ndvi = r'gdalwarp -wm 2000 --config GDAL_CACHEMAX 2000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata -128 -dstnodata -128' + ndvi + "/lsfdata/products/mosaics/temp/southeast_mosaic_ndvi.tif"

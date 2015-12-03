@@ -44,7 +44,7 @@ for data in gap_cur:
 	print data
 print gap
 
-cmd_gap = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES /lsfdata/products/mosaics/southeast_mosaic_gap.tif' + gap + "/lsfdata/products/mosaics/temp/southeast_mosaic_gap.tif"
+cmd_gap = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 /lsfdata/products/mosaics/southeast_mosaic_gap.tif' + gap + "/lsfdata/products/mosaics/temp/southeast_mosaic_gap.tif"
 
 #Use this command to create a new initial mosaic
 #cmd_gap = r'gdalwarp -wm 3000 --config GDAL_CACHEMAX 3000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES' + gap + "/lsfdata/products/mosaics/temp/southeast_mosaic_gap.tif"
