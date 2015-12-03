@@ -74,7 +74,7 @@ try{
 			//$datasetName = "LANDSAT_8";
 			//if (substr($row[0], 0, 3)=="LE7") {
 			//  $datasetName = "LANDSAT_ETM_SLC_OFF";
-`			//}
+			//}
 
                       //set time zone. this is needed for date comparsion
                       date_default_timezone_set('America/New_York');
