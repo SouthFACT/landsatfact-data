@@ -36,3 +36,7 @@ html/landsatfact_config.xml
 geoprocessing/old/*
 var/log/lsf_cron.log
 aws.config
+msconfig/initial_mosaic.sh
+msconfig/initial_mosaic_cloud.sh
+msconfig/initial_mosaic_gap.sh
+msconfig/initial_mosaic_ndmi.sh
