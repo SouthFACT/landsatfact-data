@@ -33,7 +33,7 @@ print type(lsf_quads['wrs2_code'][5])
 # LANDSAT_8 
 #filename = 'LANDSAT_8.csv'
 # LANDSAT_7 SLC OFF
-#filename = 'LANDSAT_ETM_SLC_OFF.csv'
+filename = 'LANDSAT_ETM_SLC_OFF.csv'
 #L7 file SLC ON
 #filename = 'LANDSAT_ETM.csv'
 #L5 file (4 CSV files)
@@ -44,7 +44,7 @@ print type(lsf_quads['wrs2_code'][5])
 #2000-2009
 #filename = 'LANDSAT_TM-2000-2009.csv'
 #2010-2012
-filename = 'LANDSAT_TM-2010-2012.csv'
+#filename = 'LANDSAT_TM-2010-2012.csv'
 
 #print lsf_quads['wrs2_code']
 
