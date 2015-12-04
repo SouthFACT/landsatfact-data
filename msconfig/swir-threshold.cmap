@@ -1,10 +1,25 @@
 CLASS
-	NAME "101 to 120"
-	EXPRESSION ([pixel] >= 101 AND [pixel] <= 120)
+	NAME "SWIR Threshold Percent Change"
+	EXPRESSION ""
+	COLOR 255 255 255
+END
+CLASS
+	NAME "< -120"
+	EXPRESSION ([pixel] > 248 )
+	COLOR 89 0 0 
+END
+CLASS
+	NAME "-101 to -120"
+	EXPRESSION ([pixel] >= 228 AND [pixel] <= 247)
 	COLOR 163 0 0
 END
 CLASS
-	NAME "> 120"
-	EXPRESSION ([pixel] > 120)
-	COLOR 89 0 0 
+	NAME "-81 to -100"
+	EXPRESSION ([pixel] >= 208 AND [pixel] <= 227)
+	COLOR 255 0 0
+END
+CLASS
+	NAME "-61 to -80"
+	EXPRESSION ([pixel] >= 188 AND [pixel] <= 207)
+	COLOR 255 128 0
 END

@@ -88,7 +88,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
         METADATA
             "wms_title"             "southeast-ndvi-current"
             "wms_abstract"          "southeast-ndvi-current"
@@ -109,7 +109,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-cloud-current
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCloud"
@@ -131,7 +131,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-gap-current
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForGap"
@@ -153,7 +153,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-cloudGap-current
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCloudGap"
@@ -175,7 +175,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDforest
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDForest"
@@ -197,7 +197,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDforest-cloud
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDForestCloud"
@@ -219,7 +219,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDforest-gap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDForestGap"
@@ -241,7 +241,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDforest-cloudGap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDForestCloudGap"
@@ -263,7 +263,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDdeciduous
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDDeciduous"
@@ -285,7 +285,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDdeciduous-cloud
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDDeciduousCloud"
@@ -307,7 +307,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDdeciduous-gap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDDeciduousGap"
@@ -329,7 +329,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDdeciduous-cloudGap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDDeciduousCloudGap"
@@ -351,7 +351,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDevergreen
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDEvergreen"
@@ -373,7 +373,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDevergreen-cloud
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDEvergreenCloud"
@@ -395,7 +395,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDevergreen-gap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDEvergreenGap"
@@ -417,7 +417,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDevergreen-cloudGap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDEvergreenCloudGap"
@@ -439,7 +439,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDmixed
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDMixed"
@@ -461,7 +461,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDmixed-cloud
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDMixedCloud"
@@ -483,7 +483,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDmixed-gap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDMixedGap"
@@ -505,7 +505,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDmixed-cloudGap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDMixedCloudGap"
@@ -527,7 +527,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDshrubscrub
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDShrubScrub"
@@ -549,7 +549,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDshrubscrub-cloud
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDShrubScrubCloud"
@@ -571,7 +571,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDshrubscrub-gap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDShrubScrubGap"
@@ -593,7 +593,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-NLCDshrubscrub-cloudGap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDShrubScrubCloudGap"
@@ -615,7 +615,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-nlcdwoodywetlands
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDWoodyWetlands"
@@ -637,7 +637,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-nlcdwoodywetlands-cloud
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDWoodyWetlandsCloud"
@@ -659,7 +659,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-nlcdwoodywetlands-gap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDWoodyWetlandsGap"
@@ -681,7 +681,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-nlcdwoodywetlands-cloudGap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForNLCDWoodyWetlandsCloudGap"
@@ -703,7 +703,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLforest
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLForest"
@@ -725,7 +725,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLforest-cloud
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLForestCloud"
@@ -747,7 +747,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLforest-gap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLForestGap"
@@ -769,7 +769,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLforest-cloudGap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLForestCloudGap"
@@ -791,7 +791,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLdeciduous
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLDeciduous"
@@ -813,7 +813,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLdeciduous-cloud
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLDeciduousCloud"
@@ -835,7 +835,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLdeciduous-gap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLDeciduousGap"
@@ -857,7 +857,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLdeciduous-cloudGap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLDeciduousCloudGap"
@@ -879,7 +879,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLevergreen
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLEvergreen"
@@ -901,7 +901,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLevergreen-cloud
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLEvergreenCloud"
@@ -923,7 +923,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLevergreen-gap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLEvergreenGap"
@@ -945,7 +945,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLevergreen-cloudGap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLEvergreenCloudGap"
@@ -967,7 +967,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLmixed
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLMixed"
@@ -989,7 +989,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLmixed-cloud
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLMixedCloud"
@@ -1011,7 +1011,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLmixed-gap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLMixedGap"
@@ -1033,7 +1033,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLmixed-cloudGap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLMixedCloudGap"
@@ -1055,7 +1055,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLshrubscrub
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLShrubScrub"
@@ -1077,7 +1077,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLshrubscrub-cloud
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLShrubScrubCloud"
@@ -1099,7 +1099,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLshrubscrub-gap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLShrubScrubGap"
@@ -1121,7 +1121,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLshrubscrub-cloudGap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLShrubScrubCloudGap"
@@ -1143,7 +1143,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLwoodywetlands
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLWoodyWetlands"
@@ -1165,7 +1165,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLwoodywetlands-cloud
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLWoodyWetlandsCloud"
@@ -1187,7 +1187,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLwoodywetlands-gap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLWoodyWetlandsGap"
@@ -1209,7 +1209,7 @@ MAP
 			"no_defs"
 		END
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK southeast-CDLwoodywetlands-cloudGap
         METADATA
             "wms_title"             "southeast-ndvi-currentMaskForCDLWoodyWetlandsCloudGap"
@@ -1264,7 +1264,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"      
+		INCLUDE "ndvi.cmap"      
         METADATA
                 "wms_title"             "ndvi-archive"
                 "wms_abstract"          "ndvi-archive"
@@ -1290,7 +1290,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK southeast-NLCDforest
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDForest"
@@ -1317,7 +1317,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDforest-cloud
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDForestCloud"
@@ -1344,7 +1344,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDforest-gap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDForestGap"
@@ -1371,7 +1371,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDforest-cloudgap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDForestCloudGap"
@@ -1398,7 +1398,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK southeast-NLCDdeciduous
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDDeciduous"
@@ -1425,7 +1425,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDdeciduous-cloud
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDDeciduousCloud"
@@ -1452,7 +1452,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDdeciduous-gap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDDeciduousGap"
@@ -1479,7 +1479,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDdeciduous-cloudgap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDDeciduousCloudGap"
@@ -1506,7 +1506,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK southeast-NLCDevergreen
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDEvergreen"
@@ -1533,7 +1533,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDevergreen-cloud
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDEvergreenCloud"
@@ -1560,7 +1560,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDevergreen-gap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDEvergreenGap"
@@ -1587,7 +1587,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDevergreen-cloudgap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDEvergreenCloudGap"
@@ -1614,7 +1614,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK southeast-NLCDmixed
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDMixed"
@@ -1641,7 +1641,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDmixed-cloud
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDMixedCloud"
@@ -1668,7 +1668,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDmixed-gap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDMixedGap"
@@ -1695,7 +1695,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDmixed-cloudgap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDMixedCloudGap"
@@ -1722,7 +1722,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK southeast-NLCDshrubscrub
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDShrubScrub"
@@ -1749,7 +1749,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDshrubscrub-cloud
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDShrubScrubCloud"
@@ -1776,7 +1776,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDshrubscrub-gap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDShrubScrubGap"
@@ -1803,7 +1803,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-NLCDshrubscrub-cloudgap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDShrubScrubCloudGap"
@@ -1830,7 +1830,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK southeast-nlcdwoodywetlands
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDWoodyWetlands"
@@ -1857,7 +1857,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-nlcdwoodywetlands-cloud
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDWoodyWetlandsCloud"
@@ -1884,7 +1884,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-nlcdwoodywetlands-gap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDWoodyWetlandsGap"
@@ -1911,7 +1911,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-nlcdwoodywetlands-cloudgap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForNLCDWoodyWetlandsCloudGap"
@@ -1938,7 +1938,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK southeast-CDLforest
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLForest"
@@ -1965,7 +1965,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLforest-cloud
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLForestCloud"
@@ -1992,7 +1992,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLforest-gap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLForestGap"
@@ -2019,7 +2019,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLforest-cloudgap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLForestCloudGap"
@@ -2046,7 +2046,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK southeast-CDLdeciduous
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLDeciduous"
@@ -2073,7 +2073,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLdeciduous-cloud
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLDeciduousCloud"
@@ -2100,7 +2100,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLdeciduous-gap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLDeciduousGap"
@@ -2127,7 +2127,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLdeciduous-cloudgap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLDeciduousCloudGap"
@@ -2154,7 +2154,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK southeast-CDLevergreen
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLEvergreen"
@@ -2181,7 +2181,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLevergreen-cloud
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLEvergreenCloud"
@@ -2208,7 +2208,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLevergreen-gap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLEvergreenGap"
@@ -2235,7 +2235,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLevergreen-cloudgap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLEvergreenCloudGap"
@@ -2262,7 +2262,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK southeast-CDLmixed
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLMixed"
@@ -2289,7 +2289,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLmixed-cloud
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLMixedCloud"
@@ -2316,7 +2316,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLmixed-gap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLMixedGap"
@@ -2343,7 +2343,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLmixed-cloudgap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLMixedCloudGap"
@@ -2370,7 +2370,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK southeast-CDLshrubscrub
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLShrubScrub"
@@ -2397,7 +2397,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLshrubscrub-cloud
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLShrubScrubCloud"
@@ -2424,7 +2424,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLshrubscrub-gap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLShrubScrubGap"
@@ -2451,7 +2451,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLshrubscrub-cloudgap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLShrubScrubCloudGap"
@@ -2478,7 +2478,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK southeast-CDLwoodywetlands
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLWoodyWetlands"
@@ -2505,7 +2505,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLwoodywetlands-cloud
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLWoodyWetlandsCloud"
@@ -2532,7 +2532,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLwoodywetlands-gap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLWoodyWetlandsGap"
@@ -2559,7 +2559,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK archive-CDLwoodywetlands-cloudgap
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCDLWoodyWetlandsCloudGap"
@@ -2586,7 +2586,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"     
+		INCLUDE "ndvi.cmap"     
 		MASK gap-archive
         METADATA
                 "wms_title"             "ndvi-archiveMaskForGap"
@@ -2613,7 +2613,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK cloud-archive
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCloud"
@@ -2640,7 +2640,7 @@ MAP
 		#OPACITY 0
 		FILTER ([date] = "2015-03-09")
 		#OFFSITE 0 0 0 
-		INCLUDE "lsf.cmap"
+		INCLUDE "ndvi.cmap"
 		MASK cloudGap-archive
         METADATA
                 "wms_title"             "ndvi-archiveMaskForCloudGap"

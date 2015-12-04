@@ -65,9 +65,9 @@
                      layers="viewer_quads"
                      styles="default"
                      identify="true"
-                     name="Latest update"
+                     name="Landsat Quads"
                      legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=landsat_quads&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
-				<wmsLayer
+				<!-- <wmsLayer
                      selected="false"
                      lid="AC"
                      visible="true"
@@ -77,7 +77,7 @@
                      styles="default"
                      identify="true"
                      name="Landsat Quads"
-                     legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=landsat_quads&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
+                     legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=landsat_quads&amp;VERSION=1.1.1&amp;FORMAT=image/png"/> -->
 			<wmsLayer
                      selected="false"
                      lid="AD"
@@ -91,38 +91,31 @@
                      legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=landsat_quads&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
             </wmsSubgroup>
         </wmsGroup>
-        <wmsGroup gid="G02" label="LandsatFACT" name="LandsatFACT" selected="true">
-			<wmsSubgroup label="Hotspot Test (method)">
-                <wmsLayer identify="true" layers="hotspot-test" legend="http://landsatfact-data-dev.nemac.org/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndvi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="HST" name="NDVI hotspot (overview)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
-				<wmsLayer identify="true" layers="hotspot-file" legend="http://landsatfact-data-dev.nemac.org/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndvi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="HSU" name="NDVI average 30,000m (file)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
-				<wmsLayer identify="true" layers="hotspot-15000-file" legend="http://landsatfact-data-dev.nemac.org/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndvi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="HSV" name="NDVI average 15,000m (file)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
-				<wmsLayer identify="true" layers="hotspot-7500-file" legend="http://landsatfact-data-dev.nemac.org/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndvi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="HSW" name="NDVI average 7,500m (file)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
-				<wmsLayer identify="true" layers="hotspot-80-near" legend="http://landsatfact-data-dev.nemac.org/lsflayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndvi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="HSW" name="NDVI 80 nearest" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsflayers?TRANSPARENT=true" visible="false" mask="true"/>
-            </wmsSubgroup>
-			<wmsSubgroup label="Latest Change Products">
-                <wmsLayer selected="true" identify="true" layers="southeast-swir-current" legend="%(SERVER_URL)s/lsf-swir-threshold?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-swir-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCA" name="SWIR Differencing (Threshold)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-swir-threshold?TRANSPARENT=true" visible="false" mask="true"/>
+        <wmsGroup gid="G02" label="Latest Change" name="LandsatFACT" selected="true">
+			<wmsSubgroup label="Latest Change">
+                <wmsLayer identify="true" layers="southeast-swir-current" legend="%(SERVER_URL)s/lsf-swir-threshold?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-swir-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCA" name="SWIR Differencing (Threshold)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-swir-threshold?TRANSPARENT=true" visible="false" mask="true"/>
 				<wmsLayer identify="true" layers="southeast-swir-current" legend="%(SERVER_URL)s/lsf-swir-allchange?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-swir-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCB" name="SWIR Differencing (All Change)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-swir-allchange?TRANSPARENT=true" visible="false" mask="true"/>
-				<wmsLayer identify="true" layers="southeast-ndvi-current" legend="%(SERVER_URL)s/lsf-NDVI?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndvi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCC" name="NDVI" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-NDVI?TRANSPARENT=true" visible="false" mask="true"/>
+				<wmsLayer selected="true" identify="true" layers="southeast-ndvi-current" legend="%(SERVER_URL)s/lsf-NDVI?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndvi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCC" name="NDVI" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-NDVI?TRANSPARENT=true" visible="false" mask="true"/>
 				<wmsLayer identify="true" layers="southeast-ndmi-current" legend="%(SERVER_URL)s/lsf-NDMI?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndmi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCD" name="NDMI" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-NDMI?TRANSPARENT=true" visible="false" mask="true"/>
             </wmsSubgroup>
         </wmsGroup>
-		<wmsGroup gid="G03" label="LandsatFACT SWIR Threshold Archive" name="LandsatFACT_SWIR_Threshold_Archive">
-            <wmsSubgroup label="SWIR Archive (Threshold)">
+		<wmsGroup gid="G03" label="SWIR Threshold Archive" name="LandsatFACT_SWIR_Threshold_Archive">
+            <wmsSubgroup label="SWIR Threshold">
 				%(LSF_LAYERS_SWIR_THRESH)s
             </wmsSubgroup>
 		</wmsGroup>
-		<wmsGroup gid="G04" label="LandsatFACT SWIR All Change Archive" name="LandsatFACT_SWIR_AllChange_Archive">
-            <wmsSubgroup label="SWIR Archive (All Change)">
+		<wmsGroup gid="G04" label="SWIR All Change Archive" name="LandsatFACT_SWIR_AllChange_Archive">
+            <wmsSubgroup label="SWIR All Change">
 				%(LSF_LAYERS_SWIR_ALLCHANGE)s
             </wmsSubgroup>
 		</wmsGroup>
-		<wmsGroup gid="G05" label="LandsatFACT NDVI Archive" name="LandsatFACT_NDVI_Archive">
-			<wmsSubgroup label="NDVI Archive">
+		<wmsGroup gid="G05" label="NDVI Archive" name="LandsatFACT_NDVI_Archive">
+			<wmsSubgroup label="NDVI">
 				%(LSF_LAYERS_NDVI)s
             </wmsSubgroup>
 		</wmsGroup>              
-		<wmsGroup gid="G06" label="LandsatFACT NDMI Archive" name="LandsatFACT_NDMI_Archive">
-			<wmsSubgroup label="NDMI Archive">
+		<wmsGroup gid="G06" label="NDMI Archive" name="LandsatFACT_NDMI_Archive">
+			<wmsSubgroup label="NDMI">
                 %(LSF_LAYERS_NDMI)s
 			</wmsSubgroup>
         </wmsGroup>
