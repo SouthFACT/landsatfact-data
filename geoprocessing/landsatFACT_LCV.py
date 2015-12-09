@@ -84,7 +84,8 @@ for tar in runList:
 	# rasterAnalysis_GDAL.runFmask(extractedPath,Fmaskexe) #BM's original
 	print extractedPath
 	runFmaskBool = rasterAnalysis_GDAL.runFmask(extractedPath,fmaskShellCall)
-	if (runFmaskBool== True):
+	#print "Fmask Boolean: "+runFmaskBool
+	if (runFmaskBool == True):
         # get DN min number from each band in the scene and write to database
 		wrs2Name=tar[3:9]
 		dnminExists = landsatFactTools_GDAL.checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
