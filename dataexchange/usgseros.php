@@ -133,8 +133,7 @@ function getOrderScene($datasetName, $client, $apiKey, $sceneID) {
               //check for produc medias
               foreach ($product->outputMedias as $outputMedias) {
 
-                //only order download to update order not sure what this will be
-                //so order any that are for download
+                //only need to order products that are marked download
                 if($outputMedias === 'DWNLD'){
 
                   // update order basket
