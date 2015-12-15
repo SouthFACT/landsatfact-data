@@ -100,6 +100,101 @@ function getDownloadUrl($datasetName, $client, $apiKey, $sceneID) {
 }
 
 
+
+//* ArrayOfString download(string $datasetName,
+//*                            string $apiKey,
+//*                            string $node,
+//*                            ArrayOfString $entityIds,
+//*                            ArrayOfString $products)
+//*Notes:
+function getOrderScene($datasetName, $client, $apiKey, $sceneID) {
+    try {
+        $productCode = $client->getOrderProducts($apiKey,$datasetName,'EE', $sceneID,array('STANDARD'));
+
+        //Aggregate a list of available products
+        $products = array();
+        //check if orders
+        $ifOrders = false;
+        $downloadUrl = '';
+
+        //Iterate over the download options
+        foreach ($productCode as $sceneLevel) {
+          print_r("\n Setting up Order for: " .  $sceneLevel->entityId . ".\n");
+
+          //find available Products for each scene
+          foreach ($sceneLevel->availableProducts as $product) {
+
+
+            //on procede when cost is $0 and level 1
+            if($product->price == 0 and substr($product->productCode, 0, 1) != 'W'){
+
+              print_r("  Order Product Code: " .  $product->productCode . ".\n");
+
+              //check for produc medias
+              foreach ($product->outputMedias as $outputMedias) {
+
+                //only order download to update order not sure what this will be
+                //so order any that are for download
+                if($outputMedias === 'DWNLD'){
+
+                  // update order basket
+                   $client->updateOrderScene($apiKey,'EE',$datasetName,$sceneID,$product->productCode ,'None',$outputMedias);
+                   $items = $client->itemBasket($apiKey);
+
+                   //submit order for each item in the basket
+                   foreach ($items->orderItemBasket as $orderItem) {
+
+                     //get orders
+                     $orders[] = $orderItem->orderScenes;
+
+                     //make sure there are orders in the basket
+                     if(count($orders)>0){
+                       print_r("     Submitting Order.\n");
+
+                       //order the in the baske items
+                       $client->submitOrder($apiKey,'EE');
+                       $ifOrders = (count($orders)>0);
+                     }
+                   }
+                }
+              }
+            }
+          }
+          print_r("\n");
+        }
+
+        if($ifOrders){
+          //see if order is ready
+         $downloadUrl = $client->download($datasetName,$apiKey,'EE', array($sceneID),array('STANDARD'));
+
+         $time = 0;
+
+         //keep check order until the download is ready
+         while (empty($downloadUrl->item)) {
+
+           print_r("     Checking Order For Scene: $sceneID - Seconds Elapased: $time\n");
+           $downloadUrl = $client->download($datasetName,$apiKey,'EE', array($sceneID),array('STANDARD'));
+
+           //pause 20 seconds so we do not slam the server with requests seems to take a few minutes
+           sleep(20);
+           $time = $time+20;
+           //break the loop after 3.5 hours
+           if ($time > 12601){
+             print_r("     Exceeded 3.5 hours. ($time seconds)\n");
+             break;
+           }
+         }
+       }
+    //return the url when ready
+		return $downloadUrl;
+  }
+    catch (Exception $e) {
+        $error_xml =  $client->__getLastRequest() . "\n";
+        echo $error_xml;
+        echo "\n\n".$e->getMessage();
+    }
+}
+
 // //* Get the available datasets:
 // //* datasets(string $datasetName, 
 // //*            Service_Class_Coordinate $lowerLeft, 
