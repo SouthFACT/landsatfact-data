@@ -282,35 +282,35 @@ try{
 				// 0.00 - 100.00
 				// Sometimes the quad data comes in as PROCESSING REQUIRED
 				// For these we will set to 0 for now
-				$cc_full = $values[42]['value'];
+				$cc_full = $values[45]['value'];
 				print_r("cloud cover : ". $cc_full."\n");					
-				// ul is 45
-				if ($values[45]['value'] != 'PROCESSING REQUIRED') {
-					$cc_quad_ul = $values[45]['value'];
+				// ul is 48
+				if ($values[48]['value'] != 'PROCESSING REQUIRED') {
+					$cc_quad_ul = $values[48]['value'];
 				}
 				else {
 					$cc_quad_ul = '0.0';
 				}
 				print_r("ul cloud cover : ". $cc_quad_ul."\n");		
-				// ur is 48
-				if ($values[48]['value'] != 'PROCESSING REQUIRED') {
-					$cc_quad_ur = $values[48]['value'];
+				// ur is 51
+				if ($values[51]['value'] != 'PROCESSING REQUIRED') {
+					$cc_quad_ur = $values[51]['value'];
 				}
 				else {
 					$cc_quad_ur = '0.0';
 				}				
 				print_r("ur cloud cover : ". $cc_quad_ur."\n");		
-				// ll is 51
-				if ($values[51]['value'] != 'PROCESSING REQUIRED') {
-					$cc_quad_ll = $values[51]['value'];
+				// ll is 54
+				if ($values[54]['value'] != 'PROCESSING REQUIRED') {
+					$cc_quad_ll = $values[54]['value'];
 				}
 				else {
 					$cc_quad_ll = '0.0';
 				}				
 				print_r("ll cloud cover : ". $cc_quad_ll."\n");		
-				// lr is 54
-				if ($values[54]['value'] != 'PROCESSING REQUIRED') {
-					$cc_quad_lr = $values[54]['value'];
+				// lr is 57
+				if ($values[57]['value'] != 'PROCESSING REQUIRED') {
+					$cc_quad_lr = $values[57]['value'];
 				}
 				else {
 					$cc_quad_lr = '0.0';
