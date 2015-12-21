@@ -135,7 +135,7 @@ try{
                                 if(empty($downloadUrl->item)){
 
                                   //if not available order scenes
-                                  $downloadUrl = getOrderScene($datasetName, $client, $apiKey, $in_scene_id);
+                                  $downloadUrl = getOrderScene($datasetName, $client, $apiKey, $row[0]);
 
                                   //make sure we still got something in case it's just not available for 0 cost.
                                   if(empty($downloadUrl->item)){
@@ -146,13 +146,13 @@ try{
 
                                   //download data once available
                                    print_r("\n downloadUrl->item :".$downloadUrl->item);
-                                   custom_put_contents($downloadUrl->item,'/lsfdata/eros_data/'.$in_scene_id.'.tar.gz');
+                                   custom_put_contents($downloadUrl->item,'/lsfdata/eros_data/'.$row[0].'.tar.gz');
                                   }
 
                                 } else {
                                   //download if not empty - product is available
                                   print_r("\n downloadUrl->item :".$downloadUrl->item);
-                                  custom_put_contents($downloadUrl->item,'/lsfdata/eros_data/'.$in_scene_id.'.tar.gz');
+                                  custom_put_contents($downloadUrl->item,'/lsfdata/eros_data/'.$row[0].'.tar.gz');
                                 }
 
 
