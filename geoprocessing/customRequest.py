@@ -390,7 +390,16 @@ if lol:
     if not os.path.exists(os.path.join(outCustomRequestFolder, request_id)):
         # build change products as necessary
         for quadScenePairList in lol:
+         try:
             compare(quadScenePairList[0], quadScenePairList[1])
+         except:
+            tb = sys.exc_info()[2]
+            tbinfo = traceback.format_tb(tb)[0]
+            pymsg = "PYTHON ERRORS:\nTraceback Info:\n" + tbinfo + "\nError Info:\n    " + \
+            str(sys.exc_type)+ ": " + str(sys.exc_value) + "\n"
+            print pymsg
+            # try the next comparison
+            continue
 
         # invoke zip to package up these products
         crZip=zipfile.ZipFile(os.path.join(outCustomRequestFolder,request_id), 'w')
