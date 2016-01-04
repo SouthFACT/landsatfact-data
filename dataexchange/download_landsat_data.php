@@ -54,10 +54,6 @@ try{
     $apiKey = loginLandsatFACT($client, $ini_array); 
     $node = 'EE';
 
-	//Delete any of the old downloaded tars
-	print("Delete old tars...\n");
-	array_map('unlink', glob("/lsfdata/eros_data/*.gz"));
-	
 	//Initialize the database connection
 	lsf_db_init();
 	$lsf_conn = pg_connect($lsf_database);
