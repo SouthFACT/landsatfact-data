@@ -405,9 +405,9 @@ if lol:
         crZip=zipfile.ZipFile(os.path.join(outCustomRequestFolder,request_id), 'w')
         for quadScenePairList in lol:
             if int(quadScenePairList[0][9:16]) > int(quadScenePairList[1][9:16]):
-                packageProduct(crZip, quadScenePairList[1] + "_" + quadScenePairList[0] +'_*.tif')
+                packageProduct(crZip, quadScenePairList[1] + "_" + quadScenePairList[0] +'_*.tif*')
             else:
-                packageProduct(crZip, quadScenePairList[0] + "_" + quadScenePairList[1] +'_*.tif')
+                packageProduct(crZip, quadScenePairList[0] + "_" + quadScenePairList[1] +'_*.tif*')
 
         crZip.close()
 
