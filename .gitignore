@@ -40,3 +40,4 @@ msconfig/initial_mosaic.sh
 msconfig/initial_mosaic_cloud.sh
 msconfig/initial_mosaic_gap.sh
 msconfig/initial_mosaic_ndmi.sh
+msconfig/custom-request.map
