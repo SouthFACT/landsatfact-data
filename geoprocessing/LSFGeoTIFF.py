@@ -170,6 +170,8 @@ class ReadWriteLSFGeoTIFF(ReadableLSFGeoTIFF):
         self.writeOutTIFFDataset()
         if shapePath is not None:
             self.setNoData(outputPath, shapePath)
+        self.calculateStatisticsForArcGIS(outputPath)
+
 
     """
     # Private method to write the GeoTIFF. Used by the public write method.
@@ -193,6 +195,18 @@ class ReadWriteLSFGeoTIFF(ReadableLSFGeoTIFF):
             dataset.SetProjection(projection)
         else:
             print("Can't output file {} ".format(self.filename))
+
+    def calculateStatisticsForArcGIS(self, path):
+        """gdal_translate -of HFA -co AUX=YES -co STATISTICS=YES xxx.tif xxx.aux"""
+        print("calculateStatisticsForArcGIS args path {}".format(path))
+        codeIn = ['gdal_translate','-of',  'HFA', '-co', 'STATISTICS=YES', path, path + '.aux']
+        process = subprocess.Popen(codeIn,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        out,err = process.communicate()
+        errcode = process.returncode
+        print out, err
+        # non-zero is error
+        return errcode
+
 
     """
     # Private method used to set "collar" cells to NoData. Used by the public write method.
@@ -261,6 +275,8 @@ class Unsigned8BitLSFGeoTIFF(ReadWriteLSFGeoTIFF):
         self.writeOutTIFFDataset()
         if shapePath is not None:
             self.setNoData(outputPath, shapePath)
+        self.calculateStatisticsForArcGIS(outputPath)
+
 
 
 """
@@ -310,6 +326,8 @@ class Signed8BitLSFGeoTIFF(ReadWriteLSFGeoTIFF):
         self.writeOutTIFFDataset()
         if shapePath is not None:
             self.setNoData(outputPath, shapePath)
+        self.calculateStatisticsForArcGIS(outputPath)
+
 
 
     """
@@ -396,6 +414,6 @@ class Signed32BitFloatLSFGeoTIFF(ReadWriteLSFGeoTIFF):
         self.writeOutTIFFDataset()
         if shapePath is not None:
             self.setNoData(outputPath, shapePath)
-
+        self.calculateStatisticsForArcGIS(outputPath)
 
 
