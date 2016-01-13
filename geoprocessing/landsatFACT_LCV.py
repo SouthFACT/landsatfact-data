@@ -43,7 +43,7 @@ for tar in runList:
 		sys.exit()
 	# set Fmask.exe location
 	# Fmaskexe = r'S:\Geospatial\LandsatFACT\Fmask.exe' #BM's original
-	fmaskShellCall = r'/var/vsites/landsatfact-data-dev.nemac.org/project/geoprocessing/fmaskLinux/Fmask32/runFmask32.sh'
+	fmaskShellCall = r'/var/vsites/landsatfact-data-dev.nemac.org/project/geoprocessing/fmaskLinux/FmaskSentinel/run_fmask_auto.sh'
 	# Fmaskexe = r'G:\LandsatFACT\Fmask.exe'
 	# set folder location of the quad vector files
 	# quadsFolder = r'S:\Geospatial\LandsatFACT\geodata\vector\quads_indv_proj' #BM's original
