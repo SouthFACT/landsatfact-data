@@ -53,9 +53,6 @@ scene_ids_s3 = [ Key.key.split('.')[0] for Key in thumbnail_bucket.objects.all()
 # make a list of all scene ids that don't already have thumbnails
 missing_thumbs = [ scene_id for scene_id in scene_ids_db if scene_id not in scene_ids_s3 ]
 
-for scene_id in missing_thumbs:
-    make_thumbnail(scene_id, scene_urls[scene_id])
-
 """
 # Generate a thumbnail for a landsat scene and upload it to s3.
 # @param the scene ID of the image
@@ -72,3 +69,5 @@ def make_thumbnail(scene_id, browse_url):
     s3_client.upload_file(Filename=scene_id+'.jpg', Bucket='landsat-thumbnails', Key=scene_id+'.jpg')
     os.remove(scene_id+'.jpg')
 
+for scene_id in missing_thumbs:
+    make_thumbnail(scene_id, scene_urls[scene_id])

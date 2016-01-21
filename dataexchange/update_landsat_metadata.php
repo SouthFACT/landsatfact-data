@@ -317,7 +317,7 @@ try{
 				}					
 				print_r("lr cloud cover : ". $cc_quad_lr."\n");		
 				//Data Type Level 1 or data_type_l1 in PGSQL
-				$data_type_l1 = preg_split('/\s+/', $values[60]['value'])[1];
+				$data_type_l1 = preg_split('/\s+/', $values[63]['value'])[1];
 				print_r("data_type_l1 : ". $data_type_l1."\n");
 				// E.g. LE70180342015146EDC00
 				print_r("\n");
