@@ -380,9 +380,6 @@ lol=customRequestInfo[0]
 request_id=customRequestInfo[1]
 aoi_id=customRequestInfo[2]
 
-######################################################################################################################################
-#pdb.set_trace()
-######################################################################################################################################
 if lol:
     # status = "Process Start"
     landsatFactTools_GDAL.postgresCommand('insert into custom_request_dates (aoi_id, custom_request_date, custom_request_status_id) VALUES(\'{}\', now(), 2);'.format(aoi_id))
@@ -408,6 +405,14 @@ if lol:
                 packageProduct(crZip, quadScenePairList[1] + "_" + quadScenePairList[0] +'_*.tif*')
             else:
                 packageProduct(crZip, quadScenePairList[0] + "_" + quadScenePairList[1] +'_*.tif*')
+
+        # add layer files
+######################################################################################################################################
+	pdb.set_trace()
+######################################################################################################################################
+        for base, dirs, files in os.walk(os.path.join(LSF.productStorage, 'layer_files')):
+            for fileName in files:
+                crZip.write(os.path.join(base, fileName))
 
         crZip.close()
 
