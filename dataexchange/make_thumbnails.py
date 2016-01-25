@@ -29,7 +29,7 @@ s3_client = boto3.client('s3')
 # high-level AWS client
 s3 = boto3.resource('s3')
 thumbnail_bucket = s3.Bucket('landsat-thumbnails')
-config_path = '../../make_thumbnails_config.json'
+config_path = '/var/vsites/landsatfact-data-dev.nemac.org/make_thumbnails_config.json'
 with open(config_path) as config_file:
     data = json.load(config_file)
 db_config = data['db']
