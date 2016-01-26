@@ -27,3 +27,23 @@ Header set Access-Control-Allow-Origin "*"
     Allow from all
     SetHandler cgi-script
 </Files>
+<Files "custom-request">
+    Allow from all
+    SetHandler cgi-script
+</Files>
+<Files "lsf-cr-ndmi">
+    Allow from all
+    SetHandler cgi-script
+</Files>
+<Files "lsf-cr-ndvi">
+    Allow from all
+    SetHandler cgi-script
+</Files>
+<Files "lsf-cr-swir-allchange">
+    Allow from all
+    SetHandler cgi-script
+</Files>
+<Files "lsf-cr-swir-threshold">
+    Allow from all
+    SetHandler cgi-script
+</Files>
