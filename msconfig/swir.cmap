@@ -4,72 +4,72 @@ CLASS
 	COLOR 255 255 255
 END
 CLASS
-	NAME "< -120"
-	EXPRESSION ([pixel] > 248 )
+	NAME "> 120%"
+	EXPRESSION ([pixel] > 247 )
 	COLOR 89 0 0 
 END
 CLASS
-	NAME "-101 to -120"
-	EXPRESSION ([pixel] >= 228 AND [pixel] <= 247)
+	NAME "101 to 120%"
+	EXPRESSION ([pixel] > 227 AND [pixel] <= 247)
 	COLOR 163 0 0
 END
 CLASS
-	NAME "-81 to -100"
-	EXPRESSION ([pixel] >= 208 AND [pixel] <= 227)
+	NAME "81 to 100%"
+	EXPRESSION ([pixel] > 207 AND [pixel] <= 227)
 	COLOR 255 0 0
 END
 CLASS
-	NAME "-61 to -80"
-	EXPRESSION ([pixel] >= 188 AND [pixel] <= 207)
+	NAME "61 to 80%"
+	EXPRESSION ([pixel] > 187 AND [pixel] <= 207)
 	COLOR 255 128 0
 END
 CLASS
-	NAME "-41 to -60"
-	EXPRESSION ([pixel] >= 168 AND [pixel] <= 187)
+	NAME "41 to 60%"
+	EXPRESSION ([pixel] > 167 AND [pixel] <= 187)
 	COLOR 255 193 0
 END
 CLASS
-	NAME "-21 to -40"
-	EXPRESSION ([pixel] >= 148 AND [pixel] <= 167)
+	NAME "21 to 40%"
+	EXPRESSION ([pixel] > 147 AND [pixel] <= 167)
 	COLOR 255 255 0
 END
 CLASS
-	NAME "-1 to -20"
-	EXPRESSION ([pixel] >= 128 AND [pixel] <= 147)
+	NAME "0 to 20%"
+	EXPRESSION ([pixel] > 127 AND [pixel] <= 147)
 	COLOR 192 255 0
 END
 CLASS
-	NAME "0 to 20"
-	EXPRESSION ([pixel] >= 108 AND [pixel] <= 127)
+	NAME "-1 to -20%"
+	EXPRESSION ([pixel] > 107 AND [pixel] <= 127)
 	COLOR 1 255 0
 END
 CLASS
-	NAME "21 to 40"
-	EXPRESSION ([pixel] >= 88 AND [pixel] <= 107)
+	NAME "-21 to -40%"
+	EXPRESSION ([pixel] > 87 AND [pixel] <= 107)
 	COLOR 0 192 128
 END
 CLASS
-	NAME "41 to 60"
-	EXPRESSION ([pixel] >= 68 AND [pixel] <= 87)
+	NAME "-41 to -60%"
+	EXPRESSION ([pixel] > 67 AND [pixel] <= 87)
 	COLOR 0 128 255
 END
 CLASS
-	NAME "61 to 80"
-	EXPRESSION ([pixel] >= 48 AND [pixel] <= 67)
+	NAME "-61 to -80%"
+	EXPRESSION ([pixel] > 47 AND [pixel] <= 67)
 	COLOR 0 0 232
 END
 CLASS
-	NAME "81 to 100"
-	EXPRESSION ([pixel] >= 28 AND [pixel] <= 47)
+	NAME "-81 to -100%"
+	EXPRESSION ([pixel] > 26 AND [pixel] <= 47)
 	COLOR 0 0 128
 END
 CLASS
-	NAME "101 to 120"
-	EXPRESSION ([pixel] >= 8 AND [pixel] <= 27)
+	NAME "-101 to -120%"
+	EXPRESSION ([pixel] > 7 AND [pixel] <= 26)
 	COLOR 0 0 89
 END
 CLASS
-	NAME "> 120"
-	EXPRESSION ([pixel] < 8 AND [pixel] >= 1)
+	NAME "< -120%"
+	EXPRESSION ([pixel] >=1 AND [pixel] <=7)
 	COLOR 0 0 60
 END
