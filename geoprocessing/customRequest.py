@@ -407,9 +407,6 @@ if lol:
                 packageProduct(crZip, quadScenePairList[0] + "_" + quadScenePairList[1] +'_*.tif*')
 
         # add layer files
-######################################################################################################################################
-	pdb.set_trace()
-######################################################################################################################################
         for base, dirs, files in os.walk(os.path.join(LSF.productStorage, 'layer_files')):
             for fileName in files:
                 crZip.write(os.path.join(base, fileName))
