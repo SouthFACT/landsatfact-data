@@ -20,12 +20,13 @@ def main():
 if __name__ == '__main__':
     main()
 
-import os, sys, glob, re
+import os, sys, glob, re, traceback
 import numpy as np
 import LSF
 import landsatFactTools_GDAL
 import rasterAnalysis_GDAL
 import LSFGeoTIFF
+import localLib
 from itertools import tee, izip
 import zipfile, fnmatch
 import pdb
@@ -123,8 +124,13 @@ def extractedTar(quadsceneID):
     # if /lsfdata/extractedTars/sceneID doesn't contain the level 1 product band files, extract them from the tar file
     #
     if not(re.search(sceneID, ' '.join(glob.glob(os.path.join(LSF.tiffsStorage, '*'))))):
+        # make sure that the existing tar is valid
+        existingTar=os.path.join(LSF.tarStorage, sceneID+".tar.gz")
+        err=localLib.validTar(existingTar)
+        if err:
+            raise Exception(err)
         # for now use checkExisting. change to use tarHandling class when completed
-        extractedPath = landsatFactTools_GDAL.checkExisting(os.path.join(LSF.tarStorage, sceneID+".tar.gz"), LSF.tiffsStorage)
+        extractedPath = landsatFactTools_GDAL.checkExisting(existingTar, LSF.tiffsStorage)
         rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
         # get DN min number from each band in the scene and write to database
         dnminExists = landsatFactTools_GDAL.checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
@@ -379,16 +385,18 @@ customRequestInfo=getCustomRequestFromDB()
 lol=customRequestInfo[0]
 request_id=customRequestInfo[1]
 aoi_id=customRequestInfo[2]
-
 if lol:
     # status = "Process Start"
     landsatFactTools_GDAL.postgresCommand('insert into custom_request_dates (aoi_id, custom_request_date, custom_request_status_id) VALUES(\'{}\', now(), 2);'.format(aoi_id))
+    # keep track of the number of times we process comparisons error free so that we can send partial zips if need be
+    successfulComparisons=0
 
     if not os.path.exists(os.path.join(outCustomRequestFolder, request_id)):
         # build change products as necessary
         for quadScenePairList in lol:
          try:
             compare(quadScenePairList[0], quadScenePairList[1])
+            successfulComparisons+=1
          except:
             tb = sys.exc_info()[2]
             tbinfo = traceback.format_tb(tb)[0]
@@ -398,21 +406,21 @@ if lol:
             # try the next comparison
             continue
 
-        # invoke zip to package up these products
-        crZip=zipfile.ZipFile(os.path.join(outCustomRequestFolder,request_id), 'w')
-        for quadScenePairList in lol:
-            if int(quadScenePairList[0][9:16]) > int(quadScenePairList[1][9:16]):
-                packageProduct(crZip, quadScenePairList[1] + "_" + quadScenePairList[0] +'_*.tif*')
-            else:
-                packageProduct(crZip, quadScenePairList[0] + "_" + quadScenePairList[1] +'_*.tif*')
+        # invoke zip to package up any completed products
+        if successfulComparisons:
+            crZip=zipfile.ZipFile(os.path.join(outCustomRequestFolder,request_id), 'w')
+            for quadScenePairList in lol:
+                if int(quadScenePairList[0][9:16]) > int(quadScenePairList[1][9:16]):
+                    packageProduct(crZip, quadScenePairList[1] + "_" + quadScenePairList[0] +'_*.tif*')
+                else:
+                    packageProduct(crZip, quadScenePairList[0] + "_" + quadScenePairList[1] +'_*.tif*')
+            # add layer files
+            for base, dirs, files in os.walk(os.path.join(LSF.productStorage, 'layer_files')):
+                for fileName in files:
+                    crZip.write(os.path.join(base, fileName))
 
-        # add layer files
-        for base, dirs, files in os.walk(os.path.join(LSF.productStorage, 'layer_files')):
-            for fileName in files:
-                crZip.write(os.path.join(base, fileName))
+            crZip.close()
 
-        crZip.close()
-
-    # status = "Process Complete"
-    landsatFactTools_GDAL.postgresCommand('insert into custom_request_dates (aoi_id, custom_request_date, custom_request_status_id) VALUES(\'{}\', now(), 3);'.format(aoi_id))
+            # status = "Process Complete"
+            landsatFactTools_GDAL.postgresCommand('insert into custom_request_dates (aoi_id, custom_request_date, custom_request_status_id) VALUES(\'{}\', now(), 3);'.format(aoi_id))
 
