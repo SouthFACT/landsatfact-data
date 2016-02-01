@@ -24,6 +24,7 @@
 			<viewGroup name="LandsatFACT_SWIR_AllChange_Archive" />
 			<viewGroup name="LandsatFACT_NDVI_Archive" />
 			<viewGroup name="LandsatFACT_NDMI_Archive" />
+			<viewGroup name="Custom_Requests" />
         </view>
 		<view label="Alabama" name="AL" >
             <viewGroup name="Base_Layers" />
@@ -87,7 +88,7 @@
                      layers="scene_boundaries"
                      styles="default"
                      identify="true"
-                     name="Landsat Scenes"
+                     name="Landsat WRS-2 Tiles"
                      legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=landsat_quads&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
             </wmsSubgroup>
         </wmsGroup>
@@ -118,6 +119,9 @@
 			<wmsSubgroup label="NDMI">
                 %(LSF_LAYERS_NDMI)s
 			</wmsSubgroup>
+        </wmsGroup>
+		<wmsGroup gid="G07" label="Custom Requests" name="Custom_Requests">
+			%(CR_LAYERS)s
         </wmsGroup>
     </wmsLayers>
     <tools>

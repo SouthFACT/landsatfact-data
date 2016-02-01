@@ -54,8 +54,54 @@ lsfWMSLayerTemplate = Template(string="""
           identify="true"
           legend="%(LSF_URL)s&amp;SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=%(LAYER_NAME)s&amp;VERSION=1.1.1&amp;FORMAT=image/png"
           mask="true"/>""")  
-          
 
+customrequestWMSLayerTemplate = Template(string="""
+        <wmsSubgroup label="%(USER_AOI)s">
+		<wmsLayer
+          lid="%(SWIR_TH_LAYER_LID)s"
+          visible="false"
+          url="%(SWIRTH_URL)s" 
+          srs="EPSG:900913"
+          layers="%(SWIR_LAYER_NAME)s"
+          name="%(SWIR_TH_LAYER_TITLE)s"
+          styles="default" 
+          identify="true"
+          legend="%(SWIRTH_URL)s&amp;SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=%(SWIR_LAYER_NAME)s&amp;VERSION=1.1.1&amp;FORMAT=image/png"
+          mask="true"/>
+        <wmsLayer
+          lid="%(SWIR_AC_LAYER_LID)s"
+          visible="false"
+          url="%(SWIRAC_URL)s" 
+          srs="EPSG:900913"
+          layers="%(SWIR_LAYER_NAME)s"
+          name="%(SWIR_AC_LAYER_TITLE)s"
+          styles="default" 
+          identify="true"
+          legend="%(SWIRAC_URL)s&amp;SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=%(SWIR_LAYER_NAME)s&amp;VERSION=1.1.1&amp;FORMAT=image/png"
+          mask="true"/>  
+        <wmsLayer
+          lid="%(NDVI_LAYER_LID)s"
+          visible="false"
+          url="%(NDVI_URL)s" 
+          srs="EPSG:900913"
+          layers="%(NDVI_LAYER_NAME)s"
+          name="%(NDVI_LAYER_TITLE)s"
+          styles="default" 
+          identify="true"
+          legend="%(NDVI_URL)s&amp;SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=%(NDVI_LAYER_NAME)s&amp;VERSION=1.1.1&amp;FORMAT=image/png"
+          mask="true"/>
+		<wmsLayer
+          lid="%(NDMI_LAYER_LID)s"
+          visible="false"
+          url="%(NDMI_URL)s" 
+          srs="EPSG:900913"
+          layers="%(NDMI_LAYER_NAME)s"
+          name="%(NDMI_LAYER_TITLE)s"
+          styles="default" 
+          identify="true"
+          legend="%(NDMI_URL)s&amp;SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=%(NDMI_LAYER_NAME)s&amp;VERSION=1.1.1&amp;FORMAT=image/png"
+          mask="true"/>  
+		</wmsSubgroup>""")
 
 def getLSFLayers():
     #automating the latest change layers
@@ -166,6 +212,51 @@ def getSWIRAllChangeLayers():
         for thing in lsfDict[type]:
             layers[type].append(lsfWMSLayerTemplate.render(thing))   
     return layers
+	
+def getCustomRequestLayers():
+    #automating the latest change layers
+    lsfDict = {
+	   'CRLAYERS' : []
+    }
+    request_id_and_aoi_cur = conn.cursor()
+    request_id_and_aoi_cur.execute("SELECT DISTINCT request_id, aoi FROM vw_custom_requests_for_viewer WHERE custom_request_date > ('now'::text::date - '45 days'::interval day) ORDER BY request_id;")
+         
+    for request_id, aoi in request_id_and_aoi_cur:
+        #if type in lsfDict.keys():
+            print request_id
+            lid = request_id
+            aoi_id = str(aoi)
+            ndmiURL = "http://landsatfact-data-dev.nemac.org/lsf-cr-ndmi?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
+            ndviURL = "http://landsatfact-data-dev.nemac.org/lsf-cr-ndvi?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
+            swirthURL = "http://landsatfact-data-dev.nemac.org/lsf-cr-swir-threshold?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
+            swiracURL = "http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
+            lsfDict['CRLAYERS'].append({'USER_AOI' : lid,
+                            'NDVI_LAYER_LID' : "NDVI"+lid,
+                            'NDMI_LAYER_LID' : "NDMI"+lid,
+                            'SWIR_TH_LAYER_LID' : "SWIRTH"+lid,
+                            'SWIR_AC_LAYER_LID' : "SWIRAC"+lid,
+                            'NDVI_LAYER_NAME'      : "ndvi-archive",
+                            'NDMI_LAYER_NAME'      : "ndmi-archive",
+                            'SWIR_LAYER_NAME'      : "swir-archive",
+                            'NDVI_LAYER_TITLE'     : "NDVI",
+                            'NDMI_LAYER_TITLE'     : "NDMI",
+                            'SWIR_TH_LAYER_TITLE'     : "SWIR Threshold",
+                            'SWIR_AC_LAYER_TITLE'     : "SWIR All Change",
+                            'SERVER_URL'      : SERVER_URL,
+                            'NDVI_URL'         : ndviURL,
+                            'NDMI_URL'         : ndmiURL,
+                            'SWIRTH_URL'         : swirthURL,
+                            'SWIRAC_URL'         : swiracURL
+            })
+
+    layers = {
+	   'CRLAYERS' : []
+    }
+        
+    #for type in lsfDict.keys():
+    for thing in lsfDict['CRLAYERS']:
+        layers['CRLAYERS'].append(customrequestWMSLayerTemplate.render(thing))   
+    return layers
 
 template = Template("landsatfact_config.tpl.xml")
 
@@ -175,15 +266,17 @@ if not os.path.exists("../html"):
 lsfLayers = getLSFLayers()
 thresholdLayers = getSWIRThresholdLayers()
 allChangeLayers = getSWIRAllChangeLayers()
+customRequestLayers = getCustomRequestLayers()
 #End NRT 8 day & drought monitor automation-------------------------------------------------
 
 f = open("../html/landsatfact_config.xml", "w")
 f.write(template.render( {
            'SERVER_URL'                         : SERVER_URL,
            #'VIEWER_DEPLOY_DIR_URL'             : VIEWER_DEPLOY_DIR_URL,
-           'LSF_LAYERS_SWIR_THRESH'           : '\n'.join(thresholdLayers['SWIR']),
-		   'LSF_LAYERS_SWIR_ALLCHANGE'        : '\n'.join(allChangeLayers['SWIR']),
+           'LSF_LAYERS_SWIR_THRESH'             : '\n'.join(thresholdLayers['SWIR']),
+		   'LSF_LAYERS_SWIR_ALLCHANGE'          : '\n'.join(allChangeLayers['SWIR']),
            'LSF_LAYERS_NDVI'                    : '\n'.join(lsfLayers['NDVI']),
-           'LSF_LAYERS_NDMI'                    : '\n'.join(lsfLayers['NDMI'])
+           'LSF_LAYERS_NDMI'                    : '\n'.join(lsfLayers['NDMI']),
+		   'CR_LAYERS'                          : '\n'.join(customRequestLayers['CRLAYERS'])
            }))
 f.close()
