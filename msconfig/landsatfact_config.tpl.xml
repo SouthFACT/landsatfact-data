@@ -66,8 +66,19 @@
                      layers="viewer_quads"
                      styles="default"
                      identify="true"
-                     name="Landsat Quads"
-                     legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=landsat_quads&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
+                     name="Landsat Quads (Latest Change)"
+                     legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=viewer_quads&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
+				<wmsLayer
+                     selected="false"
+                     lid="AC"
+                     visible="true"
+                     url="%(SERVER_URL)s/vlayers?TRANSPARENT=true"
+                     srs="EPSG:3785"
+                     layers="viewer_quad_history"
+                     styles="default"
+                     identify="true"
+                     name="Landsat Quads (History)"
+                     legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=viewer_quad_history&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>	 
 				<!-- <wmsLayer
                      selected="false"
                      lid="AC"
