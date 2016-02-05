@@ -40,6 +40,8 @@ msconfig/initial_mosaic.sh
 msconfig/initial_mosaic_cloud.sh
 msconfig/initial_mosaic_gap.sh
 msconfig/initial_mosaic_ndmi.sh
+msconfig/initial_mosaic_ndvi.sh
+msconfig/initial_mosaic_swir.sh
 msconfig/custom-request.map
 msconfig/lsf-cr-ndmi.map
 msconfig/lsf-cr-ndvi.map
