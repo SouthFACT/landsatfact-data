@@ -13,7 +13,7 @@
         <image label="Imagery" name="Imagery" url="http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer" />
         <image label="Topo Map" name="Topo_Map" url="http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer" />
         <image label="USA Topo" name="USA_Topo" url="http://server.arcgisonline.com/ArcGIS/rest/services/USA_Topo_Maps/MapServer" />
-        <image label="None" name="None" url="http://arcgisserver7.nemac.org/ArcGIS/rest/services/US/US_Jurisdictions_filled2/MapServer/" />
+        <image label="None" name="Dark Gray" url="http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer" />
         <image label="Google Streets" name="Google Streets"/>
     </images>
     <mapviews>
