@@ -8,7 +8,7 @@ if [ `ps ax | grep $me | wc -l` -le 3 ]; then
                 let COUNTER=COUNTER+1
         done
         if [ $COUNTER -lt 10 ]; then
-		cd /var/vsites/landsatfact-data-dev.nemac.org/project
-		./lsf_cron.sh > /var/vsites/landsatfact-data-dev.nemac.org/project/var/log/lsf_cron.log 2>&1
+		cd /var/vsites/landsatfact-data.nemac.org/project
+		./lsf_cron.sh > /var/vsites/landsatfact-data.nemac.org/project/var/log/lsf_cron.log 2>&1
 	fi
 fi
