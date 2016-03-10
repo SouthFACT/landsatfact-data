@@ -166,10 +166,10 @@ def gaper(date1, date2, outGAPfolder, baseName, quadsFolder,wrs2Name,analysis_so
     # Creates a gap mask for the scene if it came from Landsat 7 after
     # the ordinal date of 2003151 (5/31/2003) when the SLC went offline
     gapMaskList=[]
-    if date1.platformType == "LE7" and date1.ordinalData > 2003151:
+    if (date1.platformType == "LE7") and (int(date1.ordinalData) > 2003151):
         gapMask1=date1.gapMasker()
         gapMaskList.append(gapMask1)
-    if date2.platformType == "LE7" and date2.ordinalData > 2003151:
+    if (date2.platformType == "LE7") and (int(date2.ordinalData) > 2003151):
         gapMask2=date2.gapMasker()
         gapMaskList.append(gapMask2)
     if len(gapMaskList) == 2:

@@ -365,6 +365,33 @@ def runFmask(tiffFolder,fmaskShellCall):
 		return_value = True;
 		print "In runFmask checking for: "+os.path.join(tiffFolder,os.path.basename(tiffFolder) + "_MTLFmask.TIF")
 		print "fmaskShellCall: "+fmaskShellCall
+		if os.path.exists(os.path.join(tiffFolder,os.path.basename(tiffFolder) + "_MTLFmask.TIF")) == False:
+			print "Running Fmask"
+			print "tiffFolder: "+tiffFolder
+			landsatFactTools_GDAL.cleanDir(tiffFolder)
+			print("working dir:" + os.getcwd() + "\n")
+			try:
+				process = subprocess.Popen([fmaskShellCall],cwd=tiffFolder,stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+				out,err = process.communicate()
+				errcode = process.returncode
+				os.rename(os.path.join(tiffFolder,os.path.basename(tiffFolder)+"_MTLFmask"), os.path.join(tiffFolder,os.path.basename(tiffFolder)+"_MTLFmask.TIF"))
+			except:
+				print "Fmask subprocess failed."+"\n"
+		else:
+			print "Mask already created for: "+tiffFolder
+		return return_value
+	except:
+		if out in vars() or out in globals():
+			print("Fmask Execution failed:"+str(out)+"/n"+str(err)+"/n"+str(errcode))
+		return_value = False;
+		return return_value	
+"""
+def runFmask(tiffFolder,fmaskShellCall):
+	""" """
+	try:
+		return_value = True;
+		print "In runFmask checking for: "+os.path.join(tiffFolder,os.path.basename(tiffFolder) + "_MTLFmask.TIF")
+		print "fmaskShellCall: "+fmaskShellCall
                 if os.path.exists(os.path.join(tiffFolder,os.path.basename(tiffFolder) + "_MTLFmask.TIF")) == False:
 			print "Running Fmask"
 			print "tiffFolder: "+tiffFolder
@@ -382,7 +409,7 @@ def runFmask(tiffFolder,fmaskShellCall):
 			print("Fmask Execution failed:"+str(out)+"/n"+str(err)+"/n"+str(errcode))
 		return_value = False;
 		return return_value
-
+"""
 def cloudCover(FmaskData):
     """ """
     #print "Computing Cloud Cover"
