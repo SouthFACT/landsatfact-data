@@ -248,33 +248,6 @@ def ndmi(date1, date2):
 	   resultRowExists = rowExists(outBasename, 'products', 'product_id')
 	   if resultRowExists == False:
             print "No row for {} in products".format(outBasename)
-"""
-# Function that guarantees the presence of a NBR product TIFF (e.g., LC80180332015250LGN00LR_LE70180332015258EDC00LR_percent_NBR.tif)
-# in the productStorage, /lsfdata/products/nbr
-# @param 2 sensorBand instances
-#
-"""
-def nbr(date1, date2):
-	outBasename = date1.sceneID + "_" + date2.sceneID+ '_percent_NBR.tif'
-	wrs2Name=date1.sceneID[3:9]
-	outputTiffName=os.path.join(LSF.outNBRfolder, outBasename )
-	if not os.path.exists(outputTiffName):
-	   nbr1 = date1.nbr("SR")
-	   nbr2 = date2.nbr("SR")
-	   nbrChange = nbr2 - nbr1
-	   nbrPercentChange = nbrChange / np.absolute(nbr1)
-	   nbr1 = None
-	   nbr2 = None
-	   nbrPercentChange = np.multiply(100,nbrPercentChange)
-	   shpName=os.path.join(LSF.quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
-	   LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(nbrPercentChange, date1.geoTiffAtts).write(outputTiffName, shpName)
-	   landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'NBR',date2.sceneID[9:16], 'CR')
-	   nbrPercentChange = None
-	else:
-	   resultRowExists = rowExists(outBasename, 'products', 'product_id')
-	   if resultRowExists == False:
-            print "No row for {} in products".format(outBasename)
-
 
 """
 # Function that guarantees the presence of a SWIR product TIFF (e.g., LC80180332015250LGN00LL_LE70180332015258EDC00LL_percent_SWIR.tif)
@@ -391,8 +364,7 @@ def comparisonProduct(quadsceneID1, quadsceneID2):
     cloudMask(date1, date2)
     ndvi(date1, date2)
     ndmi(date1, date2)
-    swir(date2, date2)
-    nbr(date1, date2)
+    swir(date1, date2)
 
 
 """
