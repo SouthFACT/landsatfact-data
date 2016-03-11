@@ -227,16 +227,6 @@ class sensorBand:
                  n.astype(np.float32) + s1.astype(np.float32))
         return ndmi
 
-    def nbr(self, dataType):
-        """dataType: SR, TOAradiance or TOAreflectance """
-        s1 = self.radiometricCalibrationType(self.swir2,dataType,"swir2")
-        n = self.radiometricCalibrationType(self.nir,dataType,"nir")
-
-        # NBR calculation -- (nir - swir2) / (nir + swir2)
-        nbr = np.divide(n.astype(np.float32) - s1.astype(np.float32),
-                 n.astype(np.float32) + s1.astype(np.float32))
-        return nbr
-
 
 class mtlData:
     def __init__(self, mtlFile, pltType):
