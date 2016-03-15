@@ -2,6 +2,5 @@ export LD_LIBRARY_PATH=/usr/local/MATLAB/MATLAB_Compiler_Runtime/v80/runtime/gln
 export XAPPLRESDIR=/usr/local/MATLAB/MATLAB_Compiler_Runtime/v80/X11/app-defaults
 echo $LD_LIBRARY_PATH
 echo $XAPPLRESDIR
-# ./../../../var/vsites/landsatfact-data-dev.nemac.org/project/geoprocessing/fmaskLinux/Fmask_Linux
-/var/vsites/landsatfact-data-dev.nemac.org/project/geoprocessing/fmaskLinux/Fmask_Linux
+/var/vsites/landsatfact-data.nemac.org/project/geoprocessing/fmaskLinux/Fmask_Linux
 # ./Fmask_Linux

@@ -163,7 +163,7 @@ def geoJSONToShp(inJSON):
     # create a new shapefile to insert the new geometry into
     # https://pcjericks.github.io/py-gdalogr-cookbook/vector_layers.html#create-a-new-shapefile-and-add-data
     driver = ogr.GetDriverByName('ESRI Shapefile')
-    tmp_dir = '/var/vsites/landsatfact-dev.nemac.org/project/html/sites/all/modules/lsf_subscription/cgi-bin/shp_tmp/'
+    tmp_dir = '/var/vsites/www.landsatfact.com/project/html/sites/all/modules/lsf_subscription/cgi-bin/shp_tmp/'
 #    tmp_dir=r'H:\SPA_Secure\Geospatial\LandsatFACT\code\reduce\shapes'
     outShp=os.path.join(tmp_dir, 'tmp.shp')
 

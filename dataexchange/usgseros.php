@@ -40,12 +40,15 @@ function getDatasetsForDownload($datasetName, $client, $apiKey, $lowerLeft, $upp
         $node = 'EE';    
         // $additionalCritiera = null;
 		$additionalCritiera = $criteriaArray; 
-        $maxResults = 100;
+        $maxResults = 5000;
         $sortOrder = 'ASC';
 		// $sortOrder = 'DESC';
         $startingNumber = 1;
-		$searchResults = $client->search($datasetName, $lowerLeft, $upperRight, $startDate, $endDate, 
-												$additionalCritiera, $maxResults, $startingNumber, $sortOrder, $node, $apiKey);
+        
+	$searchResults = $client->search($datasetName, $lowerLeft, $upperRight, $startDate, $endDate,$additionalCritiera, $maxResults, $startingNumber, $sortOrder, $node, $apiKey);
+        print_r( $lowerLeft);
+        print_r($upperRight);
+
         // echo $client->__getLastRequest() . "\n";
         // return $client->__getLastResponse() . "\n";
         return $searchResults;

@@ -68,13 +68,7 @@ try{
 											'filterType' => 'between',
 											'firstValue' => '33',
 											'secondValue' => '43'
-										),
-									(object)array
-										(
-											'fieldId' => 10037,
-											'filterType' => 'value',
-											'value' => '0'
-										)										
+										)
 								)
 						);	
 	$L7criteriaArray = (object)array(
@@ -94,13 +88,7 @@ try{
 											'filterType' => 'between',
 											'firstValue' => '33',
 											'secondValue' => '43'
-										),
-									(object)array
-										(
-											'fieldId' => 3968,
-											'filterType' => 'value',
-											'value' => '0'
-										)											
+										)
 								)
 						);							
 	//Initialize the database connection
@@ -125,9 +113,9 @@ try{
 	$doy = date('z')+1;
 	print_r("doy: ".$doy."\n");
 	print('Current Date: ' . $currDate ."\n");
-	$prevDate = date('Y-m-d', strtotime($currDate .' -8 day'));
+	$prevDate = date('Y-m-d', strtotime($currDate .' -10 day'));
 	print('Previous Date: ' . $prevDate ."\n");
-
+    
 	//* Search function should be next to get a list of entityIDs
     // We may want to only utilize the path/rows to identify the scenes of interest, 
 	// instead of the lat/lon bbox // We may want to only utilize the path/rows to identify the scenes of interest, 
@@ -317,7 +305,18 @@ try{
 				}					
 				print_r("lr cloud cover : ". $cc_quad_lr."\n");		
 				//Data Type Level 1 or data_type_l1 in PGSQL
-				$data_type_l1 = preg_split('/\s+/', $values[63]['value'])[1];
+				//$data_type_l1 = preg_split('/\s+/', $values[63]['value'])[1];
+                                //$data_type_l1 = $values[63]['value'];
+
+                                //some data types are too long i.e ETM+  L1T this field is only 5 characters in the postgres database
+				$data_type_l1 = $values[63]['value'];
+				$findme = '+';
+                                if (strpos($data_type_l1, $findme) > 0 ){
+					$data_type_l1 = preg_split('/\s+/', $values[63]['value'])[1];
+				}else{
+					$data_type_l1 = $values[63]['value'];
+				}
+
 				print_r("data_type_l1 : ". $data_type_l1."\n");
 				// E.g. LE70180342015146EDC00
 				print_r("\n");

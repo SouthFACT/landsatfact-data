@@ -43,7 +43,7 @@ def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,qua
     try:
         # call download_landsat_data_by_sceneid.php
         in_dir = os.getcwd()
-        os.chdir('/var/vsites/landsatfact-data-dev.nemac.org/project/dataexchange')
+        os.chdir('/var/vsites/landsatfact-data.nemac.org/project/dataexchange')
         print os.getcwd()
         # download the scene data
         subprocess.call(["php", "download_landsat_data_by_sceneid.php", diff_tar])
