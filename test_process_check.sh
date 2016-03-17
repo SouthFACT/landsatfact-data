@@ -15,4 +15,4 @@ for process in $(echo $LSF_PROC | tr "," " "); do
 done
 ?
 #none of the processes are unnin so add the actuall meat of the job here 
-echo 'run cron' > /var/vsites/landsatfact-data-dev.nemac.org/project/var/log/test_process_check.log 2>&1
+echo 'run cron' > /var/vsites/landsatfact-data.nemac.org/project/var/log/test_process_check.log 2>&1

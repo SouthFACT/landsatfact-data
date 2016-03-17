@@ -57,11 +57,11 @@ try{
     $node = 'EE';
 
 	//Initialize the database connection
-	lsf_db_init();
-	$lsf_conn = pg_connect($lsf_database);
-	if (!$lsf_conn) {
-	  echo "An error occurred on lsf_conn.\n";
-	}
+	//lsf_db_init();
+	//$lsf_conn = pg_connect($lsf_database);
+	//if (!$lsf_conn) {
+	//  echo "An error occurred on lsf_conn.\n";
+	//}
 
 	//$datasetName = "LANDSAT_8";
 	//if (substr($in_scene_id, 0, 3)=="LE7") {
@@ -151,7 +151,7 @@ try{
 		//custom_put_contents($downloadUrl->item,'/lsfdata/eros_data/'.$in_scene_id.'.tar.gz');
 	}						
 	print_r("\n");		  
-	pg_close($lsf_conn);
+	//pg_close($lsf_conn);
 	// add back original umask
 	umask($oldUMASK);	
 } catch (Exception $e) {

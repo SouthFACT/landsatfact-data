@@ -1,7 +1,7 @@
 #! /bin/bash
 
 export PGPASSWORD=$(/usr/bin/cat /var/vsites/landsatfact-data.nemac.org/pg) 
-/usr/bin/psql -h lsf-dev.cqnxz1q9lu2y.us-east-1.rds.amazonaws.com  -U dataonly  -d landsatfact -c 'SELECT COUNT(*) > 0 FROM (SELECT aoi_id as id FROM get_pendingcustomrequests()) as cnt;' -t  -o /var/vsites/landsatfact-data.nemac.org/cr_pending.txt
+/usr/bin/psql -h lsfdb.cqnxz1q9lu2y.us-east-1.rds.amazonaws.com  -U dataonly  -d landsatfact -c 'SELECT COUNT(*) > 0 FROM (SELECT aoi_id as id FROM get_pendingcustomrequests()) as cnt;' -t  -o /var/vsites/landsatfact-data.nemac.org/cr_pending.txt
 export PGPASSWORD=''
 
 me=`basename "$0"`
