@@ -42,10 +42,11 @@ function getDatasetsForDownload($datasetName, $client, $apiKey, $lowerLeft, $upp
 		$additionalCritiera = $criteriaArray; 
         $maxResults = 5000;
         $sortOrder = 'ASC';
+        $months = array();
 		// $sortOrder = 'DESC';
         $startingNumber = 1;
         
-	$searchResults = $client->search($datasetName, $lowerLeft, $upperRight, $startDate, $endDate,$additionalCritiera, $maxResults, $startingNumber, $sortOrder, $node, $apiKey);
+	$searchResults = $client->search($datasetName, $lowerLeft, $upperRight, $startDate, $endDate, $months,$additionalCritiera, $maxResults, $startingNumber, $sortOrder, $node, $apiKey);
         print_r( $lowerLeft);
         print_r($upperRight);
 

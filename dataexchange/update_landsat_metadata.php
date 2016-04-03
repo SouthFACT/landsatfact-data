@@ -180,7 +180,7 @@ try{
 				// Clouds
 				// Cloud coverage (percent) of a WRS scene
 				// 0.00 - 100.00
-				$cc_full = $values[66]['value'];
+				$cc_full = $values[69]['value'];
 				print_r("cloud cover : ". $cc_full ."\n");				
 				//Data Type Level 1 or data_type_l1 in PGSQL
 				$data_type_l1 = $values[48]['value'];
