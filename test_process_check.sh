@@ -1,4 +1,20 @@
 #!/bin/bash
+
+#get the config file and make sure it will not do something delete all...
+configfile='./bash_config.cfg'
+configfile_secured='./tmp_bash_config.cfg'
+
+# check if the file contains something we don't want
+if egrep -q -v '^#|^[^ ]*=[^;]*' "$configfile"; then
+  echo "Config file is unclean, cleaning it..." >&2
+  # filter the original to a new file
+  egrep '^#|^[^ ]*=[^;&]*'  "$configfile" > "$configfile_secured"
+  configfile="$configfile_secured"
+fi
+
+# now source it, either the original or the filtered variant
+source "$configfile"
+
 #comma delemited list of processes
 LSF_PROC="landsatFACTmain.py,make_latest_mosaics.sh,makeviewerconfig.py,lsf_cron.sh"
 ?
@@ -15,4 +31,4 @@ for process in $(echo $LSF_PROC | tr "," " "); do
 done
 ?
 #none of the processes are unnin so add the actuall meat of the job here 
-echo 'run cron' > /var/vsites/landsatfact-data.nemac.org/project/var/log/test_process_check.log 2>&1
+echo 'run cron' > $path_log/test_process_check.log 2>&1
