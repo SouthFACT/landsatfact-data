@@ -31,9 +31,9 @@ print type(lsf_quads['wrs2_code'][5])
 
 # Loop through CSV inserting into PGSQL
 # LANDSAT_8 
-#filename = 'LANDSAT_8.csv'
+filename = 'LANDSAT_8.csv'
 # LANDSAT_7 SLC OFF
-filename = 'LANDSAT_ETM_SLC_OFF.csv'
+#filename = 'LANDSAT_ETM_SLC_OFF.csv'
 #L7 file SLC ON
 #filename = 'LANDSAT_ETM.csv'
 #L5 file (4 CSV files)
