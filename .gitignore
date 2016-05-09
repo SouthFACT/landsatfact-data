@@ -1,5 +1,6 @@
 *.ini
 bash_config.cfg
+tmp_bash_config.cfg
 msconfig/vlayers.map
 msconfig/rlayers.map
 msconfig/lsflayers.map
