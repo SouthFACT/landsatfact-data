@@ -12,7 +12,7 @@ if egrep -q -v '^#|^[^ ]*=[^;]*' "$configfile"; then
   configfile="$configfile_secured"
 fi
 
-# now source it, either the original or the filtered variant
+#  now source it, either the original or the filtered variant
 source "$configfile"
 
 export AWS_CONFIG_FILE=$path_projects/aws.config
