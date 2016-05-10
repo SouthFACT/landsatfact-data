@@ -1,12 +1,16 @@
 #! /bin/bash
 
+DIRECTORY=`dirname $0`
+echo $DIRECTORY
+
+cd $DIRECTORY
+cd ../..
 #get the config file and make sure it will not do something delete all...
-configfile='./bash_config.cfg'
-configfile_secured='./tmp_bash_config.cfg'
+configfile=./bash_config.cfg
+configfile_secured=./tmp_bash_config.cfg
 
 # check if the file contains something we don't want
 if egrep -q -v '^#|^[^ ]*=[^;]*' "$configfile"; then
-  echo "Config file is unclean, cleaning it..." >&2
   # filter the original to a new file
   egrep '^#|^[^ ]*=[^;&]*'  "$configfile" > "$configfile_secured"
   configfile="$configfile_secured"
