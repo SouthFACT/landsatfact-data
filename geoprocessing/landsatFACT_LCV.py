@@ -25,6 +25,7 @@ import landsatFactTools_GDAL
 import rasterAnalysis_GDAL
 import numpy as np
 import psycopg2
+import LSF
 
 reload(landsatFactTools_GDAL)
 reload(rasterAnalysis_GDAL)
@@ -41,6 +42,8 @@ for tar in runList:
 	if not tar[-7:] == '.tar.gz':
 		print "incorrect file type"
 		sys.exit()
+
+        # all paths are now imported from LSF.py  DM - 5/10/2016
 	# =========================================================================
 	# sets full path for the tarfile to be analyzed
 	inNewSceneTar = os.path.join(tarStorage, tar)
