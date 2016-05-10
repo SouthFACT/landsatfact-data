@@ -4,6 +4,9 @@ import psycopg2
 import sys
 from subprocess import call, Popen
 
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'geoprocessing'))
+from LSF import *
+
 sys.path.append("../var")
 try:
     from Config import *
@@ -44,10 +47,10 @@ for data in gap_cur:
 	print data
 print gap
 
-cmd_gap = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 /lsfdata/products/mosaics/southeast_mosaic_gap.tif' + gap + "/lsfdata/products/mosaics/temp/southeast_mosaic_gap.tif"
+cmd_gap = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + productStorage + '/mosaics/southeast_mosaic_gap.tif' + gap + productStorage + "/mosaics/temp/southeast_mosaic_gap.tif"
 
 #Use this command to create a new initial mosaic
-#cmd_gap = r'gdalwarp -wm 3000 --config GDAL_CACHEMAX 3000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES' + gap + "/lsfdata/products/mosaics/temp/southeast_mosaic_gap.tif"
+#cmd_gap = r'gdalwarp -wm 3000 --config GDAL_CACHEMAX 3000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES' + gap + productStorage + "/mosaics/temp/southeast_mosaic_gap.tif"
 
 # print cmd_gap
 

@@ -4,6 +4,9 @@ import psycopg2
 import sys
 from subprocess import call, Popen
 
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'geoprocessing'))
+from LSF import *
+
 sys.path.append("../var")
 try:
     from Config import *
@@ -44,10 +47,10 @@ for data in swir_cur:
 	print data
 print swir
 
-cmd_swir = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 /lsfdata/products/mosaics/southeast_mosaic_swir.tif' + swir + "/lsfdata/products/mosaics/temp/southeast_mosaic_swir.tif"
+cmd_swir = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0  ' + productStorage + '/mosaics/southeast_mosaic_swir.tif' + swir + productStorage + "/mosaics/temp/southeast_mosaic_swir.tif"
 
 #Use this command to create a new initial mosaic
-#cmd_swir = r'gdalwarp -wm 2000 --config GDAL_CACHEMAX 2000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata -128 -dstnodata -128' + swir + "/lsfdata/products/mosaics/temp/southeast_mosaic_swir.tif"
+#cmd_swir = r'gdalwarp -wm 2000 --config GDAL_CACHEMAX 2000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata -128 -dstnodata -128' + swir + productStorage + "/mosaics/temp/southeast_mosaic_swir.tif"
 
 # print cmd_swir
 
