@@ -22,7 +22,7 @@ export PGPASSWORD=$(/usr/bin/cat $path_sites/pg)
 export PGPASSWORD=''
 
 me=`basename "$0"`
-if [[ `ps ax | grep lsf_cron | wc -l` -lt 2 && `ps ax | grep $me | wc -l` -le 4 ]]; then
+if [[ `ps ax | grep lsf_cron | wc -l` -lt 2 && `ps ax | grep $me | wc -l` -le 5 ]]; then
 	hasCR=$(cat $path_sites/cr_pending.txt)
 	if [ $hasCR = "t" ]; then
 	   cd $path_projects/geoprocessing
