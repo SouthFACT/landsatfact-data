@@ -1,12 +1,14 @@
 #! /bin/bash
 
+DIRECTORY=`dirname $0`
+echo $DIRECTORY
+
 #get the config file and make sure it will not do something delete all...
-configfile='./bash_config.cfg'
-configfile_secured='./tmp_bash_config.cfg'
+configfile=$DIRECTORY/bash_config.cfg
+configfile_secured=$DIRECTORY/tmp_bash_config.cfg
 
 # check if the file contains something we don't want
 if egrep -q -v '^#|^[^ ]*=[^;]*' "$configfile"; then
-  echo "Config file is unclean, cleaning it..." >&2
   # filter the original to a new file
   egrep '^#|^[^ ]*=[^;&]*'  "$configfile" > "$configfile_secured"
   configfile="$configfile_secured"
@@ -15,14 +17,12 @@ fi
 #  now source it, either the original or the filtered variant
 source "$configfile"
 
-
 export PGPASSWORD=$(/usr/bin/cat $path_sites/pg) 
 /usr/bin/psql -h $rds_server  -U dataonly  -d landsatfact -c 'SELECT COUNT(*) > 0 FROM (SELECT aoi_id as id FROM get_pendingcustomrequests()) as cnt;' -t  -o $path_sites/cr_pending.txt
 export PGPASSWORD=''
 
 me=`basename "$0"`
-if [[ `ps ax | grep lsf_cron | wc -l` -lt 2 && `ps ax | grep $me | wc -l` -le 3 ]]; then
-
+if [[ `ps ax | grep lsf_cron | wc -l` -lt 2 && `ps ax | grep $me | wc -l` -le 4 ]]; then
 	hasCR=$(cat $path_sites/cr_pending.txt)
 	if [ $hasCR = "t" ]; then
 	   cd $path_projects/geoprocessing
@@ -31,4 +31,6 @@ if [[ `ps ax | grep lsf_cron | wc -l` -lt 2 && `ps ax | grep $me | wc -l` -le 3 
 	   /usr/bin/echo 'no pending requests' > $path_sites/cr.txt
 	fi
 
+else
+  /usr/bin/echo 'lsf_cron blocking request' > $path_sites/cr.txt
 fi
