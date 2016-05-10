@@ -23,6 +23,9 @@ import os, sys
 
 
 # =========================================================================
+#set base directory for project
+path_base = r'/var/vsites/landsatfact-data.nemac.org'
+
 # set Fmask.exe location
 # Fmaskexe = r'S:\Geospatial\LandsatFACT\Fmask.exe' #BM's original
 fmaskShellCall = r'/var/vsites/landsatfact-data.nemac.org/project/geoprocessing/fmaskLinux/FmaskSentinel/run_fmask_auto.sh'

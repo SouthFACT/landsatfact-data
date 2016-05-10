@@ -25,7 +25,7 @@ import landsatFactTools_GDAL
 import rasterAnalysis_GDAL
 import numpy as np
 import psycopg2
-import LSF
+from LSF import *
 
 reload(landsatFactTools_GDAL)
 reload(rasterAnalysis_GDAL)

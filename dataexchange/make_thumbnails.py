@@ -22,6 +22,9 @@ import urllib2
 import boto3
 import botocore
 import psycopg2
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'geoprocessing'))
+from LSF import *
 
 thumb_size = 400, 400
 # low-level AWS client
@@ -29,7 +32,7 @@ s3_client = boto3.client('s3')
 # high-level AWS client
 s3 = boto3.resource('s3')
 thumbnail_bucket = s3.Bucket('landsat-thumbnails')
-config_path = '/var/vsites/landsatfact-data.nemac.org/make_thumbnails_config.json'
+config_path = path_base + '/make_thumbnails_config.json'
 with open(config_path) as config_file:
     data = json.load(config_file)
 db_config = data['db']
