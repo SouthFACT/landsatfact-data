@@ -43,7 +43,7 @@ for tar in runList:
 		print "incorrect file type"
 		sys.exit()
 
-        # all paths are now imported from LSF.py  DM - 5/10/2016
+        # all  paths are now imported from LSF.py  DM - 5/10/2016
 	# =========================================================================
 	# sets full path for the tarfile to be analyzed
 	inNewSceneTar = os.path.join(tarStorage, tar)
