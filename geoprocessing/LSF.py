@@ -33,6 +33,9 @@ fmaskShellCall = r'/var/vsites/landsatfact-data.nemac.org/project/geoprocessing/
 #set path for the project directory
 path_projects = r'/var/vsites/landsatfact-data.nemac.org/project'
 
+#set path for website 
+path_website = r'/var/vsites/www.landsatfact.com'
+
 # Fmaskexe = r'G:\LandsatFACT\Fmask.exe'
 # set folder location of the quad vector files
 # quadsFolder = r'S:\Geospatial\LandsatFACT\geodata\vector\quads_indv_proj' #BM's original
