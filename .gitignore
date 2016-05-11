@@ -37,6 +37,9 @@ dataexchange/LANDSAT_ETM_SLC_OFF.csv
 html/landsatfact_config.xml
 geoprocessing/old/*
 var/log/lsf_cron.log
+var/log/cr_py.log
+var/log/cr.txt
+var/log/cr_pending.txt
 aws.config
 msconfig/initial_mosaic.sh
 msconfig/initial_mosaic_cloud.sh

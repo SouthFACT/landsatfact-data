@@ -5,6 +5,24 @@
 ###  it simply runs each mosaic python script, creates overviews, and then moves the files to the appropriate directory.
 ###
 
+DIRECTORY=`dirname $0`
+echo $DIRECTORY
+
+#get the config file and make sure it will not do something delete all...
+configfile=$DIRECTORY/bash_config.cfg
+configfile_secured=$DIRECTORY/tmp_bash_config.cfg
+
+# check if the file contains something we don't want
+if egrep -q -v '^#|^[^ ]*=[^;]*' "$configfile"; then
+  # filter the original to a new file
+  egrep '^#|^[^ ]*=[^;&]*'  "$configfile" > "$configfile_secured"
+  configfile="$configfile_secured"
+fi
+
+#  now source it, either the original or the filtered variant
+source "$configfile"
+
+
 #run individual scripts concurrently that each run gdalwarp to create mosaics in temp
 # ./make_swir_mosaic.py&
 # ./make_ndvi_mosaic.py&
@@ -17,7 +35,7 @@
 #./mosaic_overviews.sh
 
 #copy previous-day mosaics to archive
-#cp /lsfdata/products/mosaics/* /lsfdata/products/mosaics/archive
+#cp $path_products/mosaics/* $path_products/mosaics/archive
 
 #move new mosaics and overwrite previous mosaics
-#mv -f /lsfdata/products/mosaics/temp/* /lsfdata/products/mosaics
+#mv -f $path_products/mosaics/temp/* $path_products/mosaics
