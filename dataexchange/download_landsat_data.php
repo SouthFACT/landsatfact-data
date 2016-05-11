@@ -41,6 +41,9 @@ try{
 	// Set umask so that whoever is running the script 
 	// downloads the files with the correct permissions
 	$oldUMASK = umask(0002);
+
+        $config_info = parse_ini_file("config.ini",true);
+        $path_products = $config_info["paths"]["path_products"];
 	
     $ini_array = parse_ini_file("config.ini", true);
     $soapURL = "https://earthexplorer.usgs.gov/inventory/soap?wsdl" ;
@@ -121,7 +124,7 @@ try{
                       }
 			print_r("Downloading " . $row[0]);
 			print_r(" with dataset " . $datasetName);
-			if (file_exists('/lsfdata/eros_data/'.$row[0].'.tar.gz')) {
+			if (file_exists($path_products.$row[0].'.tar.gz')) {
 				echo "\n The file already exists";
 			} else {
 				$downloadUrl = getDownloadUrl($datasetName, $client, $apiKey, $row[0]);
@@ -142,18 +145,18 @@ try{
 
                                   //download data once available
                                    print_r("\n downloadUrl->item :".$downloadUrl->item);
-                                   custom_put_contents($downloadUrl->item,'/lsfdata/eros_data/'.$row[0].'.tar.gz');
+                                   custom_put_contents($downloadUrl->item,$path_products.$row[0].'.tar.gz');
                                   }
 
                                 } else {
                                   //download if not empty - product is available
                                   print_r("\n downloadUrl->item :".$downloadUrl->item);
-                                  custom_put_contents($downloadUrl->item,'/lsfdata/eros_data/'.$row[0].'.tar.gz');
+                                  custom_put_contents($downloadUrl->item,$path_products.$row[0].'.tar.gz');
                                 }
 
 
 				//print_r("\n downloadUrl->item :".$downloadUrl->item);
-				//custom_put_contents($downloadUrl->item,'/lsfdata/eros_data/'.$row[0].'.tar.gz');
+				//custom_put_contents($downloadUrl->item,$path_products.$row[0].'.tar.gz');
 			}						
 			print_r("\n");		  
 		}		
