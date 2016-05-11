@@ -42,6 +42,10 @@ try{
 	// downloads the files with the correct permissions
 	$oldUMASK = umask(0002);	
 	
+        $config_info = parse_ini_file("config.ini",true);
+        $path_products = $config_info["paths"]["path_products"];
+
+
 	$in_scene_id = $argv[1];
     print_r("downloading...");
 	$ini_array = parse_ini_file("config.ini", true);
@@ -118,7 +122,7 @@ try{
 
 	print_r("Downloading " . $in_scene_id);
 	print_r(" with dataset " . $datasetName);
-	if (file_exists('/lsfdata/eros_data/'.$in_scene_id.'.tar.gz')) {
+	if (file_exists($path_products.$in_scene_id.'.tar.gz')) {
 		echo "\n The file already exists";
 	} else {
 		$downloadUrl = getDownloadUrl($datasetName, $client, $apiKey, $in_scene_id);
@@ -138,17 +142,17 @@ try{
 
                     //download data once available
                      print_r("\n downloadUrl->item :".$downloadUrl->item);
-                     custom_put_contents($downloadUrl->item,'/lsfdata/eros_data/'.$in_scene_id.'.tar.gz');
+                     custom_put_contents($downloadUrl->item,$path_products.$in_scene_id.'.tar.gz');
                     }
 
                   } else {
                     //download if not empty - product is available
                     print_r("\n downloadUrl->item :".$downloadUrl->item);
-                    custom_put_contents($downloadUrl->item,'/lsfdata/eros_data/'.$in_scene_id.'.tar.gz');
+                    custom_put_contents($downloadUrl->item,$path_products.$in_scene_id.'.tar.gz');
                   }
 
 		//print_r("\n downloadUrl->item :".$downloadUrl->item);
-		//custom_put_contents($downloadUrl->item,'/lsfdata/eros_data/'.$in_scene_id.'.tar.gz');
+		//custom_put_contents($downloadUrl->item,$path_products.$in_scene_id.'.tar.gz');
 	}						
 	print_r("\n");		  
 	//pg_close($lsf_conn);
