@@ -5,7 +5,7 @@
 #		process TAR compressed files into Vegetation Index products.
 #
 # Author:	LandsatFACT Project Team
-#		support@landsatfact.com  
+#		support@landsatfact.com 
 '''This code was developed in the public domain.  This code is provided as is, without warranty of any kind,
  express or implied, including but not limited to the warranties of
  merchantability, fitness for a particular purpose and noninfringement.
