@@ -12,6 +12,8 @@
  other liability, whether in an action of contract, tort or otherwise,
  arising from, out of or in connection with the software or the use or
  other dealings in the software.'''
+
+This file will no longer be tracked... it is now a config file that will be placed in .gitignore 05-12-2016 @Daveism
 #-----------------------------------------------------------------------------
 def main():
     pass

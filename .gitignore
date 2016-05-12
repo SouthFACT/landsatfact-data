@@ -1,3 +1,4 @@
+geoprocessing/LSF.py
 *.ini
 bash_config.cfg
 tmp_bash_config.cfg

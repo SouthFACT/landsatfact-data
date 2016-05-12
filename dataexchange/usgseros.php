@@ -112,9 +112,10 @@ function getDownloadUrl($datasetName, $client, $apiKey, $sceneID) {
 //*                            ArrayOfString $products)
 //*Notes:
 function getOrderScene($datasetName, $client, $apiKey, $sceneID) {
+    print_r(" apikey getOrderScene:" . $apiKey . ".\n");
     try {
         $productCode = $client->getOrderProducts($apiKey,$datasetName,'EE', $sceneID,array('STANDARD'));
-
+        
         //Aggregate a list of available products
         $products = array();
         //check if orders
@@ -176,6 +177,7 @@ function getOrderScene($datasetName, $client, $apiKey, $sceneID) {
          while (empty($downloadUrl->item)) {
 
            print_r("     Checking Order For Scene: $sceneID - Seconds Elapased: $time\n");
+
            $downloadUrl = $client->download($datasetName,$apiKey,'EE', array($sceneID),array('STANDARD'));
 
            //pause 20 seconds so we do not slam the server with requests seems to take a few minutes
