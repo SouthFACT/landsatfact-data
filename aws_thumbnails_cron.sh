@@ -3,6 +3,7 @@
 DIRECTORY=`dirname $0`
 echo $DIRECTORY
 
+#testing push pull
 #get the config file and make sure it will not do something delete all...
 configfile=$DIRECTORY/bash_config.cfg
 configfile_secured=$DIRECTORY/tmp_bash_config.cfg
