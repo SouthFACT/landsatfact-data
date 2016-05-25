@@ -24,7 +24,8 @@ php update_landsat_metadata.php
 php download_landsat_data.php
 
 cd $path_projects/geoprocessing
-./landsatFACT_LCV.py
+#pass the file containing the list of downloaded tars to LCV
+./landsatFACT_LCV.py $path_projects/dataexchange/downloaded.txt
 
 cd $path_projects/msconfig
 ./makeviewerconfig.py

@@ -24,6 +24,8 @@ import LSF
 import rasterAnalysis_GDAL
 import LSFGeoTIFF
 import localLib
+from base64 import b64decode
+import pdb
 
 
 
@@ -43,7 +45,7 @@ def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,qua
     try:
         # call download_landsat_data_by_sceneid.php
         in_dir = os.getcwd()
-        os.chdir(LSF.path_projects + '/dataexchange') 
+        os.chdir(LSF.path_projects + '/dataexchange')
         print os.getcwd()
         # download the scene data
         subprocess.call(["php", "download_landsat_data_by_sceneid.php", diff_tar])
@@ -75,6 +77,23 @@ def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,qua
     except Exception as e:
         print "Error in extractProductForCompare"
         print str(e)
+
+def readAndWriteQuadCC(quadPaths, extractedPath):
+    quadCCDict={}
+    try:
+        quadCCDict = getQuadCCpercent(quadPaths)
+        # =========================================================================
+        # write input scene quads cloud cover percentage to the landsat_metadata table in the database
+        if (writeQuadsCCtoDB(quadCCDict,extractedPath)!=1):
+            raise RuntimeError('DB landsat_metadata table was not updated')
+    except Exception as e:
+        tb = sys.exc_info()[2]
+        tbinfo = traceback.format_tb(tb)[0]
+        pymsg = "PYTHON ERRORS:\nTraceback Info:\n" + tbinfo + "\nError Info:\n    " + \
+        str(sys.exc_type)+ ": " + str(sys.exc_value) + "\n"
+        #sendEmail(pymsg)
+    finally:
+        return quadCCDict
 
 def checkExisting(inTarPath, extractFolder):
     """# Check to see if the entered Tar files have already been extracted. If any
@@ -312,11 +331,12 @@ def getDNminDictfromDB(sceneID):
 # @return list of tuples
 """
 def postgresCommand(command,values=None):
-    """This function is clever? It can handle SQL SELECT, UPDATE, INSERT, and DELETE.
+    """This function can handle SQL SELECT, UPDATE, INSERT, and DELETE.
     It relies on the fact that SELECTs return return results and don't need to commit.
-    In the case of a SELECT command, cur.fetchall does not raise an exception, the resultsTup are returned,
-    and no commit is done (and the connection and cursor are not closed).
-    In the INSERT, UPDATE and DELETE cases, cur.fetchall raises an exception. """
+    resultsTup are returned, if there are any. Otherwise rowcount is returned. """
+
+    resultsTup = None
+    rowcount=0
     try:
         print("postgresCommand args command {}, values {}".format(command,values))
         # dbConn = psycopg2.connect("dbname=x user=y password=z")
@@ -331,17 +351,21 @@ def postgresCommand(command,values=None):
         print "failed"
     try:
         resultsTup = cur.fetchall()
-        return resultsTup
     except:
         pass
     try:
         dbConn.commit()
     except:
         pass
+
+    rowcount=cur.rowcount
     # if commit failed, this does an implicit rollback
     cur.close()
     dbConn.close()
-
+    if resultsTup is not None:
+        return resultsTup
+    else:
+        return rowcount
 
 def cleanDir(dirPath):
     folderFiles= os.listdir(dirPath)
@@ -354,5 +378,24 @@ def cleanDir(dirPath):
                 shutil.copy(os.path.join(dirPath,f),moveDir)
                 os.remove(os.path.join(dirPath,f))
 
-
+def sendEmail(errorTxt):
+    """Sends and error report back to the developers"""
+    in_dir = os.getcwd()
+    os.chdir(LSF.path_projects + '/dataexchange')
+    print os.getcwd()
+    # download the scene data
+    subprocess.call(["php", "email.php", errorTxt])
+    os.chdir(in_dir)
+  
+#    import smtplib
+#    fromAddr = b64decode('bGFuZHNhdGZhY3RAZ21haWwuY29t')
+#    toAddr = [b64decode('bGFuZHNhdGZhY3RAZ21haWwuY29t')]
+#    un = b64decode('bGFuZHNhdGZhY3RAZ21haWwuY29t')
+#    pw = b64decode('c2dzZmdpczEj')
+#    server = smtplib.SMTP('smtp.gmail.com',587)
+#    server.ehlo
+#    server.starttls()
+#    server.login(un,pw)
+#    server.sendmail(fromAddr, toAddr, errorTxt)
+#    server.quit
 
