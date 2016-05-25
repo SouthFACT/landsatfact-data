@@ -2,6 +2,7 @@
 
 import psycopg2
 import sys
+import os
 from subprocess import call, Popen
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'geoprocessing'))
@@ -33,10 +34,10 @@ cloud_cur = conn.cursor()
 
 #Selects the column that you want
 #From Inputs will be replaced with the appropriate view 
-cloud_cur.execute("SELECT * FROM vw_latest_quads_cloud;")
+#cloud_cur.execute("SELECT * FROM vw_latest_quads_cloud;")
 
 #Use this view to create an inital mosaic. You may need to change the # of days in teh view.
-#cloud_cur.execute("SELECT * FROM vw_initial_mosaic_cloud;")
+cloud_cur.execute("SELECT location FROM vw_initial_mosaic_cloud order by max asc;")
 
 #Create empty string 
 cloud = ' ' 
@@ -47,10 +48,10 @@ for data in cloud_cur:
 	print data
 print cloud
 
-cmd_cloud = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0  ' + productStorage + '/mosaics/southeast_mosaic_cloud.tif' + cloud + productStorage + "/mosaics/temp/southeast_mosaic_cloud.tif"
+#cmd_cloud = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0  ' + productStorage + '/mosaics/southeast_mosaic_cloud.tif' + cloud + productStorage + "/mosaics/temp/southeast_mosaic_cloud.tif"
 
 #Use this command to create a new initial mosaic
-#cmd_cloud = r'gdalwarp -wm 2000 --config GDAL_CACHEMAX 2000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES' + cloud + productStorage + "/mosaics/temp/southeast_mosaic_cloud.tif"
+cmd_gap = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + gap + productStorage + "/mosaics/temp/southeast_mosaic_cloud.tif"
 
 # print cmd_cloud
 

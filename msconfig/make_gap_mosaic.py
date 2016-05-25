@@ -2,6 +2,7 @@
 
 import psycopg2
 import sys
+import os
 from subprocess import call, Popen
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'geoprocessing'))
@@ -33,10 +34,10 @@ gap_cur = conn.cursor()
 
 #Selects the column that you want
 #From Inputs will be replaced with the appropriate view 
-gap_cur.execute("SELECT * FROM vw_latest_quads_gap;")
+#gap_cur.execute("SELECT * FROM vw_latest_quads_gap;")
 
 #Use this view to create an inital mosaic. You may need to change the # of days in teh view.
-#gap_cur.execute("SELECT * FROM vw_initial_mosaic_gap;")
+gap_cur.execute("SELECT location FROM vw_initial_mosaic_gap order by max asc;")
 
 #Create empty string 
 gap = ' ' 
@@ -47,10 +48,10 @@ for data in gap_cur:
 	print data
 print gap
 
-cmd_gap = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + productStorage + '/mosaics/southeast_mosaic_gap.tif' + gap + productStorage + "/mosaics/temp/southeast_mosaic_gap.tif"
+#cmd_gap = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + productStorage + '/mosaics/southeast_mosaic_gap.tif' + gap + productStorage + "/mosaics/temp/southeast_mosaic_gap.tif"
 
 #Use this command to create a new initial mosaic
-#cmd_gap = r'gdalwarp -wm 3000 --config GDAL_CACHEMAX 3000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES' + gap + productStorage + "/mosaics/temp/southeast_mosaic_gap.tif"
+cmd_gap = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + gap + productStorage + "/mosaics/temp/southeast_mosaic_gap.tif"
 
 # print cmd_gap
 

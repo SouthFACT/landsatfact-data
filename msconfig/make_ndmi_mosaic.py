@@ -2,6 +2,7 @@
 
 import psycopg2
 import sys
+import os
 from subprocess import call, Popen
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'geoprocessing'))
@@ -33,10 +34,10 @@ ndmi_cur = conn.cursor()
 
 #Selects the column that you want
 #From Inputs will be replaced with the appropriate view 
-ndmi_cur.execute("SELECT * FROM vw_latest_quads_ndmi;")
+#ndmi_cur.execute("SELECT * FROM vw_latest_quads_ndmi;")
 
 #Use this view to create an inital mosaic. You may need to change the # of days in teh view.
-#ndmi_cur.execute("SELECT * FROM vw_initial_mosaic_ndmi;")
+ndmi_cur.execute("SELECT location FROM vw_initial_mosaic_ndmi order by max asc;")
 
 #Create empty string 
 ndmi = ' ' 
@@ -47,10 +48,10 @@ for data in ndmi_cur:
 	print data
 print ndmi
 
-cmd_ndmi = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + productStorage + '/mosaics/southeast_mosaic_ndmi.tif' + ndmi + productStorage + "/mosaics/temp/southeast_mosaic_ndmi.tif"
+#cmd_ndmi = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + productStorage + '/mosaics/southeast_mosaic_ndmi.tif' + ndmi + productStorage + "/mosaics/temp/southeast_mosaic_ndmi.tif"
 
 #Use this command to create a new initial mosaic
-#cmd_ndmi = r'gdalwarp -wm 2000 --config GDAL_CACHEMAX 2000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata -128 -dstnodata -128' + ndmi + productStorage + "/mosaics/temp/southeast_mosaic_ndmi.tif"
+cmd_ndvi = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + ndvi + productStorage + "/mosaics/temp/southeast_mosaic_ndmi.tif"
 
 # print cmd_ndmi
 
