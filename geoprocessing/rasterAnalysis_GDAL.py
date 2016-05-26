@@ -20,6 +20,7 @@ import os, subprocess, math
 from osgeo import gdal, gdalconst
 import numpy as np
 import landsatFactTools_GDAL
+import pdb
 
 #import socket, errno
 
@@ -79,7 +80,7 @@ def bandID(folder, band):
         """Band Options: red, nir, swir1, tir, swir2"""
         bID = os.path.join(folder,os.path.basename(folder)+(platformSensorBands[os.path.basename(folder)[0:3]][band][0])+'.TIF')
         dsInfo = LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(bID).asGeoreferencedArray()
-        #format of return -- [dsArray, attList] 
+        #format of return -- [dsArray, attList]
         return dsInfo
 
 
@@ -89,7 +90,7 @@ class sensorBand:
         self.platformType = os.path.basename(self.folder)[0:3]
         self.ordinalData = os.path.basename(self.folder)[9:16]
         self.sceneID = os.path.basename(self.folder)
-        self.mtlFile = mtlData(os.path.join(mtlFolder, self.sceneID[0:21],self.sceneID[0:21] + '_MTL.txt'),self.platformType)
+        self.mtlFile = mtlData(self.sceneID[0:21],os.path.join(mtlFolder, self.sceneID[0:21],self.sceneID[0:21]+'_MTL.txt'))
         self.mtlDataDict = self.mtlFile.getMtlData()
         redData = bandID(self.folder,'red')
         self.red = redData[0]
@@ -229,12 +230,52 @@ class sensorBand:
 
 
 class mtlData:
-    def __init__(self, mtlFile, pltType):
-        mtlDoc = open(mtlFile,'r')
-        mtl = mtlDoc.readlines()
-        mtlDoc.close()
-        self.mtl = mtl
-        self.pltType = pltType
+    """
+    # Initializer method. By default query the database for the L1 metadata for a scene.
+    #           If a file name is provided, use it instead.
+    # @param self, sceneID, mtlFile
+    #           scene identifier (e.g., 'LE70170362013133EDC00')
+    #           Full path of a MTL.txt file. 
+    """
+    def __init__(self, sceneID, mtlFile):
+        keys=['sun_elevation', 'earth_sun_distance', 'radiance_mult_band_3', 'radiance_mult_band_4', 'radiance_mult_band_5',
+            'radiance_mult_band_6', 'radiance_mult_band_7', 'radiance_mult_band_10', 'radiance_add_band_3',
+            'radiance_add_band_4', 'radiance_add_band_5', 'radiance_add_band_6', 'radiance_add_band_6_VCID_2','radiance_add_band_7',
+            'radiance_add_band_10','reflectance_mult_band_3', 'reflectance_mult_band_4', 'reflectance_mult_band_5',
+            'reflectance_mult_band_6','radiance_mult_band_6_VCID_2','reflectance_mult_band_7', 'reflectance_add_band_3',
+            'reflectance_add_band_4','reflectance_add_band_5', 'reflectance_add_band_6', 'reflectance_add_band_7',
+            'radiance_maximum_band_3', 'radiance_maximum_band_4', 'radiance_maximum_band_5', 'radiance_maximum_band_6',
+            'radiance_maximum_band_7','radiance_maximum_band_10', 'reflectance_maximum_band_3', 'reflectance_maximum_band_4',
+            'reflectance_maximum_band_5', 'reflectance_maximum_band_6','reflectance_maximum_band_7']
+
+        self.sceneID = sceneID
+	if not os.path.exists(mtlFile):
+            statement = "select {0} FROM level1_metadata INNER JOIN landsat_metadata ON level1_metadata.level1_id = landsat_metadata.l1_key WHERE (scene_id= '{1}');".format( ','.join(keys),sceneID)
+            values = landsatFactTools_GDAL.postgresCommand(statement)[0]
+            self.mtl = dict(zip(keys,values))
+	else:
+            self.mtl=dict()
+            mtlDoc = open(mtlFile,'r')
+            mtl = mtlDoc.readlines()
+            for key in keys:
+                self.mtl[key]=self.getMTLobject(key.upper(), mtl)
+            mtlDoc.close()
+            self.writeToDB()
+
+        self.pltType = sceneID[0:3]
+
+    def writeToDB(self):
+        noNullsDict = {k: v for k, v in self.mtl.items() if v is not None}
+        lid=landsatFactTools_GDAL.postgresCommand('select * from keys_and_values(\'('+','.join(noNullsDict.keys()) + ')\', \'(' + ','.join(map(str,noNullsDict.values())) + ')\',\'' + self.sceneID+ '\');')
+
+
+    def getMTLobject(self, att, mtlLines):
+        for obj in mtlLines:
+            if att in obj:
+                cleanedObj = obj.strip()
+                indx =  cleanedObj.index('=')
+                return float(cleanedObj[indx+2:])
+        return None
 
     def getMtlData(self):
         dataDict = {}
@@ -247,51 +288,53 @@ class mtlData:
                 "Mp":self.Mp(k),"Ap":self.Ap(k),"RadMax":self.RadMax(k),"RefMax":self.RefMax(k)}})
         return dataDict
 
-    def getMTLobject(self, att, band = None):
-        for obj in self.mtl:
-            if att in obj:
-                cleanedObj = obj.strip()
-                indx =  cleanedObj.index('=')
-                if band != None:
-                    b = cleanedObj[cleanedObj.index('B'):indx-1]
-                    if band.upper() == b:
-                        break
-        return float(cleanedObj[indx+2:])
-
     def sunElevation(self):
-        return self.getMTLobject('SUN_ELEVATION')
+        return float(self.mtl['sun_elevation'])
 
     def distance(self):
         # only available in L8 mtl currently
-        return self.getMTLobject('EARTH_SUN_DISTANCE')
+        return float(self.mtl['earth_sun_distance'])
 
     def Grescale(self, band):
         bandNum = platformSensorBands[self.pltType][band][1]
-        return self.getMTLobject('RADIANCE_MULT_BAND_', bandNum)
+        return float(self.mtl['radiance_mult_band_' + bandNum.replace('BAND_','')])
 
     def Brescale(self, band):
         bandNum = platformSensorBands[self.pltType][band][1]
-        return self.getMTLobject('RADIANCE_ADD_BAND_', bandNum)
+        return float(self.mtl['radiance_add_band_' + bandNum.replace('BAND_','')])
 
     def Mp(self, band):
         # LC8 only
+        # There is no REFLECTANCE_MULT_BAND_10
         bandNum = platformSensorBands[self.pltType][band][1]
-        return self.getMTLobject('REFLECTANCE_MULT_BAND_', bandNum)
+        if bandNum == 'BAND_10':
+            return 0
+        else:
+            return float(self.mtl['reflectance_mult_band_' + bandNum.replace('BAND_','')])
 
     def Ap(self, band):
         # LC8 only
+        # There is no REFLECTANCE_ADD_BAND_10
         bandNum = platformSensorBands[self.pltType][band][1]
-        return self.getMTLobject('REFLECTANCE_ADD_BAND_', bandNum)
+        if bandNum == 'BAND_10':
+            return 0
+        else:
+            return float(self.mtl['reflectance_add_band_' + bandNum.replace('BAND_','')])
+
 
     def RadMax(self, band):
         # LC8 only
         bandNum = platformSensorBands[self.pltType][band][1]
-        return self.getMTLobject('RADIANCE_MAXIMUM_BAND_', bandNum)
+        return float(self.mtl['radiance_maximum_band_' + bandNum.replace('BAND_','')])
 
     def RefMax(self, band):
         # LC8 only
+        # There is no REFLECTANCE_MAXIMUM_BAND_10
         bandNum = platformSensorBands[self.pltType][band][1]
-        return self.getMTLobject('REFLECTANCE_MAXIMUM_BAND_', bandNum)
+        if bandNum == 'BAND_10':
+            return 0
+        else:
+            return float(self.mtl['reflectance_maximum_band_' + bandNum.replace('BAND_','')])
 
 def getDNmin(folder):
     # calculates the min DN value for each band based on the equal to or less than .01% method
@@ -384,32 +427,8 @@ def runFmask(tiffFolder,fmaskShellCall):
 		if out in vars() or out in globals():
 			print("Fmask Execution failed:"+str(out)+"/n"+str(err)+"/n"+str(errcode))
 		return_value = False;
-		return return_value	
-"""
-def runFmask(tiffFolder,fmaskShellCall):
-	""" """
-	try:
-		return_value = True;
-		print "In runFmask checking for: "+os.path.join(tiffFolder,os.path.basename(tiffFolder) + "_MTLFmask.TIF")
-		print "fmaskShellCall: "+fmaskShellCall
-                if os.path.exists(os.path.join(tiffFolder,os.path.basename(tiffFolder) + "_MTLFmask.TIF")) == False:
-			print "Running Fmask"
-			print "tiffFolder: "+tiffFolder
-			landsatFactTools_GDAL.cleanDir(tiffFolder)
-			print("working dir:" + os.getcwd() + "\n")
-			process = subprocess.Popen([fmaskShellCall],cwd=tiffFolder,stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-			out,err = process.communicate()
-			errcode = process.returncode
-			os.rename(os.path.join(tiffFolder,os.path.basename(tiffFolder)+"_MTLFmask"), os.path.join(tiffFolder,os.path.basename(tiffFolder)+"_MTLFmask.TIF"))
-		else:
-			print "Mask already created for: "+tiffFolder
 		return return_value
-	except:
-		if out in vars() or out in globals():
-			print("Fmask Execution failed:"+str(out)+"/n"+str(err)+"/n"+str(errcode))
-		return_value = False;
-		return return_value
-"""
+
 def cloudCover(FmaskData):
     """ """
     #print "Computing Cloud Cover"
@@ -421,5 +440,4 @@ def cloudCover(FmaskData):
     noData = float(np.sum(FmaskData == 255))
     ccPercent = round((cloud + snow + cloudShadow)/(clearLand + clearWater + cloudShadow + cloud + snow)*100,2)
     return ccPercent
-
 

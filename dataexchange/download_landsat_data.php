@@ -68,6 +68,7 @@ try{
 		print_r("query did not execute\n");
 	}
 	if (pg_num_rows($select_result) > 0) {
+		$downloaded_array = array();
 		print_r("Matching records found : ".pg_num_rows($select_result)."\n");
 		while ($row = pg_fetch_array($select_result)) {
 			//$datasetName = "LANDSAT_8";
@@ -155,6 +156,7 @@ try{
                                 }
 
 
+				array_push($downloaded_array, $path_products.$row[0].'.tar.gz'); 				
 				//print_r("\n downloadUrl->item :".$downloadUrl->item);
 				//custom_put_contents($downloadUrl->item,$path_products.$row[0].'.tar.gz');
 			}						
@@ -163,6 +165,7 @@ try{
 	}
 	pg_close($lsf_conn);
 	// add back original umask
+	file_put_contents('downloaded.txt', print_r($downloaded_array, true));
 	umask($oldUMASK);
 } catch (Exception $e) {
 	die("Error: {$e->getMessage()}\n\n");
