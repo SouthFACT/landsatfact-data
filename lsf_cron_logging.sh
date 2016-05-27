@@ -17,8 +17,9 @@ fi
 # now source it, either the original or the filtered variant
 source "$configfile"
 
-me=`basename "$0"`
-if [ `ps ax | grep $me | wc -l` -le 3 ]; then
+if [[ `ps ax | grep "[l]andsatFACT_LCV.py" | wc -l` -lt 1 ]]; then
+  if [[ `ps ax | grep "[d]ownload_landsat_data.php" | wc -l` -lt 1 ]]; then
+    if [[ `ps ax | grep "[c]ustomRequest.py" | wc -l` -lt 1 ]]; then
         COUNTER=0
         until [[ `ps ax | grep initate_custom_ | wc -l` -lt 2 || $COUNTER -eq 10 ]]; do
                 sleep 120
@@ -28,6 +29,12 @@ if [ `ps ax | grep $me | wc -l` -le 3 ]; then
 		cd $path_projects
 		./lsf_cron.sh > $path_log/lsf_cron.log 2>&1
 	fi
+    else
+      /usr/bin/echo 'Cannot run a Custom Request is processing' > $path_log/lsf_cron.log 2>&1
+    fi
+  else
+    /usr/bin/echo 'Cannot run a CR or LCV is downloading data and about to process' > $path_log/lsf_cron.log 2>&1
+  fi 
 else
-	echo 'lsf_cron blocking ' > $path_log/lsf_cron.log 2>&1
+  /usr/bin/echo 'Cannot run LCV is  blocking request' > $path_log/lsf_cron.log 2>&1
 fi

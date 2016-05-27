@@ -21,8 +21,9 @@ export PGPASSWORD=$(/usr/bin/cat $path_sites/pg)
 /usr/bin/psql -h $rds_server  -U dataonly  -d landsatfact -c 'SELECT COUNT(*) > 0 FROM (SELECT aoi_id as id FROM get_pendingcustomrequests()) as cnt;' -t  -o $path_log/cr_pending.txt
 export PGPASSWORD=''
 
-me=`basename "$0"`
-if [[ `ps ax | grep lsf_cron | wc -l` -lt 2 && `ps ax | grep $me | wc -l` -le 5 ]]; then
+if [[ `ps ax | grep "[l]andsatFACT_LCV.py" | wc -l` -lt 1 ]]; then
+  if [[ `ps ax | grep "[d]ownload_landsat_data.php" | wc -l` -lt 1 ]]; then
+    if [[ `ps ax | grep "[c]ustomRequest.py" | wc -l` -lt 1 ]]; then
 	hasCR=$(cat $path_log/cr_pending.txt)
 	if [ $hasCR = "t" ]; then
 	   cd $path_projects/geoprocessing
@@ -30,7 +31,12 @@ if [[ `ps ax | grep lsf_cron | wc -l` -lt 2 && `ps ax | grep $me | wc -l` -le 5 
 	else
 	   /usr/bin/echo 'no pending requests' > $path_log/cr.txt
 	fi
-
+    else
+      /usr/bin/echo 'Cannot run a Custom Request is processing' > $path_log/cr.txt
+    fi
+  else
+    /usr/bin/echo 'Cannot run a CR or LCV is downloading data and about to process' > $path_log/cr.txt
+  fi 
 else
-  /usr/bin/echo 'lsf_cron blocking request' > $path_log/cr.txt
+  /usr/bin/echo 'Cannot run LCV is  blocking request' > $path_log/cr.txt
 fi
