@@ -251,7 +251,11 @@ class mtlData:
         self.sceneID = sceneID
 	if not os.path.exists(mtlFile):
             statement = "select {0} FROM level1_metadata INNER JOIN landsat_metadata ON level1_metadata.level1_id = landsat_metadata.l1_key WHERE (scene_id= '{1}');".format( ','.join(keys),sceneID)
-            values = landsatFactTools_GDAL.postgresCommand(statement)[0]
+            res = landsatFactTools_GDAL.postgresCommand(statement)
+            if not res:
+                raise RuntimeError('Expecting level1_metadata but no results returned for {0} from DB query'.format(sceneID))
+            else:
+                values=res[0]
             self.mtl = dict(zip(keys,values))
 	else:
             self.mtl=dict()
