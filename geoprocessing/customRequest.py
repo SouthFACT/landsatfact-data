@@ -152,7 +152,6 @@ def quadScene(quadsceneID):
     # if the unclipped TIFFs aren't there, the extractedTar "target" function will cause the tar to be downloaded
 
     sceneID=quadsceneID[:-2]
-    pdb.set_trace()
     if not(re.search(quadsceneID, ' '.join(glob.glob(os.path.join(LSF.projectStorage, '*'))))):
         # if the band files for quadsceneID in are not in projectStorage, get them from tiffsStorage, if possible, and clip them
         if not (re.search(sceneID, ' '.join(glob.glob(os.path.join(LSF.tiffsStorage, '*'))))):
