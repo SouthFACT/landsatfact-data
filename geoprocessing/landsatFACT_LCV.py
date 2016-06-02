@@ -37,8 +37,8 @@ import LSFGeoTIFF
 #runList = ast.literal_eval( sys.argv[1] )
 runList=[]
 extractedList = []
+exceptList = []
 infile = sys.argv[1]
-runlist=[]
 with open(infile) as inf:
     for line in inf:
         m=re.search('L.*?\.tar\.gz', line)
@@ -219,9 +219,16 @@ for tar in runList:
         print "Error in LCV"
         print str(e)
         landsatFactTools_GDAL.sendEmail(tar + ': ' + str(e))
+        exceptList.append(tar)
         continue
 
 print '\nLandsatFACT Complete'
 print 'Processed ', runList, extractedList
+print 'Excepting ', exceptList
+runList.extend(extractedList)
+# Clean up tars that have successfully been processed
+for t in runList:
+    if t not in exceptList:
+        os.remove(t)
 sys.exit()
 
