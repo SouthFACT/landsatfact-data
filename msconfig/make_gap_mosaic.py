@@ -34,10 +34,10 @@ gap_cur = conn.cursor()
 
 #Selects the column that you want
 #From Inputs will be replaced with the appropriate view 
-#gap_cur.execute("SELECT * FROM vw_latest_quads_gap;")
+gap_cur.execute("select location from vw_tile_index_gap,vw_last_days_products where substr(vw_tile_index_gap.location::text, 28,47) =  substr(vw_last_days_products.product_id::text,1,47) and product_type = 'GAP';")
 
 #Use this view to create an inital mosaic. You may need to change the # of days in teh view.
-gap_cur.execute("SELECT location FROM vw_initial_mosaic_gap order by max asc;")
+#gap_cur.execute("SELECT location FROM vw_initial_mosaic_gap order by max asc;")
 
 #Create empty string 
 gap = ' ' 
@@ -48,10 +48,10 @@ for data in gap_cur:
 	print data
 print gap
 
-#cmd_gap = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + productStorage + '/mosaics/southeast_mosaic_gap.tif' + gap + productStorage + "/mosaics/temp/southeast_mosaic_gap.tif"
+cmd_gap = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + productStorage + '/mosaics/southeast_mosaic_gap.tif' + gap + productStorage + "/mosaics/temp/southeast_mosaic_gap.tif"
 
 #Use this command to create a new initial mosaic
-cmd_gap = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + gap + productStorage + "/mosaics/temp/southeast_mosaic_gap.tif"
+#cmd_gap = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + gap + productStorage + "/mosaics/temp/southeast_mosaic_gap.tif"
 
 # print cmd_gap
 

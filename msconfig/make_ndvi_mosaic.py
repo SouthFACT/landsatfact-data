@@ -34,10 +34,10 @@ ndvi_cur = conn.cursor()
 
 #Selects the column that you want
 #From Inputs will be replaced with the appropriate view 
-#ndvi_cur.execute("SELECT * FROM vw_latest_quads_ndvi;")
+ndvi_cur.execute("select location from vw_tile_index_ndvi,vw_last_days_products where substr(vw_tile_index_ndvi.location::text, 24,47) =  substr(vw_last_days_products.product_id::text,1,47) and product_type = 'NDVI';")
 
 #Use this view to create an inital mosaic. You may need to change the # of days in teh view.
-ndvi_cur.execute("SELECT location FROM vw_initial_mosaic_ndvi order by max asc;")
+#ndvi_cur.execute("SELECT location FROM vw_initial_mosaic_ndvi order by max asc;")
 
 
 #Create empty string 
@@ -49,10 +49,12 @@ for data in ndvi_cur:
 	print data
 print ndvi
 
-#cmd_ndvi = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + productStorage + '/mosaics/southeast_mosaic_ndvi.tif' + ndvi +  productStorage + "/mosaics/temp/southeast_mosaic_ndvi.tif"
+cmd_ndvi = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + productStorage + '/mosaics/southeast_mosaic_ndvi.tif' + ndvi +  productStorage + "/mosaics/temp/southeast_mosaic_ndvi.tif"
+
+#cmd_ndvi = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + productStorage + '/mosaics/temp/temp2/southeast_mosaic_ndvi.tif' + ndvi +  productStorage + "/mosaics/temp/temp2/temp3/southeast_mosaic_ndvi.tif"
 
 #Use this command to create a new initial mosaic
-cmd_ndvi = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + ndvi + productStorage + "/mosaics/temp/southeast_mosaic_ndvi.tif"
+#cmd_ndvi = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + ndvi + productStorage + "/mosaics/temp/southeast_mosaic_ndvi.tif"
 
 # print cmd_ndvi
 

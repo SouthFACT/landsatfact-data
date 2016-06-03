@@ -34,10 +34,10 @@ swir_cur = conn.cursor()
 
 #Selects the column that you want
 #From Inputs will be replaced with the appropriate view 
-#swir_cur.execute("SELECT * FROM vw_latest_quads_swir;")
+swir_cur.execute("select location from vw_tile_index_swir,vw_last_days_products where substr(vw_tile_index_swir.location::text, 24,47) =  substr(vw_last_days_products.product_id::text,1,47) and product_type = 'SWIR';")
 
 #Use this view to create an inital mosaic. You may need to change the # of days in teh view.
-swir_cur.execute("SELECT location FROM vw_initial_mosaic_swir order by max asc;")
+#swir_cur.execute("SELECT location FROM vw_initial_mosaic_swir order by max asc;")
 
 #Create empty string 
 swir = ' ' 
@@ -48,10 +48,12 @@ for data in swir_cur:
 	print data
 print swir
 
-#cmd_swir = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0  ' + productStorage + '/mosaics/southeast_mosaic_swir.tif' + swir + productStorage + "/mosaics/temp/southeast_mosaic_swir.tif"
+cmd_swir = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0  ' + productStorage + '/mosaics/southeast_mosaic_swir.tif' + swir + productStorage + "/mosaics/temp/southeast_mosaic_swir.tif"
+
+#cmd_swir = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0  ' + productStorage + '/mosaics/southeast_mosaic_swir.tif' + swir + productStorage + "/mosaics/temp/temp2/temp3/southeast_mosaic_swir.tif"
 
 #Use this command to create a new initial mosaic
-cmd_ndvi = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + ndvi + productStorage + "/mosaics/temp/southeast_mosaic_swir.tif"
+#cmd_swir = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 1000 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + swir + productStorage + "/mosaics/temp/southeast_mosaic_swir.tif"
 
 # print cmd_swir
 

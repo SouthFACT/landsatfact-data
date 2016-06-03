@@ -28,4 +28,7 @@ cd $path_projects/geoprocessing
 ./landsatFACT_LCV.py $path_projects/dataexchange/downloaded.txt
 
 cd $path_projects/msconfig
+./make_latest_mosaics.sh
+
+cd $path_projects/msconfig
 ./makeviewerconfig.py
