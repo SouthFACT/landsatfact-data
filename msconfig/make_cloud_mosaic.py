@@ -34,10 +34,10 @@ cloud_cur = conn.cursor()
 
 #Selects the column that you want
 #From Inputs will be replaced with the appropriate view 
-#cloud_cur.execute("SELECT * FROM vw_latest_quads_cloud;")
+cloud_cur.execute("select location from vw_tile_index_cloud,vw_last_days_products where substr(vw_tile_index_cloud.location::text, 30,47) =  substr(vw_last_days_products.product_id::text,1,47) and product_type = 'CLOUD';")
 
 #Use this view to create an inital mosaic. You may need to change the # of days in teh view.
-cloud_cur.execute("SELECT location FROM vw_initial_mosaic_cloud order by max asc;")
+#cloud_cur.execute("SELECT location FROM vw_initial_mosaic_cloud order by max asc;")
 
 #Create empty string 
 cloud = ' ' 
@@ -48,10 +48,12 @@ for data in cloud_cur:
 	print data
 print cloud
 
-#cmd_cloud = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0  ' + productStorage + '/mosaics/southeast_mosaic_cloud.tif' + cloud + productStorage + "/mosaics/temp/southeast_mosaic_cloud.tif"
+cmd_cloud = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0  ' + productStorage + '/mosaics/southeast_mosaic_cloud.tif' + cloud + productStorage + "/mosaics/temp/southeast_mosaic_cloud.tif"
+
+#cmd_cloud = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0  ' + productStorage + '/mosaics/temp/temp2/southeast_mosaic_cloud.tif' + cloud + productStorage + "/mosaics/temp/temp2/temp3/southeast_mosaic_cloud.tif"
 
 #Use this command to create a new initial mosaic
-cmd_gap = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + gap + productStorage + "/mosaics/temp/southeast_mosaic_cloud.tif"
+#cmd_cloud = r'gdalwarp -multi -wm 500 --config GDAL_CACHEMAX 500 -t_srs EPSG:4269 -co COMPRESS=LZW -co TILED=YES -co BIGTIFF=YES -srcnodata 0 -dstnodata 0 ' + cloud + productStorage + "/mosaics/temp/southeast_mosaic_cloud.tif"
 
 # print cmd_cloud
 

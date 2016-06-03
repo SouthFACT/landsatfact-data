@@ -24,18 +24,18 @@ source "$configfile"
 
 
 #run individual scripts concurrently that each run gdalwarp to create mosaics in temp
-# ./make_swir_mosaic.py&
-# ./make_ndvi_mosaic.py&
-# ./make_ndmi_mosaic.py&
-# ./make_cloud_mosaic.py&
-# ./make_gap_mosaic.py&
-# wait
+ ./make_swir_mosaic.py&
+ ./make_ndvi_mosaic.py&
+ ./make_ndmi_mosaic.py&
+ ./make_cloud_mosaic.py&
+ ./make_gap_mosaic.py&
+ wait
 
 #run script that creates overviews
-#./mosaic_overviews.sh
+./mosaic_overviews.sh
 
-#copy previous-day mosaics to archive
-#cp $path_products/mosaics/* $path_products/mosaics/archive
+#move previous-day mosaics to archive
+mv $path_products/mosaics/* $path_products/mosaics/archive
 
 #move new mosaics and overwrite previous mosaics
-#mv -f $path_products/mosaics/temp/* $path_products/mosaics
+mv -f $path_products/mosaics/temp/* $path_products/mosaics
