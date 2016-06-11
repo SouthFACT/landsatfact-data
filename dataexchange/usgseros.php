@@ -45,8 +45,11 @@ function getDatasetsForDownload($datasetName, $client, $apiKey, $lowerLeft, $upp
         $months = array();
 		// $sortOrder = 'DESC';
         $startingNumber = 1;
+        $includeUnknownCloudCover = True;
+        $minCloudCover = 0;
+        $maxCloudCover = 100;
         
-	$searchResults = $client->search($datasetName, $lowerLeft, $upperRight, $startDate, $endDate, $months,$additionalCritiera, $maxResults, $startingNumber, $sortOrder, $node, $apiKey);
+	$searchResults = $client->search($datasetName, $lowerLeft, $upperRight, $startDate, $endDate,$includeUnknownCloudCover, $minCloudCover, $maxCloudCover, $months,$additionalCritiera, $maxResults, $startingNumber, $sortOrder, $node, $apiKey);
         print_r( $lowerLeft);
         print_r($upperRight);
 
