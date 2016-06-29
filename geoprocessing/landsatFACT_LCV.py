@@ -44,6 +44,7 @@ with open(infile) as inf:
         m=re.search('L.*?\.tar\.gz', line)
         if m:
             runList.append(m.group())
+runList.sort(key=lambda tar: tar[9:16])
 os.chdir(tarStorage)
 
 for tar in runList:
