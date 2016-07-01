@@ -72,7 +72,33 @@ MAP
         KEYSIZE 30 20
     END
 
-	#Built Section------------------------------------------------------------
+	LAYER # 
+        NAME counties
+        PROJECTION
+            "init=epsg:4326"
+        END
+        CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from counties"
+        EXTENT           -124.733174 24.543940 -66.950005 49.384359 # US
+        STATUS           OFF
+        TYPE             POLYGON
+        DUMP             TRUE
+        HEADER           ./templates/layer_query_header.html
+        TEMPLATE         ./templates/layer_query_body.html
+        CLASS
+            STYLE
+                #COLOR        232 232 232
+                OUTLINECOLOR 50 50 50
+            END
+
+        END
+        METADATA
+            "wms_title"            "counties"
+            "wms_abstract"         "counties"
+            "gml_include_items"    "name"
+        END  # end METADATA
+    END # end Layer	
 	LAYER # 
         NAME states
         PROJECTION
@@ -164,7 +190,34 @@ MAP
         METADATA
             "wms_title"            "viewer_quads"
             "wms_abstract"         "viewer_quads"
-            "gml_include_items"    "oid,last_update,input1,input2"
+            "gml_include_items"    "quad_id,last_update,input1,input1_date,input2,input2_date"
+        END  # end METADATA
+    END # end Layer
+LAYER # 
+        NAME viewer_quad_history
+        PROJECTION
+            "init=epsg:4326"
+        END
+        CONNECTIONTYPE   postgis
+        CONNECTION       "%(POSTGIS_CONNECTION_STRING)s"
+        DATA             "geom from vw_viewer_quad_history"
+        EXTENT           -124.733174 24.543940 -66.950005 49.384359 # US
+        STATUS           OFF
+        TYPE             POLYGON
+        DUMP             TRUE
+        HEADER           ./templates/layer_query_header.html
+        TEMPLATE         ./templates/layer_query_body.html
+        CLASS
+            STYLE
+                #COLOR        232 232 232
+                OUTLINECOLOR 0 0 0 
+            END
+
+        END
+        METADATA
+            "wms_title"            "viewer_quad_history"
+            "wms_abstract"         "viewer_quad_history"
+            "gml_include_items"    "quad_id,update_history"
         END  # end METADATA
     END # end Layer	
 	LAYER # 
@@ -249,5 +302,5 @@ MAP
             "wms_abstract"         "scene_boundaries"
             "gml_include_items"    "all"
         END  # end METADATA
-    END # end Layer	
+    END # end Layer
 END

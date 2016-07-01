@@ -59,6 +59,17 @@
                      legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=states&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
                 <wmsLayer
                      selected="false"
+                     lid="AE"
+                     visible="true"
+                     url="%(SERVER_URL)s/vlayers?TRANSPARENT=true"
+                     srs="EPSG:3785"
+                     layers="counties"
+                     styles="default"
+                     identify="true"
+                     name="Counties"
+                     legend="%(SERVER_URL)s/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=counties&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
+				<wmsLayer
+                     selected="false"
                      lid="AB"
                      visible="true"
                      url="%(SERVER_URL)s/vlayers?TRANSPARENT=true"
