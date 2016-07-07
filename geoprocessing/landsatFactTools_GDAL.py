@@ -48,13 +48,15 @@ def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,qua
         os.chdir(LSF.path_projects + '/dataexchange')
         print os.getcwd()
         # download the scene data
-        subprocess.call(["php", "download_landsat_data_by_sceneid.php", diff_tar])
+        errcode=subprocess.call(["php", "download_landsat_data_by_sceneid.php", diff_tar])
+        if errcode:
+            raise RuntimeError(errcode)
         # now extract the downloaded file accordingly
         inNewSceneTar = os.path.join(tarStorage, diff_tar+".tar.gz")
         print inNewSceneTar
         err=localLib.validTar(inNewSceneTar)
         if err:
-            raise Exception(err)
+            raise RuntimeError(err)
         extractedPath = checkExisting(inNewSceneTar, tiffsStorage)
         #do the other pre-processing stuff
         os.chdir(in_dir)
@@ -76,7 +78,9 @@ def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,qua
         print os.getcwd()
     except Exception as e:
         print "Error in extractProductForCompare"
-        print str(e)
+        # make sure we've returned to the original directory before raising this exception
+        os.chdir(in_dir)
+        raise
 
 def readAndWriteQuadCC(quadPaths, extractedPath):
     quadCCDict={}
@@ -92,6 +96,7 @@ def readAndWriteQuadCC(quadPaths, extractedPath):
         pymsg = "PYTHON ERRORS:\nTraceback Info:\n" + tbinfo + "\nError Info:\n    " + \
         str(sys.exc_type)+ ": " + str(sys.exc_value) + "\n"
         #sendEmail(pymsg)
+        print pymsg
     finally:
         return quadCCDict
 

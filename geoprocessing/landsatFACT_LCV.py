@@ -20,7 +20,7 @@ def main():
 if __name__ == '__main__':
     main()
 
-import os, sys, re
+import os, sys, re, traceback
 import landsatFactTools_GDAL
 import rasterAnalysis_GDAL
 import numpy as np
@@ -219,7 +219,7 @@ for tar in runList:
     except BaseException as e:
         print "Error in LCV"
         print str(e)
-        landsatFactTools_GDAL.sendEmail(tar + ': ' + str(e))
+        landsatFactTools_GDAL.sendEmail(tar + ': ' + "\n".join([str(e), traceback.format_exc()]))
         exceptList.append(tar)
         continue
 
