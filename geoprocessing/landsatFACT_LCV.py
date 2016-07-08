@@ -49,13 +49,14 @@ os.chdir(tarStorage)
 
 for tar in runList:
     try:
-                # set tar file to analyze
+        # set tar file to analyze
         if not tar[-7:] == '.tar.gz':
             print "incorrect file type"
             raise RuntimeError("Not a tarball: "+tar)
         err=localLib.validTar(tar)
         if err:
-            raise RuntimeError(err)
+            os.remove(tar)
+            landsatFactTools_GDAL.retry(1, 4, landsatFactTools_GDAL.DownloadError,landsatFactTools_GDAL.downloadScene, tar[:-7])
         # all  paths are now imported from LSF.py  DM - 5/10/2016
         # =========================================================================
         # sets full path for the tarfile to be analyzed

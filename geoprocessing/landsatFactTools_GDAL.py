@@ -16,7 +16,7 @@ arising from, out of or in connection with the software or the use or
 other dealings in the software."""
 #-------------------------------------------------------------------------------
 
-import os, sys, tarfile, shutil, traceback, gzip, subprocess, stat, datetime
+import os, sys, tarfile, shutil, traceback, gzip, subprocess, stat, datetime, time
 from subprocess import PIPE
 import psycopg2
 from operator import itemgetter
@@ -39,27 +39,52 @@ except:
 
 
 reload(rasterAnalysis_GDAL)
+class DownloadError(RuntimeError):
+    pass
+
+def retry (retryCount, maxAllowedAttempts, exceptionClassSignalingRetry, fn, *args, **kwargs):
+    # this is basically https://wiki.python.org/moin/PythonDecoratorLibrary#Retry without the decorator or exponential backoff.
+    # retry fn(*args, **kwargs) up to maxAllowedAttempts times when receiving an exception of exceptionClassSignalingRetry.
+    # retryCount is the number of the current try.
+    # if there are no exceptions that can be retried or the retryCount has reached the maxAllowedAttempts, return the result
+    # of executing fn with *args and **kwargs to the caller.
+    if (retryCount < maxAllowedAttempts):
+        try:
+            (fn(*args, **kwargs))
+        except exceptionClassSignalingRetry:
+            time.sleep(5)
+            retry(retryCount+1, maxAllowedAttempts, exceptionClassSignalingRetry, fn, *args, **kwargs)
+    else:
+        fn(*args, **kwargs)
+
+def downloadScene(sceneID):
+    # call download_landsat_data_by_sceneid.php
+    in_dir = os.getcwd()
+    os.chdir(LSF.path_projects + '/dataexchange')
+    print os.getcwd()
+    # download the scene data
+    errcode=subprocess.call(["php", "download_landsat_data_by_sceneid.php", sceneID])
+    os.chdir(in_dir)
+    if errcode:
+        raise RuntimeError(errcode)
+
+    # check to make sure the download succeeded
+    inNewSceneTar = os.path.join(LSF.tarStorage, sceneID+".tar.gz")
+    print inNewSceneTar
+    err=localLib.validTar(inNewSceneTar)
+    if err:
+        os.remove(inNewSceneTar)
+        raise DownloadError(err)
 
 def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,quadsFolder,outRasterFolder):
     print "call to extractProductForCompare with: "+ diff_tar
     try:
-        # call download_landsat_data_by_sceneid.php
-        in_dir = os.getcwd()
-        os.chdir(LSF.path_projects + '/dataexchange')
-        print os.getcwd()
-        # download the scene data
-        errcode=subprocess.call(["php", "download_landsat_data_by_sceneid.php", diff_tar])
-        if errcode:
-            raise RuntimeError(errcode)
+        # call download_landsat_data_by_sceneid.php using the downloadScene function
+        # in the event of a DownloadError, retry downloadScene up to 5 times, with a 5 second delay btw calls
+        retry(1, 5, DownloadError,downloadScene, diff_tar)
         # now extract the downloaded file accordingly
-        inNewSceneTar = os.path.join(tarStorage, diff_tar+".tar.gz")
-        print inNewSceneTar
-        err=localLib.validTar(inNewSceneTar)
-        if err:
-            raise RuntimeError(err)
-        extractedPath = checkExisting(inNewSceneTar, tiffsStorage)
+        extractedPath = checkExisting(os.path.join(LSF.tarStorage, diff_tar+".tar.gz"), tiffsStorage)
         #do the other pre-processing stuff
-        os.chdir(in_dir)
         rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
         # get DN min number from each band in the scene and write to database
         dnminExists = checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
@@ -79,7 +104,6 @@ def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,qua
     except Exception as e:
         print "Error in extractProductForCompare"
         # make sure we've returned to the original directory before raising this exception
-        os.chdir(in_dir)
         raise
 
 def readAndWriteQuadCC(quadPaths, extractedPath):
