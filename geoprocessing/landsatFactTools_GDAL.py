@@ -274,7 +274,7 @@ def writeProductToDB(product_id,input1,input2,product_type,product_date,analysis
 	normaldate_truncated = datetime.date(normaldate.year, normaldate.month, normaldate.day)
 	statement = "INSERT INTO {0}(product_id, input1, input2, product_type, product_date, analysis_source) VALUES ('{1}', '{2}', '{3}', '{4}', '{5}','{6}');".format(tableName,product_id,input1,input2,product_type,str(normaldate_truncated), analysis_source)
 	print statement
-	postgresCommand(statement)
+	return postgresCommand(statement)
 
 def writeDNminToDB(dataDict,path):
     # writes DN min values to minimum_dn table in database
@@ -307,7 +307,7 @@ def writeQuadsCCtoDB(quadCCDict,path):
             .format(tableName,tableColumnList[1],quadCCDict[sceneID+'UL'],tableColumnList[2],quadCCDict[sceneID+'UR'],tableColumnList[3],\
                     quadCCDict[sceneID+'LL'],tableColumnList[4],quadCCDict[sceneID+'LR'],tableColumnList[0],sceneID)
         print update
-        postgresCommand(update)
+        return postgresCommand(update)
     except Exception as e:
         print "Exception occured in writeQuadsCCtoDB"
         print str(e)
@@ -376,6 +376,7 @@ def postgresCommand(command,values=None):
     cur = dbConn.cursor()
     try:
         cur.execute(command)
+        rowcount=cur.rowcount
     except:
         print "failed"
     try:
@@ -387,7 +388,6 @@ def postgresCommand(command,values=None):
     except:
         pass
 
-    rowcount=cur.rowcount
     # if commit failed, this does an implicit rollback
     cur.close()
     dbConn.close()
