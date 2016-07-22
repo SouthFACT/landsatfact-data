@@ -325,8 +325,10 @@ def cloudMask(date1, date2):
             FmaskReclassedArray1 = date1.reclassFmask()
             FmaskReclassedArray2 = date2.reclassFmask()
             FmaskReclassedArray = FmaskReclassedArray1 * FmaskReclassedArray2
+            # test Change Cloud and Gap mask values to 0, 1, 2
+            FmaskReclassedArrayPlus1 = FmaskReclassedArray + 1
             shpName=os.path.join(LSF.quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
-            LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(FmaskReclassedArray, date1.geoTiffAtts).write(outputTiffName, shpName)
+            LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(FmaskReclassedArrayPlus1, date1.geoTiffAtts).write(outputTiffName, shpName)
             landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'CLOUD',date2.sceneID[9:16], 'CR')
     # if the product's been created, should  be a row in products
     # note if the row is missing
