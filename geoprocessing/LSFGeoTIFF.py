@@ -204,6 +204,8 @@ class ReadWriteLSFGeoTIFF(ReadableLSFGeoTIFF):
         out,err = process.communicate()
         errcode = process.returncode
         print out, err
+        # will genereate exception if the file doesn't exist
+        os.remove(path+'.aux')
         # non-zero is error
         return errcode
 
