@@ -154,8 +154,12 @@ def quadScene(quadsceneID):
     sceneID=quadsceneID[:-2]
     if not(re.search(quadsceneID, ' '.join(glob.glob(os.path.join(LSF.projectStorage, '*'))))):
         # if the band files for quadsceneID in are not in projectStorage, get them from tiffsStorage, if possible, and clip them
-        if not (re.search(sceneID, ' '.join(glob.glob(os.path.join(LSF.tiffsStorage, '*'))))):
+        if not (re.search(sceneID, ' '.join(glob.glob(os.path.join(LSF.tiffsStorage, '*', '*.TIF*'))))):
             extractedTar(quadsceneID)
+        # below is redundant code if exractedTar() called tar(). 
+        # tar() calls extractProductForCompare() which includes the code below.
+        # TO DO refactor extractProductForCompare to not populate both extractedTars and project_data.
+        # the refactored code would fit in better with custom requests.
         quadPaths = rasterAnalysis_GDAL.cropToQuad(os.path.join(LSF.tiffsStorage, sceneID), LSF.projectStorage, LSF.quadsFolder)
         landsatFactTools_GDAL.writeQuadToDB(quadPaths)
         # get cloud cover percentage for each quad
