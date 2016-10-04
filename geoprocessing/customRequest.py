@@ -123,7 +123,7 @@ def extractedTar(quadsceneID):
     tar(sceneID)
     # if /lsfdata/extractedTars/sceneID doesn't contain the level 1 product band files, extract them from the tar file
     #
-    if not(re.search(sceneID, ' '.join(glob.glob(os.path.join(LSF.tiffsStorage, '*'))))):
+    if not(re.search(sceneID, ' '.join(glob.glob(os.path.join(LSF.tiffsStorage, '*', '*.TIF*'))))):
         # make sure that the existing tar is valid
         existingTar=os.path.join(LSF.tarStorage, sceneID+".tar.gz")
         err=localLib.validTar(existingTar)
