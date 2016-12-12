@@ -124,21 +124,25 @@
         </wmsGroup>
 		<wmsGroup gid="G03" label="SWIR Threshold Archive" name="LandsatFACT_SWIR_Threshold_Archive">
             <wmsSubgroup label="SWIR Threshold">
+				%(LSF_LAYERS_SWIR_THRESH_VRT)s
 				%(LSF_LAYERS_SWIR_THRESH)s
             </wmsSubgroup>
 		</wmsGroup>
 		<wmsGroup gid="G04" label="SWIR All Change Archive" name="LandsatFACT_SWIR_AllChange_Archive">
             <wmsSubgroup label="SWIR All Change">
+			    %(LSF_LAYERS_SWIR_ALLCHANGE_VRT)s
 				%(LSF_LAYERS_SWIR_ALLCHANGE)s
             </wmsSubgroup>
 		</wmsGroup>
 		<wmsGroup gid="G05" label="NDVI Archive" name="LandsatFACT_NDVI_Archive">
 			<wmsSubgroup label="NDVI">
+				%(LSF_LAYERS_NDVI_VRT)s
 				%(LSF_LAYERS_NDVI)s
             </wmsSubgroup>
 		</wmsGroup>              
 		<wmsGroup gid="G06" label="NDMI Archive" name="LandsatFACT_NDMI_Archive">
 			<wmsSubgroup label="NDMI">
+				%(LSF_LAYERS_NDMI_VRT)s
                 %(LSF_LAYERS_NDMI)s
 			</wmsSubgroup>
         </wmsGroup>
