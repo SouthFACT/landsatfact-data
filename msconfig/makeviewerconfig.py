@@ -258,6 +258,104 @@ def getCustomRequestLayers():
         layers['CRLAYERS'].append(customrequestWMSLayerTemplate.render(thing))   
     return layers
 
+def getSWIRAllChangeLayersVRT():
+    #automating the latest change layers
+    lsfDict = {
+       'SWIR' : []
+    }
+    date_and_type_cur = conn.cursor()
+    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_swir_for_vrt;")
+         
+    for date, type in date_and_type_cur:
+        date_string = date.isoformat()
+        date_no_hyphens = date.strftime('%Y%m%d')
+        print date_string
+        lid = 'ALC'+type+date_no_hyphens
+        lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-vrt-swir-allchange?TIME="+date_string+"&amp;TRANSPARENT=true"
+        lsfDict[type].append({'LAYER_LID' : lid,
+                        'LAYER_NAME'      : type+"-archive",
+                        'LAYER_TITLE'     : type+" "+date_string,
+                        'SERVER_URL'      : SERVER_URL,
+                        'LSF_URL'         : lsfURL
+            })
+
+    layers = { 
+        'SWIR' : []
+    }
+
+    for type in lsfDict.keys():
+        for thing in lsfDict[type]:
+            layers[type].append(lsfWMSLayerTemplate.render(thing))   
+    return layers
+
+def getSWIRThresholdLayersVRT():
+    #automating the latest change layers
+    lsfDict = {
+       'SWIR' : []
+    }
+    date_and_type_cur = conn.cursor()
+    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_swir_for_vrt;")
+         
+    for date, type in date_and_type_cur:
+        date_string = date.isoformat()
+        date_no_hyphens = date.strftime('%Y%m%d')
+        print date_string
+        lid = 'TSH'+type+date_no_hyphens
+        lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-vrt-swir-allchange?TIME="+date_string+"&amp;TRANSPARENT=true"
+        lsfDict[type].append({'LAYER_LID' : lid,
+                        'LAYER_NAME'      : type+"-archive",
+                        'LAYER_TITLE'     : type+" "+date_string,
+                        'SERVER_URL'      : SERVER_URL,
+                        'LSF_URL'         : lsfURL
+            })
+
+    layers = { 
+        'SWIR' : []
+    }
+
+    for type in lsfDict.keys():
+        for thing in lsfDict[type]:
+            layers[type].append(lsfWMSLayerTemplate.render(thing))   
+    return layers
+
+def getLSFLayersVRT():
+    #automating the latest change layers
+    lsfDict = {
+       'NDVI' : [],
+       'NDMI' : []
+    }
+    date_and_type_cur = conn.cursor()
+    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_archive_product_dates;")
+    #date_and_type_cur.execute("SELECT product_date_range, product_type FROM vw_archive_product_date_range;")
+         
+    for date, type in date_and_type_cur:
+        if type in lsfDict.keys():
+            #date_string = str(date)
+			#uncomment the following two lines to go back to using previous view
+            date_string = date.isoformat()
+            date_no_hyphens = date.strftime('%Y%m%d')
+            #date = date.join(data)
+            print date_string
+            lid = type+date_no_hyphens
+            #lid = type+date_string
+            lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-vrt-"+type+"?TIME="+date_string+"&amp;TRANSPARENT=true"
+            lsfDict[type].append({'LAYER_LID' : lid,
+                            'LAYER_NAME'      : type+"-archive",
+                            'LAYER_TITLE'     : type+" "+date_string,
+                            'SERVER_URL'      : SERVER_URL,
+                            'LSF_URL'         : lsfURL
+            })
+
+    layers = { 
+        'NDVI' : [],
+        'NDMI' : []
+    }
+        
+    for type in lsfDict.keys():
+        for thing in lsfDict[type]:
+            layers[type].append(lsfWMSLayerTemplate.render(thing))   
+    return layers
+
 template = Template("landsatfact_config.tpl.xml")
 
 if not os.path.exists("../html"):
@@ -267,16 +365,24 @@ lsfLayers = getLSFLayers()
 thresholdLayers = getSWIRThresholdLayers()
 allChangeLayers = getSWIRAllChangeLayers()
 customRequestLayers = getCustomRequestLayers()
+allChangeLayersVRT = getSWIRAllChangeLayersVRT()
+thresholdLayersVRT = getSWIRThresholdLayersVRT()
+lsfLayersVRT = getLSFLayersVRT()
+
 #End NRT 8 day & drought monitor automation-------------------------------------------------
 
 f = open("../html/landsatfact_config.xml", "w")
 f.write(template.render( {
-           'SERVER_URL'                         : SERVER_URL,
-           #'VIEWER_DEPLOY_DIR_URL'             : VIEWER_DEPLOY_DIR_URL,
-           'LSF_LAYERS_SWIR_THRESH'             : '\n'.join(thresholdLayers['SWIR']),
-		   'LSF_LAYERS_SWIR_ALLCHANGE'          : '\n'.join(allChangeLayers['SWIR']),
-           'LSF_LAYERS_NDVI'                    : '\n'.join(lsfLayers['NDVI']),
-           'LSF_LAYERS_NDMI'                    : '\n'.join(lsfLayers['NDMI']),
-		   'CR_LAYERS'                          : '\n'.join(customRequestLayers['CRLAYERS'])
+           'SERVER_URL'                             : SERVER_URL,
+           #'VIEWER_DEPLOY_DIR_URL'                 : VIEWER_DEPLOY_DIR_URL,
+           'LSF_LAYERS_SWIR_THRESH'                 : '\n'.join(thresholdLayers['SWIR']),
+		   'LSF_LAYERS_SWIR_ALLCHANGE'              : '\n'.join(allChangeLayers['SWIR']),
+           'LSF_LAYERS_NDVI'                        : '\n'.join(lsfLayers['NDVI']),
+           'LSF_LAYERS_NDMI'                        : '\n'.join(lsfLayers['NDMI']),
+		   'CR_LAYERS'                              : '\n'.join(customRequestLayers['CRLAYERS']),
+           'LSF_LAYERS_SWIR_ALLCHANGE_VRT'          : '\n'.join(allChangeLayersVRT['SWIR']),
+		   'LSF_LAYERS_SWIR_THRESH_VRT'             : '\n'.join(thresholdLayersVRT['SWIR']),
+		   'LSF_LAYERS_NDMI_VRT'                    : '\n'.join(lsfLayersVRT['NDMI']),
+		   'LSF_LAYERS_NDVI_VRT'                    : '\n'.join(lsfLayersVRT['NDVI']),
            }))
 f.close()

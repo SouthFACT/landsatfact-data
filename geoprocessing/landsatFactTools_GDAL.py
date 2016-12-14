@@ -223,16 +223,18 @@ def gaper(date1, date2, outGAPfolder, baseName, quadsFolder,wrs2Name,analysis_so
         gapMaskList.append(gapMask2)
     if len(gapMaskList) == 2:
         gapMask = gapMask1[0] * gapMask2[0]
+        gapMaskPlus1 = gapMask + 1
         outputTiffName=os.path.join(outGAPfolder,baseName + '_GapMask.tif')
         shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
-        LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(gapMask, gapMask1[1]).write(outputTiffName, shpName)
+        LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(gapMaskPlus1, gapMask1[1]).write(outputTiffName, shpName)
         print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+analysis_source
         writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16], analysis_source)
     elif len(gapMaskList) == 1:
         gapMask = gapMaskList[0]
+        gapMaskPlus1 = gapMask[0] + 1
         outputTiffName=os.path.join(outGAPfolder,baseName + '_GapMask.tif')
         shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
-        LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(gapMask[0],gapMask[1]).write(outputTiffName, shpName)
+        LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(gapMaskPlus1,gapMask[1]).write(outputTiffName, shpName)
         print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+ analysis_source
         writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16], analysis_source)
 

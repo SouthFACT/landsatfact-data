@@ -55,3 +55,7 @@ msconfig/lsf-cr-ndmi.map
 msconfig/lsf-cr-ndvi.map
 msconfig/lsf-cr-swir-allchange.map
 msconfig/lsf-cr-swir-threshold.map
+msconfig/lsf-vrt-ndmi.map
+msconfig/lsf-vrt-ndvi.map
+msconfig/lsf-vrt-swir-allchange.map
+msconfig/lsf-vrt-swir-threshold.map
