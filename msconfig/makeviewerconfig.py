@@ -301,7 +301,7 @@ def getSWIRThresholdLayersVRT():
         date_no_hyphens = date.strftime('%Y%m%d')
         print date_string
         lid = 'TSH'+type+date_no_hyphens
-        lsfURL = SERVER_URL+"/lsf-vrt-swir-allchange?TIME="+date_string+"&amp;TRANSPARENT=true"
+        lsfURL = SERVER_URL+"/lsf-vrt-swir-threshold?TIME="+date_string+"&amp;TRANSPARENT=true"
         lsfDict[type].append({'LAYER_LID' : lid,
                         'LAYER_NAME'      : type+"-archive",
                         'LAYER_TITLE'     : type+" "+date_string,
