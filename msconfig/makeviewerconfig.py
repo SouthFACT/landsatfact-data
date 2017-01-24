@@ -123,7 +123,7 @@ def getLSFLayers():
             print date_string
             lid = type+date_no_hyphens
             #lid = type+date_string
-            lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-"+type+"?TIME="+date_string+"&amp;TRANSPARENT=true"
+            lsfURL = SERVER_URL+"/lsf-"+type+"?TIME="+date_string+"&amp;TRANSPARENT=true"
             lsfDict[type].append({'LAYER_LID' : lid,
                             'LAYER_NAME'      : type+"-archive",
                             'LAYER_TITLE'     : type+" "+date_string,
@@ -160,7 +160,7 @@ def getSWIRThresholdLayers():
             print date_string
             lid = 'TSH'+type+date_no_hyphens
             #lid = 'TSH'+type+date_string
-            lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-swir-threshold?TIME="+date_string+"&amp;TRANSPARENT=true"
+            lsfURL = SERVER_URL+"/lsf-swir-threshold?TIME="+date_string+"&amp;TRANSPARENT=true"
             lsfDict[type].append({'LAYER_LID' : lid,
                             'LAYER_NAME'      : type+"-archive",
                             'LAYER_TITLE'     : type+" "+date_string,
@@ -196,7 +196,7 @@ def getSWIRAllChangeLayers():
             print date_string
             lid = 'ALC'+type+date_no_hyphens
             #lid = 'ALC'+type+date_string
-            lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-swir-allchange?TIME="+date_string+"&amp;TRANSPARENT=true"
+            lsfURL = SERVER_URL+"/lsf-swir-allchange?TIME="+date_string+"&amp;TRANSPARENT=true"
             lsfDict[type].append({'LAYER_LID' : lid,
                             'LAYER_NAME'      : type+"-archive",
                             'LAYER_TITLE'     : type+" "+date_string,
@@ -226,10 +226,10 @@ def getCustomRequestLayers():
             print request_id
             lid = request_id
             aoi_id = str(aoi)
-            ndmiURL = "http://landsatfact-data-dev.nemac.org/lsf-cr-ndmi?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
-            ndviURL = "http://landsatfact-data-dev.nemac.org/lsf-cr-ndvi?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
-            swirthURL = "http://landsatfact-data-dev.nemac.org/lsf-cr-swir-threshold?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
-            swiracURL = "http://landsatfact-data-dev.nemac.org/lsf-cr-swir-allchange?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
+            ndmiURL = SERVER_URL+"/lsf-cr-ndmi?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
+            ndviURL = SERVER_URL+"/lsf-cr-ndvi?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
+            swirthURL = SERVER_URL+"/lsf-cr-swir-threshold?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
+            swiracURL = SERVER_URL+"/lsf-cr-swir-allchange?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
             lsfDict['CRLAYERS'].append({'USER_AOI' : lid,
                             'NDVI_LAYER_LID' : "NDVI"+lid,
                             'NDMI_LAYER_LID' : "NDMI"+lid,
@@ -271,7 +271,7 @@ def getSWIRAllChangeLayersVRT():
         date_no_hyphens = date.strftime('%Y%m%d')
         print date_string
         lid = 'ALC'+type+date_no_hyphens
-        lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-vrt-swir-allchange?TIME="+date_string+"&amp;TRANSPARENT=true"
+        lsfURL = SERVER_URL+"/lsf-vrt-swir-allchange?TIME="+date_string+"&amp;TRANSPARENT=true"
         lsfDict[type].append({'LAYER_LID' : lid,
                         'LAYER_NAME'      : type+"-archive",
                         'LAYER_TITLE'     : type+" "+date_string,
@@ -301,7 +301,7 @@ def getSWIRThresholdLayersVRT():
         date_no_hyphens = date.strftime('%Y%m%d')
         print date_string
         lid = 'TSH'+type+date_no_hyphens
-        lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-vrt-swir-allchange?TIME="+date_string+"&amp;TRANSPARENT=true"
+        lsfURL = SERVER_URL+"/lsf-vrt-swir-allchange?TIME="+date_string+"&amp;TRANSPARENT=true"
         lsfDict[type].append({'LAYER_LID' : lid,
                         'LAYER_NAME'      : type+"-archive",
                         'LAYER_TITLE'     : type+" "+date_string,
@@ -338,7 +338,7 @@ def getLSFLayersVRT():
             print date_string
             lid = type+date_no_hyphens
             #lid = type+date_string
-            lsfURL = "http://landsatfact-data-dev.nemac.org/lsf-vrt-"+type+"?TIME="+date_string+"&amp;TRANSPARENT=true"
+            lsfURL = SERVER_URL+"/lsf-vrt-"+type+"?TIME="+date_string+"&amp;TRANSPARENT=true"
             lsfDict[type].append({'LAYER_LID' : lid,
                             'LAYER_NAME'      : type+"-archive",
                             'LAYER_TITLE'     : type+" "+date_string,
