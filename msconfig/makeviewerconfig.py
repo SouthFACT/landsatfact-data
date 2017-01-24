@@ -227,7 +227,7 @@ def getCustomRequestLayers():
             lid = request_id
             aoi_id = str(aoi)
             ndmiURL = SERVER_URL+"/lsf-cr-ndmi?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
-            ndviURL = SERVER_URL+"lsf-cr-ndvi?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
+            ndviURL = SERVER_URL+"/lsf-cr-ndvi?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
             swirthURL = SERVER_URL+"/lsf-cr-swir-threshold?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
             swiracURL = SERVER_URL+"/lsf-cr-swir-allchange?AOI_ID="+aoi_id+"&amp;TRANSPARENT=true"
             lsfDict['CRLAYERS'].append({'USER_AOI' : lid,
