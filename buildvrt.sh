@@ -17,6 +17,7 @@ fi
 #  now source it, either the original or the filtered variant
 source "$configfile"
 
+cd $path_projects
 ./make_vrt.py
 
 cd $path_products/gdal_vrt_files/ndvi
