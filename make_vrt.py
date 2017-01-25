@@ -5,10 +5,10 @@ import sys
 import os
 from subprocess import call, Popen
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'geoprocessing'))
-from LSF import *
+#sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'geoprocessing'))
+#from LSF import *
 
-sys.path.append("../var")
+sys.path.append("./var")
 try:
     from Config import *
     from datetime import timedelta
