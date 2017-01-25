@@ -325,7 +325,7 @@ def getLSFLayersVRT():
        'NDMI' : []
     }
     date_and_type_cur = conn.cursor()
-    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_archive_product_dates;")
+    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_for_vrt;")
     #date_and_type_cur.execute("SELECT product_date_range, product_type FROM vw_archive_product_date_range;")
          
     for date, type in date_and_type_cur:
