@@ -55,11 +55,11 @@ Header set Access-Control-Allow-Origin "*"
     Allow from all
     SetHandler cgi-script
 </Files>
-<Files "html/lsf-vrt-swir-allchange">
+<Files "lsf-vrt-swir-allchange">
     Allow from all
     SetHandler cgi-script
 </Files>
-<Files "html/lsf-vrt-swir-threshold">
+<Files "lsf-vrt-swir-threshold">
     Allow from all
     SetHandler cgi-script
 </Files>
