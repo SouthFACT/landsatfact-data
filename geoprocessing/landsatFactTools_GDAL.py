@@ -58,12 +58,12 @@ def retry (retryCount, maxAllowedAttempts, exceptionClassSignalingRetry, fn, *ar
         fn(*args, **kwargs)
 
 def downloadScene(sceneID):
-    # call download_landsat_data_by_sceneid.php
+    # call download_landsat_data.js
     in_dir = os.getcwd()
-    os.chdir(LSF.path_projects + '/dataexchange')
+    os.chdir(LSF.api_project_base)
     print os.getcwd()
     # download the scene data
-    errcode=subprocess.call(["php", "download_landsat_data_by_sceneid.php", sceneID])
+    errcode=subprocess.call(["node", "download_landsat_data.js", sceneID])
     os.chdir(in_dir)
     if errcode:
         raise RuntimeError(errcode)
@@ -76,6 +76,45 @@ def downloadScene(sceneID):
         os.remove(inNewSceneTar)
         raise DownloadError(err)
 
+def writeDownloadSuccesToDB(sceneID):
+    try:
+        # writes the success status to the downloaded column to the landsat_metadata table
+        #    downloaded == YES indicates data was sucessfully writting to the metadata table.
+        tableName = "landsat_metadata"
+        tableColumnList = ["downloaded"]
+        update = "UPDATE {0} SET {1} = {2}  WHERE {1} = '{4}';"\
+            .format(tableName,tableColumnList[0],"YES",scene_id)
+        print update
+        return postgresCommand(update)
+    except Exception as e:
+        print "Exception occured in writeDownloadSuccesToDB"
+        print str(e) 
+
+def writeProcessStatusToDB(quad_id,success):
+    try:
+        # writes process status to the landsat_metadata table
+        #  process === FAILED if something failed.
+        #  process === yes if finished sucessfully
+        #  since data is procesed by quad we will need to make sure that when on quad fails that we don't
+        #    overwrite that failure with subsequent quads success.  
+        #  marking this will ensure we can comeback later and proccess failed quads in another run of LCV
+        #get scene_id from quad_id
+        scene_id = quad_id[:-2]
+        tableName = "landsat_metadata"
+        tableColumnList = ["processed"]
+        if(success == "YES"):
+          update = "UPDATE {0} SET {1} = {2}  WHERE {3} = '{5}' AND {1} != '{6}';"\
+              .format(tableName,tableColumnList[0],success,"scene_id",scene_id,"FAILED")
+        else:
+          update = "UPDATE {0} SET {1} = {2}  WHERE {3} = '{5}';"\
+              .format(tableName,tableColumnList[1],success,"scene_id",scene_id)
+
+        print update
+        return postgresCommand(update)
+    except Exception as e:
+        print "Exception occured in writeDownloadSuccesToDB"
+        print str(e)
+
 def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,quadsFolder,outRasterFolder):
     print "call to extractProductForCompare with: "+ diff_tar
     try:
@@ -85,7 +124,15 @@ def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,qua
         # now extract the downloaded file accordingly
         extractedPath = checkExisting(os.path.join(LSF.tarStorage, diff_tar+".tar.gz"), tiffsStorage)
         #do the other pre-processing stuff
-        rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
+        runFmaskBool =  rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
+        
+         #try and recover from failed FMASK due to memory isues
+        if (runFmaskBool == True):
+          runFmaskBool =  rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
+          #only try one time this should cover most failures
+          if (runFmaskBool == False):
+            raise RuntimeError("There was an issue with FMASK on: "+extractedPath)
+
         # get DN min number from each band in the scene and write to database
         dnminExists = checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
         if dnminExists == False:

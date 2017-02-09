@@ -70,6 +70,11 @@ for tar in runList:
         # rasterAnalysis_GDAL.runFmask(extractedPath,Fmaskexe) #BM's original
         print extractedPath
         runFmaskBool = rasterAnalysis_GDAL.runFmask(extractedPath,fmaskShellCall)
+	
+	#sometimes FMASK fails.  This is ussually due to memory issues. to overcome this we will try a second time
+	if (runFmaskBool == False):
+          runFmaskBool = rasterAnalysis_GDAL.runFmask(extractedPath,fmaskShellCall)
+ 
         #print "Fmask Boolean: "+runFmaskBool
         if (runFmaskBool == True):
             # get DN min number from each band in the scene and write to database
@@ -214,8 +219,11 @@ for tar in runList:
                     LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(swirPercentChange, date1.geoTiffAtts).write(outputTiffName, shpName)
                     print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'SWIR'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+'LCV'
                     landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'SWIR',date2.sceneID[9:16], 'LCV')
+                    #landsatFactTools_GDAL.writeProcessStatusToDB(date1.sceneID,"YES")
+                    #landsatFactTools_GDAL.writeProcessStatusToDB(date2.sceneID,"YES")
                     swirPercentChange = None
         else:
+            #landsatFactTools_GDAL.writeProcessStatusToDB(extractedPath[:-1],"FAILED")
             raise RuntimeError("There was an issue with FMASK on: "+extractedPath)
        # =========================================================================
     except BaseException as e:
