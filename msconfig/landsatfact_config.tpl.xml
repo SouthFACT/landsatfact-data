@@ -45,7 +45,7 @@
     </mapviews>
     <wmsLayers>
         <wmsGroup gid="G01" label="Base Layers" name="Base_Layers">
-            <wmsSubgroup label="Base Layers">
+            <wmsSubgroup label="Base Layers" sid="G01_1">
                 <wmsLayer
                      selected="true"
                      lid="AA"
@@ -115,33 +115,78 @@
             </wmsSubgroup>
         </wmsGroup>
         <wmsGroup gid="G02" label="Latest Change" name="LandsatFACT" selected="true">
-			<wmsSubgroup label="Latest Change">
-                <wmsLayer identify="true" layers="southeast-swir-current" legend="%(SERVER_URL)s/lsf-swir-threshold?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-swir-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCA" name="SWIR Differencing (Threshold)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-swir-threshold?TRANSPARENT=true" visible="false" mask="true"/>
-				<wmsLayer identify="true" layers="southeast-swir-current" legend="%(SERVER_URL)s/lsf-swir-allchange?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-swir-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCB" name="SWIR Differencing (All Change)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-swir-allchange?TRANSPARENT=true" visible="false" mask="true"/>
-				<wmsLayer selected="true" identify="true" layers="southeast-ndvi-current" legend="%(SERVER_URL)s/lsf-NDVI?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndvi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCC" name="NDVI" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-NDVI?TRANSPARENT=true" visible="false" mask="true"/>
-				<wmsLayer identify="true" layers="southeast-ndmi-current" legend="%(SERVER_URL)s/lsf-NDMI?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndmi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCD" name="NDMI" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-NDMI?TRANSPARENT=true" visible="false" mask="true"/>
+			<wmsSubgroup label="Latest Change" sid="G02_1"
+                description="The latest change products are updated every day with the most recent data available that meets the minimum cloud cover criteria (no more than 25% cloud cover in a WRS-2 Landsat Scene).">
+                <wmsLayer identify="true" layers="southeast-swir-current"
+                    description="Indicator of drastic vegetation change, showing change greater than 60%. The Shortwave Infrared (SWIR) Band Differencing (Band 7 provided by Landsat satellites) method represents the most simplistic of the three current methods used on the LandsatFACT project.
+                    &lt;br/&gt; &lt;br/&gt;
+                    This method is intended to focus on vegetation moisture while minimizing interference of atmosphere and light cloud cover. State forestry agency personnel have found this method to be a simple and quick approach to identify more drastic vegetation changes on the landscape, particularly forest harvesting.
+                    &lt;br/&gt; &lt;br/&gt;
+                    &lt;a href='http://www.landsatfact.com/about/project_methods' target='blank'&gt;Read More&lt;/a&gt;"
+                    legend="%(SERVER_URL)s/lsf-swir-threshold?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-swir-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCA" name="SWIR Differencing (Threshold)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-swir-threshold?TRANSPARENT=true" visible="false" mask="true"/>
+				<wmsLayer identify="true" layers="southeast-swir-current"
+                    description="Indicator of drastic vegetation change, showing all change. The Shortwave Infrared (SWIR) Band Differencing (Band 7 provided by Landsat satellites) method represents the most simplistic of the three current methods used on the LandsatFACT project.
+                    &lt;br/&gt; &lt;br/&gt;
+                    This method is intended to focus on vegetation moisture while minimizing interference of atmosphere and light cloud cover. State forestry agency personnel have found this method to be a simple and quick approach to identify more drastic vegetation changes on the landscape, particularly forest harvesting.
+                    &lt;br/&gt; &lt;br/&gt;
+                    &lt;a href='http://www.landsatfact.com/about/project_methods' target='blank'&gt;Read More&lt;/a&gt;"
+                    legend="%(SERVER_URL)s/lsf-swir-allchange?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-swir-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCB" name="SWIR Differencing (All Change)" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-swir-allchange?TRANSPARENT=true" visible="false" mask="true"/>
+				<wmsLayer selected="true" identify="true" layers="southeast-ndvi-current" 
+                    description="The Normalized Differential Vegetation Index (NDVI) method is a commonly used vegetation index, generically referred to as a measure of vegetation &quot;greenness.&quot;
+                    &lt;br/&gt; &lt;br/&gt;
+                    In general, this method relies on the characteristics of healthy vegetation to absorb red light (for energy / photosynthesis) and reflect near-infrared light. As a result, evaluating the change in NDVI from one image to another roughly equates to evaluating the change in vegetation health / productivity.
+                    &lt;br/&gt; &lt;br/&gt;
+                    &lt;a href='http://www.landsatfact.com/about/project_methods' target='blank'&gt;Read More&lt;/a&gt;"
+                    legend="%(SERVER_URL)s/lsf-NDVI?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndvi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCC" name="NDVI" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-NDVI?TRANSPARENT=true" visible="false" mask="true"/>
+				<wmsLayer identify="true" layers="southeast-ndmi-current"
+                    description="The Normalized Differential Moisture Index (NDMI) method is another relatively common Vegetation Index and is generically referred to as a measure of vegetation moisture.
+                    &lt;br/&gt; &lt;br/&gt;
+                    NDMI is more frequently being used in drought monitoring but is also capable of detecting more subtle changes in vegetation moisture conditions. Researchers have also evaluated the use of NDMI to determine fuel moistures for wildfire hazard assessments.
+                    &lt;br/&gt; &lt;br/&gt;
+                    &lt;a href='http://www.landsatfact.com/about/project_methods' target='blank'&gt;Read More&lt;/a&gt;"
+                    legend="%(SERVER_URL)s/lsf-NDMI?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=southeast-ndmi-current&amp;VERSION=1.1.1&amp;FORMAT=image/png" lid="LCD" name="NDMI" srs="EPSG:3785" styles="default" url="http://landsatfact-data-dev.nemac.org/lsf-NDMI?TRANSPARENT=true" visible="false" mask="true"/>
             </wmsSubgroup>
         </wmsGroup>
 		<wmsGroup gid="G03" label="SWIR Threshold Archive" name="LandsatFACT_SWIR_Threshold_Archive">
-            <wmsSubgroup label="SWIR Threshold">
+            <wmsSubgroup label="SWIR Threshold" sid="G03_1"
+                description="Indicator of drastic vegetation change, showing change greater than 60%. The Shortwave Infrared (SWIR) Band Differencing (Band 7 provided by Landsat satellites) method represents the most simplistic of the three current methods used on the LandsatFACT project.
+                &lt;br/&gt; &lt;br/&gt;
+                This method is intended to focus on vegetation moisture while minimizing interference of atmosphere and light cloud cover. State forestry agency personnel have found this method to be a simple and quick approach to identify more drastic vegetation changes on the landscape, particularly forest harvesting.
+                &lt;br/&gt; &lt;br/&gt;
+                &lt;a href='http://www.landsatfact.com/about/project_methods' target='blank'&gt;Read More&lt;/a&gt;">
 				%(LSF_LAYERS_SWIR_THRESH_VRT)s
 				%(LSF_LAYERS_SWIR_THRESH)s
             </wmsSubgroup>
 		</wmsGroup>
 		<wmsGroup gid="G04" label="SWIR All Change Archive" name="LandsatFACT_SWIR_AllChange_Archive">
-            <wmsSubgroup label="SWIR All Change">
+            <wmsSubgroup label="SWIR All Change" sid="G04_1"
+                description="Indicator of drastic vegetation change, showing all change. The Shortwave Infrared (SWIR) Band Differencing (Band 7 provided by Landsat satellites) method represents the most simplistic of the three current methods used on the LandsatFACT project.
+                &lt;br/&gt; &lt;br/&gt;
+                This method is intended to focus on vegetation moisture while minimizing interference of atmosphere and light cloud cover. State forestry agency personnel have found this method to be a simple and quick approach to identify more drastic vegetation changes on the landscape, particularly forest harvesting.
+                &lt;br/&gt; &lt;br/&gt;
+                &lt;a href='http://www.landsatfact.com/about/project_methods' target='blank'&gt;Read More&lt;/a&gt;">
 			    %(LSF_LAYERS_SWIR_ALLCHANGE_VRT)s
 				%(LSF_LAYERS_SWIR_ALLCHANGE)s
             </wmsSubgroup>
 		</wmsGroup>
 		<wmsGroup gid="G05" label="NDVI Archive" name="LandsatFACT_NDVI_Archive">
-			<wmsSubgroup label="NDVI">
+			<wmsSubgroup label="NDVI" sid="G05_1"
+                description="The Normalized Differential Vegetation Index (NDVI) method is a commonly used vegetation index, generically referred to as a measure of vegetation &quot;greenness.&quot;
+                &lt;br/&gt; &lt;br/&gt;
+                In general, this method relies on the characteristics of healthy vegetation to absorb red light (for energy / photosynthesis) and reflect near-infrared light. As a result, evaluating the change in NDVI from one image to another roughly equates to evaluating the change in vegetation health / productivity.
+                &lt;br/&gt; &lt;br/&gt;
+                &lt;a href='http://www.landsatfact.com/about/project_methods' target='blank'&gt;Read More&lt;/a&gt;">
 				%(LSF_LAYERS_NDVI_VRT)s
 				%(LSF_LAYERS_NDVI)s
             </wmsSubgroup>
 		</wmsGroup>              
 		<wmsGroup gid="G06" label="NDMI Archive" name="LandsatFACT_NDMI_Archive">
-			<wmsSubgroup label="NDMI">
+			<wmsSubgroup label="NDMI" sid="G06_1"
+                description="The Normalized Differential Moisture Index (NDMI) method is another relatively common Vegetation Index and is generically referred to as a measure of vegetation moisture.
+                &lt;br/&gt; &lt;br/&gt;
+                NDMI is more frequently being used in drought monitoring but is also capable of detecting more subtle changes in vegetation moisture conditions. Researchers have also evaluated the use of NDMI to determine fuel moistures for wildfire hazard assessments.
+                &lt;br/&gt; &lt;br/&gt;
+                &lt;a href='http://www.landsatfact.com/about/project_methods' target='blank'&gt;Read More&lt;/a&gt;">
 				%(LSF_LAYERS_NDMI_VRT)s
                 %(LSF_LAYERS_NDMI)s
 			</wmsSubgroup>
