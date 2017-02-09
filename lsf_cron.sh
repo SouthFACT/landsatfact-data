@@ -19,9 +19,6 @@ source "$configfile"
 
 #going to landsatfact-data production repository and running scripts there
 cd $path_projects/dataexchange
-php update_landsat_metadata.php
-
-php download_landsat_data.php
 
 cd $path_projects/geoprocessing
 #pass the file containing the list of downloaded tars to LCV

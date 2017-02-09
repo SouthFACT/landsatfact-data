@@ -219,7 +219,7 @@ def getCustomRequestLayers():
 	   'CRLAYERS' : []
     }
     request_id_and_aoi_cur = conn.cursor()
-    request_id_and_aoi_cur.execute("SELECT DISTINCT request_id, aoi FROM vw_custom_requests_for_viewer WHERE custom_request_date > ('now'::text::date - '45 days'::interval day) ORDER BY request_id;")
+    request_id_and_aoi_cur.execute("SELECT DISTINCT request_id, aoi FROM vw_custom_requests_for_viewer ORDER BY request_id;")
          
     for request_id, aoi in request_id_and_aoi_cur:
         #if type in lsfDict.keys():
