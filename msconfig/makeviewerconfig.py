@@ -219,7 +219,7 @@ def getCustomRequestLayers():
 	   'CRLAYERS' : []
     }
     request_id_and_aoi_cur = conn.cursor()
-    request_id_and_aoi_cur.execute("SELECT DISTINCT request_id, aoi FROM vw_custom_requests_for_viewer ORDER BY request_id;")
+    request_id_and_aoi_cur.execute("SELECT DISTINCT request_id, aoi FROM vw_custom_requests_for_viewer WHERE custom_request_date > ('now'::text::date - '45 days'::interval day) ORDER BY request_id;")
          
     for request_id, aoi in request_id_and_aoi_cur:
         #if type in lsfDict.keys():
@@ -264,11 +264,11 @@ def getSWIRAllChangeLayersVRT():
        'SWIR' : []
     }
     date_and_type_cur = conn.cursor()
-    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_swir_for_vrt;")
+    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_swir_for_vrt where product_date NOT LIKE 'cr_%';")
          
     for date, type in date_and_type_cur:
-        date_string = date.isoformat()
-        date_no_hyphens = date.strftime('%Y%m%d')
+        date_string = date
+        date_no_hyphens = date_string.replace("-","")
         print date_string
         lid = 'ALC'+type+date_no_hyphens
         lsfURL = SERVER_URL+"/lsf-vrt-swir-allchange?TIME="+date_string+"&amp;TRANSPARENT=true"
@@ -294,11 +294,11 @@ def getSWIRThresholdLayersVRT():
        'SWIR' : []
     }
     date_and_type_cur = conn.cursor()
-    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_swir_for_vrt;")
+    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_swir_for_vrt where product_date NOT LIKE 'cr_%';")
          
     for date, type in date_and_type_cur:
-        date_string = date.isoformat()
-        date_no_hyphens = date.strftime('%Y%m%d')
+        date_string = date
+        date_no_hyphens = date_string.replace("-","")
         print date_string
         lid = 'TSH'+type+date_no_hyphens
         lsfURL = SERVER_URL+"/lsf-vrt-swir-threshold?TIME="+date_string+"&amp;TRANSPARENT=true"
@@ -356,6 +356,66 @@ def getLSFLayersVRT():
             layers[type].append(lsfWMSLayerTemplate.render(thing))   
     return layers
 
+def getNDVILayersVRT():
+    #automating the latest change layers
+    lsfDict = {
+       'NDVI' : []
+    }
+    date_and_type_cur = conn.cursor()
+    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_ndvi_for_vrt where product_date NOT LIKE 'cr_%';")
+         
+    for date, type in date_and_type_cur:
+        date_string = date
+        date_no_hyphens = date_string.replace("-","")
+        print date_string
+        lid = 'NDVI'+date_no_hyphens
+        lsfURL = SERVER_URL+"/lsf-vrt-"+type+"?TIME="+date_string+"&amp;TRANSPARENT=true"
+        lsfDict[type].append({'LAYER_LID' : lid,
+                        'LAYER_NAME'      : type+"-archive",
+                        'LAYER_TITLE'     : type+" "+date_string,
+                        'SERVER_URL'      : SERVER_URL,
+                        'LSF_URL'         : lsfURL
+            })
+
+    layers = { 
+        'NDVI' : []
+    }
+
+    for type in lsfDict.keys():
+        for thing in lsfDict[type]:
+            layers[type].append(lsfWMSLayerTemplate.render(thing))   
+    return layers
+
+def getNDMILayersVRT():
+    #automating the latest change layers
+    lsfDict = {
+       'NDMI' : []
+    }
+    date_and_type_cur = conn.cursor()
+    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_ndmi_for_vrt where product_date NOT LIKE 'cr_%';")
+         
+    for date, type in date_and_type_cur:
+        date_string = date
+        date_no_hyphens = date_string.replace("-","")
+        print date_string
+        lid = 'NDMI'+date_no_hyphens
+        lsfURL = SERVER_URL+"/lsf-vrt-"+type+"?TIME="+date_string+"&amp;TRANSPARENT=true"
+        lsfDict[type].append({'LAYER_LID' : lid,
+                        'LAYER_NAME'      : type+"-archive",
+                        'LAYER_TITLE'     : type+" "+date_string,
+                        'SERVER_URL'      : SERVER_URL,
+                        'LSF_URL'         : lsfURL
+            })
+
+    layers = { 
+        'NDMI' : []
+    }
+
+    for type in lsfDict.keys():
+        for thing in lsfDict[type]:
+            layers[type].append(lsfWMSLayerTemplate.render(thing))   
+    return layers
+
 template = Template("landsatfact_config.tpl.xml")
 
 if not os.path.exists("../html"):
@@ -367,7 +427,8 @@ allChangeLayers = getSWIRAllChangeLayers()
 customRequestLayers = getCustomRequestLayers()
 allChangeLayersVRT = getSWIRAllChangeLayersVRT()
 thresholdLayersVRT = getSWIRThresholdLayersVRT()
-lsfLayersVRT = getLSFLayersVRT()
+ndviLayersVRT = getNDVILayersVRT()
+ndmiLayersVRT = getNDMILayersVRT()
 
 #End NRT 8 day & drought monitor automation-------------------------------------------------
 
@@ -382,7 +443,7 @@ f.write(template.render( {
 		   'CR_LAYERS'                              : '\n'.join(customRequestLayers['CRLAYERS']),
            'LSF_LAYERS_SWIR_ALLCHANGE_VRT'          : '\n'.join(allChangeLayersVRT['SWIR']),
 		   'LSF_LAYERS_SWIR_THRESH_VRT'             : '\n'.join(thresholdLayersVRT['SWIR']),
-		   'LSF_LAYERS_NDMI_VRT'                    : '\n'.join(lsfLayersVRT['NDMI']),
-		   'LSF_LAYERS_NDVI_VRT'                    : '\n'.join(lsfLayersVRT['NDVI']),
+		   'LSF_LAYERS_NDVI_VRT'                    : '\n'.join(ndviLayersVRT['NDVI']),
+		   'LSF_LAYERS_NDMI_VRT'                    : '\n'.join(ndmiLayersVRT['NDMI']),
            }))
 f.close()

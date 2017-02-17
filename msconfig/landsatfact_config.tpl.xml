@@ -116,9 +116,9 @@
         </wmsGroup>
         <wmsGroup gid="G02" label="Latest Change" name="LandsatFACT" selected="true">
 			<wmsSubgroup label="Latest Change" sid="G02_1"
-                description="The latest change products are updated every day with the most recent data available that meets the minimum cloud cover criteria (no more than 25% cloud cover in a WRS-2 Landsat Scene).">
+                description="The latest change products are updated every day with the most recent data available that meets the minimum cloud cover criteria (no more than 25 percent cloud cover in a WRS-2 Landsat Scene).">
                 <wmsLayer identify="true" layers="southeast-swir-current"
-                    description="Indicator of drastic vegetation change, showing change greater than 60%. The Shortwave Infrared (SWIR) Band Differencing (Band 7 provided by Landsat satellites) method represents the most simplistic of the three current methods used on the LandsatFACT project.
+                    description="Indicator of drastic vegetation change, showing change greater than 60 percent. The Shortwave Infrared (SWIR) Band Differencing (Band 7 provided by Landsat satellites) method represents the most simplistic of the three current methods used on the LandsatFACT project.
                     &lt;br/&gt; &lt;br/&gt;
                     This method is intended to focus on vegetation moisture while minimizing interference of atmosphere and light cloud cover. State forestry agency personnel have found this method to be a simple and quick approach to identify more drastic vegetation changes on the landscape, particularly forest harvesting.
                     &lt;br/&gt; &lt;br/&gt;
@@ -149,7 +149,7 @@
         </wmsGroup>
 		<wmsGroup gid="G03" label="SWIR Threshold Archive" name="LandsatFACT_SWIR_Threshold_Archive">
             <wmsSubgroup label="SWIR Threshold" sid="G03_1"
-                description="Indicator of drastic vegetation change, showing change greater than 60%. The Shortwave Infrared (SWIR) Band Differencing (Band 7 provided by Landsat satellites) method represents the most simplistic of the three current methods used on the LandsatFACT project.
+                description="Indicator of drastic vegetation change, showing change greater than 60 percent. The Shortwave Infrared (SWIR) Band Differencing (Band 7 provided by Landsat satellites) method represents the most simplistic of the three current methods used on the LandsatFACT project.
                 &lt;br/&gt; &lt;br/&gt;
                 This method is intended to focus on vegetation moisture while minimizing interference of atmosphere and light cloud cover. State forestry agency personnel have found this method to be a simple and quick approach to identify more drastic vegetation changes on the landscape, particularly forest harvesting.
                 &lt;br/&gt; &lt;br/&gt;
