@@ -1,5 +1,3 @@
-#! /bin/bash
-
 DIRECTORY=`dirname $0`
 echo $DIRECTORY
 
@@ -17,12 +15,8 @@ fi
 #  now source it, either the original or the filtered variant
 source "$configfile"
 
-#going to landsatfact-data production repository and running scripts there
-cd $path_projects/dataexchange
 
-cd $path_projects/geoprocessing
-#pass the file containing the list of downloaded tars to LCV
-./landsatFACT_LCV.py $path_projects/dataexchange/downloaded.txt
+cd $path_node_projects
 
-cd $path_projects/msconfig
-./make_latest_mosaics.sh
+./metadata_updates.sh update_landsat_metadata.js > $path_log/update_landsat_metadata.log 2>&1
+
