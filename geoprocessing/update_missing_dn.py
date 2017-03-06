@@ -1,4 +1,3 @@
-
 #! /usr/bin/python
 #-------------------------------------------------------------------------------
 # Name:         update_missing_dn.py
@@ -48,7 +47,7 @@ for scene in resultsTup:
 for scene in runList:
     try:
         # sets full path for the tarfile to be analyzed
-        inNewSceneTar = os.path.join(tarStorage, scene)
+        inNewSceneTar = os.path.join(tarStorage, scene + '.tar.gz')
         extractedPath = os.path.join(tiffsStorage, scene)
 
         print 'Looking for DN in ' + extractedPath
@@ -60,9 +59,48 @@ for scene in runList:
            
            landsatFactTools_GDAL.writeDNminToDB(dnMinDict,extractedPath)
            print 'Info: DN for scene ' + scene + ' was updated.'
+
         else:
-	   print 'Warning: The folder (' + extractedPath + ') containing DN information did not exist.  You may need re-download and extract scene '+ scene +'.'
-        
+
+           if os.path.exists(inNewSceneTar) == True:
+              print 'tar ' + inNewSceneTar + ' exists extracting'
+              extractedPath = landsatFactTools_GDAL.checkExisting(inNewSceneTar, tiffsStorage)
+
+              extractedPath = os.path.join(tiffsStorage, scene)
+               
+              dnMinDict = rasterAnalysis_GDAL.getDNmin(extractedPath)
+
+              landsatFactTools_GDAL.writeDNminToDB(dnMinDict,extractedPath)
+              print 'Info: DN information for scene ' + scene + ' was updated.'
+
+           else:
+              print 'tar ' + inNewSceneTar + ' does not exist will attempt download '
+
+              landsatFactTools_GDAL.retry(1, 4, landsatFactTools_GDAL.DownloadError,landsatFactTools_GDAL.downloadScene, scene )
+
+              print 'check if download completed for ' + inNewSceneTar
+              
+              if os.path.exists(inNewSceneTar) == True:
+
+                  print 'Download completed for ' + inNewSceneTar
+                  extractedPath = landsatFactTools_GDAL.checkExisting(inNewSceneTar, tiffsStorage)
+ 
+		  extractedPath = os.path.join(tiffsStorage, scene)
+
+                  print "extracting DN information from: " + extractedPath
+                  dnMinDict = rasterAnalysis_GDAL.getDNmin(extractedPath)
+   
+                  landsatFactTools_GDAL.writeDNminToDB(dnMinDict,extractedPath)
+                  print 'Info: DN information for scene ' + scene + ' was updated.'
+
+                  print 'removing tar ' + inNewSceneTar
+                  os.remove(inNewSceneTar)
+
+                  print 'cleaning directory ' + extractedPath
+                  landsatFactTools_GDAL.cleanDir(extractedPath)
+              else:
+                  print 'Warning: The folder (' + extractedPath + ') containing DN information did not exist.  You may need re-download and extract scene '+ scene +'.'
+
         print ''
 
     except BaseException as e:
