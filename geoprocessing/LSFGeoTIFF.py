@@ -146,12 +146,24 @@ class ReadWriteLSFGeoTIFF(ReadableLSFGeoTIFF):
 
         # dstnodataValue is ignored right now because the default behavior of gdalwarp is to set NoData to the value in the self.filename
         # the files from EROS use 0 as NoData which is what we want to use for MapServer. Could use gdal SetNoDataValue and RasterizeLayer if necessary?
-        codeIn = ['gdalwarp', '-t_srs', 'EPSG:102008', self.filename, outputPath,'-cutline', shape,'-crop_to_cutline','-tr','30','30','-tap','-overwrite', '-co', 'COMPRESS=LZW']
+        tmpOutPath=os.path.join(os.path.dirname(outputPath), os.path.basename(outputPath).replace('.TIF', 'TMP.TIF'))
+        codeIn = ['gdalwarp', '-t_srs', 'EPSG:102008', self.filename, tmpOutPath,'-tr','30','30','-tap','-overwrite']
         process = subprocess.Popen(codeIn,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         out,err = process.communicate()
         errcode = process.returncode
         print out, err
-        # non-zero is error
+        if not errcode:
+            codeIn = ['gdalwarp', tmpOutPath, outputPath,'-cutline', shape,'-crop_to_cutline','-tr','30','30','-tap','-overwrite', '-co', 'COMPRESS=LZW']
+            process = subprocess.Popen(codeIn,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            out,err = process.communicate()
+            errcode = process.returncode
+            print out, err
+            
+        try:
+            os.remove(tmpOutPath)
+        except OSError:
+            pass
+
         return errcode
 
     """

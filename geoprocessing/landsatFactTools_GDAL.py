@@ -139,6 +139,8 @@ def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,qua
             dnMinDict = rasterAnalysis_GDAL.getDNmin(extractedPath)
             # fix bug introduced by me in commit de5df07c4ca3ff71ae4d7da27b6018fe1bc2df04
             writeDNminToDB(dnMinDict,extractedPath)
+        # awkward but make sure mtl file has been read and put into the DB if necessary
+        rasterAnalysis_GDAL.mtlData(diff_tar,os.path.join(tiffsStorage,diff_tar,diff_tar+'_MTL.txt'))
         # create quads from the input scene
         quadPaths = rasterAnalysis_GDAL.cropToQuad(extractedPath,outRasterFolder,quadsFolder)
         writeQuadToDB(quadPaths)
