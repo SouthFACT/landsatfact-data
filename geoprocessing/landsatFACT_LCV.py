@@ -83,6 +83,8 @@ for tar in runList:
             if dnminExists == False:
                 dnMinDict = rasterAnalysis_GDAL.getDNmin(extractedPath)
                 landsatFactTools_GDAL.writeDNminToDB(dnMinDict,extractedPath)
+            # awkward but make sure mtl file has been read and put into the DB if necessary
+            rasterAnalysis_GDAL.mtlData(tar[:-7],os.path.join(tiffsStorage,tar[:-7],tar[:-7]+'_MTL.txt'))   
             # create quads from the input scene
             quadPaths = rasterAnalysis_GDAL.cropToQuad(extractedPath,projectStorage,quadsFolder)
             landsatFactTools_GDAL.writeQuadToDB(quadPaths)

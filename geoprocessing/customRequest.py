@@ -138,6 +138,9 @@ def extractedTar(quadsceneID):
             dnMinDict = rasterAnalysis_GDAL.getDNmin(extractedPath)
             # fix bug introduced by me in commit de5df07c4ca3ff71ae4d7da27b6018fe1bc2df04
             landsatFactTools_GDAL.writeDNminToDB(dnMinDict,extractedPath)
+        # awkward but make sure mtl file has been read and put into the DB if necessary
+        rasterAnalysis_GDAL.mtlData(sceneID,os.path.join(LSF.tiffsStorage,sceneID,sceneID+'_MTL.txt'))
+
 
 """
 # Function that guarantees that the quadsceneID directory (e.g., 'LE70170362013133EDC00UL') is present in projectStorage, /lsfdata/project_data,
@@ -388,6 +391,7 @@ def compare(quadsceneID1, quadsceneID2):
 
 
 # process one change request
+
 customRequestInfo=getCustomRequestFromDB()
 lol=customRequestInfo[0]
 request_id=customRequestInfo[1]
