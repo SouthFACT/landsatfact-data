@@ -35,11 +35,9 @@ statement = """
 			max(substring(scene_id,20,2)::integer) as max_scene_count,
 			count(*)
 		FROM landsat_metadata 
-		--WHERE scene_id LIKE 'LE70190332017062EDC%'
 		GROUP BY 
 			substring(scene_id,1,19)
 		HAVING count(*) > 1
-			--substring(scene_id,20,2)::integer
 		ORDER BY substring(scene_id,1,19)) 
 			DELETE
 			FROM landsat_metadata as lsm
