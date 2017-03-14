@@ -18,5 +18,6 @@ fi
 source "$configfile"
 
 cd $path_projects/geoprocessing
-#attempt to redo dn
+#attempt to redo level 1 metadata
+./remove_dup_scenes.py
 ./update_missing_level_1.py

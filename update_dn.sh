@@ -19,4 +19,5 @@ source "$configfile"
 
 cd $path_projects/geoprocessing
 #attempt to redo dn
+./remove_dup_scenes.py
 ./update_missing_dn.py

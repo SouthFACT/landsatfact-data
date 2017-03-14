@@ -76,7 +76,7 @@ for scene in runList:
            else:
               print 'tar ' + inNewSceneTar + ' does not exist will attempt download '
 
-              landsatFactTools_GDAL.retry(1, 4, landsatFactTools_GDAL.DownloadError,landsatFactTools_GDAL.downloadScene, scene )
+              landsatFactTools_GDAL.downloadScene( scene )
 
               print 'check if download completed for ' + inNewSceneTar
               
