@@ -31,7 +31,7 @@ import pdb
 from subprocess import PIPE
 
 
-statement = "SELECT scene_id, message_level FROM vw_failed_lcv_quads WHERE message_level = 'ERROR' GROUP BY scene_id, message_level LIMIT 3;"
+statement = "SELECT scene_id, message_level FROM vw_failed_lcv_quads WHERE message_level = 'ERROR' AND (scene_id <> 'LC80170342017072LGN00' OR scene_id <> 'LE70250352017072EDC00')  GROUP BY scene_id, message_level LIMIT 3;"
 resultsTup = landsatFactTools_GDAL.postgresCommand(statement)
 
 print resultsTup

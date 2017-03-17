@@ -15,6 +15,8 @@ fi
 #  now source it, either the original or the filtered variant
 source "$configfile"
 
+cd $path_projects/geoprocessing
+./remove_dup_scenes.py
 
 cd $path_node_projects
 ./node.sh write_downloaded.js > $path_log/write_downloaded.log 2>&1
