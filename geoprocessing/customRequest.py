@@ -28,7 +28,7 @@ import rasterAnalysis_GDAL
 import LSFGeoTIFF
 import localLib
 from itertools import tee, izip
-import zipfile, fnmatch
+import zipfile, fnmatch, datetime
 import pdb
 
 outCustomRequestFolder = os.path.join(LSF.productStorage,'cr_zips')
@@ -102,7 +102,9 @@ def tar(sceneID):
     # if no tar for sceneID in tarStorage, go get it
     if not(re.search(sceneID, ' '.join(glob.glob(os.path.join(LSF.tarStorage, '*.gz'))))):
         # writes to extracted_imagery, minimum_dn, and landsat_metadata
+        print "Begin extractProductForCompare " + str(datetime.datetime.now())
         landsatFactTools_GDAL.extractProductForCompare(sceneID, LSF.tarStorage,LSF.tiffsStorage,LSF.fmaskShellCall,LSF.quadsFolder,LSF.projectStorage)
+        print "End extractProductForCompare " + str(datetime.datetime.now())
     # if the tar's been processed, should at least be a row in minimum_dn
     # note if the row is missing
     else:
@@ -131,7 +133,9 @@ def extractedTar(quadsceneID):
             raise Exception(err)
         # for now use checkExisting. change to use tarHandling class when completed
         extractedPath = landsatFactTools_GDAL.checkExisting(existingTar, LSF.tiffsStorage)
+        print "Begin Fmask processing " + str(datetime.datetime.now())
         rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
+        print "End Fmask processing " + str(datetime.datetime.now())
         # get DN min number from each band in the scene and write to database
         dnminExists = landsatFactTools_GDAL.checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
         if dnminExists == False:
@@ -306,7 +310,9 @@ def cloudMask(date1, date2):
     wrs2Name=date1.sceneID[3:9]
 
     if not os.path.exists(date1.folder+"/"+date1.sceneID+"_MTLFmask.TIF"):
+           print "Begin Fmask processing " + str(datetime.datetime.now())
 	   rasterAnalysis_GDAL.runFmask(os.path.join(LSF.tiffsStorage, date1.sceneID[:-2]), LSF.fmaskShellCall)
+           print "End Fmask processing " + str(datetime.datetime.now())
 	   # create quads from the input scene
 	   quadPaths = rasterAnalysis_GDAL.cropToQuad(os.path.join(LSF.tiffsStorage, date1.sceneID[:-2]), LSF.projectStorage, LSF.quadsFolder)
 	   landsatFactTools_GDAL.writeQuadToDB(quadPaths)
@@ -316,7 +322,9 @@ def cloudMask(date1, date2):
 	   # write input scene quads cloud cover percentage to the landsat_metadata table in the database
 	   landsatFactTools_GDAL.writeQuadsCCtoDB(quadCCDict,date1.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''))
     if not os.path.exists(date2.folder+"/"+date2.sceneID+"_MTLFmask.TIF"):
+           print "Begin Fmask processing " + str(datetime.datetime.now())
 	   rasterAnalysis_GDAL.runFmask(os.path.join(LSF.tiffsStorage, date2.sceneID[:-2]), LSF.fmaskShellCall)
+           print "End Fmask processing " + str(datetime.datetime.now())
 	   # create quads from the input scene
 	   quadPaths = rasterAnalysis_GDAL.cropToQuad(os.path.join(LSF.tiffsStorage, date2.sceneID[:-2]), LSF.projectStorage, LSF.quadsFolder)
 	   landsatFactTools_GDAL.writeQuadToDB(quadPaths)
@@ -369,6 +377,7 @@ def comparisonProduct(quadsceneID1, quadsceneID2):
     # potentially less functionally elegant but rather than call each change product target function with function arguments
     # cache the returns from the dateFn calls and reuse them since they can safely be shared between all products for the same dates
 
+    print "Begin scene processing " + str(datetime.datetime.now())
     date1=dateFn(quadsceneID1)
     date2=dateFn(quadsceneID2)
     gapMask(date1, date2)
@@ -376,6 +385,7 @@ def comparisonProduct(quadsceneID1, quadsceneID2):
     ndvi(date1, date2)
     ndmi(date1, date2)
     swir(date1, date2)
+    print "End scene processing " + str(datetime.datetime.now())
 
 
 """
