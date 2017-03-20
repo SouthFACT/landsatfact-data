@@ -27,6 +27,7 @@ import numpy as np
 import psycopg2
 from LSF import *
 import localLib
+import datetime
 import pdb
 
 reload(landsatFactTools_GDAL)
@@ -49,6 +50,7 @@ os.chdir(tarStorage)
 
 for tar in runList:
     try:
+        print "Begin tar processing " + str(datetime.datetime.now())
         # set tar file to analyze
         if not tar[-7:] == '.tar.gz':
             print "incorrect file type"
@@ -68,6 +70,7 @@ for tar in runList:
         # jdm 4/22/15: after spending a couple of days trying to get FMASK installed on cloud4
         # I have not been able to get it to work.  Therefore, for now I am commenting this out
         # rasterAnalysis_GDAL.runFmask(extractedPath,Fmaskexe) #BM's original
+        print "Begin Fmask processing " + str(datetime.datetime.now())
         print extractedPath
         runFmaskBool = rasterAnalysis_GDAL.runFmask(extractedPath,fmaskShellCall)
 	
@@ -75,6 +78,7 @@ for tar in runList:
 	if (runFmaskBool == False):
           runFmaskBool = rasterAnalysis_GDAL.runFmask(extractedPath,fmaskShellCall)
  
+        print "End Fmask processing " + str(datetime.datetime.now())
         #print "Fmask Boolean: "+runFmaskBool
         if (runFmaskBool == True):
             # get DN min number from each band in the scene and write to database
@@ -107,7 +111,9 @@ for tar in runList:
                 # scene and presumably the next time through a quad from that given seen will be
                 # accounted for.
                 if os.path.exists(projectStorage+'/'+diff_quad) == False:
+                    print "Begin extractProductForCompare of input1 " + str(datetime.datetime.now())
                     landsatFactTools_GDAL.extractProductForCompare(diff_quad[:-2],tarStorage,tiffsStorage,fmaskShellCall,quadsFolder,projectStorage)
+                    print "End extractProductForCompare of input1 " + str(datetime.datetime.now())
                     extractedList.append(diff_quad[0:21]+'.tar.gz')
                 else:
                     print diff_quad+" already exist in the projectStorage"
@@ -152,14 +158,18 @@ for tar in runList:
                     print "Cloud mask folder and date1 location: "+date1.folder+"/"+date1.sceneID+"_MTLFmask.TIF"
                     print "Cloud mask folder and date2 location: "+date2.folder+"/"+date2.sceneID+"_MTLFmask.TIF"
                     if not os.path.exists(date1.folder+"/"+date1.sceneID+"_MTLFmask.TIF"):
+                        print "Begin Fmask processing " + str(datetime.datetime.now())
                         rasterAnalysis_GDAL.runFmask(date1.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''),fmaskShellCall)
+                        print "End Fmask processing " + str(datetime.datetime.now())
                         # create quads from the input scene
                         quadPaths = rasterAnalysis_GDAL.cropToQuad(date1.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''),projectStorage,quadsFolder)
                         # get cloud cover percentage for each quad
                         # write input scene quads cloud cover percentage to the landsat_metadata table in the database
                         landsatFactTools_GDAL.readAndWriteQuadCC(quadPaths,date1.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''))
                     if not os.path.exists(date2.folder+"/"+date2.sceneID+"_MTLFmask.TIF"):
+                        print "Begin Fmask processing " + str(datetime.datetime.now())
                         rasterAnalysis_GDAL.runFmask(date2.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''),fmaskShellCall)
+                        print "End Fmask processing " + str(datetime.datetime.now())
                         # create quads from the input scene
                         quadPaths = rasterAnalysis_GDAL.cropToQuad(date1.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''),projectStorage,quadsFolder)
                         landsatFactTools_GDAL.writeQuadToDB(quadPaths)
@@ -177,7 +187,7 @@ for tar in runList:
                         print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'CLOUD'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+'LCV'
                         landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'CLOUD',date2.sceneID[9:16], 'LCV')
                     else:
-                        raise RuntimeError("Apparently the fmask file doesn't exist")
+                        raise RuntimeError("Apparently the Fmask file doesn't exist")
                     # =========================================================================
                     # NDVI
                     ndvi1 = date1.ndvi("SR")
@@ -224,12 +234,13 @@ for tar in runList:
                     #landsatFactTools_GDAL.writeProcessStatusToDB(date1.sceneID,"YES")
                     #landsatFactTools_GDAL.writeProcessStatusToDB(date2.sceneID,"YES")
                     swirPercentChange = None
+                    print "End tar processing " + str(datetime.datetime.now())
         else:
             #landsatFactTools_GDAL.writeProcessStatusToDB(extractedPath[:-1],"FAILED")
-            raise RuntimeError("There was an issue with FMASK on: "+extractedPath)
+            raise RuntimeError("There was an issue with Fmask on: "+extractedPath)
        # =========================================================================
     except BaseException as e:
-        print "Error in LCV"
+        print "Error in LCV " + str(datetime.datetime.now())
         print str(e)
         landsatFactTools_GDAL.sendEmail(tar + ': ' + "\n".join([str(e), traceback.format_exc()]))
         exceptList.append(tar)
