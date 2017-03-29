@@ -34,8 +34,5 @@ source "$configfile"
 #run script that creates overviews
 ./mosaic_overviews.sh
 
-#move previous-day mosaics to archive
-mv $path_products/mosaics/* $path_products/mosaics/archive
-
 #move new mosaics and overwrite previous mosaics
 mv -f $path_products/mosaics/temp/* $path_products/mosaics

@@ -34,7 +34,7 @@ cloud_cur = conn.cursor()
 
 #Selects the column that you want
 #From Inputs will be replaced with the appropriate view 
-cloud_cur.execute("select location from vw_tile_index_cloud,vw_last_days_products where substr(vw_tile_index_cloud.location::text, 30,47) =  substr(vw_last_days_products.product_id::text,1,47) and product_type = 'CLOUD';")
+cloud_cur.execute("select distinct on (last_update) '/lsfdata/products/gdal_vrt_files/cloud/cloud_'  || last_update || '.vrt' as vrt_files from vw_quad_latest_update where last_update > '2017-01-01' AND last_update > current_date - interval '5' day order by last_update desc;")
 
 #Use this view to create an inital mosaic. You may need to change the # of days in teh view.
 #cloud_cur.execute("SELECT location FROM vw_initial_mosaic_cloud order by max asc;")

@@ -34,7 +34,7 @@ ndvi_cur = conn.cursor()
 
 #Selects the column that you want
 #From Inputs will be replaced with the appropriate view 
-ndvi_cur.execute("select location from vw_tile_index_ndvi,vw_last_days_products where substr(vw_tile_index_ndvi.location::text, 24,47) =  substr(vw_last_days_products.product_id::text,1,47) and product_type = 'NDVI';")
+ndvi_cur.execute("select distinct on (last_update) '/lsfdata/products/gdal_vrt_files/ndvi/ndvi_'  || last_update || '.vrt' as vrt_files from vw_quad_latest_update where last_update > '2017-01-01' AND last_update > current_date - interval '5' day order by last_update desc;")
 
 #Use this view to create an inital mosaic. You may need to change the # of days in teh view.
 #ndvi_cur.execute("SELECT location FROM vw_initial_mosaic_ndvi order by max asc;")
