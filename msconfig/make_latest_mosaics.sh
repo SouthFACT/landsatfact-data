@@ -9,8 +9,8 @@ DIRECTORY=`dirname $0`
 echo $DIRECTORY
 
 #get the config file and make sure it will not do something delete all...
-configfile=$DIRECTORY/bash_config.cfg
-configfile_secured=$DIRECTORY/tmp_bash_config.cfg
+configfile=$DIRECTORY/../bash_config.cfg
+configfile_secured=$DIRECTORY/../tmp_bash_config.cfg
 
 # check if the file contains something we don't want
 if egrep -q -v '^#|^[^ ]*=[^;]*' "$configfile"; then
