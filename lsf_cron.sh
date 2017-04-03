@@ -23,6 +23,3 @@ cd $path_projects/dataexchange
 cd $path_projects/geoprocessing
 #pass the file containing the list of downloaded tars to LCV
 ./landsatFACT_LCV.py $path_projects/dataexchange/downloaded.txt
-
-cd $path_projects/msconfig
-./make_latest_mosaics.sh
