@@ -24,15 +24,15 @@ source "$configfile"
 
 
 #run individual scripts concurrently that each run gdalwarp to create mosaics in temp
- ./make_swir_mosaic.py&
- ./make_ndvi_mosaic.py&
- ./make_ndmi_mosaic.py&
- ./make_cloud_mosaic.py&
- ./make_gap_mosaic.py&
+ $path_projects/msconfig/make_swir_mosaic.py&
+ $path_projects/msconfig/make_ndvi_mosaic.py&
+ $path_projects/msconfig/make_ndmi_mosaic.py&
+ $path_projects/msconfig/make_cloud_mosaic.py&
+ $path_projects/msconfig/make_gap_mosaic.py&
  wait
 
 #run script that creates overviews
-./mosaic_overviews.sh
+$path_projects/msconfig/mosaic_overviews.sh
 
 #move new mosaics and overwrite previous mosaics
 mv -f $path_products/mosaics/temp/* $path_products/mosaics
