@@ -264,10 +264,10 @@ def getSWIRAllChangeLayersVRT():
        'SWIR' : []
     }
     date_and_type_cur = conn.cursor()
-    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_swir_for_vrt where product_date NOT LIKE 'cr_%';")
+    date_and_type_cur.execute("SELECT vrt_name, product_type FROM vw_product_list_swir_for_vrt where vrt_name NOT LIKE 'cr_%';")
          
-    for date, type in date_and_type_cur:
-        date_string = date
+    for name, type in date_and_type_cur:
+        date_string = name
         date_no_hyphens = date_string.replace("-","")
         print date_string
         lid = 'ALC'+type+date_no_hyphens
@@ -294,10 +294,10 @@ def getSWIRThresholdLayersVRT():
        'SWIR' : []
     }
     date_and_type_cur = conn.cursor()
-    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_swir_for_vrt where product_date NOT LIKE 'cr_%';")
+    date_and_type_cur.execute("SELECT vrt_name, product_type FROM vw_product_list_swir_for_vrt where vrt_name NOT LIKE 'cr_%';")
          
-    for date, type in date_and_type_cur:
-        date_string = date
+    for name, type in date_and_type_cur:
+        date_string = name
         date_no_hyphens = date_string.replace("-","")
         print date_string
         lid = 'TSH'+type+date_no_hyphens
@@ -325,15 +325,15 @@ def getLSFLayersVRT():
        'NDMI' : []
     }
     date_and_type_cur = conn.cursor()
-    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_for_vrt;")
+    date_and_type_cur.execute("SELECT vrt_name, product_type FROM vw_product_list_for_vrt;")
     #date_and_type_cur.execute("SELECT product_date_range, product_type FROM vw_archive_product_date_range;")
          
-    for date, type in date_and_type_cur:
+    for name, type in date_and_type_cur:
         if type in lsfDict.keys():
             #date_string = str(date)
 			#uncomment the following two lines to go back to using previous view
-            date_string = date.isoformat()
-            date_no_hyphens = date.strftime('%Y%m%d')
+            date_string = name.isoformat()
+            date_no_hyphens = name.strftime('%Y%m%d')
             #date = date.join(data)
             print date_string
             lid = type+date_no_hyphens
@@ -362,10 +362,10 @@ def getNDVILayersVRT():
        'NDVI' : []
     }
     date_and_type_cur = conn.cursor()
-    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_ndvi_for_vrt where product_date NOT LIKE 'cr_%';")
+    date_and_type_cur.execute("SELECT vrt_name, product_type FROM vw_product_list_ndvi_for_vrt where vrt_name NOT LIKE 'cr_%';")
          
-    for date, type in date_and_type_cur:
-        date_string = date
+    for name, type in date_and_type_cur:
+        date_string = name
         date_no_hyphens = date_string.replace("-","")
         print date_string
         lid = 'NDVI'+date_no_hyphens
@@ -392,10 +392,10 @@ def getNDMILayersVRT():
        'NDMI' : []
     }
     date_and_type_cur = conn.cursor()
-    date_and_type_cur.execute("SELECT product_date, product_type FROM vw_product_list_ndmi_for_vrt where product_date NOT LIKE 'cr_%';")
+    date_and_type_cur.execute("SELECT vrt_name, product_type FROM vw_product_list_ndmi_for_vrt where vrt_name NOT LIKE 'cr_%';")
          
-    for date, type in date_and_type_cur:
-        date_string = date
+    for name, type in date_and_type_cur:
+        date_string = name
         date_no_hyphens = date_string.replace("-","")
         print date_string
         lid = 'NDMI'+date_no_hyphens
