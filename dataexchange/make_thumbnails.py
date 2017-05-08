@@ -43,7 +43,7 @@ cur = conn.cursor()
 cur.execute(
     "SELECT metadata.scene_id, metadata.browse_url "+
         "FROM landsat_metadata AS metadata, wrs2_codes AS wrs "+
-        "WHERE substring(metadata.scene_id, 4, 6) = wrs.wrs2_code;"
+        "WHERE substring(metadata.scene_id, 4, 6) = wrs.wrs2_code AND now()::date - acquisition_date::date <= 30 AND now()::date - acquisition_date::date  > 0;"
 )
 # keys are scene ids, values are browse urls
 scene_urls = dict(cur.fetchall())
