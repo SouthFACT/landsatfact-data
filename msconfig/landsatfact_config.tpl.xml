@@ -25,6 +25,7 @@
 			<viewGroup name="LandsatFACT_NDVI_Archive" />
 			<viewGroup name="LandsatFACT_NDMI_Archive" />
 			<viewGroup name="Custom_Requests" />
+			<viewGroup name="Other_Projects" />
         </view>
 		<view label="Alabama" name="AL" >
             <viewGroup name="Base_Layers" />
@@ -193,6 +194,43 @@
         </wmsGroup>
 		<wmsGroup gid="G07" label="Custom Requests" name="Custom_Requests">
 			%(CR_LAYERS)s
+        </wmsGroup>
+		<wmsGroup gid="G08" label="Other Forest Change Projects" name="Other_Projects">
+            <wmsSubgroup label="Global Forest Change - Hansen" sid="G08_1">
+                <wmsLayer
+                     selected="false"
+                     lid="OPA"
+                     visible="true"
+                     url="%(SERVER_URL)s/hansen?TRANSPARENT=true"
+                     srs="EPSG:3785"
+                     layers="tree-cover"
+                     styles="default"
+                     identify="true"
+                     name="Tree Canopy Cover (2000)"
+                     legend="%(SERVER_URL)s/hansen?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=tree-cover&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
+                <wmsLayer
+                     selected="false"
+                     lid="OPB"
+                     visible="true"
+                     url="%(SERVER_URL)s/hansen?TRANSPARENT=true"
+                     srs="EPSG:3785"
+                     layers="tree-gain"
+                     styles="default"
+                     identify="true"
+                     name="Forest Gain (2000-2012)"
+                     legend="%(SERVER_URL)s/hansen?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=tree-gain&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
+				<wmsLayer
+                     selected="false"
+                     lid="OPC"
+                     visible="true"
+                     url="%(SERVER_URL)s/hansen?TRANSPARENT=true"
+                     srs="EPSG:3785"
+                     layers="loss-year"
+                     styles="default"
+                     identify="true"
+                     name="Forest Loss By Year (2001-2014))"
+                     legend="%(SERVER_URL)s/hansen?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=loss-year&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
+            </wmsSubgroup>
         </wmsGroup>
     </wmsLayers>
     <tools>

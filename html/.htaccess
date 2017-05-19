@@ -63,3 +63,7 @@ Header set Access-Control-Allow-Origin "*"
     Allow from all
     SetHandler cgi-script
 </Files>
+<Files "hansen">
+    Allow from all
+    SetHandler cgi-script
+</Files>
