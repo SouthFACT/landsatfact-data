@@ -103,7 +103,8 @@ def tar(sceneID):
     if not(re.search(sceneID, ' '.join(glob.glob(os.path.join(LSF.tarStorage, '*.gz'))))):
         # writes to extracted_imagery, minimum_dn, and landsat_metadata
         print "Begin extractProductForCompare " + str(datetime.datetime.now())
-        landsatFactTools_GDAL.extractProductForCompare(sceneID, LSF.tarStorage,LSF.tiffsStorage,LSF.fmaskShellCall,LSF.quadsFolder,LSF.projectStorage)
+        productID = landsatFactTools_GDAL.getProductIDForScene(sceneID)
+        landsatFactTools_GDAL.extractProductForCompare(sceneID, LSF.tarStorage,LSF.tiffsStorage,LSF.fmaskShellCall,LSF.quadsFolder,LSF.projectStorage, productID)
         print "End extractProductForCompare " + str(datetime.datetime.now())
     # if the tar's been processed, should at least be a row in minimum_dn
     # note if the row is missing
@@ -132,7 +133,8 @@ def extractedTar(quadsceneID):
         if err:
             raise Exception(err)
         # for now use checkExisting. change to use tarHandling class when completed
-        extractedPath = landsatFactTools_GDAL.checkExisting(existingTar, LSF.tiffsStorage)
+        productID = landsatFactTools_GDAL.getProductIDForScene(sceneID)
+        extractedPath = landsatFactTools_GDAL.checkExisting(existingTar, LSF.tiffsStorage, sceneID, productID)
         print "Begin Fmask processing " + str(datetime.datetime.now())
         rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
         print "End Fmask processing " + str(datetime.datetime.now())

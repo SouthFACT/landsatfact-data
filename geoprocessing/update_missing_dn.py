@@ -50,6 +50,8 @@ for scene in runList:
         inNewSceneTar = os.path.join(tarStorage, scene + '.tar.gz')
         extractedPath = os.path.join(tiffsStorage, scene)
 
+        productID=landsatFactTools_GDAL.getProductIDForScene(scene)
+
         print 'Looking for DN in ' + extractedPath
 
         #make sure file exists for now it should if not we may need to download and re-extract?
@@ -64,7 +66,7 @@ for scene in runList:
 
            if os.path.exists(inNewSceneTar) == True:
               print 'tar ' + inNewSceneTar + ' exists extracting'
-              extractedPath = landsatFactTools_GDAL.checkExisting(inNewSceneTar, tiffsStorage)
+              extractedPath = landsatFactTools_GDAL.checkExisting(inNewSceneTar, tiffsStorage, scene, productID)
 
               extractedPath = os.path.join(tiffsStorage, scene)
                

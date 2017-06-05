@@ -42,12 +42,12 @@ def validTar(inTar):
     tarName = os.path.basename(inTar)
     if tarName.startswith("LE7"):
         members = ["^[^g].*_B1\D", "^[^g].*_B2", "^[^g].*_B3", "^[^g].*_B4", "^[^g].*_B5", "^[^g].*_B6_VCID_1",
-                "^[^g].*_B6_VCID_2", "^[^g].*_B7", "_MTL"]
+                "^[^g].*_B6_VCID_2", "^[^g].*_B7", "_BQA", "_MTL"]
         if int(tarName[9:16]) > 2003151:
                 members.extend(["gap_mask/.*B1", "gap_mask/.*B2", "gap_mask/.*B3", "gap_mask/.*B4", "gap_mask/.*B5", "gap_mask/.*B6",
                 "gap_mask/.*B7", "gap_mask/.*B8", "gap_mask/.*B6_VCID_1", "gap_mask/.*B6_VCID_2"])
     elif os.path.basename(inTar).startswith("LT5"):
-        members = ["_B1\D", "_B2", "_B3", "_B4", "_B5", "_B6", "_B7", "_MTL"]
+        members = ["_B1\D", "_B2", "_B3", "_B4", "_B5", "_B6", "_B7", "_BQA", "_MTL"]
     elif os.path.basename(inTar).startswith("LC8"):
         members = ["_B1\D", "_B2", "_B3", "_B4", "_B5", "_B6", "_B7", "_B9", "_B10", "_B11", "_BQA", "_MTL"]
 

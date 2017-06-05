@@ -115,14 +115,14 @@ def writeProcessStatusToDB(quad_id,success):
         print "Exception occured in writeDownloadSuccesToDB"
         print str(e)
 
-def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,quadsFolder,outRasterFolder):
+def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,quadsFolder,outRasterFolder, productID):
     print "call to extractProductForCompare with: "+ diff_tar
     try:
         # call download_landsat_data_by_sceneid.php using the downloadScene function
         # in the event of a DownloadError, retry downloadScene up to 5 times, with a 5 second delay btw calls
         retry(1, 5, DownloadError,downloadScene, diff_tar)
         # now extract the downloaded file accordingly
-        extractedPath = checkExisting(os.path.join(LSF.tarStorage, diff_tar+".tar.gz"), tiffsStorage)
+        extractedPath = checkExisting(os.path.join(LSF.tarStorage, diff_tar+".tar.gz"), tiffsStorage, diff_tar, productID)
         #do the other pre-processing stuff
         runFmaskBool =  rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
         
@@ -140,7 +140,7 @@ def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,qua
             # fix bug introduced by me in commit de5df07c4ca3ff71ae4d7da27b6018fe1bc2df04
             writeDNminToDB(dnMinDict,extractedPath)
         # awkward but make sure mtl file has been read and put into the DB if necessary
-        rasterAnalysis_GDAL.mtlData(diff_tar,os.path.join(tiffsStorage,diff_tar,diff_tar+'_MTL.txt'))
+        rasterAnalysis_GDAL.mtlData(diff_tar,os.path.join(tiffsStorage,diff_tar,diff_tar+'_MTL.txt'))   
         # create quads from the input scene
         quadPaths = rasterAnalysis_GDAL.cropToQuad(extractedPath,outRasterFolder,quadsFolder)
         writeQuadToDB(quadPaths)
@@ -173,22 +173,22 @@ def readAndWriteQuadCC(quadPaths, extractedPath):
     finally:
         return quadCCDict
 
-def checkExisting(inTarPath, extractFolder):
+def checkExisting(inTarPath, extractFolder, sceneID, productID):
     """# Check to see if the entered Tar files have already been extracted. If any
     of the files exist it does not re-extract them. This only happens if the extracted
     files are left where the script extracts them orignial relative to the tar file.
     If the extracted root folder is moved from the folder where the Tar file is the Tar
     files will be extracted again """
-    L5Rasts = ["_B1", "_B2", "_B3", "_B4", "_B5", "_B6", "_B7"]
-    L7Rasts = ["_B1", "_B2", "_B3", "_B4", "_B5", "_B6_VCID_1", "_B6_VCID_2", "_B7"]
+    L5Rasts = ["_B1", "_B2", "_B3", "_B4", "_B5", "_B6", "_B7", "_BQA"]
+    L7Rasts = ["_B1", "_B2", "_B3", "_B4", "_B5", "_B6_VCID_1", "_B6_VCID_2", "_B7", "_BQA"]
     L8Rasts = ["_B1", "_B2", "_B3", "_B4", "_B5", "_B6", "_B7", "_B9", "_B10", "_B11", "_BQA"]
     fmaskFiles = ["_MTL"]#,"_GCP"
-    extractedRoot = os.path.join(extractFolder,os.path.basename(inTarPath[0:-7]))
-    if os.path.basename(inTarPath).startswith("LE7"):
+    extractedRoot = os.path.join(extractFolder,sceneID)
+    if sceneID.startswith("LE7"):
         sensorType = L7Rasts
-    elif os.path.basename(inTarPath).startswith("LT5"):
+    elif sceneID.startswith("LT5"):
         sensorType = L5Rasts
-    elif os.path.basename(inTarPath).startswith("LC8"):
+    elif sceneID.startswith("LC8"):
         sensorType = L8Rasts
     if os.path.exists(extractedRoot) == True:
         existingFiles = os.listdir(extractedRoot)
@@ -204,14 +204,14 @@ def checkExisting(inTarPath, extractFolder):
         if len(neededBands) == 0:
             return extractedRoot
         else:
-            unzipTIFgap(inTarPath, neededBands, extractedRoot)
+            unzipTIFgap(inTarPath, neededBands, extractedRoot, sceneID, productID)
             return extractedRoot
     else:
         neededBands = sensorType + fmaskFiles
-        unzipTIFgap(inTarPath, neededBands, extractedRoot)
+        unzipTIFgap(inTarPath, neededBands, extractedRoot, sceneID, productID)
         return extractedRoot
 
-def unzipTIFgap(inTar, sensorType, extractPath):
+def unzipTIFgap(inTar, sensorType, extractPath, sceneID, productID):
     """Extracts the tar files based on which bands checkExisting tells it to."""
     tar = tarfile.open(inTar)
     checkList = tar.getnames()
@@ -227,7 +227,7 @@ def unzipTIFgap(inTar, sensorType, extractPath):
             sys.exit(0)
     for item in tar:
         for band in sensorType:
-            if band == str(item.name)[21:-4] or ('gap_mask' in str(item.name) and band in str(item.name)):
+            if band == str(item.name)[40:-4] or ('gap_mask' in str(item.name) and band in str(item.name)):
                 print ("Extracting " + item.name)
                 #extractPath=extracted
                 tar.extract(item, path=extractPath)
@@ -235,6 +235,7 @@ def unzipTIFgap(inTar, sensorType, extractPath):
                 file_of_interest = extractPath+'/'+item.name
                 print "file_of_interest on which to set file perms: "+file_of_interest
                 os.chmod(file_of_interest, 0664)
+                os.rename(os.path.join(extractPath, item.name), os.path.join(extractPath,item.name.replace(productID, sceneID)))
     gapMaskPath=os.path.join(extractPath,"gap_mask")
     if os.path.exists(gapMaskPath) == True:
         gapFiles = os.listdir(gapMaskPath)
@@ -287,6 +288,20 @@ def gaper(date1, date2, outGAPfolder, baseName, quadsFolder,wrs2Name,analysis_so
         print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+ analysis_source
         writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16], analysis_source)
 
+def getSceneForProductID(productID):
+        
+        # uses a "genearalized" productID, without the TX
+        # to find the scene no matter the tier (e.g., RT, T1)
+        statement = "SELECT scene_id from landsat_metadata WHERE landsat_product_id LIKE\'{0}\'".format(productID[:-2]+'__')
+        resultsTup = postgresCommand(statement)
+        if len(resultsTup) > 0:
+            return resultsTup[0][0]
+
+def getProductIDForScene(sceneID):
+        statement = "SELECT landsat_product_id from landsat_metadata WHERE scene_id=\'{0}\'".format(sceneID)
+        resultsTup = postgresCommand(statement)
+        if len(resultsTup) > 0:
+            return resultsTup[0][0]
 
 def getQuadCCpercent(quadPaths):
     quadCCDict = {}
