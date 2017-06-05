@@ -45,6 +45,7 @@ with open(infile) as inf:
         m=re.search('L.*?\.tar\.gz', line)
         if m:
             runList.append(m.group())
+# sort by acquisition date
 runList.sort(key=lambda tar: tar[9:16])
 os.chdir(tarStorage)
 
@@ -52,20 +53,23 @@ for tar in runList:
     try:
         print "Begin tar processing " + str(datetime.datetime.now())
         # set tar file to analyze
+        # will need to query sceneID so keep the productID
+        sceneID=tar[:-7]
+        productID=landsatFactTools_GDAL.getProductIDForScene(sceneID)
         if not tar[-7:] == '.tar.gz':
             print "incorrect file type"
             raise RuntimeError("Not a tarball: "+tar)
         err=localLib.validTar(tar)
         if err:
             os.remove(tar)
-            landsatFactTools_GDAL.retry(1, 4, landsatFactTools_GDAL.DownloadError,landsatFactTools_GDAL.downloadScene, tar[:-7])
+            landsatFactTools_GDAL.retry(1, 4, landsatFactTools_GDAL.DownloadError,landsatFactTools_GDAL.downloadScene, sceneID)
         # all  paths are now imported from LSF.py  DM - 5/10/2016
         # =========================================================================
         # sets full path for the tarfile to be analyzed
         inNewSceneTar = os.path.join(tarStorage, tar)
         # check to see if the tar file has been extracted, if not extract the files
         print "Checking for: "+tar
-        extractedPath = landsatFactTools_GDAL.checkExisting(inNewSceneTar, tiffsStorage)
+        extractedPath = landsatFactTools_GDAL.checkExisting(inNewSceneTar, tiffsStorage, sceneID, productID)
         # run Fmask
         # jdm 4/22/15: after spending a couple of days trying to get FMASK installed on cloud4
         # I have not been able to get it to work.  Therefore, for now I am commenting this out
@@ -79,7 +83,6 @@ for tar in runList:
           runFmaskBool = rasterAnalysis_GDAL.runFmask(extractedPath,fmaskShellCall)
  
         print "End Fmask processing " + str(datetime.datetime.now())
-        #print "Fmask Boolean: "+runFmaskBool
         if (runFmaskBool == True):
             # get DN min number from each band in the scene and write to database
             wrs2Name=tar[3:9]
@@ -88,7 +91,7 @@ for tar in runList:
                 dnMinDict = rasterAnalysis_GDAL.getDNmin(extractedPath)
                 landsatFactTools_GDAL.writeDNminToDB(dnMinDict,extractedPath)
             # awkward but make sure mtl file has been read and put into the DB if necessary
-            rasterAnalysis_GDAL.mtlData(tar[:-7],os.path.join(tiffsStorage,tar[:-7],tar[:-7]+'_MTL.txt'))   
+            rasterAnalysis_GDAL.mtlData(sceneID,os.path.join(tiffsStorage,sceneID,sceneID+'_MTL.txt'))   
             # create quads from the input scene
             quadPaths = rasterAnalysis_GDAL.cropToQuad(extractedPath,projectStorage,quadsFolder)
             landsatFactTools_GDAL.writeQuadToDB(quadPaths)
@@ -112,9 +115,11 @@ for tar in runList:
                 # accounted for.
                 if os.path.exists(projectStorage+'/'+diff_quad) == False:
                     print "Begin extractProductForCompare of input1 " + str(datetime.datetime.now())
-                    landsatFactTools_GDAL.extractProductForCompare(diff_quad[:-2],tarStorage,tiffsStorage,fmaskShellCall,quadsFolder,projectStorage)
+                    sceneID = diff_quad[:-2]
+                    productID = landsatFactTools_GDAL.getProductIDForScene(sceneID)
+                    landsatFactTools_GDAL.extractProductForCompare(sceneID,tarStorage,tiffsStorage,fmaskShellCall,quadsFolder,projectStorage,productID)
                     print "End extractProductForCompare of input1 " + str(datetime.datetime.now())
-                    extractedList.append(diff_quad[0:21]+'.tar.gz')
+                    extractedList.append(sceneID+'.tar.gz')
                 else:
                     print diff_quad+" already exist in the projectStorage"
             # =========================================================================

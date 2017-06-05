@@ -57,6 +57,8 @@ for scene in runList:
         inNewSceneTar = os.path.join(tarStorage, scene + '.tar.gz')
         extractedPath = os.path.join(tiffsStorage, scene, scene+ '_MTL.txt')
 
+        productID=landsatFactTools_GDAL.getProductIDForScene(scene)
+
         print 'Looking for mtl file in ' + extractedPath
 
         #make sure file exists for now it should if not we may need to download and re-extract?
@@ -83,7 +85,7 @@ for scene in runList:
               if os.path.exists(inNewSceneTar) == True:
 
                   print 'Download completed for ' + inNewSceneTar
-                  extractedPath = landsatFactTools_GDAL.checkExisting(inNewSceneTar, tiffsStorage)
+                  extractedPath = landsatFactTools_GDAL.checkExisting(inNewSceneTar, tiffsStorage, scene, productID)
                   extractedFile = os.path.join(tiffsStorage, scene, scene+ '_MTL.txt')
 
                   print "extracting MTL level 1 metadata from: " + extractedFile
