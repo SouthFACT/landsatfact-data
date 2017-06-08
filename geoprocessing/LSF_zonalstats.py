@@ -283,8 +283,13 @@ def zonalStats(zonesShape, raster, reclassTable, statsResultTable):
     zs = zonal_stats(zonesShape, raster, geojson_out=True, stats=['count', 'sum'])
     l = []
     # for each dictionary in the zs list returned by rasterstats
+    ds = ogr.Open(zonesShape)
+    sqlString = "SELECT FID, OGR_GEOM_AREA, DN FROM {0}".format(os.path.splitext(os.path.basename(zonesShape))[0])
+    layer = ds.ExecuteSQL(sqlString)
     for d in zs: 
-        l.append((d['id'], int(d['properties']['count']) * 900, d['properties']['DN'], d['properties']['sum'], 
+        feature=layer.GetFeature(long(d['id']))
+        sqM=feature.GetField("OGR_GEOM_AREA")
+        l.append((d['id'], sqM, d['properties']['DN'], d['properties']['sum'], 
                  d['properties']['count'],  int(d['properties']['count']) * max)) 
 
     f = open(statsResultTable,'wt')
