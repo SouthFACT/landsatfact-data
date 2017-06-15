@@ -58,7 +58,7 @@ def callZonalStats(aoiID, swirs, cloudMasks, gapMasks, statsOutPath):
     writeListToFile(map(lambda x: os.path.join(LSF.productStorage, 'gap_mask', x),gapMasks),'tmpGapMasksFile')
     writeRemapCSV('remap.csv')
 
-    codeIn = [LSF.path_projects + '/geoprocessing/daveo/LSF_zonalstats.py', 'tmpAOIFile', 
+    codeIn = [LSF.path_projects + '/geoprocessing/LSF_zonalstats.py', 'tmpAOIFile', 
               'tmpSwirsFile', 'remap.csv', statsOutPath, '-c', 'tmpCloudMasksFile', '-g', 'tmpGapMasksFile']
     process = subprocess.Popen(codeIn,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out,err = process.communicate()
@@ -68,7 +68,7 @@ def callZonalStats(aoiID, swirs, cloudMasks, gapMasks, statsOutPath):
 
 def statsForAOINewProducts():
     """
-    # Function to retrieve areas of interest with new products, call a function to determine the ammount of
+    # Function to retrieve areas of interest with new products, call a function to determine the amount of
     #  change, and record the statistics for those areas of change in the DB
     # @param None
     # @return None
@@ -114,7 +114,7 @@ def statsForAOINewProducts():
                         h=int(float(s))
                     else:
                         h=0
-                    stats.append((int(row['Unique region ID']), int(row['Area in square meters']), 
+                    stats.append((int(row['Unique region ID']), float(row['Area in square meters']), 
                                  int(row['Raster value']), h, int(row['Count']), int(row['Count*maxVal'])))
             #sorted_by_region_ID = sorted(stats, key=lambda tup: tup[0])
             def patchVal(v):return filter(lambda tup: tup[2]==v, stats)
@@ -127,9 +127,15 @@ def statsForAOINewProducts():
             largestPatch=reduce(lambda x,y: max(x,y), map(lambda x: x[1], patchVal(1)), 0)*0.0002471044
             patchCount=len(patchVal(1))
             smallestPatch=reduce(lambda x,y: min(x,y), map(lambda x: x[1], patchVal(1)), 0)*0.0002471044
+            sumOfSum=reduce(lambda x,y: x+y, map(lambda x: x[3], patchVal(1)), 0)
+            sumOfMax=reduce(lambda x,y: x+y, map(lambda x: x[5], patchVal(1)), 0)
+            if sumOfMax: 
+                maxPatchSeverity=(float(sumOfSum)/float(sumOfMax))*100
+            else: 
+                maxPatchSeverity=0
             resultsTup = landsatFactTools_GDAL.postgresCommand('select * from write_aoi_events({0},{1},{2},{3},{4},{5},{6},{7},{8},\'{9}\''.format(
                                                                 aoi, acresChange, percentChange, acresAnalyzed, percentAnalyzed,
-                                                                smallestPatch, largestPatch, patchCount, event_id, dateString)+ ',\''+ ','.join(swirs) + '\');')
+                                                                smallestPatch, largestPatch, patchCount, event_id, dateString, maxPatchSeverity)+ ',\''+ ','.join(swirs) + '\');')
             if resultsTup[0][0] == False:
                 print 'Table update failed'
             else:
