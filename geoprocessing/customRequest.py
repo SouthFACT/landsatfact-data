@@ -135,9 +135,7 @@ def extractedTar(quadsceneID):
         # for now use checkExisting. change to use tarHandling class when completed
         productID = landsatFactTools_GDAL.getProductIDForScene(sceneID)
         extractedPath = landsatFactTools_GDAL.checkExisting(existingTar, LSF.tiffsStorage, sceneID, productID)
-        print "Begin Fmask processing " + str(datetime.datetime.now())
-        rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
-        print "End Fmask processing " + str(datetime.datetime.now())
+        rasterAnalysis_GDAL.cloudMask(extractedPath)
         # get DN min number from each band in the scene and write to database
         dnminExists = landsatFactTools_GDAL.checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
         if dnminExists == False:
@@ -312,9 +310,7 @@ def cloudMask(date1, date2):
     wrs2Name=date1.sceneID[3:9]
 
     if not os.path.exists(date1.folder+"/"+date1.sceneID+"_MTLFmask.TIF"):
-           print "Begin Fmask processing " + str(datetime.datetime.now())
-	   rasterAnalysis_GDAL.runFmask(os.path.join(LSF.tiffsStorage, date1.sceneID[:-2]), LSF.fmaskShellCall)
-           print "End Fmask processing " + str(datetime.datetime.now())
+	   rasterAnalysis_GDAL.cloudMask(os.path.join(LSF.tiffsStorage, date1.sceneID[:-2]))
 	   # create quads from the input scene
 	   quadPaths = rasterAnalysis_GDAL.cropToQuad(os.path.join(LSF.tiffsStorage, date1.sceneID[:-2]), LSF.projectStorage, LSF.quadsFolder)
 	   landsatFactTools_GDAL.writeQuadToDB(quadPaths)
@@ -324,9 +320,7 @@ def cloudMask(date1, date2):
 	   # write input scene quads cloud cover percentage to the landsat_metadata table in the database
 	   landsatFactTools_GDAL.writeQuadsCCtoDB(quadCCDict,date1.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''))
     if not os.path.exists(date2.folder+"/"+date2.sceneID+"_MTLFmask.TIF"):
-           print "Begin Fmask processing " + str(datetime.datetime.now())
-	   rasterAnalysis_GDAL.runFmask(os.path.join(LSF.tiffsStorage, date2.sceneID[:-2]), LSF.fmaskShellCall)
-           print "End Fmask processing " + str(datetime.datetime.now())
+	   rasterAnalysis_GDAL.cloudMask(os.path.join(LSF.tiffsStorage, date2.sceneID[:-2]))
 	   # create quads from the input scene
 	   quadPaths = rasterAnalysis_GDAL.cropToQuad(os.path.join(LSF.tiffsStorage, date2.sceneID[:-2]), LSF.projectStorage, LSF.quadsFolder)
 	   landsatFactTools_GDAL.writeQuadToDB(quadPaths)
@@ -339,19 +333,24 @@ def cloudMask(date1, date2):
     outputTiffName=os.path.join(LSF.outFMASKfolder,outBasename)
     if not os.path.exists(outputTiffName):
 	   if os.path.exists(date1.folder+"/"+date1.sceneID+"_MTLFmask.TIF") and os.path.exists(date2.folder+"/"+date2.sceneID+"_MTLFmask.TIF"):
-            FmaskReclassedArray1 = date1.reclassFmask()
-            FmaskReclassedArray2 = date2.reclassFmask()
-            FmaskReclassedArray = FmaskReclassedArray1 * FmaskReclassedArray2
-            FmaskReclassedArrayPlus1 = FmaskReclassedArray + 1
-            shpName=os.path.join(LSF.quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
-            LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(FmaskReclassedArrayPlus1, date1.geoTiffAtts).write(outputTiffName, shpName)
-            landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'CLOUD',date2.sceneID[9:16], 'CR')
+             qaTiffName=os.path.join(LSF.tiffsStorage, date1.sceneID[:-2], date1.sceneID[:-2]) + "_BQA.TIF"
+             if os.path.exists(qaTiffName):
+               product_type='CLOUDB'
+             else:
+               product_type='CLOUDF'
+             FmaskReclassedArray1 = date1.cloudMaskArray()
+             FmaskReclassedArray2 = date2.cloudMaskArray()
+             FmaskReclassedArray = FmaskReclassedArray1 * FmaskReclassedArray2
+             FmaskReclassedArrayPlus1 = FmaskReclassedArray + 1
+             shpName=os.path.join(LSF.quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
+             LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(FmaskReclassedArrayPlus1, date1.geoTiffAtts).write(outputTiffName, shpName)
+             landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,product_type,date2.sceneID[9:16], 'CR')
     # if the product's been created, should  be a row in products
     # note if the row is missing
     else:
 	   resultRowExists = rowExists(outBasename, 'products', 'product_id')
 	   if resultRowExists == False:
-            print "No row for {} in products".format(outBasename)
+             print "No row for {} in products".format(outBasename)
 
 
 """

@@ -20,6 +20,8 @@ import os, subprocess, math
 from osgeo import gdal, gdalconst
 import numpy as np
 import landsatFactTools_GDAL
+import datetime
+from LSF import *
 import pdb
 
 #import socket, errno
@@ -114,14 +116,11 @@ class sensorBand:
         return r
 
 
-    def reclassFmask(self):
+    def cloudMaskArray(self):
 	    """ """
-	    FmaskQuad = os.path.join(self.folder,self.sceneID+"_MTLFmask.TIF")
-	    FmaskArray = (LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(FmaskQuad).asGeoreferencedArray())[0]
-	    FmaskArray[FmaskArray == 0] = 10
-	    FmaskArray[(FmaskArray == 1) | (FmaskArray == 2) | (FmaskArray == 3) | (FmaskArray == 4) |(FmaskArray == 255)] = 0
-	    FmaskArray[FmaskArray == 10] = 1
-	    return FmaskArray
+	    CloudQuad = os.path.join(self.folder,self.sceneID+"_MTLFmask.TIF")
+	    CloudArray = (LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(CloudQuad).asGeoreferencedArray())[0]
+	    return CloudArray
 
     def TOAradiance(self, array, band, Ml="Grescale", Al="Brescale"):
         """ """
@@ -432,15 +431,33 @@ def runFmask(tiffFolder,fmaskShellCall):
                         print("Fmask Execution failed:"+str(out)+"/n"+str(err)+"/n"+str(errcode))
                 raise
 
-def cloudCover(FmaskData):
+def cloudMask(tiffFolder):
     """ """
-    #print "Computing Cloud Cover"
-    clearLand = float(np.sum(FmaskData == 0))
-    clearWater = float(np.sum(FmaskData == 1))
-    cloudShadow = float(np.sum(FmaskData == 2))
-    snow = float(np.sum(FmaskData == 3))
-    cloud = float(np.sum(FmaskData == 4))
-    noData = float(np.sum(FmaskData == 255))
-    ccPercent = round((cloud + snow + cloudShadow)/(clearLand + clearWater + cloudShadow + cloud + snow)*100,2)
-    return ccPercent
+    return_value = True;
+    inputTiffName=os.path.join(tiffFolder,os.path.basename(tiffFolder)) + "_BQA.TIF"
+    print "In cloudMask checking for: " +inputTiffName
+    outputTiffName=os.path.join(tiffFolder,os.path.basename(tiffFolder)) + "_MTLFmask.TIF"
+    if os.path.exists(inputTiffName):
+        [maskArray, geoTiffAtts]= LSFGeoTIFF.ReadableLSFGeoTIFF.fromFile(inputTiffName).asGeoreferencedArray() 
+        # USGS documentation
+        # shown here: https://landsat.usgs.gov/collectionqualityband
+        # for example, decimal 2800 = binary 0000101011110000 which would be:
+        # bits 15	14	13	12	11	10	9	8	7	6	5	4	3	2	1	0
+        #      0	0	0	0	1	0	1	0	1	1	1	1	0  	0	0       0
+        # high confidence cloud, bits 4, 5, and 6.
+        cloud=np.equal(np.right_shift(np.bitwise_and(maskArray, 112), 4), 7)
+        # high confidence cloud shadow, bits 7 and 8
+        shadow=np.equal(np.right_shift(np.bitwise_and(maskArray, 496), 7), 3)
+        newMask = np.logical_not(np.logical_or(cloud,shadow))
+        LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(newMask, geoTiffAtts).write(outputTiffName)
+
+    else:
+        print "Begin Fmask processing " + str(datetime.datetime.now())
+        return_value = runFmask(tiffFolder,fmaskShellCall)
+        print "End Fmask processing " + str(datetime.datetime.now())
+    return return_value
+
+def cloudCover(cloudMaskData):
+    """ """
+    return float(np.sum(cloudMaskData == 0))
 

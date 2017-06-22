@@ -124,15 +124,8 @@ def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,qua
         # now extract the downloaded file accordingly
         extractedPath = checkExisting(os.path.join(LSF.tarStorage, diff_tar+".tar.gz"), tiffsStorage, diff_tar, productID)
         #do the other pre-processing stuff
-        runFmaskBool =  rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
+        rasterAnalysis_GDAL.cloudMask(extractedPath)
         
-         #try and recover from failed FMASK due to memory isues
-        if (runFmaskBool == True):
-          runFmaskBool =  rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
-          #only try one time this should cover most failures
-          if (runFmaskBool == False):
-            raise RuntimeError("There was an issue with FMASK on: "+extractedPath)
-
         # get DN min number from each band in the scene and write to database
         dnminExists = checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
         if dnminExists == False:
@@ -212,7 +205,10 @@ def checkExisting(inTarPath, extractFolder, sceneID, productID):
         return extractedRoot
 
 def unzipTIFgap(inTar, sensorType, extractPath, sceneID, productID):
-    """Extracts the tar files based on which bands checkExisting tells it to."""
+    """Extracts the tar files based on which bands checkExisting tells it to. 
+       Treat _BQA differently, at least now. _BQA image could be missing.
+       If so, we'll invoke Fmask later.
+    """
     tar = tarfile.open(inTar)
     checkList = tar.getnames()
     for band in sensorType:
@@ -220,11 +216,11 @@ def unzipTIFgap(inTar, sensorType, extractPath, sceneID, productID):
             if band in tarFileName:
                 break
         else:
-            # the print statement needs to be replaced with a logger or similar in final server version so the process will know what to do if
-            # a corrupt tar is downloaded.  Prob needs to re-trigger a new download or log that the tar is corrupt and can't be processed
-            # but needs to restart for the next scene tar that will be processed that night, Terminate this script and trigger another???
-            print "\nThe tarfile {0} is corrupt.  Please delete this file and try to re-download it from EROS.\nThe tool will now terminate.\n".format(inTar)
-            sys.exit(0)
+            if band=="_BQA":
+                continue
+            else:
+                print "\nThe tarfile {0} is corrupt. Please delete this file and try to re-download it from EROS.\nThe tool will now terminate.\n".format(inTar)
+                sys.exit(0)
     for item in tar:
         for band in sensorType:
             if band == str(item.name)[40:-4] or ('gap_mask' in str(item.name) and band in str(item.name)):
@@ -309,10 +305,10 @@ def getQuadCCpercent(quadPaths):
         quadTiffs = os.listdir(quadPath)
         for tiff in quadTiffs:
             if tiff[-12:] == "MTLFmask.TIF":
-                FmaskQuadData = LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(os.path.join(quadPath,tiff)).asGeoreferencedArray()
-                ccPer = rasterAnalysis_GDAL.cloudCover(FmaskQuadData[0])
+                cloudMaskQuadData = LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(os.path.join(quadPath,tiff)).asGeoreferencedArray()
+                ccPer = rasterAnalysis_GDAL.cloudCover(cloudMaskQuadData[0])
 		quadCCDict.update({tiff[0:23]:ccPer})
-		FmaskQuadData = None
+		cloudMaskQuadData = None
     return quadCCDict
 
 
