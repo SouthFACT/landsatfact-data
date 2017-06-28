@@ -207,6 +207,13 @@ class sensorBand:
         gapMask = b3[0] * b4[0] * b5[0] * b6[0] * b7[0]
         return [gapMask,b7[1]]
 
+    def makeCirrusMask(self):
+        """ """
+        path = os.path.join(self.folder,os.path.basename(self.folder))
+        qa = LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(path + "_BQA.TIF").asGeoreferencedArray()
+        cirrus=np.logical_not(np.equal(np.right_shift(np.bitwise_and(qa[0], 6144), 11), 3))
+        return [cirrus,qa[1]]
+
     def ndvi(self, dataType):
         """dataType: SR, TOAradiance or TOAreflectance """
         r = self.radiometricCalibrationType(self.red,dataType,"red")
@@ -432,7 +439,10 @@ def runFmask(tiffFolder,fmaskShellCall):
                 raise
 
 def cloudMask(tiffFolder):
-    """ """
+    """
+    The cloudMask includes pixels identified as cloud, shadow, or snow in the Quality Assessment band (BQA).
+    Masked pixels have a value of 0 and clear pixels have a value of 1. If there is no BQA, invoke Fmask.
+    """
     return_value = True;
     inputTiffName=os.path.join(tiffFolder,os.path.basename(tiffFolder)) + "_BQA.TIF"
     print "In cloudMask checking for: " +inputTiffName
@@ -448,7 +458,10 @@ def cloudMask(tiffFolder):
         cloud=np.equal(np.right_shift(np.bitwise_and(maskArray, 112), 4), 7)
         # high confidence cloud shadow, bits 7 and 8
         shadow=np.equal(np.right_shift(np.bitwise_and(maskArray, 496), 7), 3)
-        newMask = np.logical_not(np.logical_or(cloud,shadow))
+        # high confidence snow/ice, bits 9 and 10.
+        snow=np.equal(np.right_shift(np.bitwise_and(maskArray, 1536), 9), 3)
+        # if cloud, shadow, or snow mask is set for a pixel, mask it in newMask
+        newMask = np.logical_not(np.logical_or(np.logical_or(cloud,shadow),snow))
         LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(newMask, geoTiffAtts).write(outputTiffName)
 
     else:
@@ -459,5 +472,8 @@ def cloudMask(tiffFolder):
 
 def cloudCover(cloudMaskData):
     """ """
-    return float(np.sum(cloudMaskData == 0))
+    masked = float(np.sum(cloudMaskData == 0))
+    total = masked + float(np.sum(cloudMaskData == 1))
+    ccPercent = round((masked/total)*100,2)
+    return ccPercent
 
