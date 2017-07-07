@@ -124,15 +124,8 @@ def extractProductForCompare(diff_tar,tarStorage,tiffsStorage,fmaskShellCall,qua
         # now extract the downloaded file accordingly
         extractedPath = checkExisting(os.path.join(LSF.tarStorage, diff_tar+".tar.gz"), tiffsStorage, diff_tar, productID)
         #do the other pre-processing stuff
-        runFmaskBool =  rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
+        rasterAnalysis_GDAL.cloudMask(extractedPath)
         
-         #try and recover from failed FMASK due to memory isues
-        if (runFmaskBool == True):
-          runFmaskBool =  rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
-          #only try one time this should cover most failures
-          if (runFmaskBool == False):
-            raise RuntimeError("There was an issue with FMASK on: "+extractedPath)
-
         # get DN min number from each band in the scene and write to database
         dnminExists = checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
         if dnminExists == False:
@@ -212,7 +205,10 @@ def checkExisting(inTarPath, extractFolder, sceneID, productID):
         return extractedRoot
 
 def unzipTIFgap(inTar, sensorType, extractPath, sceneID, productID):
-    """Extracts the tar files based on which bands checkExisting tells it to."""
+    """Extracts the tar files based on which bands checkExisting tells it to. 
+       Treat _BQA differently, at least now. _BQA image could be missing.
+       If so, we'll invoke Fmask later.
+    """
     tar = tarfile.open(inTar)
     checkList = tar.getnames()
     for band in sensorType:
@@ -220,11 +216,11 @@ def unzipTIFgap(inTar, sensorType, extractPath, sceneID, productID):
             if band in tarFileName:
                 break
         else:
-            # the print statement needs to be replaced with a logger or similar in final server version so the process will know what to do if
-            # a corrupt tar is downloaded.  Prob needs to re-trigger a new download or log that the tar is corrupt and can't be processed
-            # but needs to restart for the next scene tar that will be processed that night, Terminate this script and trigger another???
-            print "\nThe tarfile {0} is corrupt.  Please delete this file and try to re-download it from EROS.\nThe tool will now terminate.\n".format(inTar)
-            sys.exit(0)
+            if band=="_BQA":
+                continue
+            else:
+                print "\nThe tarfile {0} is corrupt. Please delete this file and try to re-download it from EROS.\nThe tool will now terminate.\n".format(inTar)
+                sys.exit(0)
     for item in tar:
         for band in sensorType:
             if band == str(item.name)[40:-4] or ('gap_mask' in str(item.name) and band in str(item.name)):
@@ -288,6 +284,33 @@ def gaper(date1, date2, outGAPfolder, baseName, quadsFolder,wrs2Name,analysis_so
         print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'GAP'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+ analysis_source
         writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'GAP',date2.sceneID[9:16], analysis_source)
 
+def cirrusMask(date1, date2, outfolder, baseName, quadsFolder,wrs2Name,analysis_source):
+    # date1 and date2 are rasterAnalysis_GDAL sensorBand Class objects
+    # Creates a Cirrus cloud mask for the scene if it came from Landsat 8 
+    cirrusMaskList=[]
+    if (date1.platformType == "LC8"):
+        cirrusMask1=date1.makeCirrusMask()
+        cirrusMaskList.append(cirrusMask1)
+    if (date2.platformType == "LC8"):
+        cirrusMask2=date2.makeCirrusMask()
+        cirrusMaskList.append(cirrusMask2)
+    if len(cirrusMaskList) == 2:
+        cirrusMask = cirrusMask1[0] * cirrusMask2[0]
+        cirrusMaskPlus1 = cirrusMask + 1
+        outputTiffName=os.path.join(outfolder,baseName + '_CirrusMask.tif')
+        shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
+        LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(cirrusMaskPlus1, cirrusMask1[1]).write(outputTiffName, shpName)
+        print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'CIRRUS'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+analysis_source
+        writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'CIRRUS',date2.sceneID[9:16], analysis_source)
+    elif len(cirrusMaskList) == 1:
+        cirrusMask = cirrusMaskList[0]
+        cirrusMaskPlus1 = cirrusMask[0] + 1
+        outputTiffName=os.path.join(outfolder,baseName + '_CirrusMask.tif')
+        shpName=os.path.join(quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
+        LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(cirrusMaskPlus1,cirrusMask[1]).write(outputTiffName, shpName)
+        print "writeProductToDB: "+os.path.basename(outputTiffName)+" ,"+date1.sceneID+" ,"+date2.sceneID+" ,"+'CIRRUS'+" ,"+date2.sceneID[9:16]+'Analysis Source'+" ,"+ analysis_source
+        writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'CIRRUS',date2.sceneID[9:16], analysis_source)
+
 def getSceneForProductID(productID):
         
         # uses a "genearalized" productID, without the TX
@@ -309,10 +332,10 @@ def getQuadCCpercent(quadPaths):
         quadTiffs = os.listdir(quadPath)
         for tiff in quadTiffs:
             if tiff[-12:] == "MTLFmask.TIF":
-                FmaskQuadData = LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(os.path.join(quadPath,tiff)).asGeoreferencedArray()
-                ccPer = rasterAnalysis_GDAL.cloudCover(FmaskQuadData[0])
+                cloudMaskQuadData = LSFGeoTIFF.ReadWriteLSFGeoTIFF.fromFile(os.path.join(quadPath,tiff)).asGeoreferencedArray()
+                ccPer = rasterAnalysis_GDAL.cloudCover(cloudMaskQuadData[0])
 		quadCCDict.update({tiff[0:23]:ccPer})
-		FmaskQuadData = None
+		cloudMaskQuadData = None
     return quadCCDict
 
 
@@ -332,13 +355,17 @@ def writeQuadToDB(pathList):
         print statement
         postgresCommand(statement)
 
-def writeProductToDB(product_id,input1,input2,product_type,product_date,analysis_source):
+def writeProductToDB(product_id,input1,input2,product_type,product_date,analysis_source, cloud_mask_type=None):
     # writes newly created products to products table in database
 	# product_id: LE70270402015145EDC01UR_LE70270402015161EDC00UR_percent_NDVI16.tif
 	tableName = 'products'
 	normaldate = datetime.datetime(int(product_date[0:4]), 1, 1) + datetime.timedelta(int(product_date[4:7]) - 1)
 	normaldate_truncated = datetime.date(normaldate.year, normaldate.month, normaldate.day)
-	statement = "INSERT INTO {0}(product_id, input1, input2, product_type, product_date, analysis_source) VALUES ('{1}', '{2}', '{3}', '{4}', '{5}','{6}');".format(tableName,product_id,input1,input2,product_type,str(normaldate_truncated), analysis_source)
+        if cloud_mask_type:
+	    statement = "INSERT INTO {0}(product_id, input1, input2, product_type, product_date, analysis_source, cloud_mask_type) VALUES ('{1}', '{2}', '{3}', '{4}', '{5}','{6}','{7}');".format(tableName,product_id,input1,input2,product_type,str(normaldate_truncated), analysis_source, cloud_mask_type)
+
+        else:
+	    statement = "INSERT INTO {0}(product_id, input1, input2, product_type, product_date, analysis_source) VALUES ('{1}', '{2}', '{3}', '{4}', '{5}','{6}');".format(tableName,product_id,input1,input2,product_type,str(normaldate_truncated), analysis_source)
 	print statement
 	return postgresCommand(statement)
 

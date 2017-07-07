@@ -135,9 +135,7 @@ def extractedTar(quadsceneID):
         # for now use checkExisting. change to use tarHandling class when completed
         productID = landsatFactTools_GDAL.getProductIDForScene(sceneID)
         extractedPath = landsatFactTools_GDAL.checkExisting(existingTar, LSF.tiffsStorage, sceneID, productID)
-        print "Begin Fmask processing " + str(datetime.datetime.now())
-        rasterAnalysis_GDAL.runFmask(extractedPath,LSF.fmaskShellCall)
-        print "End Fmask processing " + str(datetime.datetime.now())
+        rasterAnalysis_GDAL.cloudMask(extractedPath)
         # get DN min number from each band in the scene and write to database
         dnminExists = landsatFactTools_GDAL.checkForDNminExist(extractedPath) # May not be needed in final design, used during testing
         if dnminExists == False:
@@ -193,6 +191,23 @@ def dateFn(quadsceneID):
     # check for clipped TIFFs first, because if they exist, the previous work artifacts could safely no longer be there
     quadScene(quadsceneID)
     return rasterAnalysis_GDAL.sensorBand(os.path.join(LSF.projectStorage, quadsceneID), LSF.tiffsStorage)
+
+"""
+# Function that guarantees the presence of a cirrus mask product TIFF (e.g., LC80180332015250LGN00LL_LE70180332015258EDC00LL_CirrusMask.tif)
+# in the productStorage, /lsfdata/products/cirrus_mask
+# @param 2 sensorBand instances
+#
+"""
+def cirrusMask(date1, date2):
+    # dateFns have completed therefore assume that, at least, the
+    # quadscenes have been created in projectStorage
+    # (i.e., sceneID1U*, sceneID1L*, sceneID2U*, and sceneID2L* directories are populuated)
+    # eros_data may or may not be present
+
+    outBasename = date1.sceneID + "_" + date2.sceneID
+    outputTiffName=os.path.join(os.path.join(LSF.productStorage, 'cirrus_mask'), outBasename + '_CirrusMask.tif')
+    if not os.path.exists(outputTiffName):
+        landsatFactTools_GDAL.cirrusMask(date1,date2,LSF.outCIRRUSfolder,outBasename,LSF.quadsFolder,date2.sceneID[3:9],'LCV')
 
 """
 # Function that guarantees the presence of a gap mask product TIFF (e.g., LC80180332015250LGN00LL_LE70180332015258EDC00LL_GapMask.tif)
@@ -312,9 +327,7 @@ def cloudMask(date1, date2):
     wrs2Name=date1.sceneID[3:9]
 
     if not os.path.exists(date1.folder+"/"+date1.sceneID+"_MTLFmask.TIF"):
-           print "Begin Fmask processing " + str(datetime.datetime.now())
-	   rasterAnalysis_GDAL.runFmask(os.path.join(LSF.tiffsStorage, date1.sceneID[:-2]), LSF.fmaskShellCall)
-           print "End Fmask processing " + str(datetime.datetime.now())
+	   rasterAnalysis_GDAL.cloudMask(os.path.join(LSF.tiffsStorage, date1.sceneID[:-2]))
 	   # create quads from the input scene
 	   quadPaths = rasterAnalysis_GDAL.cropToQuad(os.path.join(LSF.tiffsStorage, date1.sceneID[:-2]), LSF.projectStorage, LSF.quadsFolder)
 	   landsatFactTools_GDAL.writeQuadToDB(quadPaths)
@@ -324,9 +337,7 @@ def cloudMask(date1, date2):
 	   # write input scene quads cloud cover percentage to the landsat_metadata table in the database
 	   landsatFactTools_GDAL.writeQuadsCCtoDB(quadCCDict,date1.folder.replace('UR','').replace('UL','').replace('LR','').replace('LL',''))
     if not os.path.exists(date2.folder+"/"+date2.sceneID+"_MTLFmask.TIF"):
-           print "Begin Fmask processing " + str(datetime.datetime.now())
-	   rasterAnalysis_GDAL.runFmask(os.path.join(LSF.tiffsStorage, date2.sceneID[:-2]), LSF.fmaskShellCall)
-           print "End Fmask processing " + str(datetime.datetime.now())
+	   rasterAnalysis_GDAL.cloudMask(os.path.join(LSF.tiffsStorage, date2.sceneID[:-2]))
 	   # create quads from the input scene
 	   quadPaths = rasterAnalysis_GDAL.cropToQuad(os.path.join(LSF.tiffsStorage, date2.sceneID[:-2]), LSF.projectStorage, LSF.quadsFolder)
 	   landsatFactTools_GDAL.writeQuadToDB(quadPaths)
@@ -339,19 +350,24 @@ def cloudMask(date1, date2):
     outputTiffName=os.path.join(LSF.outFMASKfolder,outBasename)
     if not os.path.exists(outputTiffName):
 	   if os.path.exists(date1.folder+"/"+date1.sceneID+"_MTLFmask.TIF") and os.path.exists(date2.folder+"/"+date2.sceneID+"_MTLFmask.TIF"):
-            FmaskReclassedArray1 = date1.reclassFmask()
-            FmaskReclassedArray2 = date2.reclassFmask()
-            FmaskReclassedArray = FmaskReclassedArray1 * FmaskReclassedArray2
-            FmaskReclassedArrayPlus1 = FmaskReclassedArray + 1
-            shpName=os.path.join(LSF.quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
-            LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(FmaskReclassedArrayPlus1, date1.geoTiffAtts).write(outputTiffName, shpName)
-            landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'CLOUD',date2.sceneID[9:16], 'CR')
+             qaTiffName=os.path.join(LSF.tiffsStorage, date1.sceneID[:-2], date1.sceneID[:-2]) + "_BQA.TIF"
+             if os.path.exists(qaTiffName):
+               cloud_mask_type='BQA'
+             else:
+               cloud_mask_type='FMASK'
+             FmaskReclassedArray1 = date1.cloudMaskArray()
+             FmaskReclassedArray2 = date2.cloudMaskArray()
+             FmaskReclassedArray = FmaskReclassedArray1 * FmaskReclassedArray2
+             FmaskReclassedArrayPlus1 = FmaskReclassedArray + 1
+             shpName=os.path.join(LSF.quadsFolder, 'wrs2_'+ wrs2Name + date1.folder[-2:]+'.shp')
+             LSFGeoTIFF.Unsigned8BitLSFGeoTIFF.fromArray(FmaskReclassedArrayPlus1, date1.geoTiffAtts).write(outputTiffName, shpName)
+             landsatFactTools_GDAL.writeProductToDB(os.path.basename(outputTiffName),date1.sceneID,date2.sceneID,'CLOUD',date2.sceneID[9:16], 'CR',cloud_mask_type)
     # if the product's been created, should  be a row in products
     # note if the row is missing
     else:
 	   resultRowExists = rowExists(outBasename, 'products', 'product_id')
 	   if resultRowExists == False:
-            print "No row for {} in products".format(outBasename)
+             print "No row for {} in products".format(outBasename)
 
 
 """
@@ -383,6 +399,8 @@ def comparisonProduct(quadsceneID1, quadsceneID2):
     date1=dateFn(quadsceneID1)
     date2=dateFn(quadsceneID2)
     gapMask(date1, date2)
+    # comment out the line below o remove the Cirrus product
+    cirrusMask(date1, date2)
     cloudMask(date1, date2)
     ndvi(date1, date2)
     ndmi(date1, date2)
