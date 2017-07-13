@@ -248,7 +248,6 @@ print 'Excepting ', exceptList
 runList.extend(extractedList)
 # Clean up tars that have successfully been processed
 for t in runList:
-    if t not in exceptList:
-        os.remove(t)
+    os.remove(t)
 sys.exit()
 
