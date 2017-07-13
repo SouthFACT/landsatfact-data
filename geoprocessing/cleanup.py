@@ -187,7 +187,7 @@ def cleanProcessedTars(processedList):
     os.chdir(in_dir)
 
 """
-# Clean up the extractedTars directory, leaving the last 2 dates for each path row
+# Clean up the extractedTars directory, leaving no dates for each path row
 # For example, directory LC80150332016184LGN00 could be left for the 015033 path row.
 # @param processedSceneList
 #           a list containing all the directories in extractedTars
@@ -205,11 +205,11 @@ def cleanExtractedTarContents(processedSceneList, crScenesToKeep):
     # populate a dictionary of scenes defined as a path/row on a given date, irrespective of the sensor, satellite,
     # ground station identifier, and archive version number e.g., {'029034': ['2016002','2016146','2016162','2016170']}
     southeastPathRowDates=filterScenesInDictionary(sceneDictionary(processedSceneList), crScenesToKeep)
-    operateOnPathRows(southeastPathRowDates, 2, LSF.tiffsStorage, [cleanPathRowDirectories])
+    operateOnPathRows(southeastPathRowDates, 0, LSF.tiffsStorage, [cleanPathRowDirectories])
     os.chdir(in_dir)
 
 """
-# Clean up the project_data directory, leaving the last 10 dates for each path row
+# Clean up the project_data directory, leaving the last 5 dates for each path row
 # For example, directories LC80150332016184LGN00U* and LC80150332016200LGN00* could be left for the 015033 path row.
 # @param processedQuadList
 #           a list containing all the directories in project_data
@@ -228,11 +228,11 @@ def cleanIntermediateTIFFsForProducts(processedQuadList, crScenesToKeep):
     # populate a dictionary of scenes defined as a path/row on a given date, irrespective of the sensor, satellite,
     # ground station identifier, and archive version number e.g., {'029034': ['2016002','2016146','2016162','2016170']}
     southeastPathRowDates=filterScenesInDictionary(sceneDictionary(processedQuadList), crScenesToKeep)
-    operateOnPathRows(southeastPathRowDates, 10, LSF.projectStorage, [cleanPathRowDirectories])
+    operateOnPathRows(southeastPathRowDates, 5, LSF.projectStorage, [cleanPathRowDirectories])
     os.chdir(in_dir)
 
 """
-# Clean up the products directory, leaving the last 22 dates for each path row
+# Clean up the products directory, leaving the last 11 dates for each path row
 # @param productTIFFsList
 #           a list containing all the product TIFFs in product directory
 # @param crScenesToKeep
@@ -246,7 +246,7 @@ def cleanProductTIFFs(productTIFFsList, crScenesToKeep):
     # ground station identifier, and archive version number e.g., {'029034': ['2016002','2016146','2016162','2016170']}
     # then remove scenes that are still being used by custom requests from the dictionary of scenes available for deletion
     southeastPathRowDates=filterScenesInDictionary(sceneDictionary(productTIFFsList), crScenesToKeep)
-    operateOnPathRows(southeastPathRowDates, 22, LSF.productStorage, [cleanPathRowDirectories, updateProductsDiskStatus])
+    operateOnPathRows(southeastPathRowDates, 11, LSF.productStorage, [cleanPathRowDirectories, updateProductsDiskStatus])
     os.chdir(in_dir)
 
 """
@@ -298,13 +298,10 @@ def findFilesMatchingPattern(directory, pattern):
 
 # Removes old CR tars in eros_data. 
 # CR products for the requesting user are kept in cr_zip and that directory is cleaned separately.
-oldScenes = getOldCustomRequestFromDB()
 newScenes = getNewCustomRequestFromDB()
-if len(oldScenes):
-    # happily, the same scene can be both old and new. only remove old scenes which aren't still needed.
-    cleanProcessedTars(map(lambda x: x+'.tar.gz', set(oldScenes)-set(newScenes)))
+cleanProcessedTars(map(lambda x: x+'.tar.gz', newScenes))
 
-cleanExtractedTarContents(os.listdir(LSF.tiffsStorage), newScenes)
-cleanIntermediateTIFFsForProducts(os.listdir(LSF.projectStorage), newScenes)
-cleanProductTIFFs(findFilesMatchingPattern(LSF.productStorage, 'L*.tif'), newScenes)
+cleanExtractedTarContents(os.listdir(LSF.tiffsStorage), [])
+cleanIntermediateTIFFsForProducts(os.listdir(LSF.projectStorage), [])
+cleanProductTIFFs(findFilesMatchingPattern(LSF.productStorage, 'L*.tif'), [])
 
