@@ -175,13 +175,15 @@ def cleanProcessedTars(processedList):
     'LE70290352016194EDC00.tar.gz', 'LC80210352016194LGN00.tar.gz', 'LC80210392016194LGN00.tar.gz',
     'LC80210372016194LGN00.tar.gz', 'LC80210362016194LGN00.tar.gz', 'LC80210382016194LGN00.tar.gz',
     'LE70290392016194EDC00.tar.gz', 'LE70130352016194EDC00.tar.gz', 'LE70130362016194EDC00.tar.gz']"""
-    print processedList
+    print ('cleanProcessedTars ', processedList)
     in_dir = os.getcwd()
     os.chdir(LSF.tarStorage)
     for t in processedList:
         try:
+            print t
+            if not os.path.isdir(t):
             #if os.path.exists(t): print 'Would have deleted filename:' + t
-            os.remove(t)
+               os.remove(t)
         except OSError:
             pass
     os.chdir(in_dir)
@@ -199,7 +201,7 @@ def cleanExtractedTarContents(processedSceneList, crScenesToKeep):
     e.g.,['LC80130352016154LGN00', 'LC80130352016170LGN00', 'LC80130352016186LGN00','LC80130352016202LGN00']
     path/row = 'LC80130352016202LGN00'[3:9]
     date = 'LC80130352016202LGN00'[9:16]"""
-    print processedSceneList
+    print ('cleanExtractedTarContents ', processedSceneList)
     in_dir = os.getcwd()
     os.chdir(LSF.tiffsStorage)
     # populate a dictionary of scenes defined as a path/row on a given date, irrespective of the sensor, satellite,
@@ -222,7 +224,7 @@ def cleanIntermediateTIFFsForProducts(processedQuadList, crScenesToKeep):
     path/row = 'LC80300342016001LGN00UR'[3:9]
     date = 'LC80300342016001LGN00UR'[9:16]"""
 
-    print processedQuadList
+    print ('cleanIntermediateTIFFsForProducts', processedQuadList, crScenesToKeep)
     in_dir = os.getcwd()
     os.chdir(LSF.projectStorage)
     # populate a dictionary of scenes defined as a path/row on a given date, irrespective of the sensor, satellite,
@@ -239,7 +241,7 @@ def cleanIntermediateTIFFsForProducts(processedQuadList, crScenesToKeep):
 #           a list containing scenes which are in use by custom requests
 """
 def cleanProductTIFFs(productTIFFsList, crScenesToKeep):
-    # print productTIFFsList
+    print ('cleanProductTIFFs ', productTIFFsList, crScenesToKeep)
     in_dir = os.getcwd()
     os.chdir(LSF.productStorage)
     # populate dictionary of scenes defined as a path/row on a given date, irrespective of the sensor, satellite,
@@ -299,7 +301,7 @@ def findFilesMatchingPattern(directory, pattern):
 # Removes old CR tars in eros_data. 
 # CR products for the requesting user are kept in cr_zip and that directory is cleaned separately.
 newScenes = getNewCustomRequestFromDB()
-cleanProcessedTars(map(lambda x: x+'.tar.gz', newScenes))
+cleanProcessedTars(os.listdir(LSF.tarStorage))
 
 cleanExtractedTarContents(os.listdir(LSF.tiffsStorage), [])
 cleanIntermediateTIFFsForProducts(os.listdir(LSF.projectStorage), [])
