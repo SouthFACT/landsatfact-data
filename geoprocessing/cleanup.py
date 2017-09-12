@@ -12,6 +12,9 @@
 
 import shutil, fnmatch, os, copy
 import LSF, landsatFactTools_GDAL
+import glob
+from datetime import datetime, timedelta
+
 import pdb
 
 southeastPathRows=['013035', '013036', '014034', '014035', '014036', '015033', '015034', '015035', '015036', '015037',
@@ -298,10 +301,25 @@ def findFilesMatchingPattern(directory, pattern):
             answerList.append(filename)
     return answerList
 
+"""
+# Filter files in a list returning those older than the given date.
+# returns a List
+# @param directory
+#           a relative or absolute root of a directory tree to be searched top-down
+# @param date
+#           datetime 
+"""
+def filterOlderFiles(fileList, date):
+    answerList =[]
+    for filename in fileList:
+        if (datetime.fromtimestamp(os.path.getmtime(filename)) < date):
+            answerList.append(filename)
+    return answerList
+
 # Removes old CR tars in eros_data. 
 # CR products for the requesting user are kept in cr_zip and that directory is cleaned separately.
 newScenes = getNewCustomRequestFromDB()
-cleanProcessedTars(os.listdir(LSF.tarStorage))
+cleanProcessedTars(filterOlderFiles(glob.glob(LSF.tarStorage+'/*.gz'),datetime.now() - timedelta(days=3)))
 
 cleanExtractedTarContents(os.listdir(LSF.tiffsStorage), [])
 cleanIntermediateTIFFsForProducts(os.listdir(LSF.projectStorage), [])
