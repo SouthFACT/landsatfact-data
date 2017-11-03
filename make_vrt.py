@@ -38,11 +38,11 @@ gap_cur = conn.cursor()
 
 #Selects the column that you want
 #From Inputs will be replaced with the appropriate view 
-ndvi_cur.execute("select vrt_name, product_list from vw_product_list_ndvi_for_vrt WHERE vrt_date > current_date - interval '5' day")
-ndmi_cur.execute("select vrt_name, product_list from vw_product_list_ndmi_for_vrt WHERE vrt_date > current_date - interval '5' day")
-swir_cur.execute("select vrt_name, product_list from vw_product_list_swir_for_vrt WHERE vrt_date > current_date - interval '5' day")
-cloud_cur.execute("select vrt_name, product_list from vw_product_list_cloud_for_vrt WHERE vrt_date > current_date - interval '5' day")
-gap_cur.execute("select vrt_name, product_list from vw_product_list_gap_for_vrt WHERE vrt_date > current_date - interval '5' day")
+ndvi_cur.execute("select vrt_name, product_list from vw_product_list_ndvi_for_vrt WHERE vrt_date > current_date - interval '250' day")
+ndmi_cur.execute("select vrt_name, product_list from vw_product_list_ndmi_for_vrt WHERE vrt_date > current_date - interval '250' day")
+swir_cur.execute("select vrt_name, product_list from vw_product_list_swir_for_vrt WHERE vrt_date > current_date - interval '250' day")
+cloud_cur.execute("select vrt_name, product_list from vw_product_list_cloud_for_vrt WHERE vrt_date > current_date - interval '250' day")
+gap_cur.execute("select vrt_name, product_list from vw_product_list_gap_for_vrt WHERE vrt_date > current_date - interval '250' day")
 
 f = open((DATA_DIR)+'/products/gdal_vrt_files/ndvi/ndvi.txt', 'w')
 for row in ndvi_cur:

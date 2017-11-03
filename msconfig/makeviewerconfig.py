@@ -152,6 +152,7 @@ def getSWIRThresholdLayers():
          
     for date, type in date_and_type_cur:
         if type in lsfDict.keys():
+            print  type + " archive " + date_string
             #date_string = str(date)
 			#uncomment the following two lines to go back to using previous view
             date_string = date.isoformat()
