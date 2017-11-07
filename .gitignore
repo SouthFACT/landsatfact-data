@@ -1,3 +1,6 @@
+*.log
+var/log/*.log
+dataexchange/*.txt
 var/log/lsf_DAVE.log
 test.log
 geoprocessing/LSF.py
