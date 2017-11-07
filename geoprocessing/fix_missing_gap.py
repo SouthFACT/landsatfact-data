@@ -69,7 +69,7 @@ for file in resultsTup:
         input1 = inputs[:finish]
         input2 = inputs[finish+1:]
          
-        proddata = file[4]
+        proddata = str(file[4])
  
         statement = "INSERT INTO products VALUES('" + inputs + "_GapMask.tif','" + input1 + "','" + input2 + "','GAP','" + proddata + "','LCV','','2017-11-06','2017-11-06','ADD MISSING GAP','YES');"
 
@@ -80,20 +80,6 @@ for file in resultsTup:
 
     else:
         print file[2] + ' missing'
-
-        #statement = "SELECT update_is_on_disk('{0}', '{1}')".format(file[1],'YES')
-        #try:
-        #    resultsTup = landsatFactTools_GDAL.postgresCommand(statement)
-        #except BaseException as e:
-        #    print "Error updating product " + file[1]
-
-    #else:
-    #    print 'file ' + file[0] + ' does NOT exist!'
-    #    statement = "SELECT update_is_on_disk('{0}', '{1}')".format(file[1],'NO')
-    #    try:
-    #        resultsTup = landsatFactTools_GDAL.postgresCommand(statement)
-    #    except BaseException as e:
-    #        print "Error updating product " + file[1]
 
 sys.exit()
 
