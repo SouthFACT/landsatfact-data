@@ -36,10 +36,9 @@ import pdb
 
 DNminDict = {}
 tableName = 'vw_missing_gap'
-tableColumnList = ['product_id','product_type','swir','gap']
-statement = "SELECT {0},{1},{2},{3} FROM {4};".format(tableColumnList[0],tableColumnList[1],tableColumnList[2],tableColumnList[3],tableName )
+tableColumnList = ['product_id','product_type','product_date','swir','gap']
+statement = "SELECT {0},{1},{2},{3},{4} FROM {5};".format(tableColumnList[0],tableColumnList[1],tableColumnList[2],tableColumnList[3],tableColumnList[4],tableName )
 resultsTup = landsatFactTools_GDAL.postgresCommand(statement)
-
 
 
 for file in resultsTup:
@@ -60,8 +59,6 @@ for file in resultsTup:
 
         gdal_array.SaveArray(data.astype("byte"), output, "GTIFF", ds)
 
-
-
         outfile = file[3]
 
         finish = outfile.rfind("/")
@@ -72,8 +69,11 @@ for file in resultsTup:
         finish = inputs.rfind("_")
         input1 = inputs[:finish]
         input2 = inputs[finish+1:]
-
-        statement = "INSERT INTO products VALUES('" + inputs + "_GapMask.tif','" + input1 + "','" + input2 + "','GAP','','LCV','','2017-11-06','2017-11-06','ADD MISSING GAP','YES');"
+         
+        proddata = file[4]       
+        print proddata
+ 
+        statement = "INSERT INTO products VALUES('" + inputs + "_GapMask.tif','" + input1 + "','" + input2 + "','GAP','" + proddata + "','LCV','','2017-11-06','2017-11-06','ADD MISSING GAP','YES');"
 
         try:
            resultsTup = landsatFactTools_GDAL.postgresCommand(statement)
