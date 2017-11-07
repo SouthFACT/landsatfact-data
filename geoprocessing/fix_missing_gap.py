@@ -36,13 +36,12 @@ import pdb
 
 DNminDict = {}
 tableName = 'vw_missing_gap'
-tableColumnList = ['product_id','product_type','product_date','swir','gap']
+tableColumnList = ['product_id','product_type','swir','gap','product_date']
 statement = "SELECT {0},{1},{2},{3},{4} FROM {5};".format(tableColumnList[0],tableColumnList[1],tableColumnList[2],tableColumnList[3],tableColumnList[4],tableName )
 resultsTup = landsatFactTools_GDAL.postgresCommand(statement)
 
-
 for file in resultsTup:
-
+    
     if os.path.exists(file[2]) == True:
 
         print 'Adding missing gap ' + file[2]
@@ -70,8 +69,7 @@ for file in resultsTup:
         input1 = inputs[:finish]
         input2 = inputs[finish+1:]
          
-        proddata = file[4]       
-        print proddata
+        proddata = file[4]
  
         statement = "INSERT INTO products VALUES('" + inputs + "_GapMask.tif','" + input1 + "','" + input2 + "','GAP','" + proddata + "','LCV','','2017-11-06','2017-11-06','ADD MISSING GAP','YES');"
 
