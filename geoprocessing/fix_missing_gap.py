@@ -73,7 +73,7 @@ for file in resultsTup:
         input1 = inputs[:finish]
         input2 = inputs[finish+1:]
 
-        statement = "INSERT INTO products VALUES('" + inputs + "_GapMask.tif','" + input1 + "','" + input2 + "','GAP','2017-08-18','LCV','','2017-11-06','2017-11-06','ADD MISSING GAP','YES');"
+        statement = "INSERT INTO products VALUES('" + inputs + "_GapMask.tif','" + input1 + "','" + input2 + "','GAP','','LCV','','2017-11-06','2017-11-06','ADD MISSING GAP','YES');"
 
         try:
            resultsTup = landsatFactTools_GDAL.postgresCommand(statement)
