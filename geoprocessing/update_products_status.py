@@ -94,4 +94,6 @@ for file in resultsTup:
     else:
         print  "nothing to update for product " + file[1] 
 
+print ''
+print 'Done updating status.'
 sys.exit()
