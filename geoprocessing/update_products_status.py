@@ -30,9 +30,12 @@ import localLib
 import pdb
 
 DNminDict = {}
+
+print 'Updating produicts with no status'
+#find products listed as null or blank as on disk and update according to actual disk status
 tableName = 'vw_list_products_files'
-tableColumnList = ['file','product_id']
-statement = "SELECT {0},{1} FROM {2};".format(tableColumnList[0],tableColumnList[1],tableName)
+tableColumnList = ['file','product_id','is_on_disk']
+statement = "SELECT {0},{1},{2} FROM {3} WHERE is_on_disk = '' or is_on_disk is null;".format(tableColumnList[0],tableColumnList[1],tableColumnList[2],tableName)
 resultsTup = landsatFactTools_GDAL.postgresCommand(statement)
 
 for file in resultsTup:
@@ -51,5 +54,44 @@ for file in resultsTup:
             resultsTup = landsatFactTools_GDAL.postgresCommand(statement)
         except BaseException as e:
             print "Error updating product " + file[1]
+
+print ''
+print 'Updating produicts with status marked YES'
+#list all products in the database that are listed as on disk then only update when the file is no longer on disk - switch is_on_disk from 'YES' to 'NO'
+tableName = 'vw_list_products_files'
+tableColumnList = ['file','product_id','is_on_disk']
+statement = "SELECT {0},{1},{2} FROM {3} WHERE is_on_disk = 'YES';".format(tableColumnList[0],tableColumnList[1],tableColumnList[2],tableName)
+resultsTup = landsatFactTools_GDAL.postgresCommand(statement)
+
+for file in resultsTup:
+
+    if os.path.exists(file[0]) == True:
+        print  "nothing to update for product " + file[1]
+    else:
+        print 'file ' + file[0] + ' does NOT exist!'
+        statement = "SELECT update_is_on_disk('{0}', '{1}')".format(file[1],'NO')
+        try:
+            resultsTup = landsatFactTools_GDAL.postgresCommand(statement)
+        except BaseException as e:
+            print "Error updating product " + file[1]
+
+print ''
+print 'Updating produicts with status marked NO'
+#list all products in the database that are listed as not on disk then only update when the file is on disk - switch is_on_disk from 'NO' to 'YES'
+tableName = 'vw_list_products_files'
+tableColumnList = ['file','product_id','is_on_disk']
+statement = "SELECT {0},{1},{2} FROM {3} WHERE is_on_disk = 'NO';".format(tableColumnList[0],tableColumnList[1],tableColumnList[2],tableName)
+resultsTup = landsatFactTools_GDAL.postgresCommand(statement)
+
+for file in resultsTup:
+
+    if os.path.exists(file[0]) == True:
+        statement = "SELECT update_is_on_disk('{0}', '{1}')".format(file[1],'YES')
+        try:
+            resultsTup = landsatFactTools_GDAL.postgresCommand(statement)
+        except BaseException as e:
+            print "Error updating product " + file[1]
+    else:
+        print  "nothing to update for product " + file[1] 
 
 sys.exit()
