@@ -62,14 +62,26 @@ def filterScenesInDictionary(scenesOnDiskDictionary, scenesToRemainList):
 #           a list of either directories or files of the specified format
 #               pathRow is PPPRRR where PPP = WRS path and RRR = WRS row
 #               date is YYYYDDD where YYYY = Year and DDD = Julian day of year
+# On at least 2 occasions, scenes outside the southeast (i.e., not in southeastPathRows)
+#  have been downloaded from USGS. While we won't clip to quads or make products with the scenes,
+#  they can show up in extractedTars. This code handles that error by recognizing the exception and
+#  removing the offender from tiffsStorage.
 """
 def sceneDictionary(diskList):
     scenesDict=dict.fromkeys(southeastPathRows)
     for dirOrFile in diskList:
-        if not scenesDict[dirOrFile[3:9]]:
-            scenesDict[dirOrFile[3:9]] = [dirOrFile[9:16]]
-        elif (dirOrFile[9:16] not in scenesDict[dirOrFile[3:9]]):
-            scenesDict[dirOrFile[3:9]].insert(0, dirOrFile[9:16])
+        pathRow=dirOrFile[3:9]
+        scenes=None
+        try:
+            scenes=scenesDict[pathRow]
+        except:
+            cleanPathRowDate(pathRow, '???????', LSF.tiffsStorage)
+            print (pathRow+'??????? is in error, deleted it')
+            continue
+        if not scenes:
+            scenesDict[pathRow] = [dirOrFile[9:16]]
+        elif (dirOrFile[9:16] not in scenes):
+            scenes.insert(0, dirOrFile[9:16])
     return scenesDict
 
 """
